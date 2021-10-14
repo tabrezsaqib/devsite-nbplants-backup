@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <data>
+    <title>Rosa Palustris</title>
+    <family>Rosaceae</family>
+    <genus>Rosa</genus>
+    <species>Palustris</species>
+    <common_name>Swamp rose</common_name>
+    <french_common_name>Rosier palustre</french_common_name>
+    <plant_type>woody</plant_type>
+    <habitat>
+      <wetlands>Wetlands</wetlands>
+    </habitat>
+    <leaf_type>
+      <compound>Compound</compound>
+    </leaf_type>
+    <leaf_arrangement/>
+    <leaf_blade_edges>
+      <teethed>Teethed</teethed>
+    </leaf_blade_edges>
+    <flower_petal_colour/>
+    <bloom_time></bloom_time>
+    <armature>yes</armature>
+    <bark_texture>smooth</bark_texture>
+    <growth_form>shrubby</growth_form>
+    <deciduous_or_coniferous>deciduous</deciduous_or_coniferous>
+    <leaves_per_node>1</leaves_per_node>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>native</native_or_introduced_or_invasive>
+    <rank>s3</rank>
+    <new_brunswick_county/>
+    <image_preview/>
+    <note>Look for swamp rose in acidic wetlands and streamsides. It is distinguished by the pairs of stout, downwardly curving spines that grace each node of the stem. It produces 1-2 delicate pink flowers on each inflorescence. Producing fragrant, showy flowers in June and July, ornamental varieties of this rose are popular for planting in wet areas of the garden.</note>
+  </data>
+  <data>
+    <title>Acer Saccharum</title>
+    <family>Aceraceae</family>
+    <genus>Acer</genus>
+    <species>saccharum</species>
+    <common_name>Sugar maple</common_name>
+    <french_common_name></french_common_name>
+    <plant_type>woody</plant_type>
+    <habitat>
+      <terrestrial>Terrestrial</terrestrial>
+    </habitat>
+    <leaf_type>
+      <compound>Compound</compound>
+    </leaf_type>
+    <leaf_arrangement>
+      <alternate>Alternate</alternate>
+    </leaf_arrangement>
+    <leaf_blade_edges>
+      <teethed>Teethed</teethed>
+    </leaf_blade_edges>
+    <flower_petal_colour>
+      <yellow>Yellow</yellow>
+    </flower_petal_colour>
+    <bloom_time></bloom_time>
+    <armature>no</armature>
+    <bark_texture>ridged,plated</bark_texture>
+    <growth_form>tree</growth_form>
+    <deciduous_or_coniferous>deciduous</deciduous_or_coniferous>
+    <leaves_per_node>2</leaves_per_node>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>native</native_or_introduced_or_invasive>
+    <rank>s3</rank>
+    <new_brunswick_county>
+      <carleton>Carleton</carleton>
+      <york>York</york>
+    </new_brunswick_county>
+    <image_preview/>
+    <note>Sugar maple is an emblematic and common tree of the New England landscape, widely planted along roadsides and sugar bushes in order to harvest its maple syrup. Trees planted by colonial settlers survive to this day, often with large, gnarly trunks and deeply fissured bark. The silhouette of the sugar maple leaf is the centerpiece of the Canadian flag. The golden-brown wood has an attractive and easy-to-work grain, sometimes enhanced by a fungus that gives it a wavy, almost iridescent texture called bird&#x27;s-eye. Maple syrup yields over $100 million and 4000 seasonal jobs in Vermont alone each year, but the industry may decline as spring climates change and sugar maples become less common at southern New England latitudes.</note>
+  </data>
+  <data>
+    <title>Arethusa bulbosa</title>
+    <family>Orchidaceae</family>
+    <genus>Arethusa</genus>
+    <species>bulbosa</species>
+    <common_name>Swamp Pink</common_name>
+    <french_common_name>Aréthus Bulbeuse</french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <wetlands>Wetlands</wetlands>
+    </habitat>
+    <leaf_type>
+      <simple>Simple</simple>
+    </leaf_type>
+    <leaf_arrangement>
+      <opposite>Opposite</opposite>
+    </leaf_arrangement>
+    <leaf_blade_edges/>
+    <flower_petal_colour/>
+    <bloom_time></bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive></native_or_introduced_or_invasive>
+    <rank></rank>
+    <new_brunswick_county></new_brunswick_county>
+    <image_preview/>
+    <note>Dragon&#x27;s-mouth is endemic to northeastern North America. The genus Arethusa includes only this species and is named after a river nymph from Greek mythology. The flowers are showy and fragrant but offer little or no reward to the pollinator.</note>
+  </data>
+  <data>
+    <title>Cypripedium reginae</title>
+    <family>Orchidaceae</family>
+    <genus>Cypripedium</genus>
+    <species>reginae</species>
+    <common_name>Showy Lady&#x27;s-Slipper</common_name>
+    <french_common_name>Cypripède Royal</french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <wetlands>Wetlands</wetlands>
+    </habitat>
+    <leaf_type>
+      <simple>Simple</simple>
+    </leaf_type>
+    <leaf_arrangement>
+      <alternate>Alternate</alternate>
+    </leaf_arrangement>
+    <leaf_blade_edges>
+      <entire>Entire</entire>
+    </leaf_blade_edges>
+    <flower_petal_colour>
+      <pink_to_red>Pink to red</pink_to_red>
+      <white>White</white>
+    </flower_petal_colour>
+    <bloom_time></bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>native</native_or_introduced_or_invasive>
+    <rank></rank>
+    <new_brunswick_county>
+      <carleton>Carleton</carleton>
+    </new_brunswick_county>
+    <image_preview/>
+    <note>Showy lady&#x27;s-slipper is rare in four of the five New England states in which it occurs. It grows in fens and swamps dominated by northern white-cedar (Thuja occidentalis). There have been reports that a small European skipper (a non-native butterfly) becomes trapped in the labellum of this orchid, thus blocking it and preventing pollination by native bees. It is speculated that this may cause decline of the orchid by decreasing reproduction; however, this has not been confirmed.</note>
+  </data>
+  <data>
+    <title>Epipactis helleborine</title>
+    <family>Orchidaceae</family>
+    <genus>Epipactis</genus>
+    <species>helleborine</species>
+    <common_name>Helleborine</common_name>
+    <french_common_name>Epipactis petit-hellébore</french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <terrestrial>Terrestrial</terrestrial>
+    </habitat>
+    <leaf_type>
+      <simple>Simple</simple>
+    </leaf_type>
+    <leaf_arrangement>
+      <alternate>Alternate</alternate>
+    </leaf_arrangement>
+    <leaf_blade_edges>
+      <entire>Entire</entire>
+    </leaf_blade_edges>
+    <flower_petal_colour>
+      <blue_to_purple>Blue to purple</blue_to_purple>
+      <green_to_brown>Green to brown</green_to_brown>
+      <pink_to_red>Pink to red</pink_to_red>
+    </flower_petal_colour>
+    <bloom_time>Late July to mid-August</bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>introduced</native_or_introduced_or_invasive>
+    <rank></rank>
+    <new_brunswick_county>
+      <york>York</york>
+    </new_brunswick_county>
+    <image_preview/>
+    <note>Labellum is in the shape of a pouch, introduced</note>
+  </data>
+  <data>
+    <title>Platanthera blephariglottis</title>
+    <family>Orchidaceae</family>
+    <genus>Platanthera</genus>
+    <species>blephariglottis</species>
+    <common_name>White-fringed Orchid</common_name>
+    <french_common_name></french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <terrestrial>Terrestrial</terrestrial>
+    </habitat>
+    <leaf_type/>
+    <leaf_arrangement/>
+    <leaf_blade_edges>
+      <entire>Entire</entire>
+    </leaf_blade_edges>
+    <flower_petal_colour/>
+    <bloom_time></bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive></native_or_introduced_or_invasive>
+    <rank></rank>
+    <new_brunswick_county/>
+    <image_preview/>
+    <note>White-fringed bog-orchid mainly grows in open peat (Sphagnum) bogs. A large study in Quebec found that the presence and abundance of white-fringed bog orchid was a strong indicator that the Sphagnum bog was less disturbed or influenced by human activity. This species could therefore serve as an indicator for rapid assessment of Sphagnum bog integrity.</note>
+  </data>
+  <data>
+    <title>Pogonia ophioglossoides</title>
+    <family>Orchidaceae</family>
+    <genus>Pogonia</genus>
+    <species>ophioglossoides</species>
+    <common_name>Rose Pogonia</common_name>
+    <french_common_name></french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <wetlands>Wetlands</wetlands>
+    </habitat>
+    <leaf_type>
+      <simple>Simple</simple>
+    </leaf_type>
+    <leaf_arrangement/>
+    <leaf_blade_edges>
+      <entire>Entire</entire>
+    </leaf_blade_edges>
+    <flower_petal_colour>
+      <pink_to_red>Pink to red</pink_to_red>
+      <white>White</white>
+    </flower_petal_colour>
+    <bloom_time>late June to late July</bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>native</native_or_introduced_or_invasive>
+    <rank></rank>
+    <new_brunswick_county>
+      <carleton>Carleton</carleton>
+    </new_brunswick_county>
+    <image_preview/>
+    <note>Rose pogonia is found over an unusually broad temperature range, from northern Canada to southern Florida. It is a distinctive orchid, with a pink flower and a single clasping leaf half way up the stem. The specific name (ophioglossoides) refers to the fact that Adder&#x27;s tongue ferns (Ophioglossum), have a similar single leaf half way up the stem. The two unrelated plants also share similar habitat requirements.</note>
+  </data>
+  <data>
+    <title>Spiranthes Cernua</title>
+    <family>Orchidaceae</family>
+    <genus>Spiranthes</genus>
+    <species>cernua</species>
+    <common_name>Nodding ladies&#x27;-tresses</common_name>
+    <french_common_name></french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <terrestrial>Terrestrial</terrestrial>
+    </habitat>
+    <leaf_type>
+      <simple>Simple</simple>
+    </leaf_type>
+    <leaf_arrangement>
+      <alternate>Alternate</alternate>
+      <basal>Basal</basal>
+    </leaf_arrangement>
+    <leaf_blade_edges>
+      <entire>Entire</entire>
+    </leaf_blade_edges>
+    <flower_petal_colour>
+      <green_to_brown>Green to brown</green_to_brown>
+      <white>White</white>
+      <yellow>Yellow</yellow>
+    </flower_petal_colour>
+    <bloom_time>late August to early September</bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>native</native_or_introduced_or_invasive>
+    <rank>s2</rank>
+    <new_brunswick_county>
+      <york>York</york>
+    </new_brunswick_county>
+    <image_preview/>
+    <note>Nodding ladies&#x27;-tresses is one of the easiest native orchids to cultivate in the garden, if you can provide moist, boggy, acidic soils and partial shade. It can even be grown in containers. The flowers have a wonderful fragrance, and, as the common name suggests, may nod slightly in a breeze.</note>
+  </data>
+  <data>
+    <title>Spiranthes Lacera</title>
+    <family>Orchidaceae</family>
+    <genus>Spiranthes</genus>
+    <species>lacera</species>
+    <common_name>Northern slender ladies&#x27;-tresses</common_name>
+    <french_common_name></french_common_name>
+    <plant_type>non-woody</plant_type>
+    <habitat>
+      <wetlands>Wetlands</wetlands>
+    </habitat>
+    <habitat>
+      <terrestrial>Terrestrial</terrestrial>
+    </habitat>
+    <leaf_type>
+      <simple>Simple</simple>
+    </leaf_type>
+    <leaf_arrangement>
+      <basal>Basal</basal>
+      <entire>Entire</entire>
+    </leaf_arrangement>
+    <flower_petal_colour>
+      <green_to_brown>Green to brown</green_to_brown>
+      <white>White</white>
+      <yellow>Yellow</yellow>
+    </flower_petal_colour>
+    <bloom_time>late August to early September</bloom_time>
+    <armature></armature>
+    <bark_texture></bark_texture>
+    <growth_form></growth_form>
+    <deciduous_or_coniferous></deciduous_or_coniferous>
+    <leaves_per_node/>
+    <leaf_divisions/>
+    <spore_bearing_leaflets></spore_bearing_leaflets>
+    <native_or_introduced_or_invasive>native</native_or_introduced_or_invasive>
+    <rank>s2</rank>
+    <new_brunswick_county>
+      <york>York</york>
+    </new_brunswick_county>
+    <image_preview/>
+    <note>Slender ladies&#x27;-tresses is the easiest species of ladies&#x27;-tresses to identify, due to the distinctive green or yellowish-green spot on the center of the labellum (lower modified petal). It tolerates a range of dry to moist habitats including roadsides, and is pollinated by bumblebees. The Ojibwa used the roots of slender ladies&#x27;-tresses as an ingredient in a charm to bring luck to hunters. Note that there are two varieties in New England, as well as a couple of rare hybrids.</note>
+  </data>
+</root>

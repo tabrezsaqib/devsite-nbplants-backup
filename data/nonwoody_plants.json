@@ -1,0 +1,324 @@
+[
+    {
+        "title": "Arethusa bulbosa",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Arethusa",
+            "species": "bulbosa",
+            "common_name": "Swamp Pink",
+            "french_common_name": "Aréthus Bulbeuse",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat": ["wetlands"],
+                "leaf_type": ["simple"],
+                "leaf_arrangement": ["Opposite"],
+                "leaf_blade_edges": "",
+                "flower_petal_colour": "",
+                "bloom_time": "",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "",
+                "new_brunswick_county":""
+            },
+            "image_preview": [""],
+            "note": "Dragon's mouth is endemic to northeastern North America. The genus Arethusa includes only this species and is named after a river nymph from Greek mythology. The flowers are showy and fragrant but offer little or no reward to the pollinator."
+        }
+    },
+    {
+        "title": "Rosa Palustris",
+        "status": "publish",
+        "fields":{
+            "family": "Rosaceae",
+            "genus": "Rosa",
+            "species": "Palustris",
+            "common_name": "Swamp rose",
+            "french_common_name": "Rosier palustre",
+            "plant_type": "woody",
+            "characteristics":{
+                "habitat":["wetlands"],
+                "leaf_type": ["compound"],
+                "leaf_arrangement": "",
+                "leaf_blade_edges": ["teethed"],
+                "flower_petal_colour": "",
+                "bloom_time": "",
+                "armature": "yes",
+                "bark_texture": "smooth",
+                "growth_form": "shrubby",
+                "deciduous_or_coniferous": "deciduous",
+                "leaves_per_node": 1,
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "s3",
+                "new_brunswick_county":""
+            },
+            "image_preview": [""],
+            "note": "Look for swamp rose in acidic wetlands and streamsides. It is distinguished by the pairs of stout, downwardly curving spines that grace each node of the stem. It produces 1-2 delicate pink flowers on each inflorescence. Producing fragrant, showy flowers in June and July, ornamental varieties of this rose are popular for planting in wet areas of the garden."
+        }
+    },
+    {
+        "title": "Acer Saccharum",
+        "status": "publish",
+        "fields":{
+            "family": "Aceraceae",
+            "genus": "Acer",
+            "species": "saccharum",
+            "common_name": "Sugar maple",
+            "french_common_name": "Rosier palustre",
+            "plant_type": "woody",
+            "characteristics":{
+                "habitat":["terrestrial"],
+                "leaf_type": ["compound"],
+                "leaf_arrangement": ["alternate"],
+                "leaf_blade_edges": ["teethed"],
+                "flower_petal_colour": ["yellow"],
+                "bloom_time": "",
+                "armature": "no",
+                "bark_texture": "ridged,plated",
+                "growth_form": "tree",
+                "deciduous_or_coniferous": "deciduous",
+                "leaves_per_node": 2,
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "s3",
+                "new_brunswick_county":["carleton county","york county"]
+            },
+            "image_preview": [""],
+            "note": "Sugar maple is an emblematic and common tree of the New England landscape, widely planted along roadsides and sugar bushes in order to harvest its maple syrup. Trees planted by colonial settlers survive to this day, often with large, gnarly trunks and deeply fissured bark. The silhouette of the sugar maple leaf is the centerpiece of the Canadian flag. The golden-brown wood has an attractive and easy-to-work grain, sometimes enhanced by a fungus that gives it a wavy, almost iridescent texture called bird&#x27;s-eye. Maple syrup yields over $100 million and 4000 seasonal jobs in Vermont alone each year, but the industry may decline as spring climates change and sugar maples become less common at southern New England latitudes."
+        }
+    },
+    {
+        "title": "Cypripedium reginae",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Cypripedium",
+            "species": "reginae",
+            "common_name": "Showy Lady's Slipper",
+            "french_common_name": "Cypripède Royal",
+            "plant_type": "non-woody",
+            "characteristics": {
+                "habitat":["wetlands"],
+                "leaf_type": ["simple"],
+                "leaf_arrangement": ["alternate"],
+                "leaf_blade_edges": ["entire"],
+                "flower_petal_colour": ["pink to red","white"],
+                "bloom_time": "",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "",
+                "new_brunswick_county":["carleton county"]
+            },
+            "image_preview": [""],
+            "note": "Showy lady's slipper is rare in four of the five New England states in which it occurs. It grows in fens and swamps dominated by northern white-cedar (Thuja occidentalis). There have been reports that a small European skipper (a non-native butterfly) becomes trapped in the labellum of this orchid, thus blocking it and preventing pollination by native bees. It is speculated that this may cause decline of the orchid by decreasing reproduction; however, this has not been confirmed."
+        }
+    },
+    {
+        "title": "Epipactis helleborine",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Epipactis",
+            "species": "helleborine",
+            "common_name": "Broadleaf helleborine",
+            "french_common_name": "Epipactis petit-hellébore",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat":["terrestrial"],
+                "leaf_type": ["simple"],
+                "leaf_arrangement": ["alternate"],
+                "leaf_blade_edges": ["entire"],
+                "flower_petal_colour": ["blue to purple","breen to brown","pink to red"],
+                "bloom_time": "Late July to mid-August",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "introduced",
+                "rank": "",
+                "new_brunswick_county":["york county"]
+            },
+            "image_preview": [""],
+            "note": "Broad-leaved helleborine is New England's only widespread non-native orchid. It was discovered in New York in 1879 and has become an aggressive weed in some areas. In its native Europe it is pollinated primarily by wasps."
+        }
+    },
+    {
+        "title": "Platanthera blephariglottis",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Platanthera",
+            "species": "blephariglottis",
+            "common_name": "White-fringed Orchid",
+            "french_common_name": "",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat":["terrestrial"],
+                "leaf_type": "",
+                "leaf_arrangement": "",
+                "leaf_blade_edges": ["entire"],
+                "flower_petal_colour": "",
+                "bloom_time": "",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "",
+                "rank": "",
+                "new_brunswick_county":""
+            },
+            "image_preview": [""],
+            "note": "White-fringed bog-orchid mainly grows in open peat (Sphagnum) bogs. A large study in Quebec found that the presence and abundance of white-fringed bog orchid was a strong indicator that the Sphagnum bog was less disturbed or influenced by human activity. This species could therefore serve as an indicator for rapid assessment of Sphagnum bog integrity."
+        }
+    },
+    {
+        "title": "Pogonia ophioglossoide",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Pogonia",
+            "species": "ophioglossoide",
+            "common_name": "Rose Pogonia",
+            "french_common_name": "",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat":["wetlands"],
+                "leaf_type": ["simple"],
+                "leaf_arrangement": "",
+                "leaf_blade_edges": ["entire"],
+                "flower_petal_colour": ["pink to red","white"],
+                "bloom_time": "late June to late July",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "",
+                "new_brunswick_county":["carleton county"]
+            },
+            "image_preview": [""],
+            "note": "Rose pogonia is found over an unusually broad temperature range, from northern Canada to southern Florida. It is a distinctive orchid, with a pink flower and a single clasping leaf half way up the stem. The specific name (ophioglossoides) refers to the fact that Adder&#x27;s tongue ferns (Ophioglossum), have a similar single leaf half way up the stem. The two unrelated plants also share similar habitat requirements"
+        }
+    },
+    {
+        "title": "Spiranthes Cernua",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Spiranthes",
+            "species": "Cernua",
+            "common_name": "Nodding ladies'-tresses",
+            "french_common_name": "",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat":["terrestrial"],
+                "leaf_type": ["simple"],
+                "leaf_arrangement": ["alternate","basal"],
+                "leaf_blade_edges": ["entire"],
+                "flower_petal_colour": ["green to brown","white","yellow"],
+                "bloom_time": "late August to early September",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "s2",
+                "new_brunswick_county":["york county"]
+            },
+            "image_preview": [""],
+            "note": "Nodding ladies'-tresses is one of the easiest native orchids to cultivate in the garden, if you can provide moist, boggy, acidic soils and partial shade. It can even be grown in containers. The flowers have a wonderful fragrance, and, as the common name suggests, may nod slightly in a breeze."
+        }
+    },
+    {
+        "title": "Spiranthes Lacera",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Spiranthes",
+            "species": "Lacera",
+            "common_name": "Northern slender ladies'-tresses",
+            "french_common_name": "",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat":["wetlands","terrestrial"],
+                "leaf_type": ["simple"],
+                "leaf_arrangement": ["entire","basal"],
+                "leaf_blade_edges": ["entire"],
+                "flower_petal_colour": ["green to brown","white","yellow"],
+                "bloom_time": "late August to early September",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "s2",
+                "new_brunswick_county":["york county"]
+            },
+            "image_preview": [""],
+            "note": "Slender ladies&#x27;-tresses is the easiest species of ladies&#x27;-tresses to identify, due to the distinctive green or yellowish-green spot on the center of the labellum (lower modified petal). It tolerates a range of dry to moist habitats including roadsides, and is pollinated by bumblebees. The Ojibwa used the roots of slender ladies'-tresses as an ingredient in a charm to bring luck to hunters. Note that there are two varieties in New England, as well as a couple of rare hybrids."
+        }
+    },
+    {
+        "title": "Achillea millefolium",
+        "status": "publish",
+        "fields":{
+            "family": "Orchidaceae",
+            "genus": "Achillea",
+            "species": "millefolium",
+            "common_name": "Common yarrow",
+            "french_common_name": "",
+            "plant_type": "non-woody",
+            "characteristics":{
+                "habitat":["terrestrial"],
+                "leaf_type": ["simple","compound"],
+                "leaf_arrangement": ["alternate"],
+                "leaf_blade_edges": ["teethed"],
+                "flower_petal_colour": "",
+                "bloom_time": "",
+                "armature": "",
+                "bark_texture": "",
+                "growth_form": "",
+                "deciduous_or_coniferous": "",
+                "leaves_per_node": "",
+                "leaf_divisions": "",
+                "spore_bearing_leaflets": "",
+                "native_or_introduced_or_invasive": "native",
+                "rank": "s2",
+                "new_brunswick_county":["york county"]
+            },
+            "image_preview": [""],
+            "note": "Common yarrow has been used as a medicine, fumigant, and insecticide. It is known in traditional medicine for its ability to stop bleeding, and indeed, it contains an alkaloid called achileine that enhances blood clotting."
+        }
+    }
+
+]
+

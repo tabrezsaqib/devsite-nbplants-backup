@@ -1,0 +1,64 @@
+{
+    "data":[
+        {
+            "id":11,
+            "native": true,
+            "species":"woody",
+            "name":"Abies balsamea (Linnaeus) Miller",
+            "common_name": "Balsam Fir",
+            "requirements": [
+                "Shade",
+                "Aquatic"
+            ],
+            "imgUrl":"../images/plant_images/act._pachypoda_red_baneberry_2_july_28.jpg"
+        },
+        {
+            "id":12,
+            "native": true,
+            "species":"woody",
+            "name":"Abies balsamea (Linnaeus) Miller",
+            "common_name": "Balsam Fir",
+            "requirements": [
+                "Shade",
+                "Aquatic"
+            ],
+            "imgUrl":"../images/plant_images/act._pachypoda_red_baneberry_2_july_28.jpg"
+        },
+        {
+            "id":13,
+            "native": true,
+            "species":"woody",
+            "name":"Abies balsamea (Linnaeus) Miller",
+            "common_name": "Balsam Fir",
+            "requirements": [
+                "Shade",
+                "Aquatic"
+            ],
+            "imgUrl":"../images/plant_images/act._pachypoda_red_baneberry_2_july_28.jpg"
+        },
+        {
+            "id":14,
+            "native": true,
+            "species":"woody",
+            "name":"Abies balsamea (Linnaeus) Miller",
+            "common_name": "Balsam Fir",
+            "requirements": [
+                "Shade",
+                "Aquatic"
+            ],
+            "imgUrl":"../images/plant_images/act._pachypoda_red_baneberry_2_july_28.jpg"
+        },
+        {
+            "id":15,
+            "native": true,
+            "species":"woody",
+            "name":"Abies balsamea (Linnaeus) Miller",
+            "common_name": "Balsam Fir",
+            "requirements": [
+                "Shade",
+                "Aquatic"
+            ],
+            "imgUrl":"../images/plant_images/act._pachypoda_red_baneberry_2_july_28.jpg"
+        }
+    ]
+}
