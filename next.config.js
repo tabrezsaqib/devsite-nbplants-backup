@@ -16,7 +16,7 @@ module.exports = {
       "/contact": { page: "/contact" },
       "/search": { page: "/search" },
       "/login": { page: "/login" },
-      "/plants/index": { page: "/plants" },
+      "/plants": { page: "/plants/index" },
       "/plants/[id]": { page: "/plants/[id]" },
     }
   },
