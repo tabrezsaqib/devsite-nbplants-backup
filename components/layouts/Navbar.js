@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-/* eslint-disable @next/next/no-img-element */
+
 import Link from "next/link"
+import Image from "next/image"
+import logo from "../../public/images/logo.png"
 
 import SearchForm from "../search/SearchForm"
 
@@ -11,7 +13,7 @@ const Navbar = () => {
         <div className="container">
           <a className="navbar-brand" href="/">
             <div className="logo-container">
-              <img src="../images/logo.png" alt="new brunswick plants logo" />
+              <Image src={logo} alt="new brunswick plants logo" />
             </div>
           </a>
           <button
