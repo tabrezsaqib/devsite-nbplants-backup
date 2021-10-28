@@ -2,11 +2,13 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/router"
 import logo from "../../public/images/logo.png"
 
 import SearchForm from "../search/SearchForm"
 
 const Navbar = () => {
+  const router = useRouter()
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -38,7 +40,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link
                   href={{
-                    pathname: `plants`,
+                    pathname: "/plants",
                     query: { type: "all" },
                   }}>
                   <a className="nav-link">Species</a>
