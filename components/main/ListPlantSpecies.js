@@ -13,8 +13,10 @@ const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
   } else {
     const filterKeys = Object.keys(options)
     filteredList = plants_list.filter((item) => {
-      if (router.query.type == item.acf.plant_type) {
-        console.log("Inside")
+      if (
+        router.query.type == item.acf.plant_type ||
+        router.query.type == "all"
+      ) {
         return filterKeys.some((key) => {
           return item.acf.characteristics[key].some((element) => {
             return activeFilterList.includes(element)
@@ -33,19 +35,20 @@ const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
       (router.query.type == "non-woody" || "woody" || "all") ? (
         filteredList.map((data, index) => {
           return (
-            router.query.type == data.acf.plant_type && (
-              <div key={data.id}>
-                <Link
-                  href={{
-                    pathname: `/plants/${data.id}`,
-                    query: { type: data.acf.plant_type },
-                  }}>
-                  <a>
-                    <PlantSpecies plant={data} />
-                  </a>
-                </Link>
-              </div>
-            )
+            // (router.query.type == data.acf.plant_type ||
+            //   router.query.type == "all") && (
+            <div key={data.id}>
+              <Link
+                href={{
+                  pathname: `/plants/${data.id}`,
+                  query: { type: data.acf.plant_type },
+                }}>
+                <a>
+                  <PlantSpecies plant={data} />
+                </a>
+              </Link>
+            </div>
+            // )
           )
         })
       ) : isLoading ? (
