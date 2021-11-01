@@ -1,6 +1,18 @@
 import React from "react"
+import ContactForm from "../components/login/ContactForm"
 
 const contact = () => {
+  const login = (details) => {
+    if (
+      details.email.toLowerCase() == credentials.email &&
+      details.password.toLowerCase() == credentials.password
+    ) {
+      sessionStore.setProfile(details)
+      router.push("/main")
+    } else {
+      setError("Credentials do not match!")
+    }
+  }
   return (
     <div>
       <section className="banner d-flex justify-content-center align-items-center">
@@ -28,7 +40,7 @@ const contact = () => {
           </div>
           <div className="col-lg-5">
             <h4 className="mb-4">Send us a message</h4>
-            <form action="">
+            {/* <form action="">
               <div className="form-group mb-3">
                 <label htmlFor="firstname">
                   <i className="bi bi-person-fill" />
@@ -66,7 +78,8 @@ const contact = () => {
               <button className="btn btn-primary" type="submit">
                 Submit
               </button>
-            </form>
+            </form> */}
+            <ContactForm />
           </div>
         </div>
       </section>
