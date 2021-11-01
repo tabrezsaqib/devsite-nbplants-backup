@@ -13,7 +13,8 @@ const ContactForm = ({ login, error }) => {
         validationSchema={yup.object().shape({
           name: yup
             .string()
-            .max(10, "Must be 20 characters or less")
+            .matches(/^[A-Za-z ]*$/, "Please enter valid name")
+            .max(20, "Must be 20 characters or less")
             .required("Required"),
           email: yup.string().email().required("Required"),
           message: yup
@@ -135,8 +136,13 @@ const ContactForm = ({ login, error }) => {
             top: 15px;
           }
         }
-
-        .error {
+        textarea.error {
+          border: 1px solid #ff6b6b;
+          border-radius: 0.25rem;
+          width: 100%;
+          padding-left: 45px;
+        }
+        input.error {
           border: 1px solid #ff6b6b;
           height: 50px;
           border-radius: 0.25rem;
