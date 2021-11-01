@@ -4,6 +4,7 @@ import * as api from "../../generics/api"
 import PlantItem from "./PlantItem"
 
 const PlantSpecies = ({ plant }) => {
+  console.log("Plants lists: ", plant)
   const router = useRouter()
   return (
     <>
