@@ -13,47 +13,51 @@ const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
   } else {
     const filterKeys = Object.keys(options)
     filteredList = plants_list.filter((item) => {
-      return filterKeys.some((key) => {
-        return item.acf.characteristics[key].some((element) => {
-          return activeFilterList.includes(element)
+      if (router.query.type == item.acf.plant_type) {
+        console.log("Inside")
+        return filterKeys.some((key) => {
+          return item.acf.characteristics[key].some((element) => {
+            return activeFilterList.includes(element)
+          })
         })
-      })
+      }
     })
   }
 
   console.log("Active list", activeFilterList)
   console.log("Filter list", filteredList)
-
+  console.log(router.query.type)
   return (
     <div className="d-flex flex-wrap">
-      {(filteredList.length > 0 && router.query.type == "non-woody") ||
-      router.query.type == "woody" ||
-      router.query.type == "all" ? (
+      {filteredList.length > 0 &&
+      (router.query.type == "non-woody" || "woody" || "all") ? (
         filteredList.map((data, index) => {
           return (
-            <div key={data.id}>
-              <Link
-                href={{
-                  pathname: `/plants/${data.id}`,
-                  query: { type: data.acf.plant_type },
-                }}>
-                <a>
-                  <PlantSpecies plant={data} />
-                </a>
-              </Link>
-            </div>
+            router.query.type == data.acf.plant_type && (
+              <div key={data.id}>
+                <Link
+                  href={{
+                    pathname: `/plants/${data.id}`,
+                    query: { type: data.acf.plant_type },
+                  }}>
+                  <a>
+                    <PlantSpecies plant={data} />
+                  </a>
+                </Link>
+              </div>
+            )
           )
         })
-      ) : !isLoading ? (
-        <div className="info-section d-flex align-items-center justify-content-center">
-          <div className="d-flex flex-column text-center">
-            <img src="../images/no_result_found.png" alt="" />
-            <h3>Oops! No data found!</h3>
-          </div>
-        </div>
-      ) : (
+      ) : isLoading ? (
         <div className="d-flex align-items-center img-container">
           <img src="../../images/loading.gif" alt="loader" />
+        </div>
+      ) : (
+        <div className="info-section d-flex align-items-center justify-content-center">
+          <div className="d-flex flex-column text-center">
+            <img src="../../images/no_result_found.png" alt="" />
+            <h3>Oops! No data found!</h3>
+          </div>
         </div>
       )}
       <style jsx>{`
