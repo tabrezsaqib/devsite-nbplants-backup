@@ -19,16 +19,19 @@ const contact = () => {
         <h2>Contact Us</h2>
       </section>
       <section>
-        <div className="row">
-          <div className="col-lg-3">
-            <h4>Address:</h4>
-            <p>10 Cameron Court Fredericton, NB E3B 2R9 Canada ​</p>
-            <h4>Email us on:</h4>
-            <p>fredbotanicgarden@gmail.com</p>
-            <h4>Phone:</h4>
-            <p>(506) 452-9269</p>
-          </div>
-          <div className="col-lg-4">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3">
+              <h4>Address:</h4>
+              <p>Fredericton Botanic Garden,</p>
+              <p>10 Cameron Court,</p>
+              <p>Fredericton, NB E3B 2R9 Canada ​</p>
+              <h4>Email:</h4>
+              <p>fredbotanicgarden@gmail.com</p>
+              <h4>Phone:</h4>
+              <p>(506) 452-9269</p>
+            </div>
+            {/* <div className="col-lg-4">
             <h4 className="mb-4">Find us on</h4>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.8070367246105!2d-66.67872978458186!3d45.95513827910983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ca4227cd8729fe7%3A0xf068c80e42c8400!2s10%20Cameron%20Ct%2C%20Fredericton%2C%20NB%20E3B%202R9!5e0!3m2!1sen!2sca!4v1634010918508!5m2!1sen!2sca"
@@ -37,10 +40,10 @@ const contact = () => {
               allowFullScreen=""
               loading="lazy"
             />
-          </div>
-          <div className="col-lg-5">
-            <h4 className="mb-4">Send us a message</h4>
-            {/* <form action="">
+          </div> */}
+            <div className="col-lg-5">
+              <h4 className="mb-4">Send us a message</h4>
+              {/* <form action="">
               <div className="form-group mb-3">
                 <label htmlFor="firstname">
                   <i className="bi bi-person-fill" />
@@ -79,7 +82,8 @@ const contact = () => {
                 Submit
               </button>
             </form> */}
-            <ContactForm />
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>

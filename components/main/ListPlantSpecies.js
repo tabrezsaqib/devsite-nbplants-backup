@@ -5,26 +5,31 @@ import Link from "next/link"
 import PlantSpecies from "./PlantSpecies"
 import * as options from "../../data/sideNavListDataArray"
 
-const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
-  let filteredList
+const ListPlantSpecies = ({
+  plants_list,
+  activeFilterList,
+  isLoading,
+  filteredList,
+}) => {
+  // let filteredList
   const router = useRouter()
-  if (activeFilterList.length === 0) {
-    filteredList = plants_list
-  } else {
-    const filterKeys = Object.keys(options)
-    filteredList = plants_list.filter((item) => {
-      if (
-        router.query.type == item.acf.plant_type ||
-        router.query.type == "all"
-      ) {
-        return filterKeys.some((key) => {
-          return item.acf.characteristics[key].some((element) => {
-            return activeFilterList.includes(element)
-          })
-        })
-      }
-    })
-  }
+  // if (activeFilterList.length === 0) {
+  //   filteredList = plants_list
+  // } else {
+  //   const filterKeys = Object.keys(options)
+  //   filteredList = plants_list.filter((item) => {
+  //     if (
+  //       router.query.type == item.acf.plant_type ||
+  //       router.query.type == "all"
+  //     ) {
+  //       return filterKeys.some((key) => {
+  //         return item.acf.characteristics[key].some((element) => {
+  //           return activeFilterList.includes(element)
+  //         })
+  //       })
+  //     }
+  //   })
+  // }
 
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList)
@@ -83,7 +88,7 @@ const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
 
 const mapStateToProps = (state) => {
   return {
-    activeFilterList: state.selector.activeFilterList,
+    // activeFilterList: state.selector.activeFilterList,
   }
 }
 
