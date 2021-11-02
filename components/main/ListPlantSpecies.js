@@ -26,9 +26,9 @@ const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
     })
   }
 
-  console.log("Active list", activeFilterList)
-  console.log("Filter list", filteredList)
-  console.log(router.query.type)
+  // console.log("Active list", activeFilterList)
+  // console.log("Filter list", filteredList)
+
   return (
     <div className="d-flex flex-wrap">
       {filteredList.length > 0 &&

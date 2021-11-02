@@ -8,8 +8,9 @@ import {
 import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
 
-const Plants = ({ plants_list, isLoading, itemsPerPage }) => {
+const Plants = ({ plants_list, isLoading, itemsPerPage, items }) => {
   const dispatch = useDispatch()
+
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState([])
   const [pageCount, setPageCount] = useState(0)
@@ -17,28 +18,35 @@ const Plants = ({ plants_list, isLoading, itemsPerPage }) => {
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0)
 
+  console.log("Plant List outside: ", plants_list)
   useEffect(() => {
     // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`)
-    setCurrentItems(plants_list.slice(itemOffset, endOffset))
-    setPageCount(Math.ceil(plants_list.length / itemsPerPage))
-
     dispatch(fetchPlantPosts()).then(() => {
       dispatch(toggleLoader(false))
     })
-  }, [dispatch, itemOffset, itemsPerPage])
+    paginationEngine()
+  }, [dispatch, itemOffset, itemsPerPage, isLoading])
+
+  const paginationEngine = () => {
+    const endOffset = itemOffset + itemsPerPage
+    // console.log(`Loading items from ${itemOffset} to ${endOffset}`)
+    console.log("Items: ", items)
+
+    console.log("Plant List inside useState: ", plants_list)
+    setCurrentItems(plants_list.slice(itemOffset, endOffset))
+    setPageCount(Math.ceil(plants_list.length / itemsPerPage))
+  }
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % plants_list.length
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    )
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // )
     setItemOffset(newOffset)
   }
-  console.log("Current Items: ", currentItems)
-  console.log("Plant List: ", plants_list)
+  // console.log("Current Items: ", currentItems)
+
   return (
     <div className="row">
       <div className="col-2">
