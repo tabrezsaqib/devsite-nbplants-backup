@@ -58,7 +58,7 @@ const PlantItem = ({ plant }) => {
       </div>
       <style jsx>{`
         .content-box {
-          width: 220px;
+          width: 230px;
           height: auto;
           margin: 10px;
           overflow: hidden;

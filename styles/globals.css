@@ -60,7 +60,7 @@ a {
 .form-check-input[type="checkbox"] {
   border-radius: 0.25em;
   border-color: #555555;
-  border-width: 2px;
+  border-width: 1px;
   width: 15px;
   height: 15px;
 }

@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-        <div className="container">
+        <div className="container-fluid">
           <a className="navbar-brand" href="/">
             <div className="logo-container">
               <Image src={logo} alt="new brunswick plants logo" />
