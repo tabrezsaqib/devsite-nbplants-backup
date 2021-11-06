@@ -148,7 +148,7 @@ const SideNavContent = ({
             font-weight: 900;
           }
           .form-check {
-            width: 135px;
+            width: 134px;
           }
           .form-check-label {
             font-size: 13px;
