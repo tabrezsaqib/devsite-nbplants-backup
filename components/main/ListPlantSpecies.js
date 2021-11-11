@@ -36,12 +36,9 @@ const ListPlantSpecies = ({
 
   return (
     <div className="d-flex flex-wrap">
-      {filteredList.length > 0 &&
-      (router.query.type == "non-woody" || "woody" || "all") ? (
+      {filteredList.length > 0 ? (
         filteredList.map((data, index) => {
           return (
-            // (router.query.type == data.acf.plant_type ||
-            //   router.query.type == "all") && (
             <div key={data.id}>
               <Link
                 href={{
@@ -53,7 +50,6 @@ const ListPlantSpecies = ({
                 </a>
               </Link>
             </div>
-            // )
           )
         })
       ) : isLoading ? (

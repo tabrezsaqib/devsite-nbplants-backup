@@ -31,3 +31,8 @@ export const IS_LOADING = "IS_LOADING"
 
 //Search
 export const GET_SEARCH_RESULTS = "GET_SEARCH_RESULTS"
+
+//Pagination
+export const SET_ITEM_OFFSET = "SET_ITEM_OFFSET"
+export const SET_PAGE_COUNT = "SET_PAGE_COUNT"
+export const RESET_PAGE_COUNT = "RESET_PAGE_COUNT"

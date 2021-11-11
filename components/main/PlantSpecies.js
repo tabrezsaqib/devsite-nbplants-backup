@@ -4,17 +4,20 @@ import * as api from "../../generics/api"
 import PlantItem from "./PlantItem"
 
 const PlantSpecies = ({ plant }) => {
+  // console.log("Plant Species: ", plant)
   const router = useRouter()
   return (
     <>
-      {router.pathname == `/plants` &&
-      router.query.type == `non-woody` &&
-      plant.acf.plant_type == "non-woody" ? (
-        <PlantItem plant={plant} />
-      ) : router.pathname == "/plants" &&
-        router.query.type == `woody` &&
-        plant.acf.plant_type == "woody" ? (
-        <PlantItem plant={plant} />
+      {router.pathname == `/plants` && router.query.type == `non-woody` ? (
+        <>
+          {/* {console.log("Non Woody: ", plant)} */}
+          <PlantItem plant={plant} />
+        </>
+      ) : router.pathname == "/plants" && router.query.type == `woody` ? (
+        <>
+          {console.log("Woody: ", plant)}
+          <PlantItem plant={plant} />
+        </>
       ) : router.query.type == "all" ? (
         <PlantItem plant={plant} />
       ) : (

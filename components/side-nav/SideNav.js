@@ -16,6 +16,7 @@ import {
   selectorFilterData,
   activeFilterData,
 } from "../../redux/actions/selectorFilterAction"
+import { resetPageCount } from "../../redux/actions/paginationAction"
 
 const SideNav = ({
   habitat,
@@ -81,29 +82,15 @@ const SideNav = ({
       newFilter.splice(filterIndex, 1) //Remove one element from the newFilter i.e array.splice(index, how many items)
       dispatch(selectorFilterData(filter))
       dispatch(activeFilterData(newFilter))
+      dispatch(resetPageCount(true))
     } else {
       dispatch(selectorFilterData(filter))
       dispatch(activeFilterData([...activeFilterList, filter]))
+      dispatch(resetPageCount(true))
     }
   }
   return (
     <div className="sidebar d-flex flex-column justify-content-between">
-      {/* <div className="options">
-        <h4 className="side-nav-heading">Plant Species: </h4>
-        <span>Non-Woody</span>
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Native Range</h4>
-        <span>New Brunswick</span>
-      </div> */}
-      {/* {console.log(habitat)}
-      {console.log(flowerPetalColor)}
-      {console.log(leafBladeEdges)}
-      {console.log(leafType)}
-      {console.log(leafArrangement)}
-      {console.log(county)} */}
-      {/* {console.log(selectorFilter)}
-      {console.log(filterChecked)} */}
       <div className="options">
         <SideNavContent
           options={options}
