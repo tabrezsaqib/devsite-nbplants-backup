@@ -16,6 +16,14 @@ export function setToken(idToken) {
 export function getToken() {
   return Cookies.get("z_jwt_token")
 }
+
+export function getCurrentPage() {
+  return Cookies.get("z_page")
+}
+
+export function setCurrentPage(currentPage) {
+  Cookies.set("z_page", currentPage)
+}
 // export function setHeader(headers) {
 //   Cookies.set("z_jwt_header", JSON.stringify(headers))
 // }
@@ -28,4 +36,5 @@ export function getToken() {
 export function removeItem() {
   Cookies.remove("z_jwt_token")
   Cookies.remove("z_user")
+  Cookies.remove("z_page")
 }

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import ReactPaginate from "react-paginate"
+import * as localStore from "../../generics/localStore"
 import {
   fetchAllPlantPosts,
   fetchNonWoodyPlantPosts,
@@ -38,6 +39,7 @@ const Plants = ({
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState([])
   const [currentPage, setCurrentPage] = useState(false)
+  const [currentPageNumber, setCurrentPageNumber] = useState(0)
   // const [pageCount, setPageCount] = useState(0)
   // Here we use item offsets; we could also use page offsets following the API or data you're working with.
   // const [itemOffset, setItemOffset] = useState(0)
@@ -47,7 +49,6 @@ const Plants = ({
   let currentSelectedPage = useRef(0)
 
   const filterPlantsTypeData = (plant_data) => {
-    console.log("Plant data: ", plant_data)
     if (activeFilterList.length === 0) {
       return (filteredList.current = plant_data)
     } else {
@@ -81,6 +82,7 @@ const Plants = ({
     setCurrentPage(true)
     dispatch(resetPageCount(false))
     currentSelectedPage.current = event.selected
+    localStore.setCurrentPage(event.selected)
     const newOffset =
       (event.selected * itemsPerPage) % filteredList.current.length
     dispatch(setItemOffset(newOffset))
@@ -94,6 +96,11 @@ const Plants = ({
       })
       plants = filterPlantsTypeData(all_plants)
       paginationEngine()
+      setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
     }
     if (router.query.type == "woody") {
       dispatch(fetchWoodyPlantPosts(router.query.type)).then(() => {
@@ -101,6 +108,11 @@ const Plants = ({
       })
       plants = filterPlantsTypeData(woody_plants)
       paginationEngine()
+      setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
     }
 
     if (router.query.type == "non-woody") {
@@ -109,6 +121,11 @@ const Plants = ({
       })
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
+      setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
     }
   }, [
     dispatch,
@@ -122,11 +139,14 @@ const Plants = ({
     leaf_arrangement,
     router,
     activeFilterList,
+    localStore,
+    currentPageNumber,
   ])
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList.current)
-  console.log("Reset Page: ", resetCount)
-  console.log("Current page: ", currentSelectedPage.current)
+  // console.log("Reset Page: ", resetCount)
+  console.log("Current page number: ", currentPage)
+
   return (
     <div className="row">
       <div className="col-2">
@@ -140,7 +160,8 @@ const Plants = ({
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
-            forcePage={resetCount == true ? 0 : currentSelectedPage.current}
+            forcePage={resetCount == true ? 0 : currentPageNumber - 0}
+            // forcePage={currentPageNumber - 0}
             pageCount={pageCount}
             previousLabel="< previous"
             pageClassName="page-item"
