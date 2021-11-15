@@ -1,17 +1,27 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import ReactPaginate from "react-paginate"
+import * as localStore from "../../generics/localStore"
 import {
-  fetchPlantPosts,
+  fetchAllPlantPosts,
+  fetchNonWoodyPlantPosts,
+  fetchWoodyPlantPosts,
   toggleLoader,
 } from "../../redux/actions/getPlantsAction"
+import {
+  setItemOffset,
+  setPageCount,
+} from "../../redux/actions/paginationAction"
+import { resetPageCount } from "../../redux/actions/paginationAction"
 import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
 import * as options from "../../data/sideNavListDataArray"
 
 const Plants = ({
-  plants_list,
+  all_plants,
+  nonwoody_plants,
+  woody_plants,
   isLoading,
   itemsPerPage,
   activeFilterList,
@@ -20,41 +30,103 @@ const Plants = ({
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  itemOffset,
+  pageCount,
+  resetCount,
 }) => {
   const dispatch = useDispatch()
 
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState([])
-  const [pageCount, setPageCount] = useState(0)
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
-  const [itemOffset, setItemOffset] = useState(0)
+  const [currentPage, setCurrentPage] = useState(false)
+  const [currentPageNumber, setCurrentPageNumber] = useState(0)
+  // const [pageCount, setPageCount] = useState(0)
+  // Here we use item offsets; we could also use page offsets following the API or data you're working with.
+  // const [itemOffset, setItemOffset] = useState(0)
 
-  let filteredList
   const router = useRouter()
-  if (activeFilterList.length === 0) {
-    filteredList = plants_list
-  } else {
-    const filterKeys = Object.keys(options)
-    filteredList = plants_list.filter((item) => {
-      if (
-        router.query.type == item.acf.plant_type ||
-        router.query.type == "all"
-      ) {
+  let filteredList = useRef(new Array())
+  let currentSelectedPage = useRef(0)
+
+  const filterPlantsTypeData = (plant_data) => {
+    if (activeFilterList.length === 0) {
+      return (filteredList.current = plant_data)
+    } else {
+      const filterKeys = Object.keys(options)
+      return (filteredList.current = plant_data.filter((item) => {
         return filterKeys.some((key) => {
           return item.acf.characteristics[key].some((element) => {
             return activeFilterList.includes(element)
           })
         })
-      }
-    })
+      }))
+    }
   }
+
+  const paginationEngine = () => {
+    const endOffset = itemOffset + itemsPerPage
+    setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
+    dispatch(
+      setPageCount(Math.ceil(filteredList.current.length / itemsPerPage))
+    )
+    const newOffset =
+      (resetCount == true
+        ? 0
+        : currentPage == true && currentSelectedPage.current * itemsPerPage) %
+      filteredList.current.length
+    dispatch(setItemOffset(newOffset))
+  }
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    setCurrentPage(true)
+    dispatch(resetPageCount(false))
+    currentSelectedPage.current = event.selected
+    localStore.setCurrentPage(event.selected)
+    const newOffset =
+      (event.selected * itemsPerPage) % filteredList.current.length
+    dispatch(setItemOffset(newOffset))
+  }
+
   useEffect(() => {
-    // Fetch items from another resources.
-    dispatch(fetchPlantPosts()).then(() => {
-      dispatch(toggleLoader(false))
-    })
-    paginationEngine()
+    let plants
+    if (router.query.type == "all") {
+      dispatch(fetchAllPlantPosts()).then(() => {
+        dispatch(toggleLoader(false))
+      })
+      plants = filterPlantsTypeData(all_plants)
+      paginationEngine()
+      setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+    if (router.query.type == "woody") {
+      dispatch(fetchWoodyPlantPosts(router.query.type)).then(() => {
+        dispatch(toggleLoader(false))
+      })
+      plants = filterPlantsTypeData(woody_plants)
+      paginationEngine()
+      setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+
+    if (router.query.type == "non-woody") {
+      dispatch(fetchNonWoodyPlantPosts(router.query.type)).then(() => {
+        dispatch(toggleLoader(false))
+      })
+      filterPlantsTypeData(nonwoody_plants)
+      paginationEngine()
+      setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
   }, [
     dispatch,
     itemOffset,
@@ -65,26 +137,16 @@ const Plants = ({
     leaf_blade_edges,
     leaf_type,
     leaf_arrangement,
+    router,
+    activeFilterList,
+    localStore,
+    currentPageNumber,
   ])
+  // console.log("Active list", activeFilterList)
+  // console.log("Filter list", filteredList.current)
+  // console.log("Reset Page: ", resetCount)
+  console.log("Current page number: ", currentPage)
 
-  const paginationEngine = () => {
-    const endOffset = itemOffset + itemsPerPage
-    // console.log(`Loading items from ${itemOffset} to ${endOffset}`)
-    setCurrentItems(filteredList.slice(itemOffset, endOffset))
-    setPageCount(Math.ceil(filteredList.length / itemsPerPage))
-  }
-
-  // Invoke when user click to request another page.
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % filteredList.length
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // )
-    setItemOffset(newOffset)
-  }
-
-  console.log("Active list", activeFilterList)
-  console.log("Filter list", filteredList)
   return (
     <div className="row">
       <div className="col-2">
@@ -98,6 +160,8 @@ const Plants = ({
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
+            forcePage={resetCount == true ? 0 : currentPageNumber - 0}
+            // forcePage={currentPageNumber - 0}
             pageCount={pageCount}
             previousLabel="< previous"
             pageClassName="page-item"
@@ -122,7 +186,9 @@ const Plants = ({
 
 const mapStateToProps = (state) => {
   return {
-    plants_list: state.post.plants_list,
+    all_plants: state.post.all_plants,
+    woody_plants: state.post.woody_plants,
+    nonwoody_plants: state.post.nonwoody_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
     habitat: state.selector.habitat,
@@ -130,6 +196,9 @@ const mapStateToProps = (state) => {
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
+    itemOffset: state.pagination.itemOffset,
+    pageCount: state.pagination.pageCount,
+    resetCount: state.pagination.resetCount,
   }
 }
 

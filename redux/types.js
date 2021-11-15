@@ -1,4 +1,6 @@
-export const GET_PLANTS = "GET_PLANTS"
+export const GET_ALL_PLANTS = "GET_ALL_PLANTS"
+export const GET_WOODY_PLANTS = "GET_WOODY_PLANTS"
+export const GET_NONWOODY_PLANTS = "GET_NONWOODY_PLANTS"
 export const POST_USERDATA = "POST_USERDATA"
 export const POST_JSONDATA = "POST_JSONDATA"
 export const GET_PLANT = "GET_PLANT"
@@ -29,3 +31,8 @@ export const IS_LOADING = "IS_LOADING"
 
 //Search
 export const GET_SEARCH_RESULTS = "GET_SEARCH_RESULTS"
+
+//Pagination
+export const SET_ITEM_OFFSET = "SET_ITEM_OFFSET"
+export const SET_PAGE_COUNT = "SET_PAGE_COUNT"
+export const RESET_PAGE_COUNT = "RESET_PAGE_COUNT"

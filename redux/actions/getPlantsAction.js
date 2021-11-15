@@ -2,10 +2,26 @@ import * as types from "../types"
 import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 
-export const fetchPlantPosts = () => async (dispatch) => {
+export const fetchAllPlantPosts = () => async (dispatch) => {
   const response = await api.get(`${API_URL}plants`)
   dispatch({
-    type: types.GET_PLANTS,
+    type: types.GET_ALL_PLANTS,
+    payload: response.data,
+  })
+}
+
+export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+  dispatch({
+    type: types.GET_NONWOODY_PLANTS,
+    payload: response.data,
+  })
+}
+
+export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+  dispatch({
+    type: types.GET_WOODY_PLANTS,
     payload: response.data,
   })
 }
