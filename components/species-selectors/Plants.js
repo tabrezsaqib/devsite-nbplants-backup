@@ -81,6 +81,7 @@ const Plants = ({
   const handlePageClick = (event) => {
     setCurrentPage(true)
     dispatch(resetPageCount(false))
+
     currentSelectedPage.current = event.selected
     localStore.setCurrentPage(event.selected)
     const newOffset =
@@ -96,7 +97,8 @@ const Plants = ({
       })
       plants = filterPlantsTypeData(all_plants)
       paginationEngine()
-      setCurrentPageNumber(localStore.getCurrentPage())
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
       const newOffset =
         (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
         filteredList.current.length
@@ -108,7 +110,8 @@ const Plants = ({
       })
       plants = filterPlantsTypeData(woody_plants)
       paginationEngine()
-      setCurrentPageNumber(localStore.getCurrentPage())
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
       const newOffset =
         (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
         filteredList.current.length
@@ -121,7 +124,9 @@ const Plants = ({
       })
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
-      setCurrentPageNumber(localStore.getCurrentPage())
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+
       const newOffset =
         (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
         filteredList.current.length
@@ -144,8 +149,7 @@ const Plants = ({
   ])
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList.current)
-  // console.log("Reset Page: ", resetCount)
-  console.log("Current page number: ", currentPage)
+  console.log("Reset Page: ", resetCount)
 
   return (
     <div className="row">
