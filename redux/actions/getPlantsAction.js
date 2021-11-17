@@ -8,6 +8,10 @@ export const fetchAllPlantPosts = () => async (dispatch) => {
     type: types.GET_ALL_PLANTS,
     payload: response.data,
   })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
+  })
 }
 
 export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
@@ -16,6 +20,10 @@ export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
     type: types.GET_NONWOODY_PLANTS,
     payload: response.data,
   })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
+  })
 }
 
 export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
@@ -23,6 +31,10 @@ export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
   dispatch({
     type: types.GET_WOODY_PLANTS,
     payload: response.data,
+  })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
   })
 }
 

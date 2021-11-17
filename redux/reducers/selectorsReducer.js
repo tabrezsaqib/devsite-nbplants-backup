@@ -14,6 +14,7 @@ const initialState = {
   ),
   selectorFilter: "none",
   activeFilterList: [],
+  activeFilter: false,
 }
 
 export const selectorsReducer = (state = initialState, action) => {
@@ -58,6 +59,7 @@ export const selectorsReducer = (state = initialState, action) => {
         ...state,
         selectorFilter: action.payload,
       }
+
     default:
       return state
   }

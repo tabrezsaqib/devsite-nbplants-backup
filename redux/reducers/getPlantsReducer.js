@@ -39,6 +39,7 @@ export const getPlantsReducer = (state = initialState, action) => {
         ...state,
         search_results: action.payload,
       }
+
     default:
       return state
   }

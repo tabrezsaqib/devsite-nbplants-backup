@@ -2,13 +2,19 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/router"
+import Router from "next/router"
 import logo from "../../public/images/logo.png"
-
 import SearchForm from "../search/SearchForm"
 
 const Navbar = () => {
-  const router = useRouter()
+  const refresh = () => {
+    Router.push({
+      pathname: "/plants",
+      query: { type: "all" },
+    }).then(() => {
+      Router.reload()
+    })
+  }
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -37,14 +43,8 @@ const Navbar = () => {
                   Home
                 </a>
               </li>
-              <li className="nav-item">
-                <Link
-                  href={{
-                    pathname: "/plants",
-                    query: { type: "all" },
-                  }}>
-                  <a className="nav-link">Species</a>
-                </Link>
+              <li className="nav-item" onClick={refresh}>
+                <a className="nav-link">Species</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/about" tabIndex="-1">
@@ -73,6 +73,9 @@ const Navbar = () => {
             height: 100%;
             object-fit: contain;
           }
+        }
+        .nav-item:hover {
+          cursor: pointer;
         }
         .navbar-nav {
           margin-right: 20px;

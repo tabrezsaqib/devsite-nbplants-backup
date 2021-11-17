@@ -24,6 +24,14 @@ export function getCurrentPage() {
 export function setCurrentPage(currentPage) {
   Cookies.set("z_page", currentPage)
 }
+
+export function getActiveFilter() {
+  return Cookies.get("z_filter")
+}
+
+export function setActiveFilter(active) {
+  Cookies.set("z_filter", JSON.stringify(active))
+}
 // export function setHeader(headers) {
 //   Cookies.set("z_jwt_header", JSON.stringify(headers))
 // }
