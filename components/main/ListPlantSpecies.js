@@ -36,7 +36,7 @@ const ListPlantSpecies = ({
 
   return (
     <div className="d-flex flex-wrap">
-      {filteredList.length > 0 ? (
+      {filteredList.length > 0 && isLoading == false ? (
         filteredList.map((data, index) => {
           return (
             <div key={data.id}>
@@ -52,17 +52,20 @@ const ListPlantSpecies = ({
             </div>
           )
         })
-      ) : isLoading ? (
+      ) : isLoading == true ? (
         <div className="d-flex align-items-center img-container">
           <img src="../../images/loading.gif" alt="loader" />
         </div>
       ) : (
-        <div className="info-section d-flex align-items-center justify-content-center">
-          <div className="d-flex flex-column text-center">
-            <img src="../../images/no_result_found.png" alt="" />
-            <h3>Oops! No data found!</h3>
+        filteredList.length == 0 &&
+        activeFilterList.length > 0 && (
+          <div className="info-section d-flex align-items-center justify-content-center">
+            <div className="d-flex flex-column text-center">
+              <img src="../../images/no_result_found.png" alt="" />
+              <h3>Oops! No data found!</h3>
+            </div>
           </div>
-        </div>
+        )
       )}
       <style jsx>{`
         .info-section {
@@ -84,7 +87,7 @@ const ListPlantSpecies = ({
 
 const mapStateToProps = (state) => {
   return {
-    // activeFilterList: state.selector.activeFilterList,
+    activeFilterList: state.selector.activeFilterList,
   }
 }
 

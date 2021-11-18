@@ -15,7 +15,6 @@ const PlantSpecies = ({ plant }) => {
         </>
       ) : router.pathname == "/plants" && router.query.type == `woody` ? (
         <>
-          {console.log("Woody: ", plant)}
           <PlantItem plant={plant} />
         </>
       ) : router.query.type == "all" ? (

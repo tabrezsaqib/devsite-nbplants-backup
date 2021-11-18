@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { connect, useDispatch } from "react-redux"
 import * as options from "../../data/sideNavListDataArray"
+import * as localStore from "../../generics/localStore"
 import SideNavContent from "./SideNavContent"
 
 import {
@@ -28,6 +29,11 @@ const SideNav = ({
   activeFilterList,
 }) => {
   const dispatch = useDispatch()
+  const [activeFilter, setActiveFilter] = useState()
+
+  useEffect(() => {
+    setActiveFilter(localStore.getActiveFilter())
+  }, [activeFilter])
 
   const handleOnChange = (position, option) => {
     switch (option) {
@@ -89,6 +95,7 @@ const SideNav = ({
       dispatch(resetPageCount(true))
     }
   }
+
   return (
     <div className="sidebar d-flex flex-column justify-content-between">
       <div className="options">

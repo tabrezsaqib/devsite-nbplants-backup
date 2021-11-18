@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import * as api from "../../generics/api"
 import "bootstrap-icons/font/bootstrap-icons.css"
 
@@ -75,6 +76,7 @@ const SideNavContent = ({
     },
   ]
   let id = 0
+
   const option = optionNames.map((item) => {
     return (
       <div key={item.key}>

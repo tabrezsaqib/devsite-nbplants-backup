@@ -1,4 +1,5 @@
 import * as types from "../types"
+import * as localStore from "../../generics/localStore"
 
 export const toggleHabitatData = (option) => async (dispatch) => {
   dispatch({

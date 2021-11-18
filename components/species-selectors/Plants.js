@@ -92,10 +92,9 @@ const Plants = ({
   useEffect(() => {
     let plants
     if (router.query.type == "all") {
-      dispatch(fetchAllPlantPosts()).then(() => {
-        dispatch(toggleLoader(false))
-      })
+      dispatch(fetchAllPlantPosts())
       plants = filterPlantsTypeData(all_plants)
+
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
@@ -105,9 +104,7 @@ const Plants = ({
       dispatch(setItemOffset(newOffset))
     }
     if (router.query.type == "woody") {
-      dispatch(fetchWoodyPlantPosts(router.query.type)).then(() => {
-        dispatch(toggleLoader(false))
-      })
+      dispatch(fetchWoodyPlantPosts(router.query.type))
       plants = filterPlantsTypeData(woody_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
@@ -119,9 +116,7 @@ const Plants = ({
     }
 
     if (router.query.type == "non-woody") {
-      dispatch(fetchNonWoodyPlantPosts(router.query.type)).then(() => {
-        dispatch(toggleLoader(false))
-      })
+      dispatch(fetchNonWoodyPlantPosts(router.query.type))
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
@@ -149,7 +144,7 @@ const Plants = ({
   ])
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList.current)
-  console.log("Reset Page: ", resetCount)
+  // console.log("Reset Page: ", resetCount)
 
   return (
     <div className="row">
