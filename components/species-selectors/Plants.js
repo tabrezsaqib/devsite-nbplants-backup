@@ -7,7 +7,7 @@ import {
   fetchAllPlantPosts,
   fetchNonWoodyPlantPosts,
   fetchWoodyPlantPosts,
-  toggleLoader,
+  getAllPlantsCount,
 } from "../../redux/actions/getPlantsAction"
 import {
   setItemOffset,
@@ -33,12 +33,14 @@ const Plants = ({
   itemOffset,
   pageCount,
   resetCount,
+  all_plants_count,
 }) => {
   const dispatch = useDispatch()
 
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState([])
   const [currentPage, setCurrentPage] = useState(false)
+  const [pageClick, setPageClick] = useState(false)
   const [currentPageNumber, setCurrentPageNumber] = useState(0)
   // const [pageCount, setPageCount] = useState(0)
   // Here we use item offsets; we could also use page offsets following the API or data you're working with.
@@ -65,42 +67,50 @@ const Plants = ({
 
   const paginationEngine = () => {
     const endOffset = itemOffset + itemsPerPage
-    setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
-    dispatch(
-      setPageCount(Math.ceil(filteredList.current.length / itemsPerPage))
-    )
+    // setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
+    setCurrentItems(filteredList.current)
+    dispatch(setPageCount(Math.ceil(all_plants_count / itemsPerPage)))
     const newOffset =
       (resetCount == true
         ? 0
         : currentPage == true && currentSelectedPage.current * itemsPerPage) %
-      filteredList.current.length
+      all_plants_count
     dispatch(setItemOffset(newOffset))
   }
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event) => {
+  const handlePageClick = async (event) => {
     setCurrentPage(true)
+    setPageClick(true)
     dispatch(resetPageCount(false))
+    await dispatch(fetchAllPlantPosts(event.selected))
+    filterPlantsTypeData(all_plants)
 
     currentSelectedPage.current = event.selected
     localStore.setCurrentPage(event.selected)
-    const newOffset =
-      (event.selected * itemsPerPage) % filteredList.current.length
+    const newOffset = (event.selected * itemsPerPage) % all_plants_count
     dispatch(setItemOffset(newOffset))
   }
 
+  const fetchPlantsData = (page) => {
+    dispatch(fetchAllPlantPosts(page))
+  }
   useEffect(() => {
     let plants
     if (router.query.type == "all") {
-      dispatch(fetchAllPlantPosts())
-      plants = filterPlantsTypeData(all_plants)
+      if (pageClick == false) {
+        dispatch(fetchAllPlantPosts(parseInt(currentPageNumber)))
+      }
+
+      filterPlantsTypeData(all_plants)
+      dispatch(getAllPlantsCount())
 
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
       const newOffset =
         (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-        filteredList.current.length
+        all_plants_count
       dispatch(setItemOffset(newOffset))
     }
     if (router.query.type == "woody") {
@@ -111,7 +121,8 @@ const Plants = ({
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
       const newOffset =
         (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-        filteredList.current.length
+        // filteredList.current.length
+        all_plants_count
       dispatch(setItemOffset(newOffset))
     }
 
@@ -124,7 +135,8 @@ const Plants = ({
 
       const newOffset =
         (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-        filteredList.current.length
+        // filteredList.current.length
+        all_plants_count
       dispatch(setItemOffset(newOffset))
     }
   }, [
@@ -141,10 +153,13 @@ const Plants = ({
     activeFilterList,
     localStore,
     currentPageNumber,
+    currentPage,
+    pageClick,
+    all_plants_count,
   ])
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList.current)
-  // console.log("Reset Page: ", resetCount)
+  console.log("All plants outside: ", all_plants)
 
   return (
     <div className="row">
@@ -198,6 +213,7 @@ const mapStateToProps = (state) => {
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     resetCount: state.pagination.resetCount,
+    all_plants_count: state.post.all_plants_count,
   }
 }
 

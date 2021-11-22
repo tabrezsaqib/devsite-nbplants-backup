@@ -2,8 +2,10 @@ import * as types from "../types"
 import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 
-export const fetchAllPlantPosts = () => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants`)
+export const fetchAllPlantPosts = (page) => async (dispatch) => {
+  console.log("page:", page + 1)
+  const response = await api.get(`${API_URL}plants?per_page=5&page=${page + 1}`)
+
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,
@@ -58,5 +60,13 @@ export const searchPlantPosts = (slug) => async (dispatch) => {
   dispatch({
     type: types.GET_SEARCH_RESULTS,
     payload: response.data,
+  })
+}
+
+export const getAllPlantsCount = () => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants`)
+  dispatch({
+    type: types.GET_ALL_PLANTS_COUNT,
+    payload: response.data.length,
   })
 }
