@@ -3,8 +3,7 @@ import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 
 export const fetchAllPlantPosts = (page) => async (dispatch) => {
-  console.log("page:", page + 1)
-  const response = await api.get(`${API_URL}plants?per_page=5&page=${page + 1}`)
+  const response = await api.get(`${API_URL}plants?per_page=3&page=${page + 1}`)
 
   dispatch({
     type: types.GET_ALL_PLANTS,
@@ -16,8 +15,10 @@ export const fetchAllPlantPosts = (page) => async (dispatch) => {
   })
 }
 
-export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+export const fetchNonWoodyPlantPosts = (page, type) => async (dispatch) => {
+  const response = await api.get(
+    `${API_URL}plants?plant_type=${type}&per_page=3&page=${page + 1}`
+  )
   dispatch({
     type: types.GET_NONWOODY_PLANTS,
     payload: response.data,
@@ -28,8 +29,10 @@ export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
   })
 }
 
-export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+export const fetchWoodyPlantPosts = (page, type) => async (dispatch) => {
+  const response = await api.get(
+    `${API_URL}plants?plant_type=${type}&per_page=3&page=${page + 1}`
+  )
   dispatch({
     type: types.GET_WOODY_PLANTS,
     payload: response.data,
@@ -67,6 +70,22 @@ export const getAllPlantsCount = () => async (dispatch) => {
   const response = await api.get(`${API_URL}plants`)
   dispatch({
     type: types.GET_ALL_PLANTS_COUNT,
+    payload: response.data.length,
+  })
+}
+
+export const getAllNonWoodyPlantsCount = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+  dispatch({
+    type: types.GET_ALL_NONWOODY_PLANTS_COUNT,
+    payload: response.data.length,
+  })
+}
+
+export const getAllWoodyPlantsCount = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+  dispatch({
+    type: types.GET_ALL_NONWOODY_PLANTS_COUNT,
     payload: response.data.length,
   })
 }
