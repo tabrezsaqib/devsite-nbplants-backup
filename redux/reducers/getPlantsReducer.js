@@ -6,6 +6,9 @@ const initialState = {
   plant_details: [],
   search_results: [],
   isLoading: true,
+  all_plants_count: 0,
+  nonwoody_plants_count: 0,
+  woody_plants_count: 0,
 }
 export const getPlantsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -39,7 +42,21 @@ export const getPlantsReducer = (state = initialState, action) => {
         ...state,
         search_results: action.payload,
       }
-
+    case types.GET_ALL_PLANTS_COUNT:
+      return {
+        ...state,
+        all_plants_count: action.payload,
+      }
+    case types.GET_ALL_NONWOODY_PLANTS_COUNT:
+      return {
+        ...state,
+        nonwoody_plants_count: action.payload,
+      }
+    case types.GET_ALL_WOODY_PLANTS_COUNT:
+      return {
+        ...state,
+        woody_plants_count: action.payload,
+      }
     default:
       return state
   }
