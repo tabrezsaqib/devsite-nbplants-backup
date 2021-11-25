@@ -126,7 +126,15 @@ const Plants = ({
     let plants
     if (router.query.type == "all") {
       if (pageClick == false) {
-        dispatch(fetchAllPlantPosts(parseInt(currentPageNumber)))
+        dispatch(
+          fetchAllPlantPosts(
+            parseInt(
+              localStore.getCurrentPage() == undefined
+                ? 0
+                : localStore.getCurrentPage()
+            )
+          )
+        )
       }
 
       filterPlantsTypeData(all_plants)
@@ -144,7 +152,14 @@ const Plants = ({
       if (pageClick == false) {
         // dispatch(fetchAllPlantPosts(parseInt(currentPageNumber)))
         dispatch(
-          fetchWoodyPlantPosts(parseInt(currentPageNumber), router.query.type)
+          fetchWoodyPlantPosts(
+            parseInt(
+              localStore.getCurrentPage() == undefined
+                ? 0
+                : localStore.getCurrentPage()
+            ),
+            router.query.type
+          )
         )
       }
 
@@ -165,7 +180,11 @@ const Plants = ({
         // dispatch(fetchAllPlantPosts(parseInt(currentPageNumber)))
         dispatch(
           fetchNonWoodyPlantPosts(
-            parseInt(currentPageNumber),
+            parseInt(
+              localStore.getCurrentPage() == undefined
+                ? 0
+                : localStore.getCurrentPage()
+            ),
             router.query.type
           )
         )
