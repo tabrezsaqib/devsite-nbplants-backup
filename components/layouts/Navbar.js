@@ -4,9 +4,13 @@ import Image from "next/image"
 import Router from "next/router"
 import logo from "../../public/images/logo.png"
 import SearchForm from "../search/SearchForm"
+import { useDispatch } from "react-redux"
+import { togglePagination } from "../../redux/actions/paginationAction"
 
 const Navbar = () => {
+  const dispatch = useDispatch()
   const refresh = () => {
+    dispatch(togglePagination(true))
     Router.push({
       pathname: "/plants",
       query: { type: "all" },

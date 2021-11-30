@@ -2,7 +2,7 @@ import * as types from "../types"
 const initialState = {
   itemOffset: 0,
   pageCount: 0,
-  resetCount: false,
+  toggle_pagination: false,
 }
 export const paginationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,10 +16,10 @@ export const paginationReducer = (state = initialState, action) => {
         ...state,
         pageCount: action.payload,
       }
-    case types.RESET_PAGE_COUNT:
+    case types.TOGGLE_PAGINATION:
       return {
         ...state,
-        resetCount: action.payload,
+        toggle_pagination: action.payload,
       }
     default:
       return state
