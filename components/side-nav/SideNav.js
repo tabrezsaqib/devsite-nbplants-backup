@@ -88,11 +88,11 @@ const SideNav = ({
       newFilter.splice(filterIndex, 1) //Remove one element from the newFilter i.e array.splice(index, how many items)
       dispatch(selectorFilterData(filter))
       dispatch(activeFilterData(newFilter))
-      dispatch(resetPageCount(true))
+      // dispatch(resetPageCount(true))
     } else {
       dispatch(selectorFilterData(filter))
       dispatch(activeFilterData([...activeFilterList, filter]))
-      dispatch(resetPageCount(true))
+      // dispatch(resetPageCount(true))
     }
   }
 

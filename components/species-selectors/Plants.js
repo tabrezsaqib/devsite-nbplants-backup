@@ -70,6 +70,7 @@ const Plants = ({
   }
 
   const paginationEngine = () => {
+    console.log("Filtered items: ", filteredList.current)
     const endOffset = itemOffset + itemsPerPage
     // setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
     setCurrentItems(filteredList.current)
@@ -143,9 +144,7 @@ const Plants = ({
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
-      const newOffset =
-        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-        all_plants_count
+      const newOffset = (currentPageNumber * itemsPerPage) % all_plants_count
       dispatch(setItemOffset(newOffset))
     }
     if (router.query.type == "woody") {
@@ -169,7 +168,7 @@ const Plants = ({
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
       const newOffset =
-        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        (currentPageNumber * itemsPerPage) %
         // filteredList.current.length
         woody_plants_count
       dispatch(setItemOffset(newOffset))
@@ -196,7 +195,7 @@ const Plants = ({
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
 
       const newOffset =
-        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        (currentPageNumber * itemsPerPage) %
         // filteredList.current.length
         nonwoody_plants_count
       dispatch(setItemOffset(newOffset))
@@ -239,7 +238,7 @@ const Plants = ({
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
-            forcePage={resetCount == true ? 0 : currentPageNumber - 0}
+            forcePage={currentPageNumber - 0}
             // forcePage={currentPageNumber - 0}
             pageCount={pageCount}
             previousLabel="< previous"
