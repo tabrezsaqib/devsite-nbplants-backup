@@ -34,7 +34,7 @@ const Plants = ({
   leaf_arrangement,
   itemOffset,
   pageCount,
-  resetCount,
+  toggle_pagination,
   all_plants_count,
   woody_plants_count,
   nonwoody_plants_count,
@@ -70,7 +70,6 @@ const Plants = ({
   }
 
   const paginationEngine = () => {
-    console.log("Filtered items: ", filteredList.current)
     const endOffset = itemOffset + itemsPerPage
     // setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
     setCurrentItems(filteredList.current)
@@ -83,9 +82,7 @@ const Plants = ({
       )
     )
     const newOffset =
-      (resetCount == true
-        ? 0
-        : currentPage == true && currentSelectedPage.current * itemsPerPage) %
+      (currentPage == true && currentSelectedPage.current * itemsPerPage) %
       (nonwoody_plants_count || all_plants_count || woody_plants_count)
     dispatch(setItemOffset(newOffset))
   }
@@ -216,14 +213,13 @@ const Plants = ({
     currentPageNumber,
     currentPage,
     pageClick,
-    resetCount,
     all_plants_count,
     woody_plants_count,
     nonwoody_plants_count,
   ])
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList.current)
-  console.log("Non woody plants outside: ", nonwoody_plants_count)
+  // console.log("Non woody plants outside: ", nonwoody_plants_count)
 
   return (
     <div className="row">
@@ -235,6 +231,7 @@ const Plants = ({
         <div className="grid-container">
           <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
           <ReactPaginate
+            className={toggle_pagination === true ? "hide" : ""}
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
@@ -257,7 +254,11 @@ const Plants = ({
           />
         </div>
       </div>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .hide {
+          display: none;
+        }
+      `}</style>
     </div>
   )
 }
@@ -276,7 +277,7 @@ const mapStateToProps = (state) => {
     leaf_arrangement: state.selector.leaf_arrangement,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
-    resetCount: state.pagination.resetCount,
+    toggle_pagination: state.pagination.toggle_pagination,
     all_plants_count: state.post.all_plants_count,
     nonwoody_plants_count: state.post.nonwoody_plants_count,
     woody_plants_count: state.post.woody_plants_count,

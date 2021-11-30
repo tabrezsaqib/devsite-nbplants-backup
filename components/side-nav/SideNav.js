@@ -17,7 +17,6 @@ import {
   selectorFilterData,
   activeFilterData,
 } from "../../redux/actions/selectorFilterAction"
-import { resetPageCount } from "../../redux/actions/paginationAction"
 
 const SideNav = ({
   habitat,
