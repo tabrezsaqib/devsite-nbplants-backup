@@ -15,7 +15,7 @@ import {
   setItemOffset,
   setPageCount,
 } from "../../redux/actions/paginationAction"
-import { resetPageCount } from "../../redux/actions/paginationAction"
+
 import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
 import * as options from "../../data/sideNavListDataArray"
@@ -91,7 +91,6 @@ const Plants = ({
   const handlePageClick = async (event) => {
     setCurrentPage(true)
     setPageClick(true)
-    dispatch(resetPageCount(false))
     await fetchPlantsData(event.selected)
 
     currentSelectedPage.current = event.selected
