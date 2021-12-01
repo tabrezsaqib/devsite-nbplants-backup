@@ -1,7 +1,6 @@
-import { useEffect } from "react"
-import { connect, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import {
-  fetchPlantPosts,
+  fetchPlantPost,
   searchPlantPosts,
 } from "../../redux/actions/getPlantsAction"
 import SearchFormValidate from "./SearchFormValidate"
@@ -10,13 +9,13 @@ const SearchForm = () => {
   const dispatch = useDispatch()
   const submitSearchQuery = (value) => {
     dispatch(searchPlantPosts(value))
-    dispatch(fetchPlantPosts)
+    // dispatch(fetchPlantPost)
   }
   return (
     <div>
       <SearchFormValidate
         submitSearchQuery={submitSearchQuery}
-        fetchPlantPosts={fetchPlantPosts}
+        // fetchPlantPosts={fetchPlantPost}
       />
     </div>
   )
