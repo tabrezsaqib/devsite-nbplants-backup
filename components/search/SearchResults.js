@@ -1,16 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
+import ReactPaginate from "react-paginate"
 import { useEffect, useState } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import { searchPlantPosts } from "../../redux/actions/getPlantsAction"
 import SeachItem from "./SeachItem"
+import SearchFormValidate from "./SearchFormValidate"
+import * as localStore from "../../generics/localStore"
 
-const SearchResults = ({ search_results, plants_list }) => {
+const SearchResults = ({
+  search_results,
+  search_bar,
+  search_bar_active,
+  itemsPerPage,
+}) => {
   const [hasSearchKeyword, setHasSearchKeyWord] = useState(false)
   const [isLoading, setLoading] = useState(true)
+  const [currentPageNumber, setCurrentPageNumber] = useState(0)
+  // We start with an empty list of items.
+  const [currentItems, setCurrentItems] = useState(null)
+  const [pageCount, setPageCount] = useState(0)
+  const [itemOffset, setItemOffset] = useState(0)
+
   const router = useRouter()
   const dispatch = useDispatch()
+
   useEffect(() => {
     if (!router.isReady) return
     if (router.query.keyword) {
@@ -18,57 +33,126 @@ const SearchResults = ({ search_results, plants_list }) => {
       setHasSearchKeyWord(true)
       dispatch(searchPlantPosts(router.query.keyword))
     }
+
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage
+
+    setCurrentItems(search_results.slice(itemOffset, endOffset))
+    setPageCount(Math.ceil(search_results.length / itemsPerPage))
     setLoading(false)
-  }, [dispatch, router.isReady, router.query.keyword])
+
+    let localStoreValue = localStore.getCurrentSearchPage()
+    console.log(localStoreValue)
+    localStoreValue && setCurrentPageNumber(localStore.getCurrentSearchPage())
+    const newOffset = (currentPageNumber * itemsPerPage) % search_results.length
+    setItemOffset(newOffset)
+  }, [
+    dispatch,
+    router,
+    router.isReady,
+    router.query.keyword,
+    itemOffset,
+    itemsPerPage,
+    isLoading,
+    pageCount,
+    search_results.length,
+    hasSearchKeyword,
+    currentPageNumber,
+  ])
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    localStore.setCurrentSearchPage(event.selected)
+    const newOffset = (event.selected * itemsPerPage) % search_results.length
+    setItemOffset(newOffset)
+  }
+
+  const submitSearchQuery = (value) => {
+    dispatch(searchPlantPosts(value))
+    // dispatch(fetchPlantPost)
+  }
 
   return (
     <>
       <span className="breadcrumb">
-        {hasSearchKeyword
-          ? `${search_results.length} results found for ${router.query.keyword}`
-          : `${plants_list.length} results found`}
+        {hasSearchKeyword &&
+          `${search_results.length} results found for ${router.query.keyword}`}
       </span>
-      <div
-        className={
-          isLoading
-            ? "d-flex justify-content-center flex-wrap"
-            : "d-flex flex-wrap"
-        }>
-        {isLoading ? (
-          <div className="d-flex align-items-center img-container">
-            <img src="../../images/loading.gif" alt="loader" />
-          </div>
-        ) : search_results.length > 0 && hasSearchKeyword == true ? (
-          search_results.map((plant, index) => (
-            <div key={index}>
-              <Link
-                href={{
-                  pathname: `/plants/${plant.id}`,
-                  query: { type: plant.acf.plant_type },
-                }}>
-                <a>
-                  <SeachItem plant={plant} />
-                </a>
-              </Link>
+      <div>
+        <div
+          className={
+            isLoading
+              ? "d-flex justify-content-center flex-wrap"
+              : search_bar_active == true
+              ? ""
+              : "d-flex flex-wrap"
+          }>
+          {isLoading ? (
+            <div className="d-flex align-items-center img-container">
+              <img src="../../images/loading.gif" alt="loader" />
             </div>
-          ))
-        ) : (
-          plants_list.length > 0 &&
-          hasSearchKeyword == false &&
-          plants_list.map((plant, index) => (
-            <div key={index}>
-              <Link
-                href={{
-                  pathname: `/plants/${plant.id}`,
-                  query: { type: plant.acf.plant_type },
-                }}>
-                <a>
-                  <SeachItem plant={plant} />
-                </a>
-              </Link>
+          ) : hasSearchKeyword == true ? (
+            currentItems.map((plant, index) => (
+              <div key={index}>
+                <Link
+                  href={{
+                    pathname: `/plants/${plant.id}`,
+                    query: { type: plant.acf.plant_type },
+                  }}>
+                  <a>
+                    <SeachItem plant={plant} />
+                  </a>
+                </Link>
+              </div>
+            ))
+          ) : (
+            // currentItems.length > 0 &&
+            // hasSearchKeyword == false &&
+            // currentItems.map((plant, index) => (
+            //   <div key={index}>
+            //     <Link
+            //       href={{
+            //         pathname: `/plants/${plant.id}`,
+            //         query: { type: plant.acf.plant_type },
+            //       }}>
+            //       <a>
+            //         <SeachItem plant={plant} />
+            //       </a>
+            //     </Link>
+            //   </div>
+            // ))
+            <div>
+              <div className="search-area flex-column d-flex align-items-center justify-content-center">
+                <h2>Search by keyword</h2>
+                <SearchFormValidate
+                  submitSearchQuery={submitSearchQuery}
+                  search_bar={true}
+                  // fetchPlantPosts={fetchPlantPost}
+                />
+              </div>
             </div>
-          ))
-        )}
+          )}
+        </div>
+        <ReactPaginate
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          forcePage={currentPageNumber - 0}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakLabel="..."
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          activeClassName="active"
+          renderOnZeroPageCount={null}
+        />
         <style jsx>{`
           .img-container {
             padding-top: 20%;
@@ -76,6 +160,9 @@ const SearchResults = ({ search_results, plants_list }) => {
             img {
               width: 80px;
             }
+          }
+          .search-area {
+            height: 400px;
           }
         `}</style>
       </div>

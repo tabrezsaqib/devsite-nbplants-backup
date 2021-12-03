@@ -24,6 +24,13 @@ export function getCurrentPage() {
 export function setCurrentPage(currentPage) {
   Cookies.set("z_page", currentPage)
 }
+export function getCurrentSearchPage() {
+  return Cookies.get("z_search_page")
+}
+
+export function setCurrentSearchPage(currentSearchPage) {
+  Cookies.set("z_search_page", currentSearchPage)
+}
 
 export function getActiveFilter() {
   return Cookies.get("z_filter")
