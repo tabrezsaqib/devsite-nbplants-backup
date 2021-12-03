@@ -9,7 +9,12 @@ import SeachItem from "./SeachItem"
 import SearchFormValidate from "./SearchFormValidate"
 import * as localStore from "../../generics/localStore"
 
-const SearchResults = ({ search_results, plants_list, itemsPerPage }) => {
+const SearchResults = ({
+  search_results,
+  search_bar,
+  search_bar_active,
+  itemsPerPage,
+}) => {
   const [hasSearchKeyword, setHasSearchKeyWord] = useState(false)
   const [isLoading, setLoading] = useState(true)
   const [currentPageNumber, setCurrentPageNumber] = useState(0)
@@ -67,19 +72,19 @@ const SearchResults = ({ search_results, plants_list, itemsPerPage }) => {
     // dispatch(fetchPlantPost)
   }
 
-  console.log("Search results: ", search_results.length)
   return (
     <>
       <span className="breadcrumb">
-        {hasSearchKeyword
-          ? `${search_results.length} results found for ${router.query.keyword}`
-          : `${plants_list.length} results found`}
+        {hasSearchKeyword &&
+          `${search_results.length} results found for ${router.query.keyword}`}
       </span>
       <div>
         <div
           className={
             isLoading
               ? "d-flex justify-content-center flex-wrap"
+              : search_bar_active == true
+              ? ""
               : "d-flex flex-wrap"
           }>
           {isLoading ? (
@@ -116,11 +121,12 @@ const SearchResults = ({ search_results, plants_list, itemsPerPage }) => {
             //     </Link>
             //   </div>
             // ))
-            <div className="d-flex flex-column">
-              <div className="search-area">
+            <div>
+              <div className="search-area flex-column d-flex align-items-center justify-content-center">
                 <h2>Search by keyword</h2>
                 <SearchFormValidate
                   submitSearchQuery={submitSearchQuery}
+                  search_bar={true}
                   // fetchPlantPosts={fetchPlantPost}
                 />
               </div>
@@ -156,7 +162,7 @@ const SearchResults = ({ search_results, plants_list, itemsPerPage }) => {
             }
           }
           .search-area {
-            padding: 60px;
+            height: 400px;
           }
         `}</style>
       </div>

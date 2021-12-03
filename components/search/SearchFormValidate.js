@@ -3,7 +3,7 @@ import * as yup from "yup"
 import { Formik } from "formik"
 import "bootstrap-icons/font/bootstrap-icons.css"
 
-const SearchFormValidate = ({ submitSearchQuery }) => {
+const SearchFormValidate = ({ submitSearchQuery, search_bar }) => {
   return (
     <>
       <Formik
@@ -31,7 +31,7 @@ const SearchFormValidate = ({ submitSearchQuery }) => {
           } = props
           return (
             <div>
-              <div className="search">
+              <div className={search_bar == true ? "search-fluid" : "search"}>
                 {/* {error ? <span className="input-feedback">{error}</span> : ""} */}
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
@@ -105,6 +105,42 @@ const SearchFormValidate = ({ submitSearchQuery }) => {
           width: 80px;
           background: #0e9d47;
           border: 1px solid #0e9d47 !important;
+        }
+
+        .search-fluid {
+          position: relative;
+          height: 45px;
+          width: 600px;
+          box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+        }
+
+        .search-fluid input:focus {
+          box-shadow: none;
+          border: 1px solid #43bccd !important;
+        }
+
+        .search-fluid button {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          height: 35px;
+          width: 80px;
+          background: #0e9d47;
+          border: 1px solid #0e9d47 !important;
+        }
+        .search-fluid .bi-search {
+          position: absolute;
+          top: 13px;
+          left: 16px;
+          margin-right: 5px;
+        }
+
+        .search-fluid input {
+          width: 600px;
+          height: 45px;
+          text-indent: 30px;
+          font-size: 15px;
+          border: 1px solid #d6d4d4;
         }
       `}</style>
     </>
