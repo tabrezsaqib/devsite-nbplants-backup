@@ -44,7 +44,6 @@ export const fetchWoodyPlantPosts = (page, type) => async (dispatch) => {
 }
 
 export const fetchPlantPost = (id) => async (dispatch) => {
-  console.log(id)
   const response = await api.get(`${API_URL}plants/${id}`)
   dispatch({
     type: types.GET_PLANT,
@@ -61,7 +60,6 @@ export const toggleLoader = (option) => async (dispatch) => {
 
 export const searchPlantPosts = (slug) => async (dispatch) => {
   const response = await api.get(`${API_URL}plants?search=${slug}`)
-  console.log(response)
   dispatch({
     type: types.GET_SEARCH_RESULTS,
     payload: response.data,

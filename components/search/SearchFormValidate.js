@@ -9,8 +9,8 @@ const SearchFormValidate = ({ submitSearchQuery }) => {
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values)
           submitSearchQuery(values["search"])
+
           Router.push({
             pathname: "/search",
             query: { keyword: values["search"] },
