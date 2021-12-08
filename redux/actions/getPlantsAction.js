@@ -3,7 +3,9 @@ import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 
 export const fetchAllPlantPosts = (page) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants?per_page=3&page=${page + 1}`)
+  const response = await api.get(
+    `${API_URL}plants_db?per_page=10&page=${page + 1}&order=asc`
+  )
 
   dispatch({
     type: types.GET_ALL_PLANTS,
@@ -44,7 +46,7 @@ export const fetchWoodyPlantPosts = (page, type) => async (dispatch) => {
 }
 
 export const fetchPlantPost = (id) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants/${id}`)
+  const response = await api.get(`${API_URL}plants_db/${id}`)
   dispatch({
     type: types.GET_PLANT,
     payload: response.data,
@@ -67,10 +69,11 @@ export const searchPlantPosts = (slug) => async (dispatch) => {
 }
 
 export const getAllPlantsCount = () => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants`)
+  const response = await api.get(`${API_URL}plants_db`)
+  console.log(response)
   dispatch({
     type: types.GET_ALL_PLANTS_COUNT,
-    payload: response.data.length,
+    payload: response.headers["x-wp-total"],
   })
 }
 
