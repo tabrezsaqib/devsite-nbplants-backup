@@ -61,7 +61,7 @@ export const toggleLoader = (option) => async (dispatch) => {
 }
 
 export const searchPlantPosts = (slug) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants?search=${slug}`)
+  const response = await api.get(`${API_URL}plants_db?search=${slug}`)
   dispatch({
     type: types.GET_SEARCH_RESULTS,
     payload: response.data,

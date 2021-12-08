@@ -56,6 +56,18 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             </div>
             <div className="d-flex">
               <p>
+                <strong>Leaf Shape: &nbsp;</strong>
+              </p>
+              {plant_details.acf.characteristics.leaf_shape.map(
+                (item, index) => (
+                  <div key={index}>
+                    <p>{item} &nbsp;</p>
+                  </div>
+                )
+              )}
+            </div>
+            <div className="d-flex">
+              <p>
                 <strong>Leaf Arrangement: &nbsp;</strong>
               </p>
               {plant_details.acf.characteristics.leaf_arrangement.map(
