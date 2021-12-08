@@ -16,23 +16,23 @@ const leaf_type = ["don't know", "compound", "simple"]
 
 const leaf_arrangement = ["alternate", "opposite", "basal", "whorled"]
 
-const new_brunswick_county = [
-  "albert county",
-  "carleton county",
-  "charlotte county",
-  "gloucester county",
-  "kent county",
-  "kings county",
-  "madawaska county",
-  "northumberland county",
-  "queens county",
-  "restigouche county",
-  "saint john county",
-  "sunbary county",
-  "victoria county",
-  "york county",
-  "westmorland county",
-]
+// const new_brunswick_county = [
+//   "albert county",
+//   "carleton county",
+//   "charlotte county",
+//   "gloucester county",
+//   "kent county",
+//   "kings county",
+//   "madawaska county",
+//   "northumberland county",
+//   "queens county",
+//   "restigouche county",
+//   "saint john county",
+//   "sunbary county",
+//   "victoria county",
+//   "york county",
+//   "westmorland county",
+// ]
 
 export {
   habitat,
@@ -40,5 +40,5 @@ export {
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
-  new_brunswick_county,
+  // new_brunswick_county,
 }

@@ -9,9 +9,9 @@ const initialState = {
   leaf_blade_edges: new Array(options.leaf_blade_edges.length).fill(false),
   leaf_type: new Array(options.leaf_type.length).fill(false),
   leaf_arrangement: new Array(options.leaf_arrangement.length).fill(false),
-  new_brunswick_county: new Array(options.new_brunswick_county.length).fill(
-    false
-  ),
+  // new_brunswick_county: new Array(options.new_brunswick_county.length).fill(
+  //   false
+  // ),
   selectorFilter: "none",
   activeFilterList: [],
   activeFilter: false,
@@ -44,11 +44,11 @@ export const selectorsReducer = (state = initialState, action) => {
         ...state,
         leaf_arrangement: action.payload,
       }
-    case types.TOGGLE_COUNTY:
-      return {
-        ...state,
-        new_brunswick_county: action.payload,
-      }
+    // case types.TOGGLE_COUNTY:
+    //   return {
+    //     ...state,
+    //     new_brunswick_county: action.payload,
+    //   }
     case types.ACTIVE_SELECTOR_LIST:
       return {
         ...state,

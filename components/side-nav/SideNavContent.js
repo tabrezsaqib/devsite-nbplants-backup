@@ -10,7 +10,7 @@ const SideNavContent = ({
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
-  new_brunswick_county,
+  // new_brunswick_county,
   onSelectorChange,
   handleOnChange,
 }) => {
@@ -35,10 +35,10 @@ const SideNavContent = ({
       key: "leaf_arrangement",
       value: "Leaf Arrangement",
     },
-    {
-      key: "new_brunswick_county",
-      value: "New Brunswick County",
-    },
+    // {
+    //   key: "new_brunswick_county",
+    //   value: "New Brunswick County",
+    // },
   ]
 
   const colorValues = [
@@ -97,9 +97,9 @@ const SideNavContent = ({
                   id={id}
                   onClick={(e) => onSelectorChange(data)}
                   checked={
-                    item.key == "new_brunswick_county"
-                      ? new_brunswick_county[index]
-                      : item.key == "leaf_arrangement"
+                    // item.key == "new_brunswick_county"
+                    //   ? new_brunswick_county[index]
+                    item.key == "leaf_arrangement"
                       ? leaf_arrangement[index]
                       : item.key == "leaf_type"
                       ? leaf_type[index]
