@@ -3,6 +3,7 @@ const initialState = {
   itemOffset: 0,
   pageCount: 0,
   toggle_pagination: false,
+  resetCount: false,
 }
 export const paginationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,6 +21,11 @@ export const paginationReducer = (state = initialState, action) => {
       return {
         ...state,
         toggle_pagination: action.payload,
+      }
+    case types.RESET_PAGE_COUNT:
+      return {
+        ...state,
+        resetCount: action.payload,
       }
     default:
       return state

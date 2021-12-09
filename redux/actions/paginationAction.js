@@ -13,7 +13,12 @@ export const setPageCount = (option) => async (dispatch) => {
     payload: option,
   })
 }
-
+export const resetPageCount = (option) => async (dispatch) => {
+  dispatch({
+    type: types.RESET_PAGE_COUNT,
+    payload: option,
+  })
+}
 export const togglePagination = (option) => async (dispatch) => {
   dispatch({
     type: types.TOGGLE_PAGINATION,

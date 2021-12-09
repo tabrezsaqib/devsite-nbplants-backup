@@ -15,7 +15,7 @@ import {
   setItemOffset,
   setPageCount,
 } from "../../redux/actions/paginationAction"
-
+import { resetPageCount } from "../../redux/actions/paginationAction"
 import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
 import * as options from "../../data/sideNavListDataArray"
@@ -35,16 +35,17 @@ const Plants = ({
   itemOffset,
   pageCount,
   toggle_pagination,
-  all_plants_count,
-  woody_plants_count,
-  nonwoody_plants_count,
+  // all_plants_count,
+  // woody_plants_count,
+  // nonwoody_plants_count,
+  resetCount,
 }) => {
   const dispatch = useDispatch()
 
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState([])
   const [currentPage, setCurrentPage] = useState(false)
-  const [pageClick, setPageClick] = useState(false)
+  // const [pageClick, setPageClick] = useState(false)
   const [currentPageNumber, setCurrentPageNumber] = useState(0)
   // const [pageCount, setPageCount] = useState(0)
   // Here we use item offsets; we could also use page offsets following the API or data you're working with.
@@ -71,33 +72,51 @@ const Plants = ({
 
   const paginationEngine = () => {
     const endOffset = itemOffset + itemsPerPage
-    // setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
-    setCurrentItems(filteredList.current)
+    setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
+    // setCurrentItems(filteredList.current)
+    // dispatch(
+    //   setPageCount(
+    //     Math.ceil(
+    //       (nonwoody_plants_count || all_plants_count || woody_plants_count) /
+    //         itemsPerPage
+    //     )
+    //   )
+    // )
+    // const newOffset =
+    //   (currentPage == true && currentSelectedPage.current * itemsPerPage) %
+    //   (nonwoody_plants_count || all_plants_count || woody_plants_count)
+    // dispatch(setItemOffset(newOffset))
     dispatch(
-      setPageCount(
-        Math.ceil(
-          (nonwoody_plants_count || all_plants_count || woody_plants_count) /
-            itemsPerPage
-        )
-      )
+      setPageCount(Math.ceil(filteredList.current.length / itemsPerPage))
     )
     const newOffset =
-      (currentPage == true && currentSelectedPage.current * itemsPerPage) %
-      (nonwoody_plants_count || all_plants_count || woody_plants_count)
+      (resetCount == true
+        ? 0
+        : currentPage == true && currentSelectedPage.current * itemsPerPage) %
+      filteredList.current.length
+
     dispatch(setItemOffset(newOffset))
   }
 
   // Invoke when user click to request another page.
-  const handlePageClick = async (event) => {
-    setCurrentPage(true)
-    setPageClick(true)
-    await fetchPlantsData(event.selected)
+  const handlePageClick = (event) => {
+    // setCurrentPage(true)
+    // setPageClick(true)
+    // await fetchPlantsData(event.selected)
 
+    // currentSelectedPage.current = event.selected
+    // localStore.setCurrentPage(event.selected)
+    // const newOffset =
+    //   (event.selected * itemsPerPage) %
+    //   (nonwoody_plants_count || all_plants_count || woody_plants_count)
+    // dispatch(setItemOffset(newOffset))
+
+    setCurrentPage(true)
+    dispatch(resetPageCount(false))
     currentSelectedPage.current = event.selected
     localStore.setCurrentPage(event.selected)
     const newOffset =
-      (event.selected * itemsPerPage) %
-      (nonwoody_plants_count || all_plants_count || woody_plants_count)
+      (event.selected * itemsPerPage) % filteredList.current.length
     dispatch(setItemOffset(newOffset))
   }
 
@@ -122,78 +141,38 @@ const Plants = ({
   useEffect(() => {
     let plants
     if (router.query.type == "all") {
-      if (pageClick == false) {
-        dispatch(
-          fetchAllPlantPosts(
-            parseInt(
-              localStore.getCurrentPage() == undefined
-                ? 0
-                : localStore.getCurrentPage()
-            )
-          )
-        )
-      }
-
-      filterPlantsTypeData(all_plants)
-      dispatch(getAllPlantsCount())
-
-      paginationEngine()
-      let localStoreValue = localStore.getCurrentPage()
-      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
-      const newOffset = (currentPageNumber * itemsPerPage) % all_plants_count
-      dispatch(setItemOffset(newOffset))
-    }
-    if (router.query.type == "woody") {
-      if (pageClick == false) {
-        // dispatch(fetchAllPlantPosts(parseInt(currentPageNumber)))
-        dispatch(
-          fetchWoodyPlantPosts(
-            parseInt(
-              localStore.getCurrentPage() == undefined
-                ? 0
-                : localStore.getCurrentPage()
-            ),
-            router.query.type
-          )
-        )
-      }
-
-      filterPlantsTypeData(woody_plants)
-      dispatch(getAllWoodyPlantsCount(router.query.type))
+      dispatch(fetchAllPlantPosts())
+      plants = filterPlantsTypeData(all_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
       const newOffset =
-        (currentPageNumber * itemsPerPage) %
-        // filteredList.current.length
-        woody_plants_count
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+    if (router.query.type == "woody") {
+      dispatch(fetchWoodyPlantPosts(router.query.type))
+      plants = filterPlantsTypeData(woody_plants)
+      paginationEngine()
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
       dispatch(setItemOffset(newOffset))
     }
 
     if (router.query.type == "non-woody") {
-      if (pageClick == false) {
-        // dispatch(fetchAllPlantPosts(parseInt(currentPageNumber)))
-        dispatch(
-          fetchNonWoodyPlantPosts(
-            parseInt(
-              localStore.getCurrentPage() == undefined
-                ? 0
-                : localStore.getCurrentPage()
-            ),
-            router.query.type
-          )
-        )
-      }
+      dispatch(fetchNonWoodyPlantPosts(router.query.type))
       filterPlantsTypeData(nonwoody_plants)
-      dispatch(getAllNonWoodyPlantsCount(router.query.type))
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
 
       const newOffset =
-        (currentPageNumber * itemsPerPage) %
-        // filteredList.current.length
-        nonwoody_plants_count
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
       dispatch(setItemOffset(newOffset))
     }
   }, [
@@ -211,10 +190,11 @@ const Plants = ({
     localStore,
     currentPageNumber,
     currentPage,
-    pageClick,
-    all_plants_count,
-    woody_plants_count,
-    nonwoody_plants_count,
+    // pageClick,
+    // all_plants_count,
+    // woody_plants_count,
+    // nonwoody_plants_count,
+    resetCount,
   ])
   // console.log("Active list", activeFilterList)
   // console.log("Filter list", filteredList.current)
@@ -234,7 +214,7 @@ const Plants = ({
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
-            forcePage={currentPageNumber - 0}
+            forcePage={resetCount == true ? 0 : currentPageNumber - 0}
             // forcePage={currentPageNumber - 0}
             pageCount={pageCount}
             previousLabel="< previous"
@@ -277,9 +257,10 @@ const mapStateToProps = (state) => {
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     toggle_pagination: state.pagination.toggle_pagination,
-    all_plants_count: state.post.all_plants_count,
-    nonwoody_plants_count: state.post.nonwoody_plants_count,
-    woody_plants_count: state.post.woody_plants_count,
+    // all_plants_count: state.post.all_plants_count,
+    // nonwoody_plants_count: state.post.nonwoody_plants_count,
+    // woody_plants_count: state.post.woody_plants_count,
+    resetCount: state.pagination.resetCount,
   }
 }
 
