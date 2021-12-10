@@ -12,6 +12,7 @@ const PlantItem = ({ plant }) => {
         <div className="img-container">
           <img
             src={
+              plant.acf.image_url !== undefined &&
               plant.acf.image_url.length > 0
                 ? plant.acf.image_url[0].thumbnail_image_url
                 : "../images/no_result_found.png"
