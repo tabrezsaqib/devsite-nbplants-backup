@@ -4,7 +4,7 @@ import SearchResults from "../components/search/SearchResults"
 const search = ({ plants }) => {
   return (
     <div className="pt-4">
-      <SearchResults itemsPerPage={1} search_bar_active={true} />
+      <SearchResults itemsPerPage={10} />
     </div>
   )
 }

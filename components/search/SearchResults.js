@@ -83,7 +83,7 @@ const SearchResults = ({
           className={
             isLoading
               ? "d-flex justify-content-center flex-wrap"
-              : search_bar_active == true
+              : router.query.keyword == ""
               ? ""
               : "d-flex flex-wrap"
           }>

@@ -2,10 +2,8 @@ import * as types from "../types"
 import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 
-export const fetchAllPlantPosts = (page) => async (dispatch) => {
-  const response = await api.get(
-    `${API_URL}plants_db?per_page=10&page=${page + 1}&order=asc`
-  )
+export const fetchAllPlantPosts = () => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants_db?order=asc&per_page=45`)
 
   dispatch({
     type: types.GET_ALL_PLANTS,
@@ -68,27 +66,27 @@ export const searchPlantPosts = (slug) => async (dispatch) => {
   })
 }
 
-export const getAllPlantsCount = () => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants_db`)
-  console.log(response)
-  dispatch({
-    type: types.GET_ALL_PLANTS_COUNT,
-    payload: response.headers["x-wp-total"],
-  })
-}
+// export const getAllPlantsCount = () => async (dispatch) => {
+//   const response = await api.get(`${API_URL}plants_db`)
+//   console.log(response)
+//   dispatch({
+//     type: types.GET_ALL_PLANTS_COUNT,
+//     payload: response.headers["x-wp-total"],
+//   })
+// }
 
-export const getAllNonWoodyPlantsCount = (type) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
-  dispatch({
-    type: types.GET_ALL_NONWOODY_PLANTS_COUNT,
-    payload: response.data.length,
-  })
-}
+// export const getAllNonWoodyPlantsCount = (type) => async (dispatch) => {
+//   const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+//   dispatch({
+//     type: types.GET_ALL_NONWOODY_PLANTS_COUNT,
+//     payload: response.data.length,
+//   })
+// }
 
-export const getAllWoodyPlantsCount = (type) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants?plant_type=${type}`)
-  dispatch({
-    type: types.GET_ALL_NONWOODY_PLANTS_COUNT,
-    payload: response.data.length,
-  })
-}
+// export const getAllWoodyPlantsCount = (type) => async (dispatch) => {
+//   const response = await api.get(`${API_URL}plants?plant_type=${type}`)
+//   dispatch({
+//     type: types.GET_ALL_NONWOODY_PLANTS_COUNT,
+//     payload: response.data.length,
+//   })
+// }
