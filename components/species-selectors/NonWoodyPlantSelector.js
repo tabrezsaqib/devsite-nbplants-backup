@@ -4,8 +4,8 @@ import React from "react"
 const NonWoodyPlantSelector = () => {
   return (
     <div className="block">
-      <img src="../images/non-woody-icon.png" alt="non-woody plant icon" />
-      <h4>Non-Woody Plants</h4>
+      <img src="../images/non-woody-icon.png" alt="nonwoody plant icon" />
+      <h4>NonWoody Plants</h4>
       <style jsx>{`
         .block {
           border: 1px solid #e0e1e3;

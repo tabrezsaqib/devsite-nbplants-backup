@@ -3,8 +3,8 @@ import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants_db?order=asc&per_page=45`)
-
+  const response = await api.get(`${API_URL}plants_db?order=desc&per_page=69`)
+  console.log(response)
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,
@@ -15,9 +15,9 @@ export const fetchAllPlantPosts = () => async (dispatch) => {
   })
 }
 
-export const fetchNonWoodyPlantPosts = (page, type) => async (dispatch) => {
+export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
   const response = await api.get(
-    `${API_URL}plants?plant_type=${type}&per_page=3&page=${page + 1}`
+    `${API_URL}plants_db?plant_type=${type}&?order=desc&per_page=69`
   )
   dispatch({
     type: types.GET_NONWOODY_PLANTS,
@@ -29,9 +29,9 @@ export const fetchNonWoodyPlantPosts = (page, type) => async (dispatch) => {
   })
 }
 
-export const fetchWoodyPlantPosts = (page, type) => async (dispatch) => {
+export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
   const response = await api.get(
-    `${API_URL}plants?plant_type=${type}&per_page=3&page=${page + 1}`
+    `${API_URL}plants_db?plant_type=${type}&?per_page=69`
   )
   dispatch({
     type: types.GET_WOODY_PLANTS,

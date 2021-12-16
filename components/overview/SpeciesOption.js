@@ -12,7 +12,7 @@ const SpeciesOption = () => {
             <WoodyPlantSelector />
           </a>
         </Link>
-        <Link href={{ pathname: "/plants", query: { type: "non-woody" } }}>
+        <Link href={{ pathname: "/plants", query: { type: "nonwoody" } }}>
           <a>
             <NonWoodyPlantSelector />
           </a>

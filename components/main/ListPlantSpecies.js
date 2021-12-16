@@ -80,6 +80,9 @@ const ListPlantSpecies = ({
             width: 80px;
           }
         }
+        .gallery-thumbnail {
+          margin: 15px;
+        }
       `}</style>
     </div>
   )

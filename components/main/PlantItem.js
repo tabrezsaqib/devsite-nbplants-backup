@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-
+import { useRouter } from "next/router"
 const PlantItem = ({ plant }) => {
+  const router = useRouter()
   return (
     <>
       <div
         className={
-          (plant.acf.plant_type == "non-woody" ||
+          (plant.acf.plant_type == "nonwoody" ||
             plant.acf.plant_type == "woody") &&
           "content-box"
         }>
