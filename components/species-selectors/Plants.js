@@ -120,24 +120,24 @@ const Plants = ({
     dispatch(setItemOffset(newOffset))
   }
 
-  const fetchPlantsData = async (page) => {
-    if (router.query.type == "all") {
-      await dispatch(fetchAllPlantPosts(page))
-      await filterPlantsTypeData(all_plants)
-      await paginationEngine()
-    }
+  // const fetchPlantsData = async (page) => {
+  //   if (router.query.type == "all") {
+  //     await dispatch(fetchAllPlantPosts(page))
+  //     await filterPlantsTypeData(all_plants)
+  //     await paginationEngine()
+  //   }
 
-    if (router.query.type == "woody") {
-      await dispatch(fetchWoodyPlantPosts(page, router.query.type))
-      await filterPlantsTypeData(woody_plants)
-      await paginationEngine()
-    }
-    if (router.query.type == "non-woody") {
-      await dispatch(fetchNonWoodyPlantPosts(page, router.query.type))
-      await filterPlantsTypeData(nonwoody_plants)
-      await paginationEngine()
-    }
-  }
+  //   if (router.query.type == "woody") {
+  //     await dispatch(fetchWoodyPlantPosts(page, router.query.type))
+  //     await filterPlantsTypeData(woody_plants)
+  //     await paginationEngine()
+  //   }
+  //   if (router.query.type == "nonwoody") {
+  //     await dispatch(fetchNonWoodyPlantPosts(page, router.query.type))
+  //     await filterPlantsTypeData(nonwoody_plants)
+  //     await paginationEngine()
+  //   }
+  // }
   useEffect(() => {
     let plants
     if (router.query.type == "all") {
@@ -163,7 +163,7 @@ const Plants = ({
       dispatch(setItemOffset(newOffset))
     }
 
-    if (router.query.type == "non-woody") {
+    if (router.query.type == "nonwoody") {
       dispatch(fetchNonWoodyPlantPosts(router.query.type))
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
