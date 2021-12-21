@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import * as api from "../../generics/api"
 import React from "react"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
@@ -40,70 +41,117 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <p>
                   <strong>Habitat: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.habitat.map(
-                  (item, index) => (
-                    <p key={index}>{item ? item : "Not Available"} &nbsp;</p>
+                {plant_details.acf.characteristics.habitat.length !== 0 ? (
+                  plant_details.acf.characteristics.habitat.map(
+                    (item, index) => (
+                      <div key={index}>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    )
                   )
+                ) : (
+                  <p>Not Available</p>
                 )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
                   <strong>Leaf Type: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.leaf_type.map(
-                  (item, index) => (
-                    <div key={index}>
-                      <p>{item ? item : "Not Available"} &nbsp;</p>
-                    </div>
+                {plant_details.acf.characteristics.leaf_type.length !== 0 ? (
+                  plant_details.acf.characteristics.leaf_type.map(
+                    (item, index) => (
+                      <div key={index}>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    )
                   )
+                ) : (
+                  <p>Not Available</p>
                 )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
                   <strong>Leaf Arrangement: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.leaf_arrangement.map(
-                  (item, index) => (
-                    <div key={index}>
-                      <p>{item ? item : "Not Available"} &nbsp;</p>
-                    </div>
+                {plant_details.acf.characteristics.leaf_arrangement.length !==
+                0 ? (
+                  plant_details.acf.characteristics.leaf_arrangementf.map(
+                    (item, index) => (
+                      <div key={index}>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    )
                   )
+                ) : (
+                  <p>Not Available</p>
                 )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
                   <strong>Leaf Blage Edges: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.leaf_blade_edges.map(
-                  (item, index) => (
-                    <div key={index}>
-                      <p>{item ? item : "Not Available"} &nbsp;</p>
-                    </div>
+                {plant_details.acf.characteristics.leaf_blage_edges !==
+                undefined ? (
+                  plant_details.acf.characteristics.leaf_arrangement.map(
+                    (item, index) => (
+                      <div key={index}>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    )
                   )
+                ) : (
+                  <p>Not Available</p>
                 )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
                   <strong>Leaf Shape: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.leaf_shape.map(
-                  (item, index) => (
-                    <div key={index}>
-                      <p>{item ? item : "Not Available"} &nbsp;</p>
-                    </div>
+                {plant_details.acf.characteristics.leaf_shape.length !== 0 ? (
+                  plant_details.acf.characteristics.leaf_shape.map(
+                    (item, index) => (
+                      <div key={index}>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    )
                   )
+                ) : (
+                  <p>Not Available</p>
                 )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
                   <strong>Flower Petal Colour: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.flower_petal_colour.map(
-                  (item, index) => (
-                    <div key={index}>
-                      <p>{item ? item : "Not Available"} &nbsp;</p>
-                    </div>
+                {plant_details.acf.characteristics.flower_petal_colour
+                  .length !== 0 ? (
+                  plant_details.acf.characteristics.flower_petal_colour.map(
+                    (item, index) => (
+                      <div key={index}>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    )
                   )
+                ) : (
+                  <p>Not Available</p>
                 )}
               </div>
 
@@ -147,15 +195,21 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <p>
                   <strong>Stipule Shape: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.stipule_shape !==
-                  undefined &&
+                {plant_details.acf.characteristics.stipule_shape.length !==
+                0 ? (
                   plant_details.acf.characteristics.stipule_shape.map(
                     (item, index) => (
                       <div key={index}>
-                        <p>{item ? item : "Not Available"} &nbsp;</p>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
                       </div>
                     )
-                  )}
+                  )
+                ) : (
+                  <p>Not Available</p>
+                )}
               </div>
 
               <div className="d-flex label-value-section">
@@ -163,14 +217,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <strong>Position of hairs: &nbsp;</strong>
                 </p>
                 {plant_details.acf.characteristics.positions_of_hairs !==
-                  undefined &&
+                undefined ? (
                   plant_details.acf.characteristics.positions_of_hairs.map(
                     (item, index) => (
                       <div key={index}>
-                        <p>{item ? item : "Not Available"} &nbsp;</p>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
                       </div>
                     )
-                  )}
+                  )
+                ) : (
+                  <p>Not Available</p>
+                )}
               </div>
 
               <div className="d-flex label-value-section">
@@ -195,27 +255,39 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <p>
                   <strong>Inflorescence: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.inflorescence !==
-                  undefined &&
+                {plant_details.acf.characteristics.inflorescence.length !==
+                0 ? (
                   plant_details.acf.characteristics.inflorescence.map(
                     (item, index) => (
                       <div key={index}>
-                        <p>{item ? item : "Not Available"} &nbsp;</p>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
                       </div>
                     )
-                  )}
+                  )
+                ) : (
+                  <p>Not Available</p>
+                )}
               </div>
 
               <div className="d-flex label-value-section">
                 <p>
                   <strong>Stems: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.stems !== undefined &&
+                {plant_details.acf.characteristics.stems.length !== 0 ? (
                   plant_details.acf.characteristics.stems.map((item, index) => (
                     <div key={index}>
-                      <p>{item ? item : "Not Available"} &nbsp;</p>
+                      <p>
+                        {api.capitalizeFirstLetter(item)}
+                        &nbsp;
+                      </p>
                     </div>
-                  ))}
+                  ))
+                ) : (
+                  <p>Not Available</p>
+                )}
               </div>
 
               <div className="d-flex label-value-section">
@@ -296,15 +368,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <p>
                   <strong>Petal Symmetry: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.petal_symmetry !==
-                  undefined &&
+                {plant_details.acf.characteristics.petal_symmetry !== 0 ? (
                   plant_details.acf.characteristics.petal_symmetry.map(
                     (item, index) => (
                       <div key={index}>
-                        <p>{item ? item : "Not Available"} &nbsp;</p>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
                       </div>
                     )
-                  )}
+                  )
+                ) : (
+                  <p>Not Available</p>
+                )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
@@ -319,14 +396,17 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <p>
                   <strong>Fruits: &nbsp;</strong>
                 </p>
-                {plant_details.acf.characteristics.fruits !== undefined &&
+                {plant_details.acf.characteristics.fruits.length !== 0 ? (
                   plant_details.acf.characteristics.fruits.map(
                     (item, index) => (
                       <div key={index}>
-                        <p>{item ? item : "Not Available"} &nbsp;</p>
+                        <p>{item} &nbsp;</p>
                       </div>
                     )
-                  )}
+                  )
+                ) : (
+                  <p>Not Available</p>
+                )}
               </div>
               <div className="d-flex label-value-section">
                 <p>
