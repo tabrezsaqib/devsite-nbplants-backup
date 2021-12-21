@@ -8,12 +8,18 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         <div className="row" key={plant_details.id}>
           <div className="col-lg-4">
             <div className="d-flex flex-wrap">
-              {plant_details.acf.image_url !== undefined &&
+              {plant_details.acf.image_url.length == 0 ? (
+                <div className="d-flex flex-column text-center">
+                  <img src="../../images/no_result_found.png" alt="" />
+                  <h3>Oops! No images found!</h3>
+                </div>
+              ) : (
                 plant_details.acf.image_url.map((item, index) => (
                   <div key={index} className="img-container">
                     <img src={item.thumbnail_image_url} alt="plant image" />
                   </div>
-                ))}
+                ))
+              )}
             </div>
           </div>
           <div className="col-lg-8">
