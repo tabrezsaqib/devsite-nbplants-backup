@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router"
 const PlantItem = ({ plant }) => {
-  const router = useRouter()
   return (
     <>
       <div
@@ -15,7 +13,7 @@ const PlantItem = ({ plant }) => {
             src={
               plant.acf.image_url !== undefined &&
               plant.acf.image_url.length > 0
-                ? plant.acf.image_url[0].thumbnail_image_url
+                ? plant.acf.image_url[0].full_image_url
                 : "../images/no_result_found.png"
             }
             alt=""
