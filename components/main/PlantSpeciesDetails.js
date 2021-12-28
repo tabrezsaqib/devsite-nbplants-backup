@@ -1,8 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState, useRef } from "react"
 import * as api from "../../generics/api"
-import React from "react"
+import { Slide } from "react-slideshow-image"
+import "react-slideshow-image/dist/styles.css"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
+  const [slide, setSlide] = useState(false)
+  const [slideIndex, setSlideIndex] = useState(0)
+  const slideRef = useRef()
+
+  const slideShow = (index) => {
+    console.log(index)
+    index ? setSlide(true) : setSlide(false)
+    index && setSlideIndex(index)
+  }
+
+  const back = () => {
+    slideRef.current.goBack()
+    setSlideIndex(0)
+  }
+
+  const next = () => {
+    slideRef.current.goNext()
+    setSlideIndex(0)
+  }
+
+  const properties = {
+    autoplay: false,
+    arrows: false,
+  }
+
   return (
     <div className="m-4">
       {plant_details.length !== 0 ? (
@@ -16,11 +43,35 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </div>
               ) : (
                 plant_details.acf.image_url.map((item, index) => (
-                  <div key={index} className="img-container">
+                  <div
+                    key={index}
+                    className="img-container img-tabs"
+                    onClick={() => slideShow(index)}>
                     <img src={item.thumbnail_image_url} alt="plant image" />
                   </div>
                 ))
               )}
+            </div>
+            <div className={!slide ? "hide" : ""}>
+              <Slide ref={slideRef} easing="ease" {...properties}>
+                {plant_details.acf.image_url.map((item, index) => (
+                  <div className="each-slide" key={index}>
+                    <div
+                      style={{
+                        backgroundImage: `url(${
+                          plant_details.acf.image_url[slideIndex || index]
+                            .full_image_url
+                        })`,
+                      }}></div>
+                  </div>
+                ))}
+              </Slide>
+              <button type="button" onClick={back}>
+                Back
+              </button>
+              <button type="button" onClick={next}>
+                Next
+              </button>
             </div>
             {/* <div className="d-flex flex-column mt-4">
               <p>
@@ -630,6 +681,26 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .label-value-section {
           width: 50%;
+        }
+        .each-slide > div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-size: cover;
+          height: 350px;
+        }
+
+        .each-slide span {
+          padding: 20px;
+          font-size: 20px;
+          background: #efefef;
+          text-align: center;
+        }
+        .img-tabs:hover {
+          cursor: pointer;
+        }
+        .hide {
+          display: none;
         }
       `}</style>
     </div>
