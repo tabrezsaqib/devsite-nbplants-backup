@@ -6,13 +6,14 @@ import "react-slideshow-image/dist/styles.css"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
-  const [slideIndex, setSlideIndex] = useState(0)
+  const [slideIndex, setSlideIndex] = useState(null)
+  // const [previousIndex, setPreviousIndex] = useState(null)
+  // const [nextIndex, setNextIndex] = useState(null)
   const slideRef = useRef()
 
   const slideShow = (index) => {
-    console.log(index)
     index ? setSlide(true) : setSlide(false)
-    index && setSlideIndex(index)
+    setSlideIndex(index)
   }
 
   const back = () => {
@@ -28,6 +29,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   const properties = {
     autoplay: false,
     arrows: false,
+    // onChange: (previous, next) => {
+    //   setPreviousIndex(previous)
+    //   setNextIndex(next)
+    // },
   }
 
   return (
@@ -46,33 +51,57 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <div
                     key={index}
                     className="img-container img-tabs"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
                     onClick={() => slideShow(index)}>
                     <img src={item.thumbnail_image_url} alt="plant image" />
                   </div>
                 ))
               )}
             </div>
-            <div className={!slide ? "hide" : ""}>
-              <Slide ref={slideRef} easing="ease" {...properties}>
-                {plant_details.acf.image_url.map((item, index) => (
-                  <div className="each-slide" key={index}>
-                    <div
-                      style={{
-                        backgroundImage: `url(${
-                          plant_details.acf.image_url[slideIndex || index]
-                            .full_image_url
-                        })`,
-                      }}></div>
+            <div
+              className="modal fade"
+              id="exampleModal"
+              tabIndex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"></button>
                   </div>
-                ))}
-              </Slide>
-              <button type="button" onClick={back}>
-                Back
-              </button>
-              <button type="button" onClick={next}>
-                Next
-              </button>
+                  <div className="modal-body">
+                    <div className={!slide ? "hide" : ""}>
+                      <Slide ref={slideRef} easing="ease" {...properties}>
+                        {plant_details.acf.image_url.map((item, index) => (
+                          <div className="each-slide" key={index}>
+                            <div
+                              style={{
+                                backgroundImage: `url(${
+                                  plant_details.acf.image_url[
+                                    slideIndex || index
+                                  ].full_image_url
+                                })`,
+                              }}></div>
+                          </div>
+                        ))}
+                      </Slide>
+                      <button type="button" onClick={() => back()}>
+                        Back
+                      </button>
+                      <button type="button" onClick={() => next()}>
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
             {/* <div className="d-flex flex-column mt-4">
               <p>
                 <strong>Unique Characteristics: </strong>
