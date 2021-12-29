@@ -7,12 +7,10 @@ import "react-slideshow-image/dist/styles.css"
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
   const [slideIndex, setSlideIndex] = useState(null)
-  // const [previousIndex, setPreviousIndex] = useState(null)
-  // const [nextIndex, setNextIndex] = useState(null)
   const slideRef = useRef()
 
   const slideShow = (index) => {
-    index ? setSlide(true) : setSlide(false)
+    setSlide(true)
     setSlideIndex(index)
   }
 
@@ -29,12 +27,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   const properties = {
     autoplay: false,
     arrows: false,
-    // onChange: (previous, next) => {
-    //   setPreviousIndex(previous)
-    //   setNextIndex(next)
-    // },
   }
-
+  console.log(plant_details)
+  console.log(slideIndex)
   return (
     <div className="m-4">
       {plant_details.length !== 0 ? (
@@ -65,7 +60,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               tabIndex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true">
-              <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-dialog modal-dialog-centered modal-xl">
                 <div className="modal-content">
                   <div className="modal-header">
                     <button
@@ -716,7 +711,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           align-items: center;
           justify-content: center;
           background-size: cover;
-          height: 350px;
+          height: 80vh;
         }
 
         .each-slide span {
