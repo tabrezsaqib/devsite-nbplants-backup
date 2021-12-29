@@ -2,12 +2,10 @@ import axios from "axios"
 import * as localStore from "../../generics/localStore"
 
 export async function get(url) {
-  let accessToken = localStore.getToken()
   return axios(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer" + accessToken,
     },
   })
     .then(async (response) => {
