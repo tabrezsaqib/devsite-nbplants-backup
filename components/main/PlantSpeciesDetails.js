@@ -36,12 +36,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         <div className="row" key={plant_details.id}>
           <div className="col-lg-3">
             <div className="d-flex flex-wrap">
-              {plant_details.acf.image_url.length == 0 ? (
-                <div className="d-flex flex-column text-center">
-                  <img src="../../images/no_result_found.png" alt="" />
-                  <h3>Oops! No images found!</h3>
-                </div>
-              ) : (
+              {plant_details.acf.image_url !== undefined &&
+              plant_details.acf.image_url.length > 0 ? (
                 plant_details.acf.image_url.map((item, index) => (
                   <div
                     key={index}
@@ -52,6 +48,11 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <img src={item.thumbnail_image_url} alt="plant image" />
                   </div>
                 ))
+              ) : (
+                <div className="d-flex flex-column text-center stock-img-container">
+                  <img src="../../images/no_result_found.png" alt="" />
+                  <h3>Oops! No images found!</h3>
+                </div>
               )}
             </div>
             <div
@@ -72,18 +73,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <div className="modal-body">
                     <div className={!slide ? "hide" : ""}>
                       <Slide ref={slideRef} easing="ease" {...properties}>
-                        {plant_details.acf.image_url.map((item, index) => (
-                          <div className="each-slide" key={index}>
-                            <div
-                              style={{
-                                backgroundImage: `url(${
-                                  plant_details.acf.image_url[
-                                    slideIndex || index
-                                  ].full_image_url
-                                })`,
-                              }}></div>
-                          </div>
-                        ))}
+                        {plant_details.acf.image_url !== undefined &&
+                          plant_details.acf.image_url.length > 0 &&
+                          plant_details.acf.image_url.map((item, index) => (
+                            <div className="each-slide" key={index}>
+                              <div
+                                style={{
+                                  backgroundImage: `url(${
+                                    plant_details.acf.image_url[
+                                      slideIndex || index
+                                    ].full_image_url
+                                  })`,
+                                }}></div>
+                            </div>
+                          ))}
                       </Slide>
                       <button type="button" onClick={() => back()}>
                         Back
@@ -725,6 +728,17 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .hide {
           display: none;
+        }
+        .stock-img-container {
+          width: 100%;
+          height: 250px;
+          img {
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
         }
       `}</style>
     </div>

@@ -4,7 +4,7 @@ const PlantItem = ({ plant }) => {
     <>
       <div
         className={
-          (plant.acf.plant_type == "nonwoody" ||
+          (plant.acf.plant_type == "Non-woody" ||
             plant.acf.plant_type == "woody") &&
           "content-box"
         }>

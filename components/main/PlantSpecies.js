@@ -8,7 +8,7 @@ const PlantSpecies = ({ plant }) => {
   const router = useRouter()
   return (
     <>
-      {router.pathname == `/plants` && router.query.type == `nonwoody` ? (
+      {router.pathname == `/plants` && router.query.type == `Non-woody` ? (
         <>
           {/* {console.log("Non Woody: ", plant)} */}
           <PlantItem plant={plant} />
@@ -22,7 +22,7 @@ const PlantSpecies = ({ plant }) => {
       ) : (
         <div
           className={
-            plant.acf.plant_type == "nonwoody" ||
+            plant.acf.plant_type == "Non-woody" ||
             plant.acf.plant_type == "woody"
               ? "hidden"
               : "content-box"
