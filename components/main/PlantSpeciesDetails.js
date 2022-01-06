@@ -118,45 +118,67 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             </div> */}
           </div>
           <div className="col-lg-9">
-            <div className="d-flex mt-2">
-              <h2 className="heading">
-                <strong>{plant_details.acf.common_name}</strong>
-              </h2>
-              <h4 className="align-self-center pt-2">
-                <strong>
-                  <i>
-                    &nbsp;&nbsp;
-                    {`${plant_details.acf.genus} ${plant_details.acf["species"]}`}
-                  </i>
-                </strong>
-              </h4>
+            <div className="d-flex flex-column mt-2">
+              <div className="d-flex">
+                <h2 className="heading">
+                  <strong>{plant_details.acf.common_name}</strong>
+                </h2>
+                <h4 className="align-self-center pt-2">
+                  <strong>
+                    <i>
+                      &nbsp;&nbsp;
+                      {`${plant_details.acf.genus} ${plant_details.acf["species"]}`}
+                    </i>
+                  </strong>
+                </h4>
+              </div>
+              {plant_details.acf.synonyms_english && (
+                <div className="d-flex label-value-section">
+                  <p>
+                    <strong>Alternate Names: &nbsp;</strong>
+                  </p>
+                  {api.capitalizeFirstLetter(
+                    plant_details.acf.synonyms_english
+                  )}
+                </div>
+              )}
             </div>
             <hr />
             <h4 className="pb-3">
               <strong>Characteristics</strong>
             </h4>
+
             <div className="d-flex flex-wrap">
-              {/* <div className="d-flex label-value-section">
-                <p>
-                  <strong>Habitat: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.habitat.length !== 0 ? (
-                  plant_details.acf.characteristics.habitat.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
+              {plant_details.acf.plant_type && (
+                <div className="d-flex label-value-section">
                   <p>
-                    <i>Not Available</i>
+                    <strong>Plant Type: &nbsp;</strong>
                   </p>
-                )}
-              </div> */}
+                  {api.capitalizeFirstLetter(plant_details.acf.plant_type)}
+                </div>
+              )}
+
+              {plant_details.acf.family && (
+                <div className="d-flex label-value-section">
+                  <p>
+                    <strong>Plant Family: &nbsp;</strong>
+                  </p>
+                  {api.capitalizeFirstLetter(plant_details.acf.family)}
+                </div>
+              )}
+
+              {plant_details.acf.characteristics
+                .native_or_introduced_or_invasive && (
+                <div className="d-flex label-value-section">
+                  <p>
+                    <strong>Native or Introduced or Invasive: &nbsp;</strong>
+                  </p>
+                  {
+                    plant_details.acf.characteristics
+                      .native_or_introduced_or_invasive
+                  }
+                </div>
+              )}
 
               {plant_details.acf.characteristics.s_rank && (
                 <div className="d-flex label-value-section">
@@ -166,7 +188,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   {plant_details.acf.characteristics.s_rank}
                 </div>
               )}
-
+              {plant_details.acf.characteristics.habitat.length !== 0 &&
+                plant_details.acf.characteristics.habitat.map((item, index) => (
+                  <div className="d-flex label-value-section" key={index}>
+                    <p>
+                      <strong>Habitat: &nbsp;</strong>
+                    </p>
+                    <div>
+                      <p>
+                        {api.capitalizeFirstLetter(item)}
+                        &nbsp;
+                      </p>
+                    </div>
+                  </div>
+                ))}
               {plant_details.acf.characteristics.habitat_description && (
                 <div className="d-flex label-value-section">
                   <p>
@@ -175,6 +210,143 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   {plant_details.acf.characteristics.habitat_description}
                 </div>
               )}
+
+              {plant_details.acf.characteristics.leaf_type.length !== 0 &&
+                plant_details.acf.characteristics.leaf_type.map(
+                  (item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Leaf Type: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
+              {plant_details.acf.characteristics.leaf_arrangement.length !==
+                0 &&
+                plant_details.acf.characteristics.leaf_arrangement.map(
+                  (item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Leaf Arrangement: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
+
+              {plant_details.acf.characteristics.leaf_blade_edges.length !==
+                0 &&
+                plant_details.acf.characteristics.leaf_blade_edges.map(
+                  (item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Leaf Blade Edges: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
+
+              {plant_details.acf.characteristics.leaf_shape.length !== 0 &&
+                plant_details.acf.characteristics.leaf_shape.map(
+                  (item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Leaf Shape: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
+
+              {plant_details.acf.characteristics.leaf_number && (
+                <div className="d-flex label-value-section">
+                  <p>
+                    <strong>Leaf Number: &nbsp;</strong>
+                  </p>
+                  {plant_details.acf.characteristics.leaf_number}
+                </div>
+              )}
+
+              {plant_details.acf.characteristics.stems.length !== 0 &&
+                plant_details.acf.characteristics.stems.map((item, index) => (
+                  <div className="d-flex label-value-section" key={index}>
+                    <p>
+                      <strong>Type of Stems: &nbsp;</strong>
+                    </p>
+                    <div>
+                      <p>
+                        {api.capitalizeFirstLetter(item)}
+                        &nbsp;
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+              {plant_details.acf.characteristics.position_of_hairs && (
+                <div className="d-flex label-value-section">
+                  <p>
+                    <strong>Position of hairs: &nbsp;</strong>
+                  </p>
+                  {plant_details.acf.characteristics.position_of_hairs}
+                </div>
+              )}
+
+              {plant_details.acf.characteristics.flower_petal_colour.length !==
+                0 &&
+                plant_details.acf.characteristics.flower_petal_colour.map(
+                  (item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Flower Petal Colour: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
+
+              {plant_details.acf.characteristics.inflorescence.length !== 0 &&
+                plant_details.acf.characteristics.inflorescence.map(
+                  (item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Inflorescence: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  )
+                )}
 
               {plant_details.acf.characteristics.number_flowers && (
                 <div className="d-flex label-value-section">
@@ -280,7 +452,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       <strong>Fruits: &nbsp;</strong>
                     </p>
                     <div>
-                      <p>{item} &nbsp;</p>
+                      <p>{api.capitalizeFirstLetter(item)} &nbsp;</p>
                     </div>
                   </div>
                 ))}
@@ -288,9 +460,11 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               {plant_details.acf.characteristics.fruit_length && (
                 <div className="d-flex label-value-section">
                   <p>
-                    <strong>Fruit Lenght: &nbsp;</strong>
+                    <strong>Fruit Length: &nbsp;</strong>
                   </p>
-                  {plant_details.acf.characteristics.fruit_length}
+                  {api.capitalizeFirstLetter(
+                    plant_details.acf.characteristics.fruit_length
+                  )}
                 </div>
               )}
 
