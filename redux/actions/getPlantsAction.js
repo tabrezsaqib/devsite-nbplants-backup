@@ -16,6 +16,7 @@ export const fetchAllPlantPosts = () => async (dispatch) => {
 }
 
 export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
+  console.log(type)
   const response = await api.get(
     `${API_URL}plants_db?plant_type=${type}&?order=desc&per_page=69`
   )
