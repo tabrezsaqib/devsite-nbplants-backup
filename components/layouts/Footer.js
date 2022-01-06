@@ -22,23 +22,23 @@ const Footer = () => {
             <div className="sponsor d-flex justify-content-between">
               <div className="logo-container">
                 <img
-                  src="../images/botanic-garden-dark.png"
+                  src="../../images/botanic-garden-dark.png"
                   height="47"
                   alt="logo"
                 />
               </div>
               <div className="logo-container">
-                <img src="../images/nb-logo.png" alt="logo" />
+                <img src="../../images/nb-logo.png" alt="logo" />
               </div>
               <div className="logo-container">
-                <img src="../images/ac-dc-logo.png" alt="logo" />
+                <img src="../../images/ac-dc-logo.png" alt="logo" />
               </div>
               <div className="logo-container">
-                <img src="../images/unb-logo.png" alt="logo" />
+                <img src="../../images/unb-logo.png" alt="logo" />
               </div>
               <div className="logo-container">
                 <img
-                  src="../images/nature-trust-logo.png"
+                  src="../../images/nature-trust-logo.png"
                   height="67"
                   alt="logo"
                 />

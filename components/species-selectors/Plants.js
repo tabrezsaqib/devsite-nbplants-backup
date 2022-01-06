@@ -163,7 +163,7 @@ const Plants = ({
       dispatch(setItemOffset(newOffset))
     }
 
-    if (router.query.type == "nonwoody") {
+    if (router.query.type == "Non-woody") {
       dispatch(fetchNonWoodyPlantPosts(router.query.type))
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()

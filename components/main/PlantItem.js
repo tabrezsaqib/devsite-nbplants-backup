@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
+import * as api from "../../generics/api"
+
 const PlantItem = ({ plant }) => {
   return (
     <>
       <div
         className={
-          (plant.acf.plant_type == "nonwoody" ||
+          (plant.acf.plant_type == "Non-woody" ||
             plant.acf.plant_type == "woody") &&
           "content-box"
         }>
@@ -23,26 +25,33 @@ const PlantItem = ({ plant }) => {
           <h4 className="heading mt-3">{plant.acf.common_name}</h4>
           <div className="d-flex flex-column">
             <span>
-              <strong>Common name:</strong>{" "}
-              {`${plant.acf.genus} ${plant.acf.species}`}
+              <i>{`${plant.acf.genus} ${plant.acf.species}`}</i>
             </span>
             <div className="d-flex flex-wrap tags">
               {plant.acf.characteristics.habitat.map((val, index) => (
-                <span key={index}>{val}, &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.leaf_type.map((val, index) => (
-                <span key={index}>{val} &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.leaf_arrangement.map((val, index) => (
-                <span key={index}>{val} &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.leaf_blade_edges.map((val, index) => (
-                <span key={index}>{val} &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.flower_petal_colour.map(
                 (val, index) => (
                   <span key={index}>
-                    {val}
+                    {api.capitalizeFirstLetter(val)}
                     {val !==
                     plant.acf.characteristics.flower_petal_colour
                       .slice(-1)

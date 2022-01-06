@@ -4,7 +4,7 @@ const API_URL = process.env.API_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db?order=desc&per_page=69`)
-  console.log(response)
+
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,
@@ -16,6 +16,7 @@ export const fetchAllPlantPosts = () => async (dispatch) => {
 }
 
 export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
+  console.log(type)
   const response = await api.get(
     `${API_URL}plants_db?plant_type=${type}&?order=desc&per_page=69`
   )
