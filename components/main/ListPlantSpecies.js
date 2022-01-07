@@ -32,14 +32,13 @@ const ListPlantSpecies = ({
   // }
 
   // console.log("Active list", activeFilterList)
-  // console.log("Filter list", filteredList)
 
   return (
     <div className="d-flex flex-wrap">
       {filteredList.length > 0 && isLoading == false ? (
         filteredList.map((data, index) => {
           return (
-            <div key={data.id}>
+            <div key={data.id} className="box-container">
               <Link
                 href={{
                   pathname: `/plants/${data.id}`,
@@ -68,6 +67,15 @@ const ListPlantSpecies = ({
         )
       )}
       <style jsx>{`
+        .box-container {
+          background-color: #ffffff;
+          margin: 10px 10px 20px;
+          border-radius: 15px;
+          border: 1px solid #e0e1e3;
+          flex-grow: 1;
+          width: 240px;
+          max-width: 250px;
+        }
         .info-section {
           height: 100%;
           width: 100%;

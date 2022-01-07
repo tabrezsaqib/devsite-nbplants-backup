@@ -67,6 +67,9 @@ const Navbar = () => {
       <style jsx>{`
         nav {
           border-bottom: 1px solid #e0e1e3;
+          background-color: #ffffff !important;
+          padding-top: 0px !important;
+          padding-bottom: 0px !important;
         }
         .logo-container {
           overflow: hidden;

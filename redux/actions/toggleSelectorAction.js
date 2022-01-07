@@ -31,9 +31,40 @@ export const toggleLeafArrangementData = (option) => async (dispatch) => {
     payload: option,
   })
 }
-export const toggleCountyData = (option) => async (dispatch) => {
+// export const toggleCountyData = (option) => async (dispatch) => {
+//   dispatch({
+//     type: types.TOGGLE_COUNTY,
+//     payload: option,
+//   })
+// }
+
+export const toggleInflorescence = (option) => async (dispatch) => {
   dispatch({
-    type: types.TOGGLE_COUNTY,
+    type: types.TOGGLE_INFLORESCENCE,
+    payload: option,
+  })
+}
+export const toggleLeafShapeData = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SHAPE,
+    payload: option,
+  })
+}
+export const toggleNative = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_NATIVE,
+    payload: option,
+  })
+}
+export const toggleStemsData = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_STEMS,
+    payload: option,
+  })
+}
+export const togglePetalSymmetry = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_PETAL_SYMMETRY,
     payload: option,
   })
 }

@@ -11,6 +11,11 @@ import {
   toggleLeafTypeData,
   toggleLeafArrangementData,
   toggleCountyData,
+  toggleInflorescence,
+  toggleLeafShapeData,
+  toggleNative,
+  toggleStemsData,
+  togglePetalSymmetry,
 } from "../../redux/actions/toggleSelectorAction"
 
 import {
@@ -26,6 +31,11 @@ const SideNav = ({
   leaf_arrangement,
   new_brunswick_county,
   activeFilterList,
+  native_or_introduced_or_invasive,
+  leaf_shape,
+  stems,
+  petal_symmetry,
+  inflorescence,
 }) => {
   const dispatch = useDispatch()
   const [activeFilter, setActiveFilter] = useState()
@@ -57,8 +67,8 @@ const SideNav = ({
         dispatch(toggleLeafBladeEdgesData(updatedLeafBladeEdges))
         break
       case "leaf_type":
-        const updatedLeafType = leaf_type.map((item, index) =>
-          index === position ? !item : item
+        const updatedLeafType = leaf_type.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
         )
         dispatch(toggleLeafTypeData(updatedLeafType))
         break
@@ -68,13 +78,43 @@ const SideNav = ({
         )
         dispatch(toggleLeafArrangementData(updatedLeafArrangement))
         break
-      case "new_brunswick_county":
-        const updatedCounty = new_brunswick_county.map(
-          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+      // case "new_brunswick_county":
+      //   const updatedCounty = new_brunswick_county.map((item, index) =>
+      //     index === position ? !item : item
+      //   )
+      //   dispatch(toggleCountyData(updatedCounty))
+      //   break
+      case "leaf_shape":
+        const updatedLeafShape = leaf_shape.map((item, index) =>
+          index === position ? !item : item
         )
-        dispatch(toggleCountyData(updatedCounty))
+        dispatch(toggleLeafShapeData(updatedLeafShape))
         break
 
+      case "stems":
+        const updatedStems = stems.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleStemsData(updatedStems))
+        break
+      case "native_or_introduced_or_invasive":
+        const updatedNative = native_or_introduced_or_invasive.map(
+          (item, index) => (index === position ? !item : item)
+        )
+        dispatch(toggleNative(updatedNative))
+        break
+      case "petal_symmetry":
+        const updatedPetalSymmetry = petal_symmetry.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(togglePetalSymmetry(updatedPetalSymmetry))
+        break
+      case "inflorescence":
+        const updatedInflorescence = inflorescence.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleInflorescence(updatedInflorescence))
+        break
       default:
         break
     }
@@ -106,17 +146,22 @@ const SideNav = ({
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
           new_brunswick_county={new_brunswick_county}
+          native_or_introduced_or_invasive={native_or_introduced_or_invasive}
+          leaf_shape={leaf_shape}
+          stems={stems}
+          petal_symmetry={petal_symmetry}
+          inflorescence={inflorescence}
           onSelectorChange={onSelectorChange}
           handleOnChange={handleOnChange}
         />
       </div>
       <style jsx>{`
         .sidebar {
-          background-color: #f5f6f8;
-          border-radius: 10px;
+          background-color: #ffffff;
           border: 1px solid #e0e1e3;
+          border-radius: 10px;
           padding: 10px 12px;
-          margin-top: 25px;
+          margin-top: 15px;
           height: auto;
           margin-bottom: 25px;
           padding-bottom: 25px;
@@ -133,7 +178,13 @@ const mapStateToProps = (state) => {
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
-    new_brunswick_county: state.selector.new_brunswick_county,
+    // new_brunswick_county: state.selector.new_brunswick_county,
+    native_or_introduced_or_invasive:
+      state.selector.native_or_introduced_or_invasive,
+    leaf_shape: state.selector.leaf_shape,
+    stems: state.selector.stems,
+    petal_symmetry: state.selector.petal_symmetry,
+    inflorescence: state.selector.inflorescence,
     activeFilterList: state.selector.activeFilterList,
   }
 }

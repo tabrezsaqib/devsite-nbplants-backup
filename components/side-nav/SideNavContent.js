@@ -10,6 +10,11 @@ const SideNavContent = ({
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  native_or_introduced_or_invasive,
+  leaf_shape,
+  petal_symmetry,
+  inflorescence,
+  stems,
   // new_brunswick_county,
   onSelectorChange,
   handleOnChange,
@@ -39,6 +44,26 @@ const SideNavContent = ({
     //   key: "new_brunswick_county",
     //   value: "New Brunswick County",
     // },
+    {
+      key: "native_or_introduced_or_invasive",
+      value: "Native or Introduced or Invasive",
+    },
+    {
+      key: "leaf_shape",
+      value: "Leaf Shape",
+    },
+    {
+      key: "stems",
+      value: "Stems",
+    },
+    {
+      key: "petal_symmetry",
+      value: "Petal Symmetry",
+    },
+    {
+      key: "inflorescence",
+      value: "Inflorescence",
+    },
   ]
 
   const colorValues = [
@@ -109,6 +134,16 @@ const SideNavContent = ({
                       ? flower_petal_colour[index]
                       : item.key == "leaf_blade_edges"
                       ? leaf_blade_edges[index]
+                      : item.key == "native_or_introduced_or_invasive"
+                      ? native_or_introduced_or_invasive[index]
+                      : item.key == "leaf_shape"
+                      ? leaf_shape[index]
+                      : item.key == "stems"
+                      ? stems[index]
+                      : item.key == "petal_symmetry"
+                      ? petal_symmetry[index]
+                      : item.key == "inflorescence"
+                      ? inflorescence[index]
                       : false
                   }
                   onChange={(e) => handleOnChange(index, item.key)}
@@ -140,9 +175,9 @@ const SideNavContent = ({
             )
           })}
         </div>
-        <hr
+        {/* <hr
           className={item.key !== "new_brunswick_county" ? "separator" : "hide"}
-        />
+        /> */}
         <style jsx>{`
           .selector-heading {
             font-size: 13px;
