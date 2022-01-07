@@ -39,7 +39,6 @@ const PlantSpecies = ({ plant }) => {
         .content-box {
           width: 220px;
           height: auto;
-          margin: 10px;
           overflow: hidden;
           margin-bottom: 40px;
         }
@@ -48,7 +47,6 @@ const PlantSpecies = ({ plant }) => {
           overflow: hidden;
           width: 100%;
           height: 230px;
-          border-radius: 15px;
           border: 1px solid #e0e1e3;
           img {
             width: 100%;

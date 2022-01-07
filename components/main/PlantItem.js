@@ -70,9 +70,7 @@ const PlantItem = ({ plant }) => {
         .content-box {
           width: 230px;
           height: auto;
-          margin: 10px;
           overflow: hidden;
-          margin-bottom: 40px;
         }
         .heading {
           font-weight: 900;
@@ -80,14 +78,18 @@ const PlantItem = ({ plant }) => {
         .img-container {
           overflow: hidden;
           width: 100%;
-          height: 230px;
-          border-radius: 15px;
-          border: 1px solid #e0e1e3;
+          height: 200px;
+          border-top-right-radius: 15px;
+          border-top-left-radius: 15px;
+          border-bottom: 1px solid #e0e1e3;
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
+        }
+        .description {
+          padding: 5px 15px 15px;
         }
         .hidden {
           display: none;

@@ -112,9 +112,9 @@ const SideNav = ({
       </div>
       <style jsx>{`
         .sidebar {
-          background-color: #f5f6f8;
-          border-radius: 10px;
+          background-color: #ffffff;
           border: 1px solid #e0e1e3;
+          border-radius: 10px;
           padding: 10px 12px;
           margin-top: 25px;
           height: auto;

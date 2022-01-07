@@ -39,7 +39,7 @@ const ListPlantSpecies = ({
       {filteredList.length > 0 && isLoading == false ? (
         filteredList.map((data, index) => {
           return (
-            <div key={data.id}>
+            <div key={data.id} className="box-container">
               <Link
                 href={{
                   pathname: `/plants/${data.id}`,
@@ -68,6 +68,12 @@ const ListPlantSpecies = ({
         )
       )}
       <style jsx>{`
+        .box-container {
+          background-color: #ffffff;
+          margin: 10px 10px 20px;
+          border-radius: 15px;
+          border: 1px solid #e0e1e3;
+        }
         .info-section {
           height: 100%;
           width: 100%;
