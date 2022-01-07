@@ -31,7 +31,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   console.log(plant_details)
   console.log(slideIndex)
   return (
-    <div className="mt-4">
+    <div className="mt-3">
       {plant_details.length !== 0 ? (
         <div className="row" key={plant_details.id}>
           <div className="col-lg-3">

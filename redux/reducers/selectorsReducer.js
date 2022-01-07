@@ -12,6 +12,13 @@ const initialState = {
   // new_brunswick_county: new Array(options.new_brunswick_county.length).fill(
   //   false
   // ),
+  native_or_introduced_or_invasive: new Array(
+    options.native_or_introduced_or_invasive.length
+  ).fill(false),
+  leaf_shape: new Array(options.leaf_shape.length).fill(false),
+  stems: new Array(options.stems.length).fill(false),
+  petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
+  inflorescence: new Array(options.inflorescence.length).fill(false),
   selectorFilter: "none",
   activeFilterList: [],
   activeFilter: false,
@@ -49,6 +56,31 @@ export const selectorsReducer = (state = initialState, action) => {
     //     ...state,
     //     new_brunswick_county: action.payload,
     //   }
+    case types.TOGGLE_INFLORESCENCE:
+      return {
+        ...state,
+        inflorescence: action.payload,
+      }
+    case types.TOGGLE_NATIVE:
+      return {
+        ...state,
+        native_or_introduced_or_invasive: action.payload,
+      }
+    case types.TOGGLE_STEMS:
+      return {
+        ...state,
+        stems: action.payload,
+      }
+    case types.TOGGLE_SHAPE:
+      return {
+        ...state,
+        leaf_shape: action.payload,
+      }
+    case types.TOGGLE_PETAL_SYMMETRY:
+      return {
+        ...state,
+        petal_symmetry: action.payload,
+      }
     case types.ACTIVE_SELECTOR_LIST:
       return {
         ...state,

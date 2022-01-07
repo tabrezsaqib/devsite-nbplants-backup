@@ -4,7 +4,7 @@ import Plants from "../../components/species-selectors/Plants"
 const plants = () => {
   return (
     <div>
-      <Plants itemsPerPage={10} />
+      <Plants itemsPerPage={12} />
     </div>
   )
 }

@@ -40,8 +40,19 @@ a {
   font-weight: bold !important;
 }
 .grid-container {
-  margin-top: 15px;
+  margin-top: 5px;
   margin-bottom: 60px;
+}
+.pagination {
+  position: absolute;
+  bottom: -14%;
+}
+.page-item.active .page-link {
+  background-color: #1d9d47;
+  border-color: #1d9d47;
+}
+.page-link {
+  color: #333333;
 }
 .hide {
   display: none;
@@ -60,9 +71,12 @@ a {
   font-size: 16px !important;
 }
 .form-check-input[type="checkbox"] {
-  border-radius: 0.25em;
+  border-radius: 0.15em;
   border-color: #555555;
   border-width: 1px;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
+}
+.form-check {
+  margin-bottom: 0px !important;
 }

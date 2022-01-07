@@ -32,6 +32,11 @@ const Plants = ({
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  // native_or_introduced_or_invasive,
+  leaf_shape,
+  petal_symmetry,
+  inflorescence,
+  stems,
   itemOffset,
   pageCount,
   toggle_pagination,
@@ -185,6 +190,11 @@ const Plants = ({
     leaf_blade_edges,
     leaf_type,
     leaf_arrangement,
+    // native_or_introduced_or_invasive,
+    petal_symmetry,
+    leaf_shape,
+    stems,
+    inflorescence,
     router,
     activeFilterList,
     localStore,
@@ -197,7 +207,7 @@ const Plants = ({
     resetCount,
   ])
   // console.log("Active list", activeFilterList)
-  // console.log("Filter list", filteredList.current)
+  console.log("Filter list", filteredList.current)
   // console.log("Non woody plants outside: ", nonwoody_plants_count)
 
   return (
@@ -205,7 +215,10 @@ const Plants = ({
       <div className="col-2">
         <SideNav />
       </div>
-      <div className="col-10">
+      <div
+        className={
+          filteredList.current.length == 0 ? "error-bg col-10" : "col-10"
+        }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
           <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
@@ -237,6 +250,14 @@ const Plants = ({
         .hide {
           display: none;
         }
+        .error-bg {
+          background-color: #ffffff;
+          margin-top: 16px;
+          width: 82.5%;
+          margin-bottom: 27px;
+          border: 1px solid #e0e1e3;
+          border-radius: 15px;
+        }
       `}</style>
     </div>
   )
@@ -254,6 +275,12 @@ const mapStateToProps = (state) => {
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
+    native_or_introduced_or_invasive:
+      state.selector.native_or_introduced_or_invasive,
+    leaf_shape: state.selector.leaf_shape,
+    petal_symmetry: state.selector.petal_symmetry,
+    inflorescence: state.selector.inflorescence,
+    stems: state.selector.stems,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     toggle_pagination: state.pagination.toggle_pagination,
