@@ -27,6 +27,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   const properties = {
     autoplay: false,
     arrows: false,
+    indicators: true,
   }
   console.log(plant_details)
   console.log(slideIndex)
@@ -71,29 +72,31 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       aria-label="Close"></button>
                   </div>
                   <div className="modal-body">
-                    <div className={!slide ? "hide" : ""}>
-                      <Slide ref={slideRef} easing="ease" {...properties}>
-                        {plant_details.acf.image_url !== undefined &&
-                          plant_details.acf.image_url.length > 0 &&
-                          plant_details.acf.image_url.map((item, index) => (
-                            <div className="each-slide" key={index}>
-                              <div
-                                style={{
-                                  backgroundImage: `url(${
-                                    plant_details.acf.image_url[
-                                      slideIndex || index
-                                    ].full_image_url
-                                  })`,
-                                }}></div>
-                            </div>
-                          ))}
-                      </Slide>
-                      <button type="button" onClick={() => back()}>
-                        Back
-                      </button>
-                      <button type="button" onClick={() => next()}>
-                        Next
-                      </button>
+                    <div className="slider">
+                      <div className={!slide ? "hide" : ""}>
+                        <Slide ref={slideRef} easing="ease" {...properties}>
+                          {plant_details.acf.image_url !== undefined &&
+                            plant_details.acf.image_url.length > 0 &&
+                            plant_details.acf.image_url.map((item, index) => (
+                              <div className="each-slide" key={index}>
+                                <div
+                                  style={{
+                                    backgroundImage: `url(${
+                                      plant_details.acf.image_url[
+                                        slideIndex || index
+                                      ].full_image_url
+                                    })`,
+                                  }}></div>
+                              </div>
+                            ))}
+                        </Slide>
+                        <h2 name="prev" onClick={() => back()}>
+                          <i className="bi bi-arrow-left-circle-fill" />
+                        </h2>
+                        <h2 name="next" onClick={() => next()}>
+                          <i className="bi bi-arrow-right-circle-fill" />
+                        </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -490,494 +493,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     {plant_details.acf.characteristics.wildlife_benefits}
                   </div>
                 )}
-
-                {/* <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaf Type: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaf_type.length !== 0 ? (
-                  plant_details.acf.characteristics.leaf_type.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaf Arrangement: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaf_arrangement.length !==
-                0 ? (
-                  plant_details.acf.characteristics.leaf_arrangement.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaf Blage Edges: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaf_blage_edges !==
-                undefined ? (
-                  plant_details.acf.characteristics.leaf_arrangement.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaf Shape: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaf_shape.length !== 0 ? (
-                  plant_details.acf.characteristics.leaf_shape.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Flower Petal Colour: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.flower_petal_colour
-                  .length !== 0 ? (
-                  plant_details.acf.characteristics.flower_petal_colour.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Native or Introduced or Invasive: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics
-                  .native_or_introduced_or_invasive ? (
-                  plant_details.acf.characteristics
-                    .native_or_introduced_or_invasive
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaf Number: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaf_number ? (
-                  plant_details.acf.characteristics.leaf_number
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Number Flowers: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.number_flowers ? (
-                  plant_details.acf.characteristics.number_flowers
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Lip Shape: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.lip_shape ? (
-                  plant_details.acf.characteristics.lip_shape
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Stipule Shape: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.stipule_shape.length !==
-                0 ? (
-                  plant_details.acf.characteristics.stipule_shape.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Position of hairs: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.positions_of_hairs !==
-                undefined ? (
-                  plant_details.acf.characteristics.positions_of_hairs.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Number Petals: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.number_petals ? (
-                  plant_details.acf.characteristics.number_petals
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Inflorescence: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.inflorescence.length !==
-                0 ? (
-                  plant_details.acf.characteristics.inflorescence.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Stems: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.stems.length !== 0 ? (
-                  plant_details.acf.characteristics.stems.map((item, index) => (
-                    <div key={index}>
-                      <p>
-                        {api.capitalizeFirstLetter(item)}
-                        &nbsp;
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Stamen Number: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.stamen_number ? (
-                  plant_details.acf.characteristics.stamen_number
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Armature: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.armature ? (
-                  plant_details.acf.characteristics.armature
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Bark Texture: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.bark_texture ? (
-                  plant_details.acf.characteristics.bark_texture
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Growth Form: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.growth_form ? (
-                  plant_details.acf.characteristics.growth_form
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Deciduous or Coniferous: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.deciduos_or_coniferous ? (
-                  plant_details.acf.characteristics.deciduos_or_coniferous
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaves per node: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaves_per_node ? (
-                  plant_details.acf.characteristics.leaves_per_node
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Leaf Divisions: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.leaf_divisions ? (
-                  plant_details.acf.characteristics.leaf_divisions
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Spore Bearing Leaflets: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.spore_bearing_leaflets ? (
-                  plant_details.acf.characteristics.spore_bearing_leaflets
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Bloom Time: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.bloom_time ? (
-                  plant_details.acf.characteristics.bloom_time
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Petal Symmetry: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.petal_symmetry !== 0 ? (
-                  plant_details.acf.characteristics.petal_symmetry.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Fusion: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.fusion ? (
-                  plant_details.acf.characteristics.fusion
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Fruits: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.fruits.length !== 0 ? (
-                  plant_details.acf.characteristics.fruits.map(
-                    (item, index) => (
-                      <div key={index}>
-                        <p>{item} &nbsp;</p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Fruit Length: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.fruit_length ? (
-                  plant_details.acf.characteristics.fruit_length
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Height: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.height ? (
-                  plant_details.acf.characteristics.height
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Labellum Lower Petal: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.labellum_lower_petal ? (
-                  plant_details.acf.characteristics.labellum_lower_petal
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Necter Spur: &nbsp;</strong>
-                </p>
-                {plant_details.acf.characteristics.necter_spur ? (
-                  plant_details.acf.characteristics.necter_spur
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div>
-              <div className="d-flex label-value-section">
-                <p>
-                  <strong>Note: &nbsp;</strong>
-                </p>
-                &nbsp;&nbsp;
-                {plant_details.acf.note ? (
-                  plant_details.acf.note
-                ) : (
-                  <p>
-                    <i>Not Available</i>
-                  </p>
-                )}
-              </div> */}
               </div>
               <div>
                 {plant_details.acf.note && (
@@ -1078,7 +593,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-size: cover;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
           height: 80vh;
         }
 
@@ -1103,6 +620,23 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               height: 100%;
               object-fit: contain;
             }
+          }
+        }
+        .slider {
+          position: relative;
+          h2[name="prev"]:hover,
+          h2[name="next"]:hover {
+            cursor: pointer;
+          }
+          h2[name="prev"] {
+            position: absolute;
+            left: 1%;
+            top: 45%;
+          }
+          h2[name="next"] {
+            position: absolute;
+            right: 1%;
+            top: 45%;
           }
         }
       `}</style>
