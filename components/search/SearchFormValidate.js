@@ -45,7 +45,7 @@ const SearchFormValidate = ({ submitSearchQuery, search_bar }) => {
                           : "form-control mb-3"
                       }
                       aria-describedby="search"
-                      placeholder="Search"
+                      placeholder="Search Plants..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values["search"]}
@@ -84,7 +84,9 @@ const SearchFormValidate = ({ submitSearchQuery, search_bar }) => {
           text-indent: 31px;
         }
         .input-feedback {
-          color: #d5a370;
+          color: #c56708;
+          font-size: 14px;
+          margin-top: -4px;
         }
         .search input:focus {
           box-shadow: none;

@@ -60,11 +60,21 @@ export const toggleLoader = (option) => async (dispatch) => {
 }
 
 export const searchPlantPosts = (slug) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants_db?search=${slug}`)
-  dispatch({
-    type: types.GET_SEARCH_RESULTS,
-    payload: response.data,
-  })
+  const response = await api.get(`${API_URL}plants_db?common_name=${slug}`)
+  const new_response = await api.get(`${API_URL}plants_db?search=${slug}`)
+
+  if (response.data.length !== 0) {
+    dispatch({
+      type: types.GET_SEARCH_RESULTS,
+      payload: response.data,
+    })
+  }
+  if (new_response.data.length !== 0) {
+    dispatch({
+      type: types.GET_SEARCH_RESULTS,
+      payload: new_response.data,
+    })
+  }
 }
 
 // export const getAllPlantsCount = () => async (dispatch) => {
