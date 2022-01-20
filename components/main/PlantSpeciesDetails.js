@@ -3,6 +3,11 @@ import { useState, useRef } from "react"
 import * as api from "../../generics/api"
 import { Slide } from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2,
+} from "react-html-parser"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -496,11 +501,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               </div>
               <div>
                 {plant_details.acf.note && (
-                  <div className="d-flex">
-                    <p>
-                      <strong>Note: &nbsp;</strong>
-                    </p>
-                    &nbsp;&nbsp;{plant_details.acf.note}
+                  <div className="d-flex flex-column">
+                    <div className="rtc-content">
+                      <p>
+                        <strong>Note:</strong>
+                      </p>
+                      {ReactHtmlParser(plant_details.acf.note)}
+                    </div>
                   </div>
                 )}
 
@@ -638,6 +645,11 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             right: 1%;
             top: 45%;
           }
+        }
+        .rtc-content {
+          background-color: #f6f7f9;
+          padding: 15px 20px;
+          border-radius: 10px;
         }
       `}</style>
     </div>
