@@ -1,8 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-
-import Image from "next/image"
 import Router from "next/router"
-import logo from "../../public/images/logo.png"
+
 import SearchForm from "../search/SearchForm"
 import { useDispatch } from "react-redux"
 import { togglePagination } from "../../redux/actions/paginationAction"
@@ -24,7 +23,10 @@ const Navbar = () => {
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             <div className="logo-container">
-              <Image src={logo} alt="new brunswick plants logo" />
+              <img
+                src="../../images/logo.png"
+                alt="new brunswick plants logo"
+              />
             </div>
           </a>
           <button
