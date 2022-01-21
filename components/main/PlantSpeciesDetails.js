@@ -41,74 +41,105 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       {plant_details.length !== 0 ? (
         <div className="row" key={plant_details.id}>
           <div className="col-lg-3">
-            <div className="d-flex flex-wrap">
-              {plant_details.acf.image_url !== undefined &&
-              plant_details.acf.image_url.length > 0 ? (
-                plant_details.acf.image_url.map((item, index) => (
-                  <div
-                    key={index}
-                    className="img-container img-tabs"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    onClick={() => slideShow(index)}>
-                    <img src={item.thumbnail_image_url} alt="plant image" />
+            <div className="side-bar">
+              <div className="d-flex flex-wrap">
+                {plant_details.acf.image_url !== undefined &&
+                plant_details.acf.image_url.length > 0 ? (
+                  plant_details.acf.image_url.map((item, index) => (
+                    <div
+                      key={index}
+                      className="img-container img-tabs"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      onClick={() => slideShow(index)}>
+                      <img src={item.thumbnail_image_url} alt="plant image" />
+                    </div>
+                  ))
+                ) : (
+                  <div className="d-flex flex-column text-center stock-img-container">
+                    <img src="../../images/no_result_found.png" alt="" />
+                    <h3>Oops! No images found!</h3>
                   </div>
-                ))
-              ) : (
-                <div className="d-flex flex-column text-center stock-img-container">
-                  <img src="../../images/no_result_found.png" alt="" />
-                  <h3>Oops! No images found!</h3>
+                )}
+              </div>
+              <div
+                className={
+                  plant_details.acf.unique_characteristics !== ""
+                    ? "unique-characteristics"
+                    : "hide"
+                }>
+                <p>
+                  <strong>Unique Characteristics</strong>
+                </p>
+                <div className="row">
+                  <div className="col-6">
+                    <div className="featured-image">
+                      <img
+                        src={
+                          plant_details.better_featured_image.media_details
+                            .sizes.medium.source_url
+                        }
+                        alt="plant image"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-6">
+                    <div className="unique-characteristics">
+                      {ReactHtmlParser(
+                        plant_details.acf.unique_characteristics
+                      )}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-            <div
-              className="modal fade"
-              id="exampleModal"
-              tabIndex="-1"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div className="modal-dialog modal-dialog-centered modal-xl">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    <div className="slider">
-                      <div className={!slide ? "hide" : ""}>
-                        <Slide ref={slideRef} easing="ease" {...properties}>
-                          {plant_details.acf.image_url !== undefined &&
-                            plant_details.acf.image_url.length > 0 &&
-                            plant_details.acf.image_url.map((item, index) => (
-                              <div className="each-slide" key={index}>
-                                <div
-                                  style={{
-                                    backgroundImage: `url(${
-                                      plant_details.acf.image_url[
-                                        slideIndex || index
-                                      ].full_image_url
-                                    })`,
-                                  }}></div>
-                              </div>
-                            ))}
-                        </Slide>
-                        <h2 name="prev" onClick={() => back()}>
-                          <i className="bi bi-arrow-left-circle-fill" />
-                        </h2>
-                        <h2 name="next" onClick={() => next()}>
-                          <i className="bi bi-arrow-right-circle-fill" />
-                        </h2>
+              </div>
+              <div
+                className="modal fade"
+                id="exampleModal"
+                tabIndex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered modal-xl">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                      <div className="slider">
+                        <div className={!slide ? "hide" : ""}>
+                          <Slide ref={slideRef} easing="ease" {...properties}>
+                            {plant_details.acf.image_url !== undefined &&
+                              plant_details.acf.image_url.length > 0 &&
+                              plant_details.acf.image_url.map((item, index) => (
+                                <div className="each-slide" key={index}>
+                                  <div
+                                    style={{
+                                      backgroundImage: `url(${
+                                        plant_details.acf.image_url[
+                                          slideIndex || index
+                                        ].full_image_url
+                                      })`,
+                                    }}></div>
+                                </div>
+                              ))}
+                          </Slide>
+                          <h2 name="prev" onClick={() => back()}>
+                            <i className="bi bi-arrow-left-circle-fill" />
+                          </h2>
+                          <h2 name="next" onClick={() => next()}>
+                            <i className="bi bi-arrow-right-circle-fill" />
+                          </h2>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* <div className="d-flex flex-column mt-4">
+              {/* <div className="d-flex flex-column mt-4">
               <p>
                 <strong>Unique Characteristics: </strong>
               </p>
@@ -124,6 +155,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </span>
               </div>
             </div> */}
+            </div>
           </div>
           <div className="col-lg-9">
             <div className="content-section">
@@ -563,9 +595,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .img-container {
           border-radius: 12px;
-          margin: 5px;
-          width: 142px;
-          height: 142px;
+          margin: 2px;
+          width: 140px;
+          height: 140px;
           overflow: hidden;
           border: 1px solid #e0e1e3;
           img {
@@ -650,6 +682,23 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           background-color: #f6f7f9;
           padding: 15px 20px;
           border-radius: 10px;
+        }
+        .side-bar {
+          background-color: #ffffff;
+          padding: 12px 10px;
+          border-radius: 10px;
+        }
+        .featured-image {
+          overflow: hidden;
+          img {
+            border-radius: 10px;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .unique-characteristics {
+          margin: 10px 6px;
         }
       `}</style>
     </div>
