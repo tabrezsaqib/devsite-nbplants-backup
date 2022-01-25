@@ -34,8 +34,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     arrows: false,
     indicators: true,
   }
-  console.log(plant_details)
-  console.log(slideIndex)
   return (
     <div className="mt-3">
       {plant_details.length !== 0 ? (
@@ -73,7 +71,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </p>
                 <div className="row">
                   <div className="col-6">
-                    <div className="featured-image">
+                    <div
+                      className="featured-image"
+                      data-bs-toggle="modal"
+                      data-bs-target="#featured-image">
                       <img
                         src={
                           plant_details.better_featured_image.media_details
@@ -133,6 +134,33 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             <i className="bi bi-arrow-right-circle-fill" />
                           </h2>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="modal fade"
+                id="featured-image"
+                tabIndex="-1"
+                aria-labelledby="featured-image-label"
+                aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered modal-xl">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body" style={{ margin: "0 auto" }}>
+                      <div className="modal-image-container">
+                        <img
+                          src={plant_details.better_featured_image.source_url}
+                          alt="plant image"
+                        />
                       </div>
                     </div>
                   </div>
@@ -699,6 +727,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .unique-characteristics {
           margin: 10px 6px;
+        }
+        .featured-image:hover {
+          cursor: pointer;
+        }
+        .modal-image-container {
+          img {
+            width: 100%;
+            height: 85vh;
+          }
         }
       `}</style>
     </div>
