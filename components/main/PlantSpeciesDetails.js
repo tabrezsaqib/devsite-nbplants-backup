@@ -217,7 +217,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <strong>Characteristics</strong>
               </h4>
 
-              <div className="d-flex flex-wrap">
+              <div className="d-flex flex-column">
                 {plant_details.acf.plant_type && (
                   <div className="d-flex label-value-section">
                     <p>
@@ -317,22 +317,30 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   )}
 
                 {plant_details.acf.characteristics.leaf_blade_edges.length !==
-                  0 &&
-                  plant_details.acf.characteristics.leaf_blade_edges.map(
-                    (item, index) => (
-                      <div className="d-flex label-value-section" key={index}>
-                        <p>
-                          <strong>Leaf Blade Edges: &nbsp;</strong>
-                        </p>
-                        <div>
+                  0 && (
+                  <div className="d-flex">
+                    <p>
+                      <strong>Leaf Blade Edges: &nbsp;</strong>
+                    </p>
+                    {plant_details.acf.characteristics.leaf_blade_edges.map(
+                      (item, index) => (
+                        <div className="d-flex" key={index}>
                           <p>
                             {api.capitalizeFirstLetter(item)}
-                            &nbsp;
+                            {item !==
+                            plant_details.acf.characteristics.leaf_blade_edges
+                              .slice(-1)
+                              .pop() ? (
+                              <span>, &nbsp;</span>
+                            ) : (
+                              ""
+                            )}
                           </p>
                         </div>
-                      </div>
-                    )
-                  )}
+                      )
+                    )}
+                  </div>
+                )}
 
                 {plant_details.acf.characteristics.leaf_shape.length !== 0 &&
                   plant_details.acf.characteristics.leaf_shape.map(
