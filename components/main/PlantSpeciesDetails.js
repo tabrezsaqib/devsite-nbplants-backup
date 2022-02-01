@@ -134,6 +134,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 </div>
                               ))}
                           </Slide>
+                          <p className="img-caption">
+                            {plant_details.better_featured_image.caption}
+                          </p>
                           <h2 name="prev" onClick={() => back()}>
                             <i className="bi bi-arrow-left-circle-fill" />
                           </h2>
@@ -173,13 +176,18 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             <h3>Oops! No images found!</h3>
                           </div>
                         ) : (
-                          <img
-                            src={
-                              plant_details.better_featured_image.media_details
-                                .sizes.medium.source_url
-                            }
-                            alt="plant image"
-                          />
+                          <div>
+                            <img
+                              src={
+                                plant_details.better_featured_image
+                                  .media_details.sizes.medium.source_url
+                              }
+                              alt="plant image"
+                            />
+                            <p className="img-caption">
+                              {plant_details.better_featured_image.caption}
+                            </p>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -813,7 +821,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
-          height: 80vh;
+          height: 75vh;
         }
 
         .each-slide span {
@@ -887,7 +895,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .modal-image-container {
           img {
             width: 100%;
-            height: 85vh;
+            height: 75vh;
           }
         }
         .accordion-button:not(.collapsed) {
@@ -905,6 +913,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .accordion-button {
           padding: 0.5rem 1.25rem;
           background-color: #f8f9fa;
+        }
+        .img-caption {
+          margin: 0px;
         }
       `}</style>
     </div>
