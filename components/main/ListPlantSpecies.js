@@ -74,7 +74,7 @@ const ListPlantSpecies = ({
           border: 1px solid #e0e1e3;
           flex-grow: 1;
           width: 240px;
-          max-width: 250px;
+          max-width: 265px;
         }
         .info-section {
           height: 100%;

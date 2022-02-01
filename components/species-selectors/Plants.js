@@ -212,12 +212,12 @@ const Plants = ({
 
   return (
     <div className="row">
-      <div className="col-2">
+      <div className="col-3">
         <SideNav />
       </div>
       <div
         className={
-          filteredList.current.length == 0 ? "error-bg col-10" : "col-10"
+          filteredList.current.length == 0 ? "error-bg col-9" : "col-9"
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">

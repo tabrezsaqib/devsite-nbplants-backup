@@ -45,7 +45,6 @@ a {
 }
 .pagination {
   position: absolute;
-  bottom: -14%;
 }
 .page-item.active .page-link {
   background-color: #1d9d47;
@@ -79,4 +78,11 @@ a {
 }
 .form-check {
   margin-bottom: 0px !important;
+}
+
+/* ------------------------ Media Queries ---------------------- */
+
+/* Large screens (1405px upwards) */
+@media only screen and (min-width: 1920px) {
+  /* your css goes here */
 }
