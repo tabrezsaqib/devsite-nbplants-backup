@@ -20,49 +20,60 @@ const SideNavContent = ({
   handleOnChange,
 }) => {
   const optionNames = [
+    // {
+    //   key: "plant_type",
+    //   group: "initial",
+    //   value: "Plant Type",
+    // },
     {
       key: "habitat",
+      group: "initial",
       value: "Habitat",
     },
     {
       key: "flower_petal_colour",
+      group: "flowers",
       value: "Flower Petal Colour",
     },
     {
+      key: "inflorescence",
+      group: "flowers",
+      value: "Inflorescence",
+    },
+    {
       key: "leaf_blade_edges",
+      group: "leaves",
       value: "Leaf Blade Edges",
     },
     {
       key: "leaf_type",
+      group: "leaves",
       value: "Leaf Type",
     },
     {
       key: "leaf_arrangement",
+      group: "leaves",
       value: "Leaf Arrangement",
     },
-    // {
-    //   key: "new_brunswick_county",
-    //   value: "New Brunswick County",
-    // },
     {
       key: "native_or_introduced_or_invasive",
+      group: "none",
       value: "Native or Introduced or Invasive",
     },
     {
       key: "leaf_shape",
+      group: "leaves",
       value: "Leaf Shape",
     },
     {
       key: "stems",
+      group: "none",
       value: "Stems",
     },
     {
       key: "petal_symmetry",
+      group: "none",
       value: "Petal Symmetry",
-    },
-    {
-      key: "inflorescence",
-      value: "Inflorescence",
     },
   ]
 
@@ -102,124 +113,222 @@ const SideNavContent = ({
   ]
   let id = 0
 
-  const option = optionNames.map((item) => {
-    return (
-      <div key={item.key}>
-        <h6 className="selector-heading">
-          <i className="bi bi-check2-square" />
-          &nbsp;&nbsp;
-          <strong>{item.value}</strong>
-        </h6>
-        <div className="d-flex flex-wrap">
-          {options[item.key].map((data, index) => {
-            id = id + 1
-            return (
-              <div className="form-check" key={index}>
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value={data}
-                  id={id}
-                  onClick={(e) => onSelectorChange(data)}
-                  checked={
-                    // item.key == "new_brunswick_county"
-                    //   ? new_brunswick_county[index]
-                    item.key == "leaf_arrangement"
-                      ? leaf_arrangement[index]
-                      : item.key == "leaf_type"
-                      ? leaf_type[index]
-                      : item.key == "habitat"
-                      ? habitat[index]
-                      : item.key == "flower_petal_colour"
-                      ? flower_petal_colour[index]
-                      : item.key == "leaf_blade_edges"
-                      ? leaf_blade_edges[index]
-                      : item.key == "native_or_introduced_or_invasive"
-                      ? native_or_introduced_or_invasive[index]
-                      : item.key == "leaf_shape"
-                      ? leaf_shape[index]
-                      : item.key == "stems"
-                      ? stems[index]
-                      : item.key == "petal_symmetry"
-                      ? petal_symmetry[index]
-                      : item.key == "inflorescence"
-                      ? inflorescence[index]
-                      : false
+  const getOption = (key) => {
+    const option = options[key].map((data, index) => {
+      return (
+        <div className="form-check" key={index}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value={data}
+            id={id}
+            onClick={(e) => onSelectorChange(data)}
+            checked={
+              // item.key == "new_brunswick_county"
+              //   ? new_brunswick_county[index]
+              key == "leaf_arrangement"
+                ? leaf_arrangement[index]
+                : key == "leaf_type"
+                ? leaf_type[index]
+                : key == "habitat"
+                ? habitat[index]
+                : key == "flower_petal_colour"
+                ? flower_petal_colour[index]
+                : key == "leaf_blade_edges"
+                ? leaf_blade_edges[index]
+                : key == "native_or_introduced_or_invasive"
+                ? native_or_introduced_or_invasive[index]
+                : key == "leaf_shape"
+                ? leaf_shape[index]
+                : key == "stems"
+                ? stems[index]
+                : key == "petal_symmetry"
+                ? petal_symmetry[index]
+                : key == "inflorescence"
+                ? inflorescence[index]
+                : false
+            }
+            onChange={(e) => handleOnChange(index, key)}
+          />
+          <label className="form-check-label" htmlFor={id}>
+            {colorValues.map((value, index) => (
+              <div key={index} className="color-value">
+                <img
+                  src={value.color}
+                  className={
+                    data == value.label && key == "flower_petal_colour"
+                      ? ""
+                      : "hide"
                   }
-                  onChange={(e) => handleOnChange(index, item.key)}
+                  width="15px"
+                  alt="color values"
                 />
-                <label className="form-check-label" htmlFor={id}>
-                  {colorValues.map((value, index) => (
-                    <div key={index} className="color-value">
-                      <img
-                        src={value.color}
-                        className={
-                          data == value.label &&
-                          item.key == "flower_petal_colour"
-                            ? ""
-                            : "hide"
-                        }
-                        width="15px"
-                        alt="color values"
-                      />
-                    </div>
-                  ))}
-                  {item.key == "flower_petal_colour" ? (
-                    <span>&nbsp;&nbsp;</span>
-                  ) : (
-                    <span></span>
-                  )}
-                  {api.capitalizeFirstLetter(data)}{" "}
-                </label>
               </div>
-            )
-          })}
+            ))}
+            {key == "flower_petal_colour" ? (
+              <span>&nbsp;&nbsp;</span>
+            ) : (
+              <span></span>
+            )}
+            {api.capitalizeFirstLetter(data)}{" "}
+          </label>
         </div>
-        {/* <hr
-          className={item.key !== "new_brunswick_county" ? "separator" : "hide"}
-        /> */}
-        <style jsx>{`
-          .selector-heading {
-            font-size: 13px;
-            margin-top: 10px;
-            font-weight: 900;
-          }
-          .form-check {
-            width: 134px;
-          }
-          .form-check-label {
-            font-size: 13px;
-            img {
-              margin-top: -3px;
-            }
-          }
-          :global(.bi-check2-square::before) {
-            font-weight: 600 !important;
-          }
-          :global(.form-check-input:hover) {
-            cursor: pointer !important;
-          }
-          :global(.form-check-label:hover) {
-            cursor: pointer !important;
-          }
-          .color-value {
-            width: 14px;
-            height: auto;
-            float: left;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-            }
-          }
-          .separator {
-            background-color: #979899;
-          }
-        `}</style>
+      )
+    })
+    return option
+  }
+
+  return (
+    <>
+      <div>
+        {optionNames.map((item) => (
+          <div key={item.key}>
+            {item.group == "initial" && (
+              <div>
+                <h6 className="selector-heading">
+                  <i className="bi bi-check2-square" />
+                  &nbsp;&nbsp;
+                  <strong>{item.value}</strong>
+                </h6>
+                <div className="d-flex flex-wrap">{getOption(item.key)}</div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-    )
-  })
-  return <>{option}</>
+      <div className="accordion" id="accordion1">
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="headingOne">
+            <button
+              className="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flowers"
+              aria-expanded="true"
+              aria-controls="flowers">
+              Flowers
+            </button>
+          </h2>
+          <div
+            id="flowers"
+            className="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordion1">
+            <div className="accordion-body">
+              <div>
+                {optionNames.map((item) => (
+                  <div key={item.key}>
+                    {item.group == "flowers" && (
+                      <div>
+                        <h6 className="selector-heading">
+                          <i className="bi bi-check2-square" />
+                          &nbsp;&nbsp;
+                          <strong>{item.value}</strong>
+                        </h6>
+                        <div className="d-flex flex-wrap">
+                          {getOption(item.key)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="accordion" id="accordion2">
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="heading2">
+            <button
+              className="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#leaves"
+              aria-expanded="true"
+              aria-controls="leaves">
+              Leaves
+            </button>
+          </h2>
+          <div
+            id="leaves"
+            className="accordion-collapse collapse show"
+            aria-labelledby="heading2"
+            data-bs-parent="#accordion2">
+            <div className="accordion-body">
+              <div>
+                {optionNames.map((item) => (
+                  <div key={item.key}>
+                    {item.group == "leaves" && (
+                      <div>
+                        <h6 className="selector-heading">
+                          <i className="bi bi-check2-square" />
+                          &nbsp;&nbsp;
+                          <strong>{item.value}</strong>
+                        </h6>
+                        <div className="d-flex flex-wrap">
+                          {getOption(item.key)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        {optionNames.map((item) => (
+          <div key={item.key}>
+            {item.group == "none" && (
+              <div>
+                <h6 className="selector-heading">
+                  <i className="bi bi-check2-square" />
+                  &nbsp;&nbsp;
+                  <strong>{item.value}</strong>
+                </h6>
+                <div className="d-flex flex-wrap">{getOption(item.key)}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <style jsx>{`
+        .selector-heading {
+          font-size: 13px;
+          margin-top: 10px;
+          font-weight: 900;
+        }
+
+        :global(.bi-check2-square::before) {
+          font-weight: 600 !important;
+        }
+        :global(.form-check-input:hover) {
+          cursor: pointer !important;
+        }
+        :global(.form-check-label:hover) {
+          cursor: pointer !important;
+        }
+        .accordion-button:not(.collapsed) {
+          color: #1d9d47;
+          background-color: #f8f9fa;
+        }
+        .accordion-button:not(.collapsed)::after {
+          filter: invert(13%) sepia(68%) saturate(2891%) hue-rotate(346deg)
+            brightness(104%) contrast(97%);
+          -webkit-filter: invert(13%) sepia(68%) saturate(2891%)
+            hue-rotate(346deg) brightness(104%) contrast(97%);
+          -ms-filter: invert(13%) sepia(68%) saturate(2891%) hue-rotate(346deg)
+            brightness(104%) contrast(97%);
+        }
+        .accordion-button {
+          padding: 0.5rem 1.25rem;
+          background-color: #f8f9fa;
+        }
+      `}</style>
+    </>
+  )
 }
 
 export default SideNavContent

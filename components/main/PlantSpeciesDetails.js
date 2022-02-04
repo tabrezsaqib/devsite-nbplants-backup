@@ -723,7 +723,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Varieties: &nbsp;</strong>
                     </p>
-                    &nbsp;&nbsp;{plant_details.acf.varieties}
+                    {ReactHtmlParser(plant_details.acf.varieties)}
                   </div>
                 )}
                 {plant_details.acf.characteristics.height && (

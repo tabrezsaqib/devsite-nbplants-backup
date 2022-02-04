@@ -40,7 +40,7 @@ const leaf_shape = [
   "spoon",
   "no leaves",
 ]
-
+const lip_shape = ["pouch", "not pouch-like", "N/A"]
 const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
 // const new_brunswick_county = [
 //   "albert county",
@@ -63,12 +63,13 @@ const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
 export {
   habitat,
   flower_petal_colour,
+  inflorescence,
+  lip_shape,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
-  native_or_introduced_or_invasive,
   leaf_shape,
+  native_or_introduced_or_invasive,
   stems,
   petal_symmetry,
-  inflorescence,
 }
