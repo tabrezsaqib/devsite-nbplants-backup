@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
 
@@ -6,57 +7,70 @@ const Footer = () => {
     <section className="footer">
       <div className="container">
         <div className="row d-flex">
-          <div className="col-lg-3">
+          <div className="col-lg-2">
             <div className="footer-brief">
-              <img src="../images/logo-dark.png" alt="" />
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip.
-              </p>
+              <a href="/">
+                <img
+                  src="../images/logo-dark.png"
+                  alt="newbrunswick plants logo"
+                />
+              </a>
             </div>
           </div>
-          <div className="col-lg-6">
-            <h5>Made Possible by</h5>
-            <div className="sponsor d-flex justify-content-between">
+          <div className="col-lg-5">
+            <div className="sponsor d-flex justify-content-between align-items-start mb-4">
               <div className="logo-container">
-                <img
-                  src="../../images/botanic-garden-dark.png"
-                  height="47"
-                  alt="logo"
-                />
+                <a
+                  href="https://www.frederictonbotanicgarden.com/"
+                  target="_blank"
+                  rel="noreferrer">
+                  <img
+                    src="../../images/botanic-garden-dark.png"
+                    height="47"
+                    alt="logo"
+                  />
+                </a>
               </div>
-              <div className="logo-container">
-                <img src="../../images/nb-logo.png" alt="logo" />
+              <div className="d-flex flex-column align-items-center text-center">
+                <div className="logo-container">
+                  <a
+                    href="https://www2.gnb.ca/content/gnb/en/services/services_renderer.13136.Environmental_Trust_Fund.html"
+                    target="_blank"
+                    rel="noreferrer">
+                    <img src="../../images/nb-logo.png" alt="logo" />
+                  </a>
+                </div>
+                <span className="partnership-tagline">
+                  Your Environmental Trust Fund at Work
+                </span>
               </div>
-              <div className="logo-container">
-                <img src="../../images/ac-dc-logo.png" alt="logo" />
-              </div>
-              <div className="logo-container">
-                <img src="../../images/unb-logo.png" alt="logo" />
-              </div>
-              <div className="logo-container">
-                <img
-                  src="../../images/nature-trust-logo.png"
-                  height="67"
-                  alt="logo"
-                />
+              <div>
+                <p className="logo-header">
+                  <strong>In Partnership with</strong>
+                </p>
+                <div className="logo-container">
+                  <a href="http://accdc.com//" target="_blank" rel="noreferrer">
+                    <img
+                      src="../../images/ac-dc-logo.png"
+                      height="67"
+                      alt="logo"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-lg-3 d-flex justify-content-between">
+          <div className="col-lg-4 d-flex justify-content-around">
             <div className="footer-nav">
-              <h5>Links</h5>
               <ul className="d-flex flex-column flex-wrap">
                 <li>
                   <a href="#">Home</a>
                 </li>
                 <li>
-                  <a href="#">Participate</a>
+                  <a href="#">Species</a>
                 </li>
                 <li>
-                  <a href="#">Species</a>
+                  <a href="#">Glossary</a>
                 </li>
                 <li>
                   <a href="#">About Us</a>
@@ -64,9 +78,12 @@ const Footer = () => {
                 <li>
                   <a href="#">Contact Us</a>
                 </li>
+                <li>
+                  <a href="#">Resources</a>
+                </li>
               </ul>
             </div>
-            <div className="social-links">
+            {/* <div className="social-links">
               <h5>Follow Us</h5>
               <div className="d-flex justify-content-between">
                 <h4>
@@ -85,7 +102,7 @@ const Footer = () => {
                   </a>
                 </h4>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -100,7 +117,7 @@ const Footer = () => {
             }
           }
           h5 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
           }
           h4 {
@@ -138,6 +155,16 @@ const Footer = () => {
               padding: 0px 15px;
             }
           }
+        }
+        .logo-header {
+          margin-bottom: 0px;
+          font-size: 12px;
+        }
+        .partnership-tagline {
+          margin-top: 5px;
+          width: 150px;
+          font-size: 12px;
+          font-weight: 700;
         }
       `}</style>
     </section>

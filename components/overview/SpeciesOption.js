@@ -8,7 +8,7 @@ const SpeciesOption = () => {
     <div className="d-flex justify-content-center">
       <div className="selection-blocks d-flex align-items-center justify-content-evenly">
         <Link href={{ pathname: "/plants", query: { type: "woody" } }}>
-          <a>
+          <a className="disabled">
             <WoodyPlantSelector />
           </a>
         </Link>
@@ -18,6 +18,17 @@ const SpeciesOption = () => {
           </a>
         </Link>
       </div>
+      <style jsx>{`
+        .disabled {
+          pointer-events: none;
+          opacity: 0.6;
+          filter: alpha(opacity=50);
+          zoom: 1;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+          -moz-opacity: 0.5;
+          -khtml-opacity: 0.5;
+        }
+      `}</style>
     </div>
   )
 }
