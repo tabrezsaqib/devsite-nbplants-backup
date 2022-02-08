@@ -66,9 +66,9 @@ const Plants = ({
     } else {
       const filterKeys = Object.keys(options)
       return (filteredList.current = plant_data.filter((item) => {
-        return filterKeys.some((key) => {
-          return item.acf.characteristics[key].some((element) => {
-            return activeFilterList.includes(element)
+        return activeFilterList.every(function (element) {
+          return filterKeys.some((key) => {
+            return item.acf.characteristics[key].includes(element)
           })
         })
       }))
