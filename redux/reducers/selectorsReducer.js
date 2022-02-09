@@ -6,6 +6,7 @@ const initialState = {
   flower_petal_colour: new Array(options.flower_petal_colour.length).fill(
     false
   ),
+  lip_shape: new Array(options.lip_shape.length).fill(false),
   leaf_blade_edges: new Array(options.leaf_blade_edges.length).fill(false),
   leaf_type: new Array(options.leaf_type.length).fill(false),
   leaf_arrangement: new Array(options.leaf_arrangement.length).fill(false),
@@ -19,6 +20,7 @@ const initialState = {
   stems: new Array(options.stems.length).fill(false),
   petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
   inflorescence: new Array(options.inflorescence.length).fill(false),
+  fruits: new Array(options.fruits.length).fill(false),
   selectorFilter: "none",
   activeFilterList: [],
   activeFilter: false,
@@ -35,6 +37,11 @@ export const selectorsReducer = (state = initialState, action) => {
       return {
         ...state,
         flower_petal_colour: action.payload,
+      }
+    case types.TOGGLE_LIP_SHAPE:
+      return {
+        ...state,
+        lip_shape: action.payload,
       }
     case types.TOGGLE_LEAF_BLADE_EDGES:
       return {
@@ -75,6 +82,11 @@ export const selectorsReducer = (state = initialState, action) => {
       return {
         ...state,
         leaf_shape: action.payload,
+      }
+    case types.TOGGLE_FRUITS:
+      return {
+        ...state,
+        fruits: action.payload,
       }
     case types.TOGGLE_PETAL_SYMMETRY:
       return {

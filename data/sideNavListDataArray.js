@@ -1,4 +1,4 @@
-const habitat = ["don't know", "aquatic", "terrestrial", "wetlands"]
+const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_petal_colour = [
   "blue to purple",
   "green to brown",
@@ -42,6 +42,15 @@ const leaf_shape = [
 ]
 const lip_shape = ["pouch", "not pouch-like", "N/A"]
 const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
+const fruits = [
+  "achene",
+  "berry",
+  "capsule",
+  "follicle",
+  "nut",
+  "pod",
+  "silicle",
+]
 // const new_brunswick_county = [
 //   "albert county",
 //   "carleton county",
@@ -71,5 +80,6 @@ export {
   leaf_shape,
   native_or_introduced_or_invasive,
   stems,
+  fruits,
   petal_symmetry,
 }
