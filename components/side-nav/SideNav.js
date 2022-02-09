@@ -10,7 +10,8 @@ import {
   toggleLeafBladeEdgesData,
   toggleLeafTypeData,
   toggleLeafArrangementData,
-  toggleCountyData,
+  toggleLipShape,
+  toggleFruits,
   toggleInflorescence,
   toggleLeafShapeData,
   toggleNative,
@@ -26,6 +27,8 @@ import { resetPageCount } from "../../redux/actions/paginationAction"
 const SideNav = ({
   habitat,
   flower_petal_colour,
+  lip_shape,
+  fruits,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -58,6 +61,19 @@ const SideNav = ({
           index === position ? !item : item
         )
         dispatch(toggleFlowerPetalColorData(updatedFlowerPetalColor))
+        break
+      case "lip_shape":
+        const updatedLipShape = lip_shape.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLipShape(updatedLipShape))
+        break
+
+      case "fruits":
+        const updatedFruits = fruits.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleFruits(updatedFruits))
         break
 
       case "leaf_blade_edges":
@@ -142,7 +158,9 @@ const SideNav = ({
           options={options}
           habitat={habitat}
           flower_petal_colour={flower_petal_colour}
+          lip_shape={lip_shape}
           leaf_blade_edges={leaf_blade_edges}
+          fruits={fruits}
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
           new_brunswick_county={new_brunswick_county}
@@ -175,6 +193,8 @@ const mapStateToProps = (state) => {
   return {
     habitat: state.selector.habitat,
     flower_petal_colour: state.selector.flower_petal_colour,
+    fruits: state.selector.fruits,
+    lip_shape: state.selector.lip_shape,
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,

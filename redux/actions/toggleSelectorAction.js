@@ -13,6 +13,18 @@ export const toggleFlowerPetalColorData = (option) => async (dispatch) => {
     payload: option,
   })
 }
+export const toggleLipShape = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_LIP_SHAPE,
+    payload: option,
+  })
+}
+export const toggleFruits = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_FRUITS,
+    payload: option,
+  })
+}
 export const toggleLeafBladeEdgesData = (option) => async (dispatch) => {
   dispatch({
     type: types.TOGGLE_LEAF_BLADE_EDGES,

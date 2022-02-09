@@ -7,6 +7,8 @@ const SideNavContent = ({
   options,
   habitat,
   flower_petal_colour,
+  lip_shape,
+  fruits,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -38,7 +40,17 @@ const SideNavContent = ({
     {
       key: "inflorescence",
       group: "flowers",
-      value: "Inflorescence",
+      value: "Flower Arrangement",
+    },
+    {
+      key: "lip_shape",
+      group: "flowers",
+      value: "Lip Shape",
+    },
+    {
+      key: "petal_symmetry",
+      group: "flowers",
+      value: "Petal Symmetry",
     },
     {
       key: "leaf_blade_edges",
@@ -56,11 +68,6 @@ const SideNavContent = ({
       value: "Leaf Arrangement",
     },
     {
-      key: "native_or_introduced_or_invasive",
-      group: "none",
-      value: "Native or Introduced or Invasive",
-    },
-    {
       key: "leaf_shape",
       group: "leaves",
       value: "Leaf Shape",
@@ -71,9 +78,14 @@ const SideNavContent = ({
       value: "Stems",
     },
     {
-      key: "petal_symmetry",
+      key: "fruits",
       group: "none",
-      value: "Petal Symmetry",
+      value: "Fruits",
+    },
+    {
+      key: "native_or_introduced_or_invasive",
+      group: "none",
+      value: "Type",
     },
   ]
 
@@ -134,6 +146,10 @@ const SideNavContent = ({
                 ? habitat[index]
                 : key == "flower_petal_colour"
                 ? flower_petal_colour[index]
+                : key == "lip_shape"
+                ? lip_shape[index]
+                : key == "fruits"
+                ? fruits[index]
                 : key == "leaf_blade_edges"
                 ? leaf_blade_edges[index]
                 : key == "native_or_introduced_or_invasive"
@@ -196,7 +212,7 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      <div className="accordion" id="accordion1">
+      <div className="accordion mt-3 mb-3" id="accordion1">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
@@ -237,7 +253,7 @@ const SideNavContent = ({
           </div>
         </div>
       </div>
-      <div className="accordion" id="accordion2">
+      <div className="accordion mb-3" id="accordion2">
         <div className="accordion-item">
           <h2 className="accordion-header" id="heading2">
             <button
@@ -325,6 +341,9 @@ const SideNavContent = ({
         .accordion-button {
           padding: 0.5rem 1.25rem;
           background-color: #f8f9fa;
+        }
+        :global(.form-check-label) {
+          pointer-events: none;
         }
       `}</style>
     </>
