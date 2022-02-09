@@ -207,7 +207,7 @@ const Plants = ({
     resetCount,
   ])
   // console.log("Active list", activeFilterList)
-  console.log("Filter list", filteredList.current)
+  // console.log("Filter list", filteredList.current)
   // console.log("Non woody plants outside: ", nonwoody_plants_count)
 
   return (
@@ -253,7 +253,7 @@ const Plants = ({
         .error-bg {
           background-color: #ffffff;
           margin-top: 16px;
-          width: 82.5%;
+          width: 75%;
           margin-bottom: 27px;
           border: 1px solid #e0e1e3;
           border-radius: 15px;
