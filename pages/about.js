@@ -27,59 +27,6 @@ const about = () => {
           <div className="col-lg-2"></div>
         </div>
       </section>
-      <section className="text-center">
-        <div className="row">
-          <h2 className="mb-5">Our Team</h2>
-          <div className="col-lg-3">
-            <div className="img-container">
-              <img src="../images/team/t3.jpeg" alt="team" />
-            </div>
-            <div className="team-profile">
-              <h4>Anil Hitang</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna.
-              </p>
-            </div>
-          </div>
-          <div className="col-lg-3">
-            <div className="img-container">
-              <img src="../images/team/team-1-1.jpeg" alt="team" />
-            </div>
-            <div className="team-profile">
-              <h4>Anil Hitang</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore.
-              </p>
-            </div>
-          </div>
-          <div className="col-lg-3">
-            <div className="img-container">
-              <img src="../images/team/team2.jpeg" alt="team" />
-            </div>
-            <div className="team-profile">
-              <h4>Anil Hitang</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore.
-              </p>
-            </div>
-          </div>
-          <div className="col-lg-3">
-            <div className="img-container">
-              <img src="../images/team/team5.jpeg" alt="team" />
-            </div>
-            <div className="team-profile">
-              <h4>Anil Hitang</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <style jsx>{`
         section {

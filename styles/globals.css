@@ -98,6 +98,9 @@ a {
   height: 100%;
   object-fit: contain;
 }
+.disable-pointer-events {
+  pointer-events: none;
+}
 /* ------------------------ Media Queries ---------------------- */
 
 /* Large screens (1405px upwards) */
@@ -106,22 +109,15 @@ a {
 }
 
 /* ----------- Non-Retina Screens ----------- */
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
-    .box-container {
-      max-width: 275px;
-    }
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .box-container {
+    max-width: 275px;
+  }
 }
 
 /* ----------- Retina Screens ----------- */
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (min-resolution: 192dpi) { 
-    .box-container {
-      max-width: 275px;
-    }
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .box-container {
+    max-width: 275px;
+  }
 }
