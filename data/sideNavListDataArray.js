@@ -21,7 +21,7 @@ const inflorescence = [
   "panicle",
   "raceme",
   "spike",
-  "solitary flower",
+  "solitary",
   "umbel",
   "doesn't apply",
 ]
