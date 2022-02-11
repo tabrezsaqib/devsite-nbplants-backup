@@ -44,7 +44,7 @@ const ListPlantSpecies = ({
                   pathname: `/plants/${data.id}`,
                   query: { type: data.acf.plant_type },
                 }}>
-                <a>
+                <a className="thumbnails">
                   <PlantSpecies plant={data} />
                 </a>
               </Link>
@@ -88,8 +88,8 @@ const ListPlantSpecies = ({
             width: 80px;
           }
         }
-        .gallery-thumbnail {
-          margin: 15px;
+        :global(.thumbnails:hover) {
+          color: #1d9d47 !important;
         }
       `}</style>
     </div>

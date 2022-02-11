@@ -20,6 +20,9 @@ a {
 * {
   box-sizing: border-box;
 }
+p {
+  line-height: 1.7;
+}
 
 .breadcrumb {
   color: #84878e !important;

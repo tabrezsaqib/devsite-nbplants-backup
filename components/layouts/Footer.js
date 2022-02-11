@@ -1,8 +1,21 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
+import Router from "next/router"
+import { useDispatch } from "react-redux"
+import { togglePagination } from "../../redux/actions/paginationAction"
 
 const Footer = () => {
+  const dispatch = useDispatch()
+  const refresh = () => {
+    dispatch(togglePagination(true))
+    Router.push({
+      pathname: "/plants",
+      query: { type: "all" },
+    }).then(() => {
+      Router.reload()
+    })
+  }
   return (
     <section className="footer">
       <div className="container">
@@ -64,22 +77,22 @@ const Footer = () => {
             <div className="footer-nav">
               <ul className="d-flex flex-column flex-wrap">
                 <li>
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
+                </li>
+                <li onClick={refresh}>
+                  <a>Species</a>
                 </li>
                 <li>
-                  <a href="#">Species</a>
+                  <a href="/glossary">Glossary</a>
                 </li>
                 <li>
-                  <a href="#">Glossary</a>
+                  <a href="/about">About Us</a>
                 </li>
                 <li>
-                  <a href="#">About Us</a>
+                  <a href="/contact">Contact Us</a>
                 </li>
                 <li>
-                  <a href="#">Contact Us</a>
-                </li>
-                <li>
-                  <a href="#">Resources</a>
+                  <a href="/resources">Resources</a>
                 </li>
               </ul>
             </div>
