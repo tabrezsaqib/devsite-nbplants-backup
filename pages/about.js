@@ -14,13 +14,73 @@ const about = () => {
             <div className="content text-center">
               <h2 className="mb-5">Who we are</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamc.
+                The Plants of New Brunswick is a digital resource that will,
+                when completed, show the plants found in natural spaces in New
+                Brunswick, both native and introduced. The project was started
+                in 2021 by the{" "}
+                <a
+                  href="https://www.frederictonbotanicgarden.com/"
+                  target="_blank"
+                  className="links"
+                  rel="noreferrer">
+                  Fredericton Botanic Garden Association
+                </a>
+                , and the first year has focused on the orchids and violets of
+                New Brunswick. The Plants of New Brunswick site will continue to
+                grow, and will take at least 5 years to complete. It will depict
+                characteristics of each species that are important for
+                identification, including flowers, leaves, fruits, and other
+                anatomic features. It will also supply ecological information
+                about each plant species identified. This site is made possible
+                through the financial support of the Province of New Brunswick’s
+                <a
+                  href="https://www2.gnb.ca/content/gnb/en/services/services_renderer.13136.Environmental_Trust_Fund.html"
+                  target="_blank"
+                  className="links"
+                  rel="noreferrer">
+                  Environmental Trust Fund
+                </a>{" "}
+                and generous in-kind content and expertise donations from the
+                <a
+                  href="http://accdc.com/"
+                  target="_blank"
+                  className="links"
+                  rel="noreferrer">
+                  Atlantic Canada Conservation Data Centre
+                </a>
+                , the{" "}
+                <a
+                  href="https://unbherbarium.lib.unb.ca/page/connell-memorial-herbarium"
+                  target="_blank"
+                  className="links"
+                  rel="noreferrer">
+                  Connell Herbarium
+                </a>{" "}
+                and Department of Biology at the{" "}
+                <a
+                  href="https://www.unb.ca/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="links">
+                  University of New Brunswick
+                </a>
+                , and the{" "}
+                <a
+                  href="https://www.naturetrust.nb.ca/"
+                  target="_blank"
+                  className="links"
+                  rel="noreferrer">
+                  Nature Trust of New Brunswick
+                </a>
+                . The Flora of New Brunswick by Hal Hinds has been the critical
+                resource to the plants of New Brunswick since the first edition
+                was published in 1985 (2nd edition, 2000). Without his
+                groundwork, this digital version would not have been possible.
+                The focus of the first year has been creating backend
+                infrastructure and adding data and images for violets and
+                fifteen species of orchids. As the site development continues,
+                other native and introduced plants found in New Brunswick will
+                be added, along with mapping data and a French-language site.
               </p>
             </div>
           </div>
@@ -67,6 +127,9 @@ const about = () => {
             font-size: 18px;
             font-weight: 900;
           }
+        }
+        .links {
+          color: #1d9d47;
         }
       `}</style>
     </div>
