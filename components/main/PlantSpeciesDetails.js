@@ -136,23 +136,17 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                         ].full_image_url
                                       })`,
                                     }}></div>
+                                  <p className="img-caption">{item.caption}</p>
                                 </div>
                               ))}
                           </Slide>
-                          <p className="img-caption">
-                            {plant_details.better_featured_image !== null ? (
-                              plant_details.better_featured_image.caption
-                            ) : (
-                              <div className="info-section d-flex align-items-center justify-content-center">
-                                <div className="d-flex flex-column text-center">
-                                  <img
-                                    src="../../images/no_result_found.png"
-                                    alt=""
-                                  />
-                                </div>
-                              </div>
-                            )}
-                          </p>
+
+                          <h2 name="prev" onClick={() => back()}>
+                            <i className="bi bi-arrow-left-circle-fill" />
+                          </h2>
+                          <h2 name="next" onClick={() => next()}>
+                            <i className="bi bi-arrow-right-circle-fill" />
+                          </h2>
                         </div>
                       </div>
                     </div>
@@ -190,7 +184,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             <img
                               src={
                                 plant_details.better_featured_image
-                                  .media_details.sizes.medium.source_url
+                                  .media_details.sizes.large.source_url
                               }
                               alt="plant image"
                             />
@@ -311,12 +305,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     }
                   </div>
                 )}
-                {plant_details.acf.characteristics.s_rank && (
+                {plant_details.acf.characteristics.conservation_rank && (
                   <div className="d-flex label-value-section">
                     <p>
                       <strong>Conservation Rank: &nbsp;</strong>
                     </p>
-                    {plant_details.acf.characteristics.s_rank}
+                    {plant_details.acf.characteristics.conservation_rank}
                   </div>
                 )}
                 <div className="d-flex">
@@ -923,7 +917,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .modal-image-container {
           img {
             width: 100%;
-            height: 75vh;
+            height: 80vh;
           }
         }
         .accordion-button:not(.collapsed) {
@@ -944,6 +938,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .img-caption {
           margin: 0px;
+          text-align: right;
         }
       `}</style>
     </div>
