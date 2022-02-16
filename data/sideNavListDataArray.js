@@ -20,13 +20,13 @@ const petal_symmetry = ["bilateral", "radial"]
 const inflorescence = [
   "panicle",
   "raceme",
-  "spike",
   "solitary",
+  "spike",
   "umbel",
   "doesn't apply",
 ]
 
-const stems = ["hairy", "smmoth", "no stem"]
+const stems = ["hairy", "smooth", "no stem"]
 
 const leaf_shape = [
   "arrow",
