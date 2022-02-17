@@ -210,8 +210,8 @@ const about = () => {
                 of stalked flowers
               </p>
               <p>
-                <strong>Pedicel</strong>: stalk of a single flower in a flower's
-                arrangment (infloresence)
+                <strong>Pedicel</strong>: stalk of a single flower in a
+                flower&apos;s arrangment (infloresence)
               </p>
               <p>
                 <strong>Peduncle</strong>: primary flower stalk bearing a single

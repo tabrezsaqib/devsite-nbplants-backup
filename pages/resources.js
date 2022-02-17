@@ -23,7 +23,7 @@ const about = () => {
                 Haines, Arthur. Illustrated by Elizabeth Farnsworth and Gordon
                 Morrison. 2011.{" "}
                 <em>
-                  New England Wild FLower Society’s Flora Novae Angliae: A
+                  New England Wild FLower Society&apos;s Flora Novae Angliae: A
                   Manual for the Identification of Native and Naturalized Higher
                   Vascular Plants of New England
                 </em>
@@ -53,8 +53,8 @@ const about = () => {
               <p>
                 Young, C. Mary. 2015.{" "}
                 <em>
-                  Nature's Bounty: Four Centuries of Plant Exploration in New
-                  Brunswick
+                  Nature&apos;s Bounty: Four Centuries of Plant Exploration in
+                  New Brunswick
                 </em>
                 . Fredericton, NB: UNB Libraries, University of New Brunswick.
               </p>
