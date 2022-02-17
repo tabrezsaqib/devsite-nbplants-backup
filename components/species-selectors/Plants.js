@@ -115,7 +115,12 @@ const Plants = ({
     //   (event.selected * itemsPerPage) %
     //   (nonwoody_plants_count || all_plants_count || woody_plants_count)
     // dispatch(setItemOffset(newOffset))
-
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    })
     setCurrentPage(true)
     dispatch(resetPageCount(false))
     currentSelectedPage.current = event.selected

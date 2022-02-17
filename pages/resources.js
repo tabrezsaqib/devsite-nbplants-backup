@@ -12,119 +12,151 @@ const about = () => {
           <div className="col-lg-2"></div>
           <div className="col-lg-8">
             <div className="content">
-              <h5 className="pt-3">
-                <strong>
-                  <i className="bi bi-link-45deg"></i>&nbsp;Resources
-                </strong>
-              </h5>
-              <p>Revised Checklist of the Vascular Plants of Maine (1995)</p>
+              <h4>
+                <strong>Resources</strong>
+              </h4>
               <p>
                 Elliman, Ted & New England Wild Flower Society. 2016.{" "}
-                <cite>Wildflowers of New England</cite>. Portland, OR: Timber
-                Press.
-              </p>
-              <p>
-                Hinds, Harold R. 2000. <cite>Flora of New Brunswick</cite>. 2nd
-                edition. Fredericton, NB: Robinson & Greenwood.{" "}
-              </p>
-              <p>
-                Hinds, Harold R.{" "}
-                <cite>The Rare Vascular Plants of New Brunswick</cite>.
-                Fredericton: Connell Memorial Herbarium, 1983.
+                <em>Wildflowers of New England</em>. Portland, OR: Timber Press.
               </p>
               <p>
                 Haines, Arthur. Illustrated by Elizabeth Farnsworth and Gordon
                 Morrison. 2011.{" "}
-                <cite>
-                  New England Wild Flower Society’s Flora Novae Angliae: A
+                <em>
+                  New England Wild FLower Society&apos;s Flora Novae Angliae: A
                   Manual for the Identification of Native and Naturalized Higher
                   Vascular Plants of New England
-                </cite>
+                </em>
                 . New Haven, CT: New England Wildflower Society and Yale
-                University Press, 2011.
+                University Press.
               </p>
-            </div>
-            <h5 className="pt-3">
-              <strong>
-                <i className="bi bi-link-45deg"></i>&nbsp;Web Resources
-              </strong>
-            </h5>
-            <div className="content">
               <p>
-                Go Botany (link to{" "}
+                Hinds, Harold R. 2000. <em>Flora of New Brunswick</em> 2nd
+                edition. Fredericton, NB: Robinson & Greenwood.
+              </p>
+              <p>
+                Hinds, Harold R. 1983.{" "}
+                <em>The Rare Vascular Plants of New Brunswick</em>. Fredericton,
+                NB: Connell Memorial Herbarium.
+              </p>
+              <p>
+                Moyle, John B. and Evelyn W. Moyle. 1977.{" "}
+                <em>
+                  Northland Wild Flowers: A Guide for the Minnesota Region
+                </em>
+                . Minneapolis, MN: University of Minnesota Press.
+              </p>
+              <p>
+                Scoggan, H. J. 1978. <em>The Flora of Canada</em>. Ottawa, ON:
+                National Museums of Canada.
+              </p>
+              <p>
+                Young, C. Mary. 2015.{" "}
+                <em>
+                  Nature&apos;s Bounty: Four Centuries of Plant Exploration in
+                  New Brunswick
+                </em>
+                . Fredericton, NB: UNB Libraries, University of New Brunswick.
+              </p>
+
+              <h4>
+                <strong>
+                  <i className="bi bi-link-45deg"></i>&nbsp;Web Resources
+                </strong>
+              </h4>
+              <p>
+                <a
+                  href="http://accdc.com//"
+                  className="links"
+                  target="_blank"
+                  rel="noreferrer">
+                  Atlantic Canada Conservation Data Centre
+                </a>
+              </p>
+              <p>
+                <a
+                  href="http://www.canadensys.net/"
+                  className="links"
+                  target="_blank"
+                  rel="noreferrer">
+                  Canadensys
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://unbherbarium.lib.unb.ca/page/connell-memorial-herbarium"
+                  className="links"
+                  target="_blank"
+                  rel="noreferrer">
+                  Connell Memorial Herbarium, University of New Brunswick
+                </a>
+              </p>
+              <p>
+                <a
+                  href="http://www.efloras.org/flora_page.aspx?flora_id=1"
+                  className="links"
+                  target="_blank"
+                  rel="noreferrer">
+                  Flora of North America
+                </a>
+                , eFloras.org.
+              </p>
+              <p>
                 <a
                   href="https://gobotany.nativeplanttrust.org/"
-                  target="_blank"
                   className="links"
+                  target="_blank"
                   rel="noreferrer">
-                  https://gobotany.nativeplanttrust.org/
-                </a>{" "}
-                )
+                  Go Botany
+                </a>
+                , Native Plant Society.
               </p>
               <p>
-                Go Orchids (link to
                 <a
                   href="https://goorchids.northamericanorchidcenter.org/"
-                  target="_blank"
                   className="links"
+                  target="_blank"
                   rel="noreferrer">
-                  https://goorchids.northamericanorchidcenter.org/
-                </a>{" "}
-                )
+                  Go Orchids
+                </a>
+                , North American Orchid Conservation Center.
               </p>
               <p>
-                Illinois Wildflowers (link to
                 <a
-                  href="https://www.illinoiswildflowers.info/"
-                  target="_blank"
+                  href="http://www.illinoiswildflowers.info"
                   className="links"
+                  target="_blank"
                   rel="noreferrer">
-                  https://www.illinoiswildflowers.info/
-                </a>{" "}
-                )
+                  Illinois Wildflowers
+                </a>
               </p>
-
               <p>
-                Maine Natural Areas Program, Maine Department of Agriculture,
-                Conservation & Forestry <br />
-                <a
-                  href="https://www.maine.gov/dacf/mnap/features/index.htm"
-                  target="_blank"
-                  className="links"
-                  rel="noreferrer">
-                  https://www.maine.gov/dacf/mnap/features/index.htm
-                </a>{" "}
-                : Rare Plants in Maine:
-                <br />
                 <a
                   href="https://www.maine.gov/dacf/mnap/features/rare_plants/index.htm"
-                  target="_blank"
                   className="links"
+                  target="_blank"
                   rel="noreferrer">
-                  https://www.maine.gov/dacf/mnap/features/rare_plants/index.htm
+                  Rare Plants in Maine
                 </a>{" "}
-                , Invasive Plants in Maine:
-                <br />
+                and{" "}
                 <a
                   href="https://www.maine.gov/dacf/mnap/features/invasive_plants/invasives.htm"
-                  target="_blank"
                   className="links"
+                  target="_blank"
                   rel="noreferrer">
-                  https://www.maine.gov/dacf/mnap/features/invasive_plants/invasives.htm
+                  Invasive Plants in Maine
                 </a>
-                (November 2021)
+                , Maine Natural Areas Program, Maine Department of Agriculture,
+                Conservation & Forestry
               </p>
-
               <p>
-                Missouri Botanic Garden Plant Finder (link to
                 <a
                   href="http://www.missouribotanicalgarden.org/plantfinder/plantfindersearch.aspx"
-                  target="_blank"
                   className="links"
+                  target="_blank"
                   rel="noreferrer">
-                  http://www.missouribotanicalgarden.org/plantfinder/plantfindersearch.aspx
+                  Missouri Botanic Garden Plant Finder
                 </a>
-                )
               </p>
             </div>
           </div>
