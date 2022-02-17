@@ -103,7 +103,7 @@ const about = () => {
                 <div>
                   <img src="../../images/nb-logo.png" alt="logo" />
                 </div>
-                <p className="pt-2" style={{ "font-size": "12px" }}>
+                <p className="pt-2" style={{ fontSize: "12px" }}>
                   Your Environmental Trust Fund at Work
                 </p>
               </div>
