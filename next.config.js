@@ -12,6 +12,7 @@ module.exports = {
     return {
       "/": { page: "/" },
       "/about": { page: "/about" },
+      "/glossary": { page: "/glossary" },
       "/resources": { page: "/resources" },
       "/admin": { page: "/admin" },
       "/contact": { page: "/contact" },

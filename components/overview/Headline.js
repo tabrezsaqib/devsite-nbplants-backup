@@ -6,6 +6,7 @@ const Headline = () => {
       <h2>Discover the Plants of New Brunswick</h2>
       <p>
         A pictorial guide to the orchids and violets of New Brunswick.
+        <br />
         Additional plants will be added in future years.
       </p>
       <style jsx>{`

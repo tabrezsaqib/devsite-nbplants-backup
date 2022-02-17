@@ -23,9 +23,11 @@ const contact = () => {
           <div className="row">
             <div className="col-lg-3">
               <h4>Address:</h4>
-              <p>Fredericton Botanic Garden,</p>
-              <p>10 Cameron Court,</p>
-              <p>Fredericton, NB E3B 2R9 Canada ​</p>
+              <p>
+                Fredericton Botanic Garden <br />
+                10 Cameron Court
+                <br /> Fredericton, NB E3B 2R9 Canada
+              </p>
               <h4>Email:</h4>
               <p>fredbotanicgarden@gmail.com</p>
               <h4>Phone:</h4>

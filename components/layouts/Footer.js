@@ -20,7 +20,7 @@ const Footer = () => {
     <section className="footer">
       <div className="container">
         <div className="row d-flex">
-          <div className="col-lg-2">
+          <div className="col-lg-1">
             <div className="footer-brief">
               <a href="/">
                 <img
@@ -30,7 +30,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-lg-7">
             <div className="sponsor d-flex justify-content-between align-items-start mb-4">
               <div className="logo-container">
                 <a
@@ -63,11 +63,7 @@ const Footer = () => {
                 </p>
                 <div className="logo-container">
                   <a href="http://accdc.com//" target="_blank" rel="noreferrer">
-                    <img
-                      src="../../images/ac-dc-logo.png"
-                      height="67"
-                      alt="logo"
-                    />
+                    <img src="../../images/logoACCDC2014.png" alt="logo" />
                   </a>
                 </div>
               </div>
@@ -150,7 +146,7 @@ const Footer = () => {
           }
           .logo-container {
             overflow: hidden;
-            width: 110px;
+            width: auto;
             img {
               width: 100%;
               height: 100%;
