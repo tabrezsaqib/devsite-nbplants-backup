@@ -1,24 +1,43 @@
 import React from "react"
-import Link from "next/link"
 import NonWoodyPlantSelector from "../species-selectors/NonWoodyPlantSelector"
 import WoodyPlantSelector from "../species-selectors/WoodyPlantSelector"
+import Router from "next/router"
 
 const SpeciesOption = () => {
+  const optionSelector = (type) => {
+    if (type == "woody") {
+      localStorage.setItem("route", "woody")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type,
+        },
+      })
+    }
+    if (type == "Non-woody") {
+      localStorage.setItem("route", "Non-woody")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type,
+        },
+      })
+    }
+  }
   return (
     <div className="d-flex justify-content-center">
       <div className="selection-blocks d-flex align-items-center justify-content-evenly">
-        <Link href={{ pathname: "/plants", query: { type: "woody" } }}>
-          <a className="disabled">
-            <WoodyPlantSelector />
-          </a>
-        </Link>
-        <Link href={{ pathname: "/plants", query: { type: "Non-woody" } }}>
-          <a>
-            <NonWoodyPlantSelector />
-          </a>
-        </Link>
+        <a className="disabled" onClick={() => optionSelector("woody")}>
+          <WoodyPlantSelector />
+        </a>
+        <a onClick={() => optionSelector("Non-woody")}>
+          <NonWoodyPlantSelector />
+        </a>
       </div>
       <style jsx>{`
+        a:hover {
+          cursor: pointer;
+        }
         .disabled {
           pointer-events: none;
           opacity: 0.6;

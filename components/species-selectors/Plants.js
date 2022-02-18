@@ -174,7 +174,8 @@ const Plants = ({
     }
 
     if (router.query.type == "Non-woody") {
-      dispatch(fetchNonWoodyPlantPosts(router.query.type))
+      console.log("Inside non-woody")
+      console.log(dispatch(fetchNonWoodyPlantPosts(router.query.type)))
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()

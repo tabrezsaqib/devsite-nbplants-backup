@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Router from "next/router"
-
 import SearchForm from "../search/SearchForm"
 import { useDispatch } from "react-redux"
 import { togglePagination } from "../../redux/actions/paginationAction"
@@ -9,6 +8,7 @@ import { togglePagination } from "../../redux/actions/paginationAction"
 const Navbar = () => {
   const dispatch = useDispatch()
   const refresh = () => {
+    localStorage.setItem("route", "all")
     dispatch(togglePagination(true))
     Router.push({
       pathname: "/plants",

@@ -1,20 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import * as api from "../../generics/api"
 import { Slide } from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
-import Link from "next/link"
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from "react-html-parser"
+import { useRouter } from "next/router"
+import Router from "next/router"
+import ReactHtmlParser from "react-html-parser"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
   const [slideIndex, setSlideIndex] = useState(null)
   const slideRef = useRef()
-
+  const router = useRouter()
   const slideShow = (index) => {
     setSlide(true)
     setSlideIndex(index)
@@ -35,6 +32,23 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     arrows: false,
     indicators: true,
   }
+
+  const refresh = () => {
+    let route = localStorage.getItem("route")
+    Router.push({
+      pathname: "/plants",
+      query: {
+        type:
+          route == "all"
+            ? "all"
+            : route == "Non-woody"
+            ? "Non-woody"
+            : route == "woody" && "woody",
+      },
+    }).then(() => {})
+  }
+
+  useEffect(() => {}, [])
   return (
     <div className="mt-3">
       {plant_details.length !== 0 ? (
@@ -184,6 +198,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             <img
                               src={
                                 plant_details.better_featured_image
+                                  .media_details.sizes.medium.source_url ||
+                                plant_details.better_featured_image
                                   .media_details.sizes.medium_large
                                   .source_url ||
                                 plant_details.better_featured_image
@@ -224,19 +240,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             <div className="content-section">
               <div className="d-flex justify-content-between">
                 <span>&nbsp;</span>
-
-                <Link
-                  href={{
-                    pathname: `/plants/`,
-                    query: { type: plant_details.acf.plant_type },
-                  }}>
-                  <a className="d-flex">
-                    <h4>
-                      <i className="bi bi-arrow-left"></i>
-                    </h4>
-                    <p>&nbsp;Back</p>
-                  </a>
-                </Link>
+                <a className="d-flex back-arrow" onClick={() => refresh()}>
+                  <h4>
+                    <i className="bi bi-arrow-left"></i>
+                  </h4>
+                  <p>&nbsp;Back to Search</p>
+                </a>
               </div>
               <div className="d-flex flex-column mt-2">
                 <div className="d-flex">
@@ -752,7 +761,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </div>
 
                 {plant_details.acf.varieties && (
-                  <div className="d-flex">
+                  <div>
                     <p>
                       <strong>Varieties: &nbsp;</strong>
                     </p>
@@ -944,6 +953,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .img-caption {
           margin: 0px;
           text-align: right;
+        }
+        .back-arrow {
+          h4,
+          p,
+          h4:hover,
+          p:hover {
+            cursor: pointer;
+            color: #167a37;
+          }
         }
       `}</style>
     </div>

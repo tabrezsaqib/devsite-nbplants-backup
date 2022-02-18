@@ -24,7 +24,7 @@ const Footer = () => {
             <div className="footer-brief">
               <a href="/">
                 <img
-                  src="../images/logo-dark.png"
+                  src="../../images/logo-dark.png"
                   alt="newbrunswick plants logo"
                 />
               </a>
