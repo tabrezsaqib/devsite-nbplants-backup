@@ -25,8 +25,8 @@ const about = () => {
               </p>
               <p>
                 <strong>Alternate leaves</strong>: Leaves are on a stem; not
-                opposite each other. If only one stem leaf, it is considered
-                alternate.
+                opposite each other. If there is only one leaf on a stem, it is
+                considered alternate.
               </p>
               <p>
                 <strong>Anther</strong>: pollen-bearing structure at the end of
@@ -42,12 +42,12 @@ const about = () => {
               </p>
               <p>
                 <strong>Bilateral petal symmetry</strong>: flower can only be
-                divided evenly in one way ex. Orchids
+                divided evenly in one way e.g. Orchids
               </p>
               <p>
                 <strong>Bract</strong>: small or modified leaf, usually at the
                 base of a flower or flower arrangement. Bracts can be more
-                visibly than petals on many flowers ex. Bunchberry
+                visibly than petals on many flowers e.g. Bunchberry
               </p>
               <p>
                 <strong>Calcareous</strong>: calcium rich
@@ -140,11 +140,15 @@ const about = () => {
               </p>
               <p>
                 <strong>Dicot</strong>: group of flowering plants with two seed
-                leaves,{" "}
+                leaves
               </p>
               <p>
                 <strong>Elliptical</strong>: broadest in the middle and tapering
-                equally toward both ends
+                equally towards both ends
+              </p>
+              <p>
+                <strong>Extirpated</strong>: a species that no longer exists in
+                the wild in New Brunswick, but exists elsewhere
               </p>
               <p>
                 <strong>Filament</strong>: stalk of the stamen, anther sits atop
@@ -155,37 +159,46 @@ const about = () => {
                 splits along a single suture on one side of the mature carpel
               </p>
               <p>
-                <strong>Indehiscent</strong>: does not open on maturity
+                <strong>Indehiscent</strong>: does not open on maturity (refers
+                to fruits)
               </p>
               <p>
                 <strong>Inflorescence</strong>: flower arrangement
               </p>
               <p>
                 <strong>Introduced</strong>: plant not present in New Brunswick
-                prior to the arrival of Europeans
+                prior to the arrival of European settlers
               </p>
               <p>
                 <strong>Invasive</strong>: plant that presents a threat to the
                 existing ecosystem
               </p>
               <p>
-                <strong>Labellum</strong>: Lip - modified, usually lowest, petal
-                of the Orchid family
-              </p>
-              <p>
-                <strong>Lance</strong>: broader toward one end, tapering to the
+                <strong>Lance</strong>: broader towards one end, tapering to the
                 other; typically 3 or more times longer than wide
               </p>
               <p>
+                <strong>Lip</strong>: Labellum, the modified petal of plants in
+                the Orchid family; usually the lowest petal
+              </p>
+              <p>
+                <strong>Lobed</strong>: deep indents on edges of leaves or
+                petals
+              </p>
+              <p>
                 <strong>Monocot</strong>: group of flowering plants with one
-                seed leaf and parallel-veined leaves. ex. Orchids
+                seed leaf and parallel-veined leaves. e.g. Orchids
               </p>
               <p>
                 <strong>Native</strong>: plant was present in New Brunswick
-                prior to the arrival of Europeans
+                prior to the arrival of European settlers
               </p>
               <p>
                 <strong>No leaves</strong>: also includes no apparent leaves
+              </p>
+              <p>
+                <strong>Non-woody plants</strong>: Plants that grow new stems
+                each year; Herbaceous
               </p>
               <p>
                 <strong>Nut</strong>: fruit with a single locule and a single
@@ -211,7 +224,7 @@ const about = () => {
               </p>
               <p>
                 <strong>Pedicel</strong>: stalk of a single flower in a
-                flower&apos;s arrangment (infloresence)
+                flower&apos;s arrangement (inflorescence)
               </p>
               <p>
                 <strong>Peduncle</strong>: primary flower stalk bearing a single
@@ -223,8 +236,8 @@ const about = () => {
               </p>
               <p>
                 <strong>Petal symmetry</strong>: bilateral (flower can only be
-                divided evenly in one way ex. Orchids), radial (flower can be
-                divided evenly multiple ways ex. Asters)
+                divided evenly in one way e.g. Orchids), radial (flower can be
+                divided evenly multiple wayse.g. Asters)
               </p>
               <p>
                 <strong>Petal</strong>: one of the highly modified leaves of a
@@ -237,7 +250,7 @@ const about = () => {
                 with each stigma atop a style
               </p>
               <p>
-                <strong>Pod</strong>: any dry fruit that opens when mature ex
+                <strong>Pod</strong>: any dry fruit that opens when mature e.g.
                 Pea family
               </p>
               <p>
@@ -246,7 +259,7 @@ const about = () => {
               </p>
               <p>
                 <strong>Radial petal symmetry</strong>: flower can be divided
-                evenly multiple ways ex. Asters
+                evenly multiple ways e.g. Asters
               </p>
               <p>
                 <strong>Reniform</strong>: kidney-shaped
@@ -272,12 +285,12 @@ const about = () => {
               </p>
               <p>
                 <strong>Sillicle</strong>: long two-valved capsular fruit with a
-                thin longitudinal internal septum bearing seeds ex. Brassica
+                thin longitudinal internal septum bearing seeds e.g. Brassica
                 family
               </p>
               <p>
                 <strong>Solitary Flower</strong>: a single flower that is not
-                part of a grouped flower arrangement (infloresence)
+                part of a grouped flower arrangement (inflorescence)
               </p>
               <p>
                 <strong>Spike</strong>: flower arrangement with stalkless
@@ -285,7 +298,7 @@ const about = () => {
               </p>
               <p>
                 <strong>Spur</strong>: hollow sac-like projection of a sepal or
-                petal that often carries nectar ex. Columbine (
+                petal that often carries nectar e.g. Columbine (
                 <em>Aquilegia</em>)
               </p>
               <p>
@@ -317,6 +330,10 @@ const about = () => {
               <p>
                 <strong>Whorled</strong>: arranged in a circle around an axis;
                 whorled leaves have an opposite leaf arrangement
+              </p>
+              <p>
+                <strong>Woody plants</strong>: plants that have stems that live
+                for several years and buds that survive above ground in winter
               </p>
             </div>
           </div>
