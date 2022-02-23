@@ -48,7 +48,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     }).then(() => {})
   }
 
-  useEffect(() => {}, [])
   return (
     <div className="mt-3">
       {plant_details.length !== 0 ? (
@@ -58,7 +57,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               <div className="d-flex flex-wrap">
                 {plant_details.acf.image_url !== undefined &&
                 plant_details.acf.image_url.length > 0 ? (
-                  plant_details.acf.image_url.map((item, index) => (
+                  plant_details.acf.image_url.slice(0, 6).map((item, index) => (
                     <div
                       key={index}
                       className="img-container img-tabs"
@@ -73,6 +72,17 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <img src="../../images/no_result_found.png" alt="" />
                     <span>Oops! No images found!</span>
                   </div>
+                )}
+              </div>
+              <div className="d-flex justify-content-end mt-2">
+                {plant_details.acf.image_url.length > 6 && (
+                  <a
+                    data-bs-toggle="modal"
+                    className="view-more"
+                    data-bs-target="#exampleModal"
+                    onClick={() => slideShow(slideIndex)}>
+                    View more
+                  </a>
                 )}
               </div>
               <div
@@ -962,6 +972,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             cursor: pointer;
             color: #167a37;
           }
+        }
+        .view-more {
+          cursor: pointer;
+          font-weight: bold;
+          text-align: right;
+          color: #0e9d47;
         }
       `}</style>
     </div>
