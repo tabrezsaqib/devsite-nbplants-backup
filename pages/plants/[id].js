@@ -1,16 +1,17 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
-import { connect, useDispatch } from "react-redux"
-import { fetchPlantPost } from "../../redux/actions/getPlantsAction"
+import Router from "next/router"
+import { useDispatch } from "react-redux"
 import PlantSpeciesDetails from "../../components/main/PlantSpeciesDetails"
+const API_URL = process.env.API_URL
 
 const PlantsDetails = ({ plant_details }) => {
   const dispatch = useDispatch()
   const router = useRouter()
   useEffect(() => {
     if (!router.isReady) return
-    dispatch(fetchPlantPost(router.query["id"]))
-  }, [dispatch, router.isReady, router.query])
+    // dispatch(fetchPlantPost(router.query["id"]))
+  }, [dispatch, router.isReady, router])
 
   return (
     <div>
@@ -19,10 +20,31 @@ const PlantsDetails = ({ plant_details }) => {
   )
 }
 
-const mapStateToProps = (state) => {
+export default PlantsDetails
+
+export async function getStaticPaths() {
+  const response = await fetch(`${API_URL}plants_db?order=desc&per_page=69`)
+  const postList = await response.json()
   return {
-    plant_details: state.post.plant_details,
+    paths: postList.map((post) => {
+      return {
+        params: {
+          id: `${post.id}`,
+        },
+      }
+    }),
+    fallback: false,
   }
 }
 
-export default connect(mapStateToProps)(PlantsDetails)
+export async function getStaticProps({ params }) {
+  // fetch single post detail
+  const response = await fetch(`${API_URL}plants_db/${params.id}`)
+  const plant_details = await response.json()
+
+  return {
+    props: {
+      plant_details,
+    },
+  }
+}
