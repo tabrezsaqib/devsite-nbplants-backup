@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux"
+import Router from "next/router"
 import {
   fetchPlantPost,
   searchPlantPosts,
@@ -8,7 +9,14 @@ import SearchFormValidate from "./SearchFormValidate"
 const SearchForm = () => {
   const dispatch = useDispatch()
   const submitSearchQuery = (value) => {
-    dispatch(searchPlantPosts(value))
+    Router.push({
+      pathname: "/search",
+      query: { keyword: value },
+    }).then(() => {
+      Router.reload()
+      dispatch(searchPlantPosts(value))
+    })
+
     // dispatch(fetchPlantPost)
   }
   return (

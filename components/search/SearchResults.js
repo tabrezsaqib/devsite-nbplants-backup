@@ -42,7 +42,6 @@ const SearchResults = ({
     setLoading(false)
 
     let localStoreValue = localStore.getCurrentSearchPage()
-    console.log(localStoreValue)
     localStoreValue && setCurrentPageNumber(localStore.getCurrentSearchPage())
     const newOffset = (currentPageNumber * itemsPerPage) % search_results.length
     setItemOffset(newOffset)
@@ -72,87 +71,85 @@ const SearchResults = ({
     // dispatch(fetchPlantPost)
   }
 
+  console.log(currentItems !== null && currentItems.length)
+
   return (
     <>
-      <span className="breadcrumb">
-        {hasSearchKeyword &&
-          `${search_results.length} results found for ${router.query.keyword}`}
-      </span>
       <div>
-        <div
-          className={
-            isLoading
-              ? "d-flex justify-content-center flex-wrap"
-              : router.query.keyword == ""
-              ? ""
-              : "d-flex flex-wrap"
-          }>
-          {isLoading ? (
-            <div className="d-flex align-items-center img-container">
-              <img src="../../images/loading.gif" alt="loader" />
-            </div>
-          ) : hasSearchKeyword == true ? (
-            currentItems.map((plant, index) => (
-              <div key={index}>
-                <Link
-                  href={{
-                    pathname: `/plants/${plant.id}`,
-                    query: { type: plant.acf.plant_type },
-                  }}>
-                  <a>
-                    <SeachItem plant={plant} />
-                  </a>
-                </Link>
+        <span className="breadcrumb">
+          {hasSearchKeyword &&
+            search_results.length > 0 &&
+            `${search_results.length} results found for ${router.query.keyword}`}
+        </span>
+        <div>
+          <div
+            className={
+              isLoading
+                ? "d-flex justify-content-center flex-wrap"
+                : router.query.keyword == ""
+                ? ""
+                : currentItems.length == 0
+                ? "d-flex justify-content-center flex-wrap"
+                : "d-flex flex-wrap"
+            }>
+            {isLoading ? (
+              <div className="d-flex align-items-center img-container">
+                <img src="../../images/loading.gif" alt="loader" />
               </div>
-            ))
-          ) : (
-            // currentItems.length > 0 &&
-            // hasSearchKeyword == false &&
-            // currentItems.map((plant, index) => (
-            //   <div key={index}>
-            //     <Link
-            //       href={{
-            //         pathname: `/plants/${plant.id}`,
-            //         query: { type: plant.acf.plant_type },
-            //       }}>
-            //       <a>
-            //         <SeachItem plant={plant} />
-            //       </a>
-            //     </Link>
-            //   </div>
-            // ))
-            <div>
-              <div className="search-area flex-column d-flex align-items-center justify-content-center">
-                <h2>Search by keyword</h2>
-                <SearchFormValidate
-                  submitSearchQuery={submitSearchQuery}
-                  search_bar={true}
-                  // fetchPlantPosts={fetchPlantPost}
-                />
+            ) : hasSearchKeyword == true ? (
+              currentItems.length == 0 ? (
+                <div className="d-flex align-items-center img-container">
+                  <img src="../../images/loading.gif" alt="loader" />
+                </div>
+              ) : (
+                currentItems.map((plant, index) => (
+                  <div key={index}>
+                    <Link
+                      href={{
+                        pathname: `/plants/${plant.id}`,
+                        query: { type: plant.acf.plant_type },
+                      }}>
+                      <a>
+                        <SeachItem plant={plant} />
+                      </a>
+                    </Link>
+                  </div>
+                ))
+              )
+            ) : (
+              <div>
+                <div className="search-area flex-column d-flex align-items-center justify-content-center">
+                  <h2>Search by keyword</h2>
+                  <SearchFormValidate
+                    submitSearchQuery={submitSearchQuery}
+                    search_bar={true}
+                    // fetchPlantPosts={fetchPlantPost}
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
+          <ReactPaginate
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            forcePage={currentPageNumber - 0}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
+          />
         </div>
-        <ReactPaginate
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          forcePage={currentPageNumber - 0}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          pageClassName="page-item"
-          pageLinkClassName="page-link"
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          breakLabel="..."
-          breakClassName="page-item"
-          breakLinkClassName="page-link"
-          containerClassName="pagination"
-          activeClassName="active"
-          renderOnZeroPageCount={null}
-        />
         <style jsx>{`
           .img-container {
             padding-top: 20%;
