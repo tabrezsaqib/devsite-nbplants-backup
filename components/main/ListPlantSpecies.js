@@ -41,7 +41,7 @@ const ListPlantSpecies = ({
             <div key={data.id} className="box-container">
               <Link
                 href={{
-                  pathname: `/plants/${data.id}`,
+                  pathname: `/plants/${data.slug}`,
                   query: { type: data.acf.plant_type },
                 }}>
                 <a className="thumbnails">

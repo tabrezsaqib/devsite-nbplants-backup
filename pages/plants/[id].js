@@ -12,10 +12,10 @@ const PlantsDetails = ({ plant_details }) => {
     if (!router.isReady) return
     // dispatch(fetchPlantPost(router.query["id"]))
   }, [dispatch, router.isReady, router])
-
+  const data = plant_details[0]
   return (
     <div>
-      <PlantSpeciesDetails plant_details={plant_details} />
+      <PlantSpeciesDetails plant_details={data} />
     </div>
   )
 }
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
     paths: postList.map((post) => {
       return {
         params: {
-          id: `${post.id}`,
+          id: `${post.slug}`,
         },
       }
     }),
@@ -39,9 +39,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   // fetch single post detail
-  const response = await fetch(`${API_URL}plants_db/${params.id}`)
+  const response = await fetch(`${API_URL}plants_db?slug=${params.id}`)
   const plant_details = await response.json()
-
   return {
     props: {
       plant_details,
