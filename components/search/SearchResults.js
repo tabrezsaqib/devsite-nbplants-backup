@@ -71,8 +71,6 @@ const SearchResults = ({
     // dispatch(fetchPlantPost)
   }
 
-  console.log(currentItems !== null && currentItems.length)
-
   return (
     <>
       <div>
@@ -106,7 +104,7 @@ const SearchResults = ({
                   <div key={index}>
                     <Link
                       href={{
-                        pathname: `/plants/${plant.id}`,
+                        pathname: `/plants/${plant.slug}`,
                         query: { type: plant.acf.plant_type },
                       }}>
                       <a>
