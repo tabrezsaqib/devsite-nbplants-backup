@@ -9,24 +9,8 @@ const flower_petal_colour = [
   "don't know",
 ]
 
-const leaf_blade_edges = ["lobed", "smooth (Entire)", "teethed", "no leaves"]
-
-const leaf_type = ["compound", "segmented", "simple", "no leaves"]
-
 const leaf_arrangement = ["alternate", "basal", "opposite", "no leaves"]
-
-const petal_symmetry = ["bilateral", "radial"]
-
-const inflorescence = [
-  "panicle",
-  "raceme",
-  "solitary",
-  "spike",
-  "umbel",
-  "doesn't apply",
-]
-
-const stems = ["hairy", "smooth", "no stem"]
+const leaf_blade_edges = ["lobed", "smooth (Entire)", "teethed", "no leaves"]
 
 const leaf_shape = [
   "arrow",
@@ -40,6 +24,20 @@ const leaf_shape = [
   "spoon",
   "no leaves",
 ]
+const leaf_type = ["compound", "segmented", "simple", "no leaves"]
+const petal_symmetry = ["bilateral", "radial"]
+
+const inflorescence = [
+  "panicle",
+  "raceme",
+  "solitary",
+  "spike",
+  "umbel",
+  "doesn't apply",
+]
+
+const stems = ["hairy", "smooth", "no stem"]
+
 const lip_shape = ["pouch", "not pouch-like", "N/A"]
 const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
 const fruits = [
@@ -74,10 +72,10 @@ export {
   flower_petal_colour,
   inflorescence,
   lip_shape,
-  leaf_blade_edges,
-  leaf_type,
   leaf_arrangement,
+  leaf_blade_edges,
   leaf_shape,
+  leaf_type,
   native_or_introduced_or_invasive,
   stems,
   fruits,

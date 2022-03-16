@@ -53,24 +53,24 @@ const SideNavContent = ({
       value: "Petal Symmetry",
     },
     {
-      key: "leaf_blade_edges",
-      group: "leaves",
-      value: "Leaf Blade Edges",
-    },
-    {
-      key: "leaf_type",
-      group: "leaves",
-      value: "Leaf Type",
-    },
-    {
       key: "leaf_arrangement",
       group: "leaves",
       value: "Leaf Arrangement",
     },
     {
+      key: "leaf_blade_edges",
+      group: "leaves",
+      value: "Leaf Blade Edges",
+    },
+    {
       key: "leaf_shape",
       group: "leaves",
       value: "Leaf Shape",
+    },
+    {
+      key: "leaf_type",
+      group: "leaves",
+      value: "Leaf Type",
     },
     {
       key: "stems",
