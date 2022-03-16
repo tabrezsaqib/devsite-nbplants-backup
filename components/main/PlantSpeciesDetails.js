@@ -96,6 +96,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </p>
                 <div className="row">
                   <div className="col-6">
+                    <div className="unique-characteristics">
+                      {ReactHtmlParser(
+                        plant_details.acf.unique_characteristics
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-6">
                     <div
                       className={
                         plant_details.better_featured_image !== null
@@ -117,13 +124,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           }
                           alt="plant image"
                         />
-                      )}
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="unique-characteristics">
-                      {ReactHtmlParser(
-                        plant_details.acf.unique_characteristics
                       )}
                     </div>
                   </div>

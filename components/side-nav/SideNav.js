@@ -75,12 +75,23 @@ const SideNav = ({
         )
         dispatch(toggleFruits(updatedFruits))
         break
-
+      case "leaf_arrangement":
+        const updatedLeafArrangement = leaf_arrangement.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLeafArrangementData(updatedLeafArrangement))
+        break
       case "leaf_blade_edges":
         const updatedLeafBladeEdges = leaf_blade_edges.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleLeafBladeEdgesData(updatedLeafBladeEdges))
+        break
+      case "leaf_shape":
+        const updatedLeafShape = leaf_shape.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLeafShapeData(updatedLeafShape))
         break
       case "leaf_type":
         const updatedLeafType = leaf_type.map(
@@ -88,24 +99,12 @@ const SideNav = ({
         )
         dispatch(toggleLeafTypeData(updatedLeafType))
         break
-      case "leaf_arrangement":
-        const updatedLeafArrangement = leaf_arrangement.map((item, index) =>
-          index === position ? !item : item
-        )
-        dispatch(toggleLeafArrangementData(updatedLeafArrangement))
-        break
       // case "new_brunswick_county":
       //   const updatedCounty = new_brunswick_county.map((item, index) =>
       //     index === position ? !item : item
       //   )
       //   dispatch(toggleCountyData(updatedCounty))
       //   break
-      case "leaf_shape":
-        const updatedLeafShape = leaf_shape.map((item, index) =>
-          index === position ? !item : item
-        )
-        dispatch(toggleLeafShapeData(updatedLeafShape))
-        break
 
       case "stems":
         const updatedStems = stems.map((item, index) =>
