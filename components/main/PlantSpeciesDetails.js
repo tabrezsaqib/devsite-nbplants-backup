@@ -276,9 +276,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Alternate Names: &nbsp;</strong>
                     </p>
-                    {api.capitalizeFirstLetter(
-                      plant_details.acf.synonyms_english
-                    )}
+                    {ReactHtmlParser(plant_details.acf.synonyms_english)}
                   </div>
                 )}
               </div>
@@ -311,7 +309,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Plant Family: &nbsp;</strong>
                     </p>
-                    {api.capitalizeFirstLetter(plant_details.acf.family)}
+                    {ReactHtmlParser(plant_details.acf.family)}
                   </div>
                 )}
 
