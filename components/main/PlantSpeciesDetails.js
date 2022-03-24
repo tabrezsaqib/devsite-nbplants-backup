@@ -920,9 +920,11 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .featured-image {
           overflow: hidden;
+          width: 200px;
+          height: 200px;
           img {
             border-radius: 10px;
-            object-fit: contain;
+            object-fit: cover;
             width: 100%;
             height: 100%;
           }
