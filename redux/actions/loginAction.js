@@ -5,7 +5,7 @@ const AUTH_URL = process.env.AUTH_URL
 
 export const adminLogin = (params) => async (dispatch) => {
   const response = await api.adminLogin(`${AUTH_URL}`, params)
-
+  console.log(response)
   localStore.setProfile(response.data.displayName)
   localStore.setToken(response.data.token)
 
