@@ -19,6 +19,7 @@ import { resetPageCount } from "../../redux/actions/paginationAction"
 import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
 import * as options from "../../data/sideNavListDataArray"
+import styles from "../../styles/Global.module.scss"
 
 const Plants = ({
   all_plants,
@@ -47,12 +48,16 @@ const Plants = ({
 }) => {
   const dispatch = useDispatch()
 
+  const [sidebarVisibility, setSidebarVisibility] = useState(false)
+
   // We start with an empty list of items.
   const [currentItems, setCurrentItems] = useState([])
   const [currentPage, setCurrentPage] = useState(false)
+
   // const [pageClick, setPageClick] = useState(false)
   const [currentPageNumber, setCurrentPageNumber] = useState(0)
   // const [pageCount, setPageCount] = useState(0)
+
   // Here we use item offsets; we could also use page offsets following the API or data you're working with.
   // const [itemOffset, setItemOffset] = useState(0)
 
@@ -212,18 +217,37 @@ const Plants = ({
     // nonwoody_plants_count,
     resetCount,
   ])
-  // console.log("Active list", activeFilterList)
-  // console.log("Filter list", filteredList.current)
-  // console.log("Non woody plants outside: ", nonwoody_plants_count)
 
+  const toggleSidebarVisibility = () => {
+    setSidebarVisibility(!sidebarVisibility)
+  }
   return (
     <div className="row">
-      <div className="col-3">
-        <SideNav />
+      <div className="col-lg-3 col-sm-12">
+        <div className={styles.sidebar_view_media}>
+          <a
+            className="d-flex back-arrow"
+            onClick={() => toggleSidebarVisibility()}>
+            <h4>
+              <i
+                className={
+                  !sidebarVisibility
+                    ? "bi bi-toggle-off align-self-center"
+                    : "bi bi-toggle-on"
+                }></i>
+              <span>&nbsp;View Filters</span>
+            </h4>
+          </a>
+          <div className={!sidebarVisibility && styles.toggle_sidebar_view}>
+            <SideNav />
+          </div>
+        </div>
       </div>
       <div
         className={
-          filteredList.current.length == 0 ? "error-bg col-9" : "col-9"
+          filteredList.current.length == 0
+            ? [styles.error_bg_media_query, "error-bg col-lg-9"].join(" ")
+            : "col-lg-9 col-sm-12"
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
@@ -259,7 +283,6 @@ const Plants = ({
         .error-bg {
           background-color: #ffffff;
           margin-top: 16px;
-          width: 75%;
           margin-bottom: 27px;
           border: 1px solid #e0e1e3;
           border-radius: 15px;

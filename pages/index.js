@@ -1,6 +1,7 @@
 import Headline from "../components/overview/Headline"
 import SpeciesOption from "../components/overview/SpeciesOption"
 import "bootstrap-icons/font/bootstrap-icons.css"
+
 export default function Home() {
   return (
     <div className="main d-flex align-items-center">

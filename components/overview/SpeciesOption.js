@@ -2,6 +2,7 @@ import React from "react"
 import NonWoodyPlantSelector from "../species-selectors/NonWoodyPlantSelector"
 import WoodyPlantSelector from "../species-selectors/WoodyPlantSelector"
 import Router from "next/router"
+import styles from "../../styles/Global.module.scss"
 
 const SpeciesOption = () => {
   const optionSelector = (type) => {
@@ -26,7 +27,11 @@ const SpeciesOption = () => {
   }
   return (
     <div className="d-flex justify-content-center">
-      <div className="selection-blocks d-flex align-items-center justify-content-evenly">
+      <div
+        className={[
+          styles.responsive_selection_blocks,
+          "selection-blocks d-flex align-items-center justify-content-evenly",
+        ].join(" ")}>
         <a className="disabled" onClick={() => optionSelector("woody")}>
           <WoodyPlantSelector />
         </a>

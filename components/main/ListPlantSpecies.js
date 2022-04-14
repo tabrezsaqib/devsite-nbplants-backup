@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import Link from "next/link"
 import PlantSpecies from "./PlantSpecies"
 import * as options from "../../data/sideNavListDataArray"
+import styles from "../../styles/Global.module.scss"
 
 const ListPlantSpecies = ({
   plants_list,
@@ -38,7 +39,12 @@ const ListPlantSpecies = ({
       {filteredList.length > 0 && isLoading == false ? (
         filteredList.map((data, index) => {
           return (
-            <div key={data.id} className="box-container">
+            <div
+              key={data.id}
+              className={[
+                "box-container",
+                styles.box_container_media_query,
+              ].join(" ")}>
               <Link
                 href={{
                   pathname: `/plants/${data.slug}`,
@@ -52,7 +58,11 @@ const ListPlantSpecies = ({
           )
         })
       ) : isLoading == true ? (
-        <div className="d-flex align-items-center img-container">
+        <div
+          className={[
+            styles.image_loader_media_query,
+            "d-flex align-items-center img-container",
+          ].join(" ")}>
           <img src="../../images/loading.gif" alt="loader" />
         </div>
       ) : (
@@ -74,7 +84,6 @@ const ListPlantSpecies = ({
           border: 1px solid #e0e1e3;
           flex-grow: 1;
           width: 240px;
-          max-width: 265px;
         }
         .info-section {
           height: 100%;
@@ -82,7 +91,6 @@ const ListPlantSpecies = ({
         }
         .img-container {
           img {
-            position: absolute;
             top: 50%;
             left: 58%;
             width: 80px;
