@@ -71,7 +71,7 @@
             display: block;
         }
         @include md{
-            display: none;
+            display: block;
         }
         @include lg{
             display: none;
@@ -88,7 +88,7 @@
             display: none;
         }
         @include md{
-            display: block;
+            display: none;
         }
         @include lg{
             display: block;
@@ -188,16 +188,16 @@
 
 .box_container_media_query{
     @include xs{
-        max-width: 45%;
+        max-width: 100%;
     }
     @include sm{
-        
+        max-width: 45%; 
     }
     @include md{
-        
+        max-width: 45%; 
     }
     @include lg{
-        
+        max-width: 265px; 
     }
     @include xl{
        max-width: 265px; 
