@@ -4,6 +4,7 @@ import React from "react"
 import Router from "next/router"
 import { useDispatch } from "react-redux"
 import { togglePagination } from "../../redux/actions/paginationAction"
+import styles from "../../styles/Global.module.scss"
 
 const Footer = () => {
   const dispatch = useDispatch()
@@ -70,7 +71,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-lg-4 d-flex justify-content-around">
-            <div className="footer-nav">
+            <div
+              className={[styles.footer_media_query, "footer-nav"].join(" ")}>
               <ul className="d-flex flex-column flex-wrap">
                 <li>
                   <a href="/">Home</a>
@@ -134,11 +136,10 @@ const Footer = () => {
             font-weight: bold;
           }
           .footer-nav {
+            width: 100%;
             ul {
               list-style: none;
               padding: 0px;
-              height: 75px;
-              width: 200px;
               li a {
                 font-size: 14px;
               }

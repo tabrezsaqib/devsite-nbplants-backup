@@ -6,6 +6,7 @@ import "react-slideshow-image/dist/styles.css"
 import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
+import styles from "../../styles/Global.module.scss"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -54,6 +55,40 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         <div className="row" key={plant_details.id}>
           <div className="col-lg-3">
             <div className="side-bar">
+              <div className={styles.intro_media_mobile}>
+                <div className="d-flex justify-content-between">
+                  <span>&nbsp;</span>
+                  <a className="d-flex back-arrow" onClick={() => refresh()}>
+                    <h4>
+                      <i className="bi bi-arrow-left"></i>
+                    </h4>
+                    <p>&nbsp;Back to Search</p>
+                  </a>
+                </div>
+                <div className="d-flex flex-column mt-2">
+                  <div className="d-flex">
+                    <h2 className="heading">
+                      <strong>{plant_details.acf.common_name}</strong>
+                    </h2>
+                    <h4 className="align-self-center pt-2">
+                      <strong>
+                        <i>
+                          &nbsp;&nbsp;
+                          {`${plant_details.acf.genus} ${plant_details.acf["species"]}`}
+                        </i>
+                      </strong>
+                    </h4>
+                  </div>
+                  {plant_details.acf.synonyms_english && (
+                    <div className="d-flex">
+                      <p>
+                        <strong>Alternate Names: &nbsp;</strong>
+                      </p>
+                      {ReactHtmlParser(plant_details.acf.synonyms_english)}
+                    </div>
+                  )}
+                </div>
+              </div>
               <div className="d-flex flex-wrap">
                 {plant_details.acf.image_url !== undefined &&
                 plant_details.acf.image_url.length > 0 ? (
@@ -247,38 +282,44 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             </div>
           </div>
           <div className="col-lg-9">
-            <div className="content-section">
-              <div className="d-flex justify-content-between">
-                <span>&nbsp;</span>
-                <a className="d-flex back-arrow" onClick={() => refresh()}>
-                  <h4>
-                    <i className="bi bi-arrow-left"></i>
-                  </h4>
-                  <p>&nbsp;Back to Search</p>
-                </a>
-              </div>
-              <div className="d-flex flex-column mt-2">
-                <div className="d-flex">
-                  <h2 className="heading">
-                    <strong>{plant_details.acf.common_name}</strong>
-                  </h2>
-                  <h4 className="align-self-center pt-2">
-                    <strong>
-                      <i>
-                        &nbsp;&nbsp;
-                        {`${plant_details.acf.genus} ${plant_details.acf["species"]}`}
-                      </i>
-                    </strong>
-                  </h4>
+            <div
+              className={[
+                styles.content_section_media_query,
+                "content-section",
+              ].join(" ")}>
+              <div className={styles.intro_media_desktop}>
+                <div className="d-flex justify-content-between">
+                  <span>&nbsp;</span>
+                  <a className="d-flex back-arrow" onClick={() => refresh()}>
+                    <h4>
+                      <i className="bi bi-arrow-left"></i>
+                    </h4>
+                    <p>&nbsp;Back to Search</p>
+                  </a>
                 </div>
-                {plant_details.acf.synonyms_english && (
+                <div className="d-flex flex-column mt-2">
                   <div className="d-flex">
-                    <p>
-                      <strong>Alternate Names: &nbsp;</strong>
-                    </p>
-                    {ReactHtmlParser(plant_details.acf.synonyms_english)}
+                    <h2 className="heading">
+                      <strong>{plant_details.acf.common_name}</strong>
+                    </h2>
+                    <h4 className="align-self-center pt-2">
+                      <strong>
+                        <i>
+                          &nbsp;&nbsp;
+                          {`${plant_details.acf.genus} ${plant_details.acf["species"]}`}
+                        </i>
+                      </strong>
+                    </h4>
                   </div>
-                )}
+                  {plant_details.acf.synonyms_english && (
+                    <div className="d-flex">
+                      <p>
+                        <strong>Alternate Names: &nbsp;</strong>
+                      </p>
+                      {ReactHtmlParser(plant_details.acf.synonyms_english)}
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="mb-3">
                 {plant_details.acf.note && (
@@ -818,7 +859,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .content-section {
           background-color: #ffffff;
           margin: 15px 0px;
-          padding: 15px 30px;
           border-radius: 10px;
         }
         .img-container {

@@ -1,0 +1,187 @@
+@import 'mixins';
+
+.responsive_selection_blocks{
+    @include xs{
+        width: 100%;
+    }
+    @include sm{
+        width: 100%;
+    }
+    @include md{
+        width: 100%;
+    }
+    @include lg{
+        width: 55%;
+    }
+    
+    
+}
+.label_value_media{
+    @include xs{
+        width: 100%;
+    }
+    @include md{
+        width: 50%;
+    }
+    @include lg{
+        width: 50%;
+    }
+    @include xl{
+        width: 50%;
+    } 
+}
+.intro_media_mobile{
+    @include xs{
+        display: block;
+    }
+    @include md{
+        display: none;
+    }
+    @include lg{
+        display: none;
+    }
+    @include xl{
+        display: none;
+    }
+}
+.intro_media_desktop{
+    @include xs{
+        display: none;
+    }
+    @include md{
+        display: block;
+    }
+    @include lg{
+        display: block;
+    }
+    @include xl{
+        display: block;
+    }
+}
+
+.sidebar_view_media{
+    h4{
+        display: flex;
+        span{
+            font-size: 17px;
+            font-weight: bold;
+            align-self: center;
+        }
+        @include xs{
+            display: block;
+        }
+        @include md{
+            display: none;
+        }
+        @include lg{
+            display: none;
+        }
+        @include xl{
+            display: none;
+        }
+    }
+    h4:hover{
+        cursor: pointer;
+    }
+   .toggle_sidebar_view{
+        @include xs{
+            display: none;
+        }
+        @include md{
+            display: block;
+        }
+        @include lg{
+            display: block;
+        }
+   }
+   
+}
+.content_section_media_query{
+    @include xs{
+        padding: 15px 15px;
+    }
+    @include md{
+        padding: 15px 15px;
+    }
+    @include lg{
+        padding: 15px 30px;
+    }
+    @include xl{
+        padding: 15px 30px;
+    }  
+}
+.footer_media_query{
+    @include xs{
+        ul{
+            height: 65px;
+            width: 100%;
+        }
+    }
+    @include md{
+        ul{
+            height: 65px;
+            width: 100%;
+        }
+    }
+    @include lg{
+        ul{
+            height: 75px;
+            width: 200px;
+        }
+    }
+    @include xl{
+        ul{
+            height: 75px;
+            width: 200px;
+        }
+    } 
+}
+.error_bg_media_query{
+    @include xs{
+        width: 100%;
+    }
+    @include sm{
+        width: 100%;
+    }
+    @include md{
+        width: 75%;
+    }
+    @include lg{
+        width: 75%;
+    }
+    @include xl{
+        width: 75%;
+    }  
+}
+.image_loader_media_query{
+    @include xs{
+        margin: 0 auto;
+        img{
+            position: relative;
+        }
+    }
+    @include sm{
+        img{
+            position: relative;
+        }
+    }
+    @include md{
+        img{
+            position: relative;
+        }
+    }
+    @include lg{
+        img{
+            top: 50%;
+            left: 58%;
+            position: absolute;
+        }
+    }
+    @include xl{
+        img{
+            top: 50%;
+            left: 58%;
+            position: absolute;
+        }
+    }  
+}
