@@ -185,3 +185,21 @@
         }
     }  
 }
+
+.box_container_media_query{
+    @include xs{
+        max-width: 45%;
+    }
+    @include sm{
+        
+    }
+    @include md{
+        
+    }
+    @include lg{
+        
+    }
+    @include xl{
+       max-width: 265px; 
+    }   
+}

@@ -39,7 +39,12 @@ const ListPlantSpecies = ({
       {filteredList.length > 0 && isLoading == false ? (
         filteredList.map((data, index) => {
           return (
-            <div key={data.id} className="box-container">
+            <div
+              key={data.id}
+              className={[
+                "box-container",
+                styles.box_container_media_query,
+              ].join(" ")}>
               <Link
                 href={{
                   pathname: `/plants/${data.slug}`,
@@ -79,7 +84,6 @@ const ListPlantSpecies = ({
           border: 1px solid #e0e1e3;
           flex-grow: 1;
           width: 240px;
-          max-width: 45%;
         }
         .info-section {
           height: 100%;
