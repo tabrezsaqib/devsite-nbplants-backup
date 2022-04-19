@@ -95,7 +95,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   plant_details.acf.image_url.slice(0, 6).map((item, index) => (
                     <div
                       key={index}
-                      className="img-container img-tabs"
+                      className={[
+                        styles.img_container_media,
+                        "img-container img-tabs",
+                      ].join(" ")}
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={() => slideShow(index)}>
@@ -130,14 +133,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <strong>Unique Characteristics</strong>
                 </p>
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
                     <div className="unique-characteristics">
                       {ReactHtmlParser(
                         plant_details.acf.unique_characteristics
                       )}
                     </div>
                   </div>
-                  <div className="col-6">
+                  <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
                     <div
                       className={
                         plant_details.better_featured_image !== null
@@ -864,8 +867,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .img-container {
           border-radius: 12px;
           margin: 2px;
-          width: 140px;
-          height: 140px;
           overflow: hidden;
           border: 1px solid #e0e1e3;
           img {
@@ -894,7 +895,31 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           }
         }
         .label-value-section {
-          width: 50%;
+          /* Large screens (1405px upwards) */
+          @media only screen and (min-width: 1405px) {
+            width: 50%;
+          }
+          /*Retina MacBook pro*/
+          @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+            only screen and (min-device-pixel-ratio: 1.5) {
+            width: 50%;
+          }
+
+          /* iPhones media query 2436x1125px at 458ppi */
+          @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+            width: 100%;
+          }
+
+          /* Smartphones in portrait mode (0-479px) */
+          @media only screen and (max-width: 479px) {
+            width: 100%;
+          }
+
+          /* ----------- iPad Pro ----------- */
+          /* Portrait and Landscape */
+          @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+            width: 100%;
+          }
         }
         .each-slide > div {
           display: flex;
@@ -960,8 +985,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .featured-image {
           overflow: hidden;
-          width: 200px;
-          height: 200px;
           img {
             border-radius: 10px;
             object-fit: cover;

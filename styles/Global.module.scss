@@ -203,3 +203,47 @@
        max-width: 265px; 
     }   
 }
+.img_container_media{
+    @include xs{
+        width: 180px;
+        height: 180px;
+    }
+    @include sm{
+        width: 140px;
+        height: 140px;
+    } 
+    @include md{
+        width: 121px;
+        height: 121px;
+    }
+    @include lg{
+        width: 121px;
+        height: 121px;
+    }
+    @include xl{
+        width: 140px;
+        height: 140px;
+    } 
+}
+.featured_image_media{
+    @include xs{
+        width: 100%;
+        height: 180px;
+    }
+    @include sm{
+        width: 100%;
+        height: 140px;
+    } 
+    @include md{
+        width: 200px;
+        height: 200px;
+    }
+    @include lg{
+        width: 200px;
+        height: 200px;
+    }
+    @include xl{
+        width: 200px;
+        height: 200px;
+    }  
+}
