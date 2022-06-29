@@ -1,6 +1,7 @@
 import * as types from "../types"
 import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
+const SEARCH_URL = process.env.SEARCH_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db?order=desc&per_page=69`)
@@ -58,20 +59,32 @@ export const toggleLoader = (option) => async (dispatch) => {
   })
 }
 
-export const searchPlantPosts = (slug) => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants_db?common_name=${slug}`)
-  const new_response = await api.get(`${API_URL}plants_db?search=${slug}`)
+// export const searchPlantPosts = (slug) => async (dispatch) => {
+//   const response = await api.get(`${API_URL}plants_db?common_name=${slug}`)
+//   const new_response = await api.get(`${API_URL}plants_db?search=${slug}`)
+
+//   console.log()
+//   if (response.data.length !== 0) {
+//     dispatch({
+//       type: types.GET_SEARCH_RESULTS,
+//       payload: response.data,
+//     })
+//   }
+//   if (new_response.data.length !== 0) {
+//     dispatch({
+//       type: types.GET_SEARCH_RESULTS,
+//       payload: new_response.data,
+//     })
+//   }
+// }
+
+export const searchByKeyword = (slug) => async (dispatch) => {
+  const response = await api.get(`${SEARCH_URL}search?keyword=${slug}`)
 
   if (response.data.length !== 0) {
     dispatch({
       type: types.GET_SEARCH_RESULTS,
       payload: response.data,
-    })
-  }
-  if (new_response.data.length !== 0) {
-    dispatch({
-      type: types.GET_SEARCH_RESULTS,
-      payload: new_response.data,
     })
   }
 }

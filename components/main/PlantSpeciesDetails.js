@@ -156,10 +156,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </div>
                       ) : (
                         <img
-                          src={
-                            plant_details.better_featured_image.media_details
-                              .sizes.medium.source_url
-                          }
+                          src={plant_details.better_featured_image.source_url}
                           alt="plant image"
                         />
                       )}
@@ -245,13 +242,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           <div>
                             <img
                               src={
-                                plant_details.better_featured_image
-                                  .media_details.sizes.medium.source_url ||
-                                plant_details.better_featured_image
-                                  .media_details.sizes.medium_large
-                                  .source_url ||
-                                plant_details.better_featured_image
-                                  .media_details.sizes.large.source_url
+                                plant_details.better_featured_image.source_url
                               }
                               alt="plant image"
                             />

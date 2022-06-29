@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate"
 import { useEffect, useState } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
-import { searchPlantPosts } from "../../redux/actions/getPlantsAction"
+import { searchByKeyword } from "../../redux/actions/getPlantsAction"
 import SeachItem from "./SeachItem"
 import SearchFormValidate from "./SearchFormValidate"
 import * as localStore from "../../generics/localStore"
@@ -31,7 +31,7 @@ const SearchResults = ({
     if (router.query.keyword) {
       setLoading(false)
       setHasSearchKeyWord(true)
-      dispatch(searchPlantPosts(router.query.keyword))
+      dispatch(searchByKeyword(router.query.keyword))
     }
 
     // Fetch items from another resources.
@@ -67,7 +67,7 @@ const SearchResults = ({
   }
 
   const submitSearchQuery = (value) => {
-    dispatch(searchPlantPosts(value))
+    dispatch(searchByKeyword(value))
     // dispatch(fetchPlantPost)
   }
 
