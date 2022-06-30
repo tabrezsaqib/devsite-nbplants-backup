@@ -5,7 +5,6 @@ const SEARCH_URL = process.env.SEARCH_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db?order=desc&per_page=69`)
-
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,
@@ -81,7 +80,12 @@ export const toggleLoader = (option) => async (dispatch) => {
 export const searchByKeyword = (slug) => async (dispatch) => {
   const response = await api.get(`${SEARCH_URL}search?keyword=${slug}`)
 
-  if (response.data.length !== 0) {
+  if (response.data == null) {
+    dispatch({
+      type: types.GET_SEARCH_RESULTS,
+      payload: response,
+    })
+  } else {
     dispatch({
       type: types.GET_SEARCH_RESULTS,
       payload: response.data,
