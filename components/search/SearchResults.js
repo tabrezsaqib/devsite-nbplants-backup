@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate"
 import { useEffect, useState } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
-import { searchPlantPosts } from "../../redux/actions/getPlantsAction"
+import { searchByKeyword } from "../../redux/actions/getPlantsAction"
 import SeachItem from "./SeachItem"
 import SearchFormValidate from "./SearchFormValidate"
 import * as localStore from "../../generics/localStore"
@@ -31,20 +31,26 @@ const SearchResults = ({
     if (router.query.keyword) {
       setLoading(false)
       setHasSearchKeyWord(true)
-      dispatch(searchPlantPosts(router.query.keyword))
+      dispatch(searchByKeyword(router.query.keyword))
     }
 
     // Fetch items from another resources.
     const endOffset = itemOffset + itemsPerPage
 
-    setCurrentItems(search_results.slice(itemOffset, endOffset))
-    setPageCount(Math.ceil(search_results.length / itemsPerPage))
-    setLoading(false)
+    if (search_results.length > 0) {
+      setCurrentItems(search_results.slice(itemOffset, endOffset))
+      setPageCount(Math.ceil(search_results.length / itemsPerPage))
+      setLoading(false)
 
-    let localStoreValue = localStore.getCurrentSearchPage()
-    localStoreValue && setCurrentPageNumber(localStore.getCurrentSearchPage())
-    const newOffset = (currentPageNumber * itemsPerPage) % search_results.length
-    setItemOffset(newOffset)
+      let localStoreValue = localStore.getCurrentSearchPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentSearchPage())
+      const newOffset =
+        (currentPageNumber * itemsPerPage) % search_results.length
+      setItemOffset(newOffset)
+    } else {
+      setCurrentItems(search_results.message)
+      setLoading(false)
+    }
   }, [
     dispatch,
     router,
@@ -67,7 +73,7 @@ const SearchResults = ({
   }
 
   const submitSearchQuery = (value) => {
-    dispatch(searchPlantPosts(value))
+    dispatch(searchByKeyword(value))
     // dispatch(fetchPlantPost)
   }
 
@@ -79,14 +85,19 @@ const SearchResults = ({
             search_results.length > 0 &&
             `${search_results.length} results found for ${router.query.keyword}`}
         </span>
-        <div>
+        <div
+          className={
+            currentItems == "Nothing found"
+              ? "d-flex justify-content-center"
+              : ""
+          }>
           <div
             className={
               isLoading
                 ? "d-flex justify-content-center flex-wrap"
                 : router.query.keyword == ""
                 ? ""
-                : currentItems.length == 0
+                : currentItems == null
                 ? "d-flex justify-content-center flex-wrap"
                 : "d-flex flex-wrap"
             }>
@@ -95,11 +106,11 @@ const SearchResults = ({
                 <img src="../../images/loading.gif" alt="loader" />
               </div>
             ) : hasSearchKeyword == true ? (
-              currentItems.length == 0 ? (
+              currentItems == null ? (
                 <div className="d-flex align-items-center img-container">
                   <img src="../../images/loading.gif" alt="loader" />
                 </div>
-              ) : (
+              ) : currentItems !== "Nothing found" ? (
                 currentItems.map((plant, index) => (
                   <div key={index}>
                     <Link
@@ -113,6 +124,15 @@ const SearchResults = ({
                     </Link>
                   </div>
                 ))
+              ) : (
+                <div className="flex-column d-flex align-items-center justify-content-center">
+                  <img
+                    src="../../images/data_not_found.png"
+                    width="50%"
+                    alt="data not found"
+                  />
+                  <h2>Sorry! No Results Found :(</h2>
+                </div>
               )
             ) : (
               <div>
