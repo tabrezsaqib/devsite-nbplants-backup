@@ -4,7 +4,7 @@ const API_URL = process.env.API_URL
 const SEARCH_URL = process.env.SEARCH_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants_db?order=desc&per_page=69`)
+  const response = await api.get(`${API_URL}plants_db?order=desc`)
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,
@@ -17,7 +17,7 @@ export const fetchAllPlantPosts = () => async (dispatch) => {
 
 export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
   const response = await api.get(
-    `${API_URL}plants_db?plant_type=${type}&?order=desc&per_page=69`
+    `${API_URL}plants_db?plant_type=${type}&?order=desc`
   )
   dispatch({
     type: types.GET_NONWOODY_PLANTS,
@@ -30,9 +30,7 @@ export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
 }
 
 export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
-  const response = await api.get(
-    `${API_URL}plants_db?plant_type=${type}&?per_page=69`
-  )
+  const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
   dispatch({
     type: types.GET_WOODY_PLANTS,
     payload: response.data,
