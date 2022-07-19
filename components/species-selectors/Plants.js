@@ -174,19 +174,20 @@ const Plants = ({
         filteredList.current.length
       dispatch(setItemOffset(newOffset))
     }
-    if (router.query.type == "woody") {
-      dispatch(fetchWoodyPlantPosts(router.query.type))
-      filterPlantsTypeData(woody_plants)
-      paginationEngine()
-      let localStoreValue = localStore.getCurrentPage()
-      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
-      const newOffset =
-        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-        filteredList.current.length
-      dispatch(setItemOffset(newOffset))
-    }
+    // if (router.query.type == "woody") {
+    //   dispatch(fetchWoodyPlantPosts(router.query.type))
+    //   filterPlantsTypeData(woody_plants)
+    //   paginationEngine()
+    //   let localStoreValue = localStore.getCurrentPage()
+    //   localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+    //   const newOffset =
+    //     (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+    //     filteredList.current.length
+    //   dispatch(setItemOffset(newOffset))
+    // }
 
     if (router.query.type == "Non-woody") {
+      dispatch(fetchNonWoodyPlantPosts())
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
