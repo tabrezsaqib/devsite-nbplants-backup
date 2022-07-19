@@ -66,17 +66,21 @@ const Plants = ({
   let currentSelectedPage = useRef(0)
 
   const filterPlantsTypeData = (plant_data) => {
-    if (activeFilterList.length === 0) {
-      return (filteredList.current = plant_data)
-    } else {
-      const filterKeys = Object.keys(options)
-      return (filteredList.current = plant_data.filter((item) => {
-        return activeFilterList.every(function (element) {
-          return filterKeys.some((key) => {
-            return item.acf.characteristics[key].includes(element)
+    try {
+      if (activeFilterList.length === 0) {
+        return (filteredList.current = plant_data)
+      } else {
+        const filterKeys = Object.keys(options)
+        return (filteredList.current = plant_data.filter((item) => {
+          return activeFilterList.every(function (element) {
+            return filterKeys.some((key) => {
+              return item.acf.characteristics[key].includes(element)
+            })
           })
-        })
-      }))
+        }))
+      }
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
@@ -154,10 +158,14 @@ const Plants = ({
   //   }
   // }
   useEffect(() => {
-    let plants
     if (router.query.type == "all") {
+      for (let plant of all_plants) {
+        if (plant == undefined) {
+        }
+        console.log(plant.acf.characteristics)
+      }
       dispatch(fetchAllPlantPosts())
-      plants = filterPlantsTypeData(all_plants)
+      filterPlantsTypeData(all_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
@@ -168,7 +176,7 @@ const Plants = ({
     }
     if (router.query.type == "woody") {
       dispatch(fetchWoodyPlantPosts(router.query.type))
-      plants = filterPlantsTypeData(woody_plants)
+      filterPlantsTypeData(woody_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
@@ -179,8 +187,6 @@ const Plants = ({
     }
 
     if (router.query.type == "Non-woody") {
-      console.log("Inside non-woody")
-      console.log(dispatch(fetchNonWoodyPlantPosts(router.query.type)))
       filterPlantsTypeData(nonwoody_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
