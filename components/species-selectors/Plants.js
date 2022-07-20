@@ -159,11 +159,6 @@ const Plants = ({
   // }
   useEffect(() => {
     if (router.query.type == "all") {
-      for (let plant of all_plants) {
-        if (plant == undefined) {
-        }
-        console.log(plant.acf.characteristics)
-      }
       dispatch(fetchAllPlantPosts())
       filterPlantsTypeData(all_plants)
       paginationEngine()
