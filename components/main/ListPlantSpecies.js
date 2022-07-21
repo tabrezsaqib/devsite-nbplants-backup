@@ -5,6 +5,8 @@ import Link from "next/link"
 import PlantSpecies from "./PlantSpecies"
 import * as options from "../../data/sideNavListDataArray"
 import styles from "../../styles/Global.module.scss"
+import loaderStyles from "../../styles/Loader.module.scss"
+import LoaderThumbnail from "./LoaderThumbnail"
 
 const ListPlantSpecies = ({
   plants_list,
@@ -14,6 +16,7 @@ const ListPlantSpecies = ({
 }) => {
   // let filteredList
   const router = useRouter()
+  const loaderDataCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   // if (activeFilterList.length === 0) {
   //   filteredList = plants_list
   // } else {
@@ -36,7 +39,7 @@ const ListPlantSpecies = ({
 
   return (
     <div className="d-flex flex-wrap">
-      {filteredList.length > 0 && isLoading == false ? (
+      {filteredList.length > 0 ? (
         filteredList.map((data, index) => {
           return (
             <div
@@ -58,12 +61,19 @@ const ListPlantSpecies = ({
           )
         })
       ) : isLoading == true ? (
-        <div
-          className={[
-            styles.image_loader_media_query,
-            "d-flex align-items-center img-container",
-          ].join(" ")}>
-          <img src="../../images/loading.gif" alt="loader" />
+        // <div
+        //   className={[
+        //     styles.image_loader_media_query,
+        //     "d-flex align-items-center img-container",
+        //   ].join(" ")}>
+        //   <img src="../../images/loading.gif" alt="loader" />
+        // </div>
+        <div className="d-flex flex-wrap">
+          {loaderDataCount.map((data, index) => (
+            <div key={index} className={[loaderStyles.loader_box].join(" ")}>
+              <LoaderThumbnail />
+            </div>
+          ))}
         </div>
       ) : (
         filteredList.length == 0 &&
@@ -96,6 +106,7 @@ const ListPlantSpecies = ({
             width: 80px;
           }
         }
+
         :global(.thumbnails:hover) {
           color: #1d9d47 !important;
         }
