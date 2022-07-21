@@ -143,20 +143,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
                     <div
                       className={
-                        plant_details.acf.gallery_view_image !== null
+                        plant_details.featured_image.image_url !== null
                           ? "featured-image"
                           : "featured-image disable-pointer-events"
                       }
                       data-bs-toggle="modal"
                       data-bs-target="#featured-image">
-                      {plant_details.acf.gallery_view_image == null ? (
+                      {plant_details.featured_image.image_url == null ? (
                         <div className="d-flex flex-column text-center stock-img-container">
                           <img src="../../images/no_result_found.png" alt="" />
                           <span>Oops! No images found!</span>
                         </div>
                       ) : (
                         <img
-                          src={plant_details.acf.gallery_view_image.url}
+                          src={plant_details.featured_image.image_url}
                           alt="plant image"
                         />
                       )}
@@ -230,7 +230,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                     <div className="modal-body" style={{ margin: "0 auto" }}>
                       <div className="modal-image-container">
-                        {plant_details.acf.gallery_view_image == null ? (
+                        {plant_details.featured_image.image_url == null ? (
                           <div className="d-flex flex-column text-center stock-img-container">
                             <img
                               src="../../images/no_result_found.png"
@@ -241,11 +241,11 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         ) : (
                           <div>
                             <img
-                              src={plant_details.acf.gallery_view_image.url}
+                              src={plant_details.featured_image.image_url}
                               alt="plant image"
                             />
                             <p className="img-caption">
-                              {plant_details.acf.gallery_view_image.caption}
+                              {plant_details.featured_image.caption}
                             </p>
                           </div>
                         )}

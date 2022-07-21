@@ -39,6 +39,7 @@ const SideNav = ({
   stems,
   petal_symmetry,
   inflorescence,
+  isLoading,
 }) => {
   const dispatch = useDispatch()
   const [activeFilter, setActiveFilter] = useState()
@@ -158,7 +159,7 @@ const SideNav = ({
 
   return (
     <div className="sidebar d-flex flex-column justify-content-between">
-      <div className="options">
+      <div className={isLoading == true ? "disable-sidebar" : "options"}>
         <SideNavContent
           options={options}
           habitat={habitat}
@@ -189,6 +190,11 @@ const SideNav = ({
           margin-bottom: 25px;
           padding-bottom: 25px;
         }
+        .disable-sidebar {
+          filter: grayscale(100%);
+          opacity: 0.4;
+          pointer-events: none;
+        }
       `}</style>
     </div>
   )
@@ -211,6 +217,7 @@ const mapStateToProps = (state) => {
     petal_symmetry: state.selector.petal_symmetry,
     inflorescence: state.selector.inflorescence,
     activeFilterList: state.selector.activeFilterList,
+    isLoading: state.post.isLoading,
   }
 }
 
