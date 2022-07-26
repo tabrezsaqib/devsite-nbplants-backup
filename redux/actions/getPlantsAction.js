@@ -5,6 +5,7 @@ const SEARCH_URL = process.env.SEARCH_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db?order=desc`)
+  console.log(response.data)
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,

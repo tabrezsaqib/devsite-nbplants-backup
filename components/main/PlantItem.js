@@ -13,8 +13,9 @@ const PlantItem = ({ plant }) => {
         <div className="img-container">
           <img
             src={
-              plant.acf.image_url !== undefined && plant.acf.gallery_view_image
-                ? plant.acf.gallery_view_image.sizes.medium
+              plant.acf.image_url !== undefined &&
+              plant.acf.image_url[0].full_image_url
+                ? plant.acf.image_url[0].full_image_url
                 : "../images/no_result_found.png"
             }
             alt=""
