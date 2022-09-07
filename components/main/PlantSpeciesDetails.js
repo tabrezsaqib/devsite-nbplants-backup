@@ -469,7 +469,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                   className="d-flex label-value-section"
                                   key={index}>
                                   <p>
-                                    <strong>Inflorescence: &nbsp;</strong>
+                                    <strong>Flower Arrangement: &nbsp;</strong>
                                   </p>
                                   <div>
                                     <p>
@@ -741,7 +741,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 {plant_details.acf.characteristics.position_of_hairs && (
                   <div className="d-flex">
                     <p>
-                      <strong>Position of hairs: &nbsp;</strong>
+                      <strong>Position of Hairs: &nbsp;</strong>
                     </p>
                     {plant_details.acf.characteristics.position_of_hairs}
                   </div>
@@ -775,7 +775,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                   className="d-flex label-value-section"
                                   key={index}>
                                   <p>
-                                    <strong>Fruit type: &nbsp;</strong>
+                                    <strong>Fruit Type: &nbsp;</strong>
                                   </p>
                                   <div>
                                     <p>
@@ -810,16 +810,16 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
 
-                {plant_details.acf.characteristics.wildlife_benefits && (
+                {/* {plant_details.acf.characteristics.wildlife_benefits && (
                   <div className="d-flex label-value-section">
                     <p>
                       <strong>Wildlife Benefits: &nbsp;</strong>
                     </p>
                     {plant_details.acf.characteristics.wildlife_benefits}
                   </div>
-                )}
+                )} */}
                 <div className="mb-3">
-                  {plant_details.acf.characteristics.uses && (
+                  {/* {plant_details.acf.characteristics.uses && (
                     <div className="d-flex flex-column">
                       <p>
                         <strong>Uses: </strong>
@@ -828,7 +828,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         {ReactHtmlParser(plant_details.acf.uses)}
                       </div>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
