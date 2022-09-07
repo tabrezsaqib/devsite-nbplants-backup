@@ -39,7 +39,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   // fetch single post detail
-  const response = await fetch(`${API_URL}plants_db?slug=${params.id}`)
+  const response = await fetch(`${API_URL}plants_db/${params.id}`)
   const plant_details = await response.json()
   return {
     props: {
