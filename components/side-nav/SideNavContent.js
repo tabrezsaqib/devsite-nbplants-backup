@@ -2,6 +2,8 @@
 
 import * as api from "../../generics/api"
 import "bootstrap-icons/font/bootstrap-icons.css"
+import { useDispatch } from "react-redux"
+import SideNavPopover from "./SideNavPopover"
 
 const SideNavContent = ({
   options,
@@ -20,6 +22,8 @@ const SideNavContent = ({
   // new_brunswick_county,
   onSelectorChange,
   handleOnChange,
+  popoverData,
+  getPopoverData,
 }) => {
   const optionNames = [
     // {
@@ -124,7 +128,7 @@ const SideNavContent = ({
     },
   ]
   let id = 0
-
+  const dispatch = useDispatch()
   const getOption = (key) => {
     const option = options[key].map((data, index) => {
       return (
@@ -194,6 +198,11 @@ const SideNavContent = ({
     return option
   }
 
+  const triggerPopUp = (key) => {
+    dispatch(getPopoverData(key))
+    console.log(popoverData)
+  }
+
   return (
     <>
       <div>
@@ -236,11 +245,21 @@ const SideNavContent = ({
                   <div key={item.key}>
                     {item.group == "flowers" && (
                       <div>
-                        <h6 className="selector-heading">
-                          <i className="bi bi-check2-square" />
-                          &nbsp;&nbsp;
-                          <strong>{item.value}</strong>
-                        </h6>
+                        <div className="d-flex">
+                          <h6 className="selector-heading">
+                            <i className="bi bi-check2-square" />
+                            &nbsp;&nbsp;
+                            <strong>{item.value}</strong>
+                          </h6>
+                          {(item.key == "inflorescence" ||
+                            item.key == "petal_symmetry") && (
+                            <SideNavPopover
+                              triggerPopUp={triggerPopUp}
+                              popoverData={popoverData}
+                            />
+                          )}
+                        </div>
+
                         <div className="d-flex flex-wrap">
                           {getOption(item.key)}
                         </div>

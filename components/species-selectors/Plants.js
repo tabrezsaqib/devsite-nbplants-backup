@@ -10,6 +10,7 @@ import {
   getAllPlantsCount,
   getAllNonWoodyPlantsCount,
   getAllWoodyPlantsCount,
+  getPopoverData,
 } from "../../redux/actions/getPlantsAction"
 import {
   setItemOffset,
@@ -319,6 +320,7 @@ const mapStateToProps = (state) => {
     // nonwoody_plants_count: state.post.nonwoody_plants_count,
     // woody_plants_count: state.post.woody_plants_count,
     resetCount: state.pagination.resetCount,
+    popoverData: state.post.popoverData,
   }
 }
 

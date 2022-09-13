@@ -103,3 +103,7 @@ p {
 .disable-pointer-events {
   pointer-events: none;
 }
+
+.modal.fade .modal-dialog{
+  transform: translate(-140%)!important;
+}
