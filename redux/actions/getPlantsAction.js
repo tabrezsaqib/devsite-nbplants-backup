@@ -75,6 +75,20 @@ export const toggleLoader = (option) => async (dispatch) => {
 //   }
 // }
 
+export const getPopoverData = (key) => async (dispatch) => {
+  const response = await api.get(`${API_URL}glossaries/${key}`)
+  dispatch({
+    type: types.GET_POPOVER_DATA,
+    payload: response.data,
+  })
+}
+
+export const triggerToolTip = (status) => async (dispatch) => {
+  dispatch({
+    type: types.TRIGGER_TOOLTIP_POPUP,
+    payload: status,
+  })
+}
 export const searchByKeyword = (slug) => async (dispatch) => {
   const response = await api.get(`${SEARCH_URL}search?keyword=${slug}`)
 
