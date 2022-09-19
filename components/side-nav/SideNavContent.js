@@ -24,6 +24,8 @@ const SideNavContent = ({
   handleOnChange,
   popoverData,
   getPopoverData,
+  popoverStatus,
+  triggerToolTip,
 }) => {
   const optionNames = [
     // {
@@ -198,9 +200,9 @@ const SideNavContent = ({
     return option
   }
 
-  const triggerPopUp = (key) => {
-    dispatch(getPopoverData(key))
-    console.log(popoverData)
+  const triggerPopUp = (key, status) => {
+    dispatch(triggerToolTip(status))
+    dispatch(getPopoverData(key, status))
   }
 
   return (
@@ -254,8 +256,9 @@ const SideNavContent = ({
                           {(item.key == "inflorescence" ||
                             item.key == "petal_symmetry") && (
                             <SideNavPopover
-                              triggerPopUp={triggerPopUp}
+                              triggerPopUp={() => triggerPopUp(item.key, true)}
                               popoverData={popoverData}
+                              popoverStatus={popoverStatus}
                             />
                           )}
                         </div>

@@ -18,7 +18,10 @@ import {
   toggleStemsData,
   togglePetalSymmetry,
 } from "../../redux/actions/toggleSelectorAction"
-import { getPopoverData } from "../../redux/actions/getPlantsAction"
+import {
+  getPopoverData,
+  triggerToolTip,
+} from "../../redux/actions/getPlantsAction"
 import {
   selectorFilterData,
   activeFilterData,
@@ -41,6 +44,7 @@ const SideNav = ({
   inflorescence,
   isLoading,
   popoverData,
+  popoverStatus,
 }) => {
   const dispatch = useDispatch()
   const [activeFilter, setActiveFilter] = useState()
@@ -180,6 +184,8 @@ const SideNav = ({
           handleOnChange={handleOnChange}
           popoverData={popoverData}
           getPopoverData={getPopoverData}
+          triggerToolTip={triggerToolTip}
+          popoverStatus={popoverStatus}
         />
       </div>
       <style jsx>{`
@@ -222,6 +228,7 @@ const mapStateToProps = (state) => {
     activeFilterList: state.selector.activeFilterList,
     isLoading: state.post.isLoading,
     popoverData: state.post.popoverData,
+    popoverStatus: state.post.popoverStatus,
   }
 }
 
