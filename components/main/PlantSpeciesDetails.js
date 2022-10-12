@@ -48,7 +48,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       },
     }).then(() => {})
   }
-
   return (
     <div className="mt-3">
       {plant_details.length !== 0 ? (
@@ -74,7 +73,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       <strong>
                         <i>
                           &nbsp;&nbsp;
-                          {`${plant_details.acf.genus} ${plant_details.acf["species"]}`}
+                          {`${plant_details.title}`}
                         </i>
                       </strong>
                     </h4>
@@ -112,7 +111,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
               </div>
-              <div className="d-flex justify-content-end mt-2">
+              {/* <div className="d-flex justify-content-end mt-2">
                 {plant_details.acf.image_url.length > 6 && (
                   <a
                     data-bs-toggle="modal"
@@ -122,7 +121,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     View more
                   </a>
                 )}
-              </div>
+              </div> */}
               <div
                 className={
                   plant_details.acf.unique_characteristics !== ""
@@ -314,10 +313,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </div>
               </div>
               <div className="mb-3">
-                {plant_details.acf.note && (
+                {plant_details.acf.description && (
                   <div className="d-flex flex-column">
                     <div className="rtc-content">
-                      {ReactHtmlParser(plant_details.acf.note)}
+                      {ReactHtmlParser(plant_details.acf.description)}
                     </div>
                   </div>
                 )}
@@ -757,7 +756,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         data-bs-target="#collapseThree"
                         aria-expanded="true"
                         aria-controls="collapseThree">
-                        <strong>Fruits</strong>
+                        <strong>Fruit type</strong>
                       </button>
                     </h2>
                     <div
@@ -767,9 +766,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       data-bs-parent="#accordion3">
                       <div className="accordion-body">
                         <div className="d-flex flex-wrap">
-                          {plant_details.acf.characteristics.fruits.length !==
-                            0 &&
-                            plant_details.acf.characteristics.fruits.map(
+                          {plant_details.acf.characteristics.fruit_type
+                            .length !== 0 &&
+                            plant_details.acf.characteristics.fruit_type.map(
                               (item, index) => (
                                 <div
                                   className="d-flex label-value-section"

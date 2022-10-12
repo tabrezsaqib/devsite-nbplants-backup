@@ -25,7 +25,7 @@ const PlantItem = ({ plant }) => {
           <h4 className="heading mt-3">{plant.acf.common_name}</h4>
           <div className="d-flex flex-column">
             <span>
-              <i>{`${plant.acf.genus} ${plant.acf.species}`}</i>
+              <i>{`${plant.title}`}</i>
             </span>
             <div className="d-flex flex-wrap tags">
               {plant.acf.characteristics.habitat.map((val, index) => (
