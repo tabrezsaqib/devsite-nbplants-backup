@@ -48,20 +48,16 @@ const PlantItem = ({ plant }) => {
                   {api.capitalizeFirstLetter(val)}, &nbsp;
                 </span>
               ))}
-              {plant.acf.characteristics.flower_petal_colour.map(
-                (val, index) => (
-                  <span key={index}>
-                    {api.capitalizeFirstLetter(val)}
-                    {val !==
-                    plant.acf.characteristics.flower_petal_colour
-                      .slice(-1)
-                      .pop()
-                      ? ","
-                      : ""}
-                    &nbsp;
-                  </span>
-                )
-              )}
+              {plant.acf.characteristics.flower_colour.map((val, index) => (
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}
+                  {val !==
+                  plant.acf.characteristics.flower_colour.slice(-1).pop()
+                    ? ","
+                    : ""}
+                  &nbsp;
+                </span>
+              ))}
             </div>
           </div>
         </div>
