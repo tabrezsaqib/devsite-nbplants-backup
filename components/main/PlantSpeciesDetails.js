@@ -471,13 +471,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
 
                           {plant_details.acf.characteristics.flower_colour
                             .length !== 0 && (
-                            <div className="d-flex">
+                            <div className="d-flex label-value-section">
                               <p>
                                 <strong>Flower Colour: &nbsp;</strong>
                               </p>
                               {plant_details.acf.characteristics.flower_colour.map(
                                 (item, index) => (
-                                  <div className="d-flex" key={index}>
+                                  <div
+                                    className="d-flex label-value-section"
+                                    key={index}>
                                     <p>
                                       {api.capitalizeFirstLetter(item)}
                                       {item !==
