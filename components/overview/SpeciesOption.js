@@ -6,8 +6,8 @@ import styles from "../../styles/Global.module.scss"
 
 const SpeciesOption = () => {
   const optionSelector = (type) => {
-    if (type == "woody") {
-      localStorage.setItem("route", "woody")
+    if (type == "Woody") {
+      localStorage.setItem("route", "Woody")
       Router.push({
         pathname: "/plants",
         query: {
@@ -32,7 +32,7 @@ const SpeciesOption = () => {
           styles.responsive_selection_blocks,
           "selection-blocks d-flex align-items-center justify-content-evenly",
         ].join(" ")}>
-        <a className="disabled" onClick={() => optionSelector("woody")}>
+        <a onClick={() => optionSelector("Woody")}>
           <WoodyPlantSelector />
         </a>
         <a onClick={() => optionSelector("Non-woody")}>

@@ -44,7 +44,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             ? "all"
             : route == "Non-woody"
             ? "Non-woody"
-            : route == "woody" && "woody",
+            : route == "Woody" && "Woody",
       },
     }).then(() => {})
   }
@@ -111,7 +111,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
               </div>
-              {/* <div className="d-flex justify-content-end mt-2">
+              <div className="d-flex justify-content-end mt-2">
                 {plant_details.acf.image_url.length > 6 && (
                   <a
                     data-bs-toggle="modal"
@@ -121,7 +121,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     View more
                   </a>
                 )}
-              </div> */}
+              </div>
               <div
                 className={
                   plant_details.acf.unique_characteristics !== ""
@@ -254,22 +254,22 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </div>
               </div>
 
-              {/* <div className="d-flex flex-column mt-4">
-              <p>
-                <strong>Unique Characteristics: </strong>
-              </p>
-              <div className="d-flex flex-column text-center">
-                <div className="featured-img-container">
-                  <img
-                    src={plant_details.better_featured_image.source_url}
-                    alt="plant image"
-                  />
+              <div className="d-flex flex-column mt-4">
+                <p>
+                  <strong>Unique Characteristics: </strong>
+                </p>
+                <div className="d-flex flex-column text-center">
+                  <div className="featured-img-container">
+                    <img
+                      src={plant_details.featured_image.image_url}
+                      alt="plant image"
+                    />
+                  </div>
+                  <span>
+                    <i>{plant_details.featured_image.caption}</i>
+                  </span>
                 </div>
-                <span>
-                  <i>{plant_details.better_featured_image.caption}</i>
-                </span>
               </div>
-            </div> */}
             </div>
           </div>
           <div className="col-lg-9">
