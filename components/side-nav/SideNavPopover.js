@@ -12,14 +12,14 @@ const SideNavPopover = ({ triggerPopUp, popoverData, popoverStatus }) => {
       <h6
         data-bs-toggle="modal"
         className="tooltipPopUp align-self-center"
-        data-bs-target="#exampleModal"
+        data-bs-target="#sideNavPopUp"
         onClick={() => triggerPopUp([], false)}>
         <i className="bi bi-info-circle-fill" />
       </h6>
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id="sideNavPopUp"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">

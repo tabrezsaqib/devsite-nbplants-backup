@@ -48,6 +48,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       },
     }).then(() => {})
   }
+
   return (
     <div className="mt-3">
       {plant_details.length !== 0 ? (
@@ -89,7 +90,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </div>
               </div>
               <div className="d-flex flex-wrap">
-                {plant_details.acf.image_url !== undefined &&
+                {Object.keys(plant_details.acf).includes("image_url") &&
+                plant_details.acf.image_url !== undefined &&
                 plant_details.acf.image_url.length > 0 ? (
                   plant_details.acf.image_url.slice(0, 6).map((item, index) => (
                     <div
@@ -112,15 +114,17 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 )}
               </div>
               <div className="d-flex justify-content-end mt-2">
-                {plant_details.acf.image_url.length > 6 && (
-                  <a
-                    data-bs-toggle="modal"
-                    className="view-more"
-                    data-bs-target="#exampleModal"
-                    onClick={() => slideShow(slideIndex)}>
-                    View more
-                  </a>
-                )}
+                {Object.keys(plant_details.acf).includes("image_url") &&
+                  plant_details.acf.image_url.length !== 0 &&
+                  plant_details.acf.image_url.length > 6 && (
+                    <a
+                      data-bs-toggle="modal"
+                      className="view-more"
+                      data-bs-target="#exampleModal"
+                      onClick={() => slideShow(slideIndex)}>
+                      View more
+                    </a>
+                  )}
               </div>
               <div
                 className={
