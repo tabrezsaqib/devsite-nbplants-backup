@@ -29,7 +29,7 @@ import {
 import { resetPageCount } from "../../redux/actions/paginationAction"
 const SideNav = ({
   habitat,
-  flower_petal_colour,
+  flower_colour,
   lip_shape,
   fruits,
   leaf_blade_edges,
@@ -37,7 +37,7 @@ const SideNav = ({
   leaf_arrangement,
   new_brunswick_county,
   activeFilterList,
-  native_or_introduced_or_invasive,
+  // native_or_introduced_or_invasive,
   leaf_shape,
   stems,
   petal_symmetry,
@@ -142,6 +142,7 @@ const SideNav = ({
   }
 
   const onSelectorChange = (filter) => {
+    console.log(filter)
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -168,14 +169,14 @@ const SideNav = ({
         <SideNavContent
           options={options}
           habitat={habitat}
-          flower_petal_colour={flower_petal_colour}
+          flower_colour={flower_colour}
           lip_shape={lip_shape}
           leaf_blade_edges={leaf_blade_edges}
           fruits={fruits}
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
-          new_brunswick_county={new_brunswick_county}
-          native_or_introduced_or_invasive={native_or_introduced_or_invasive}
+          // new_brunswick_county={new_brunswick_county}
+          // native_or_introduced_or_invasive={native_or_introduced_or_invasive}
           leaf_shape={leaf_shape}
           stems={stems}
           petal_symmetry={petal_symmetry}
@@ -190,10 +191,8 @@ const SideNav = ({
       </div>
       <style jsx>{`
         .sidebar {
-          background-color: #ffffff;
-          border: 1px solid #e0e1e3;
           border-radius: 10px;
-          padding: 10px 12px;
+          padding: 10px;
           margin-top: 15px;
           height: auto;
           margin-bottom: 25px;
@@ -212,15 +211,15 @@ const SideNav = ({
 const mapStateToProps = (state) => {
   return {
     habitat: state.selector.habitat,
-    flower_petal_colour: state.selector.flower_petal_colour,
+    flower_colour: state.selector.flower_colour,
     fruits: state.selector.fruits,
     lip_shape: state.selector.lip_shape,
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
     // new_brunswick_county: state.selector.new_brunswick_county,
-    native_or_introduced_or_invasive:
-      state.selector.native_or_introduced_or_invasive,
+    // native_or_introduced_or_invasive:
+    //   state.selector.native_or_introduced_or_invasive,
     leaf_shape: state.selector.leaf_shape,
     stems: state.selector.stems,
     petal_symmetry: state.selector.petal_symmetry,

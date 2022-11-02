@@ -1,5 +1,11 @@
-const habitat = ["aquatic", "terrestrial", "wetlands"]
-const flower_petal_colour = [
+const habitat = [
+  "aquatic",
+  "terrestrial",
+  "wetlands",
+  "terrestrial, wetlands",
+  "aquatic, wetlands",
+]
+const flower_colour = [
   "blue to purple",
   "green to brown",
   "orange",
@@ -16,13 +22,16 @@ const leaf_shape = [
   "arrow",
   "elliptical",
   "heart",
+  "fern-like",
+  "kidney-shaped",
   "lance",
   "linear",
+  "maple-like",
+  "needles",
   "oval",
-  "reniform",
   "rounded",
+  "scales",
   "spoon",
-  "no leaves",
 ]
 const leaf_type = ["compound", "segmented", "simple", "no leaves"]
 const petal_symmetry = ["bilateral", "radial"]
@@ -30,16 +39,20 @@ const petal_symmetry = ["bilateral", "radial"]
 const inflorescence = [
   "panicle",
   "raceme",
-  "solitary",
   "spike",
+  "solitary flower",
   "umbel",
   "doesn't apply",
+  "cyme",
+  "cluster",
+  "whorl",
+  "composite",
 ]
 
-const stems = ["hairy", "smooth", "no stem"]
+const stems = ["hairy", "smooth", "no stem", "scales"]
 
-const lip_shape = ["pouch", "not pouch-like", "N/A"]
-const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
+const lip_shape = ["pouch", "not pouch-like"]
+// const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
 const fruits = [
   "achene",
   "berry",
@@ -48,6 +61,9 @@ const fruits = [
   "nut",
   "pod",
   "silicle",
+  "stone",
+  "cone",
+  "fruit with wings",
 ]
 // const new_brunswick_county = [
 //   "albert county",
@@ -69,14 +85,14 @@ const fruits = [
 
 export {
   habitat,
-  flower_petal_colour,
+  flower_colour,
   inflorescence,
   lip_shape,
   leaf_arrangement,
   leaf_blade_edges,
   leaf_shape,
   leaf_type,
-  native_or_introduced_or_invasive,
+  // native_or_introduced_or_invasive,
   stems,
   fruits,
   petal_symmetry,

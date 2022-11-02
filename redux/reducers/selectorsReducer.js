@@ -3,9 +3,7 @@ import * as options from "../../data/sideNavListDataArray"
 
 const initialState = {
   habitat: new Array(options.habitat.length).fill(false),
-  flower_petal_colour: new Array(options.flower_petal_colour.length).fill(
-    false
-  ),
+  flower_colour: new Array(options.flower_colour.length).fill(false),
   lip_shape: new Array(options.lip_shape.length).fill(false),
   leaf_blade_edges: new Array(options.leaf_blade_edges.length).fill(false),
   leaf_type: new Array(options.leaf_type.length).fill(false),
@@ -13,9 +11,9 @@ const initialState = {
   // new_brunswick_county: new Array(options.new_brunswick_county.length).fill(
   //   false
   // ),
-  native_or_introduced_or_invasive: new Array(
-    options.native_or_introduced_or_invasive.length
-  ).fill(false),
+  // native_or_introduced_or_invasive: new Array(
+  //   options.native_or_introduced_or_invasive.length
+  // ).fill(false),
   leaf_shape: new Array(options.leaf_shape.length).fill(false),
   stems: new Array(options.stems.length).fill(false),
   petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
@@ -36,7 +34,7 @@ export const selectorsReducer = (state = initialState, action) => {
     case types.TOGGLE_FLOWER_PETAL_COLOR:
       return {
         ...state,
-        flower_petal_colour: action.payload,
+        flower_colour: action.payload,
       }
     case types.TOGGLE_LIP_SHAPE:
       return {
@@ -68,11 +66,11 @@ export const selectorsReducer = (state = initialState, action) => {
         ...state,
         inflorescence: action.payload,
       }
-    case types.TOGGLE_NATIVE:
-      return {
-        ...state,
-        native_or_introduced_or_invasive: action.payload,
-      }
+    // case types.TOGGLE_NATIVE:
+    //   return {
+    //     ...state,
+    //     native_or_introduced_or_invasive: action.payload,
+    //   }
     case types.TOGGLE_STEMS:
       return {
         ...state,

@@ -30,7 +30,7 @@ const Plants = ({
   itemsPerPage,
   activeFilterList,
   habitat,
-  flower_petal_colour,
+  flower_colour,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -75,6 +75,7 @@ const Plants = ({
         return (filteredList.current = plant_data.filter((item) => {
           return activeFilterList.every(function (element) {
             return filterKeys.some((key) => {
+              console.log(key, element)
               return item.acf.characteristics[key].includes(element)
             })
           })
@@ -200,7 +201,7 @@ const Plants = ({
     itemsPerPage,
     isLoading,
     habitat,
-    flower_petal_colour,
+    flower_colour,
     leaf_blade_edges,
     leaf_type,
     leaf_arrangement,
@@ -303,12 +304,12 @@ const mapStateToProps = (state) => {
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
     habitat: state.selector.habitat,
-    flower_petal_colour: state.selector.flower_petal_colour,
+    flower_colour: state.selector.flower_colour,
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
-    native_or_introduced_or_invasive:
-      state.selector.native_or_introduced_or_invasive,
+    // native_or_introduced_or_invasive:
+    //   state.selector.native_or_introduced_or_invasive,
     leaf_shape: state.selector.leaf_shape,
     petal_symmetry: state.selector.petal_symmetry,
     inflorescence: state.selector.inflorescence,

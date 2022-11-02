@@ -8,7 +8,7 @@ import SideNavPopover from "./SideNavPopover"
 const SideNavContent = ({
   options,
   habitat,
-  flower_petal_colour,
+  flower_colour,
   lip_shape,
   fruits,
   leaf_blade_edges,
@@ -39,9 +39,9 @@ const SideNavContent = ({
       value: "Habitat",
     },
     {
-      key: "flower_petal_colour",
+      key: "flower_colour",
       group: "flowers",
-      value: "Flower Petal Colour",
+      value: "Flower Colour",
     },
     {
       key: "inflorescence",
@@ -88,11 +88,11 @@ const SideNavContent = ({
       group: "none",
       value: "Fruits",
     },
-    {
-      key: "native_or_introduced_or_invasive",
-      group: "none",
-      value: "Type",
-    },
+    // {
+    //   key: "native_or_introduced_or_invasive",
+    //   group: "none",
+    //   value: "Type",
+    // },
   ]
 
   const colorValues = [
@@ -150,17 +150,17 @@ const SideNavContent = ({
                 ? leaf_type[index]
                 : key == "habitat"
                 ? habitat[index]
-                : key == "flower_petal_colour"
-                ? flower_petal_colour[index]
+                : key == "flower_colour"
+                ? flower_colour[index]
                 : key == "lip_shape"
                 ? lip_shape[index]
                 : key == "fruits"
                 ? fruits[index]
                 : key == "leaf_blade_edges"
                 ? leaf_blade_edges[index]
-                : key == "native_or_introduced_or_invasive"
-                ? native_or_introduced_or_invasive[index]
-                : key == "leaf_shape"
+                : // : key == "native_or_introduced_or_invasive"
+                // ? native_or_introduced_or_invasive[index]
+                key == "leaf_shape"
                 ? leaf_shape[index]
                 : key == "stems"
                 ? stems[index]
@@ -178,20 +178,14 @@ const SideNavContent = ({
                 <img
                   src={value.color}
                   className={
-                    data == value.label && key == "flower_petal_colour"
-                      ? ""
-                      : "hide"
+                    data == value.label && key == "flower_colour" ? "" : "hide"
                   }
                   width="15px"
                   alt="color values"
                 />
               </div>
             ))}
-            {key == "flower_petal_colour" ? (
-              <span>&nbsp;&nbsp;</span>
-            ) : (
-              <span></span>
-            )}
+            {key == "flower_colour" ? <span>&nbsp;&nbsp;</span> : <span></span>}
             {api.capitalizeFirstLetter(data)}{" "}
           </label>
         </div>

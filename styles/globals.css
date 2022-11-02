@@ -103,3 +103,10 @@ p {
 .disable-pointer-events {
   pointer-events: none;
 }
+.form-check-input{
+  margin-top:0.4em;
+  margin-left: -1.2em !important;
+}
+.accordion-body {
+  padding: 1rem 0.8rem !important;
+}
