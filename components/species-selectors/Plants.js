@@ -30,6 +30,7 @@ const Plants = ({
   itemsPerPage,
   activeFilterList,
   habitat,
+  fruit_type,
   flower_colour,
   leaf_blade_edges,
   leaf_type,
@@ -75,7 +76,6 @@ const Plants = ({
         return (filteredList.current = plant_data.filter((item) => {
           return activeFilterList.every(function (element) {
             return filterKeys.some((key) => {
-              console.log(key, element)
               return item.acf.characteristics[key].includes(element)
             })
           })
@@ -201,6 +201,7 @@ const Plants = ({
     itemsPerPage,
     isLoading,
     habitat,
+    fruit_type,
     flower_colour,
     leaf_blade_edges,
     leaf_type,
@@ -314,6 +315,7 @@ const mapStateToProps = (state) => {
     petal_symmetry: state.selector.petal_symmetry,
     inflorescence: state.selector.inflorescence,
     stems: state.selector.stems,
+    fruit_type: state.selector.fruit_type,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     toggle_pagination: state.pagination.toggle_pagination,

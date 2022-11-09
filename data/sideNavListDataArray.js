@@ -53,7 +53,7 @@ const stems = ["hairy", "smooth", "no stem", "scales"]
 
 const lip_shape = ["pouch", "not pouch-like"]
 // const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
-const fruits = [
+const fruit_type = [
   "achene",
   "berry",
   "capsule",
@@ -94,6 +94,6 @@ export {
   leaf_type,
   // native_or_introduced_or_invasive,
   stems,
-  fruits,
+  fruit_type,
   petal_symmetry,
 }

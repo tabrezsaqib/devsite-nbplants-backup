@@ -31,7 +31,7 @@ const SideNav = ({
   habitat,
   flower_colour,
   lip_shape,
-  fruits,
+  fruit_type,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -62,8 +62,8 @@ const SideNav = ({
         // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
         dispatch(toggleHabitatData(updatedHabitat))
         break
-      case "flower_petal_colour":
-        const updatedFlowerPetalColor = flower_petal_colour.map((item, index) =>
+      case "flower_colour":
+        const updatedFlowerPetalColor = flower_colour.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleFlowerPetalColorData(updatedFlowerPetalColor))
@@ -142,7 +142,6 @@ const SideNav = ({
   }
 
   const onSelectorChange = (filter) => {
-    console.log(filter)
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -172,7 +171,7 @@ const SideNav = ({
           flower_colour={flower_colour}
           lip_shape={lip_shape}
           leaf_blade_edges={leaf_blade_edges}
-          fruits={fruits}
+          fruit_type={fruit_type}
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
           // new_brunswick_county={new_brunswick_county}
@@ -212,7 +211,7 @@ const mapStateToProps = (state) => {
   return {
     habitat: state.selector.habitat,
     flower_colour: state.selector.flower_colour,
-    fruits: state.selector.fruits,
+    fruit_type: state.selector.fruit_type,
     lip_shape: state.selector.lip_shape,
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,

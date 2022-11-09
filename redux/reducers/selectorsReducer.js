@@ -18,7 +18,7 @@ const initialState = {
   stems: new Array(options.stems.length).fill(false),
   petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
   inflorescence: new Array(options.inflorescence.length).fill(false),
-  fruits: new Array(options.fruits.length).fill(false),
+  fruit_type: new Array(options.fruit_type.length).fill(false),
   selectorFilter: "none",
   activeFilterList: [],
   activeFilter: false,
@@ -84,7 +84,7 @@ export const selectorsReducer = (state = initialState, action) => {
     case types.TOGGLE_FRUITS:
       return {
         ...state,
-        fruits: action.payload,
+        fruit_type: action.payload,
       }
     case types.TOGGLE_PETAL_SYMMETRY:
       return {

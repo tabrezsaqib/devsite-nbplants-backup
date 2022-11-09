@@ -10,7 +10,7 @@ const SideNavContent = ({
   habitat,
   flower_colour,
   lip_shape,
-  fruits,
+  fruit_type,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -84,9 +84,9 @@ const SideNavContent = ({
       value: "Stems",
     },
     {
-      key: "fruits",
+      key: "fruit_type",
       group: "none",
-      value: "Fruits",
+      value: "fruit_type",
     },
     // {
     //   key: "native_or_introduced_or_invasive",
@@ -129,6 +129,7 @@ const SideNavContent = ({
       label: "doesn't apply",
     },
   ]
+
   let id = 0
   const dispatch = useDispatch()
   const getOption = (key) => {
@@ -154,8 +155,8 @@ const SideNavContent = ({
                 ? flower_colour[index]
                 : key == "lip_shape"
                 ? lip_shape[index]
-                : key == "fruits"
-                ? fruits[index]
+                : key == "fruit_type"
+                ? fruit_type[index]
                 : key == "leaf_blade_edges"
                 ? leaf_blade_edges[index]
                 : // : key == "native_or_introduced_or_invasive"
