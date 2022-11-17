@@ -7,6 +7,8 @@ import {
   fetchAllPlantPosts,
   fetchNonWoodyPlantPosts,
   fetchWoodyPlantPosts,
+  fetchFernPosts,
+  fetchGrassLikePosts,
   getAllPlantsCount,
   getAllNonWoodyPlantsCount,
   getAllWoodyPlantsCount,
@@ -26,6 +28,8 @@ const Plants = ({
   all_plants,
   nonwoody_plants,
   woody_plants,
+  ferns,
+  grass_like_plants,
   isLoading,
   itemsPerPage,
   activeFilterList,
@@ -184,8 +188,34 @@ const Plants = ({
     }
 
     if (router.query.type == "Non-woody") {
-      dispatch(fetchNonWoodyPlantPosts())
+      dispatch(fetchNonWoodyPlantPosts(router.query.type))
       filterPlantsTypeData(nonwoody_plants)
+      paginationEngine()
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+
+    if (router.query.type == "Fern") {
+      dispatch(fetchFernPosts(router.query.type))
+      filterPlantsTypeData(ferns)
+      paginationEngine()
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+
+    if (router.query.type == "Grass-like") {
+      dispatch(fetchFernPosts(router.query.type))
+      filterPlantsTypeData(grass_like_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
@@ -302,6 +332,8 @@ const mapStateToProps = (state) => {
     all_plants: state.post.all_plants,
     woody_plants: state.post.woody_plants,
     nonwoody_plants: state.post.nonwoody_plants,
+    ferns: state.post.ferns,
+    grass_like_plants: state.post.grass_like_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
     habitat: state.selector.habitat,

@@ -9,13 +9,14 @@ const WoodyPlantSelector = () => {
       <p>In progress</p>
       <style jsx>{`
         .block {
-          border: 1px solid #e0e1e3;
-          border-radius: 25px;
           padding: 30px 20px;
-          background-color: #ffffff;
           height: 300px;
-
+          img {
+            border-radius: 50%;
+            border: 2px solid #333333;
+          }
           h4 {
+            padding-top: 15px;
             font-size: 18px;
             font-weight: bold;
           }

@@ -1,15 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
 
-const NonWoodyPlantSelector = () => {
+const GrassLike = () => {
   return (
     <div className="block">
-      <img src="../images/non-woody-icon.png" alt="nonwoody plant icon" />
-      <h4>Non-woody Plants</h4>
-      <span>
-        <strong>Orchids</strong> and <strong>Violets</strong> <br></br>Others in
-        Progress
-      </span>
+      <img src="../images/grasses.png" alt="grass-like plant icon" />
+      <h4>Glass-like Plants</h4>
+
       <style jsx>{`
         .block {
           padding: 30px 20px;
@@ -32,4 +29,4 @@ const NonWoodyPlantSelector = () => {
   )
 }
 
-export default NonWoodyPlantSelector
+export default GrassLike

@@ -3,6 +3,8 @@ import NonWoodyPlantSelector from "../species-selectors/NonWoodyPlantSelector"
 import WoodyPlantSelector from "../species-selectors/WoodyPlantSelector"
 import Router from "next/router"
 import styles from "../../styles/Global.module.scss"
+import Ferns from "../species-selectors/Ferns"
+import GrassLike from "../species-selectors/GrassLike"
 
 const SpeciesOption = () => {
   const optionSelector = (type) => {
@@ -24,6 +26,15 @@ const SpeciesOption = () => {
         },
       })
     }
+    if (type == "Fern") {
+      localStorage.setItem("route", "Fern")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type,
+        },
+      })
+    }
   }
   return (
     <div className="d-flex justify-content-center">
@@ -37,6 +48,12 @@ const SpeciesOption = () => {
         </a>
         <a onClick={() => optionSelector("Non-woody")}>
           <NonWoodyPlantSelector />
+        </a>
+        <a onClick={() => optionSelector("Fern")}>
+          <Ferns />
+        </a>
+        <a onClick={() => optionSelector("Non-woody")}>
+          <GrassLike />
         </a>
       </div>
       <style jsx>{`

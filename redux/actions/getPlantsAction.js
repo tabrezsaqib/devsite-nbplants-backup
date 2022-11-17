@@ -39,6 +39,30 @@ export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
   })
 }
 
+export const fetchFernPosts = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
+  dispatch({
+    type: types.GET_FERNS_DATA,
+    payload: response.data,
+  })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
+  })
+}
+
+export const fetchGrassLikePosts = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
+  dispatch({
+    type: types.GET_GRASS_LIKE_PLANTS,
+    payload: response.data,
+  })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
+  })
+}
+
 export const fetchPlantPost = (id) => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db/${id}`)
   dispatch({
