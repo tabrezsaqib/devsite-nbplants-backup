@@ -1028,6 +1028,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           background-color: #f6f7f9;
           padding: 15px 20px;
           border-radius: 10px;
+          font-size: 15px;
         }
         .side-bar {
           background-color: #ffffff;
@@ -1045,6 +1046,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
         .unique-characteristics {
           margin: 10px 6px;
+          font-size: 14px;
           :global(ul) {
             padding: 0px !important;
           }

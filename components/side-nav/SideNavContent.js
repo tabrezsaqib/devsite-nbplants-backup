@@ -233,7 +233,7 @@ const SideNavContent = ({
           </h2>
           <div
             id="flowers"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse"
             aria-labelledby="headingOne"
             data-bs-parent="#accordion1">
             <div className="accordion-body">
@@ -257,10 +257,15 @@ const SideNavContent = ({
                             />
                           )}
                         </div>
-
-                        <div className="d-flex flex-wrap">
-                          {getOption(item.key)}
-                        </div>
+                        {item.key == "inflorescence" ? (
+                          <div id="four-column" className="d-flex flex-wrap">
+                            {getOption(item.key)}
+                          </div>
+                        ) : (
+                          <div className="d-flex flex-wrap">
+                            {getOption(item.key)}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -285,7 +290,7 @@ const SideNavContent = ({
           </h2>
           <div
             id="leaves"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse"
             aria-labelledby="heading2"
             data-bs-parent="#accordion2">
             <div className="accordion-body">

@@ -22,6 +22,7 @@ a {
 }
 p {
   line-height: 1.7;
+  font-size: 15px;
 }
 
 .breadcrumb {
@@ -34,9 +35,10 @@ p {
   padding: 20px 25px;
 }
 .heading {
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: bold;
 }
+
 .side-nav-heading {
   font-size: 0.9375rem !important;
   font-weight: bold !important;
@@ -81,11 +83,17 @@ p {
 .form-check {
   margin-bottom: 0px !important;
 }
+#flowers .form-check{
+  width: 134px; 
+}
+#four-column .form-check {
+  width: 70px!important;
+}
 .form-check {
-  width: 134px;
+  width: 100px;
 }
 .form-check-label {
-  font-size: 13px;
+  font-size: 11.5px;
 }
 .form-check-label img {
   margin-top: -3px;
@@ -109,4 +117,10 @@ p {
 }
 .accordion-body {
   padding: 1rem 0.8rem !important;
+}
+.accordion-item:last-of-type .accordion-button.collapsed{
+  background: #ffffff;
+}
+.accordion-button.jsx-2615534029:not(.collapsed){
+  background-color: #ffffff !important;
 }

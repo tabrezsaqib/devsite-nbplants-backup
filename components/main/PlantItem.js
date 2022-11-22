@@ -87,6 +87,7 @@ const PlantItem = ({ plant }) => {
         }
         .description {
           padding: 5px 15px 15px;
+          font-size: 15px;
         }
         .hidden {
           display: none;
