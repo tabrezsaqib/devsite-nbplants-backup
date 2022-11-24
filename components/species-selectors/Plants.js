@@ -33,6 +33,7 @@ const Plants = ({
   isLoading,
   itemsPerPage,
   activeFilterList,
+  plant_type,
   habitat,
   fruit_type,
   flower_colour,
@@ -80,6 +81,11 @@ const Plants = ({
         return (filteredList.current = plant_data.filter((item) => {
           return activeFilterList.every(function (element) {
             return filterKeys.some((key) => {
+              console.log("Element: ", element)
+              if (key == "plant_type") {
+                return item.acf[key].includes(element)
+              }
+
               return item.acf.characteristics[key].includes(element)
             })
           })
@@ -166,6 +172,7 @@ const Plants = ({
   useEffect(() => {
     if (router.query.type == "all") {
       dispatch(fetchAllPlantPosts())
+
       filterPlantsTypeData(all_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
@@ -230,6 +237,7 @@ const Plants = ({
     itemOffset,
     itemsPerPage,
     isLoading,
+    plant_type,
     habitat,
     fruit_type,
     flower_colour,
@@ -336,6 +344,7 @@ const mapStateToProps = (state) => {
     grass_like_plants: state.post.grass_like_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
+    plant_type: state.selector.plant_type,
     habitat: state.selector.habitat,
     flower_colour: state.selector.flower_colour,
     leaf_blade_edges: state.selector.leaf_blade_edges,

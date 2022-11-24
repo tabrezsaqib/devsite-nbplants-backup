@@ -1,6 +1,13 @@
 import * as types from "../types"
 import * as localStore from "../../generics/localStore"
 
+export const togglePlantTypeData = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_PLANT_TYPE,
+    payload: option,
+  })
+}
+
 export const toggleHabitatData = (option) => async (dispatch) => {
   dispatch({
     type: types.TOGGLE_HABITAT,

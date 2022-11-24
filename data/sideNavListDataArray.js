@@ -1,3 +1,4 @@
+const plant_type = ["Fern", "Non-woody", "Woody"]
 const habitat = [
   "aquatic",
   "terrestrial",
@@ -84,6 +85,7 @@ const fruit_type = [
 // ]
 
 export {
+  plant_type,
   habitat,
   flower_colour,
   inflorescence,

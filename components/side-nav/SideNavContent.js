@@ -8,6 +8,7 @@ import SideNavPopover from "./SideNavPopover"
 const SideNavContent = ({
   options,
   habitat,
+  plant_type,
   flower_colour,
   lip_shape,
   fruit_type,
@@ -28,11 +29,11 @@ const SideNavContent = ({
   triggerToolTip,
 }) => {
   const optionNames = [
-    // {
-    //   key: "plant_type",
-    //   group: "initial",
-    //   value: "Plant Type",
-    // },
+    {
+      key: "plant_type",
+      group: "initial",
+      value: "Plant Type",
+    },
     {
       key: "habitat",
       group: "initial",
@@ -151,6 +152,8 @@ const SideNavContent = ({
                 ? leaf_type[index]
                 : key == "habitat"
                 ? habitat[index]
+                : key == "plant_type"
+                ? plant_type[index]
                 : key == "flower_colour"
                 ? flower_colour[index]
                 : key == "lip_shape"

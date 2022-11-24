@@ -2,6 +2,7 @@ import * as types from "../types"
 import * as options from "../../data/sideNavListDataArray"
 
 const initialState = {
+  plant_type: new Array(options.plant_type.length).fill(false),
   habitat: new Array(options.habitat.length).fill(false),
   flower_colour: new Array(options.flower_colour.length).fill(false),
   lip_shape: new Array(options.lip_shape.length).fill(false),
@@ -26,6 +27,11 @@ const initialState = {
 
 export const selectorsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.TOGGLE_PLANT_TYPE:
+      return {
+        ...state,
+        plant_type: action.payload,
+      }
     case types.TOGGLE_HABITAT:
       return {
         ...state,

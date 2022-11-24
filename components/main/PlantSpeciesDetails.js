@@ -257,23 +257,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 </div>
               </div>
-
-              <div className="d-flex flex-column mt-4">
-                <p>
-                  <strong>Unique Characteristics: </strong>
-                </p>
-                <div className="d-flex flex-column text-center">
-                  <div className="featured-img-container">
-                    <img
-                      src={plant_details.featured_image.image_url}
-                      alt="plant image"
-                    />
-                  </div>
-                  <span>
-                    <i>{plant_details.featured_image.caption}</i>
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
           <div className="col-lg-9">
@@ -444,6 +427,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
+
+                {/* FLOWERS */}
                 <div className="accordion mb-3" id="accordion1">
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
@@ -627,6 +612,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 </div>
+
                 {plant_details.acf.characteristics.stems.length !== 0 &&
                   plant_details.acf.characteristics.stems.map((item, index) => (
                     <div className="d-flex label-value-section" key={index}>
@@ -641,6 +627,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       </div>
                     </div>
                   ))}
+
+                {/* LEAVES */}
                 <div className="accordion mb-3" id="accordion2">
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingTwo">
@@ -817,7 +805,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
-
+                {/* FRUIT TYPE */}
                 <div className="accordion mb-3" id="accordion3">
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingThree">

@@ -5,6 +5,7 @@ import * as localStore from "../../generics/localStore"
 import SideNavContent from "./SideNavContent"
 
 import {
+  togglePlantTypeData,
   toggleHabitatData,
   toggleFlowerPetalColorData,
   toggleLeafBladeEdgesData,
@@ -28,6 +29,7 @@ import {
 } from "../../redux/actions/selectorFilterAction"
 import { resetPageCount } from "../../redux/actions/paginationAction"
 const SideNav = ({
+  plant_type,
   habitat,
   flower_colour,
   lip_shape,
@@ -55,6 +57,13 @@ const SideNav = ({
 
   const handleOnChange = (position, option) => {
     switch (option) {
+      case "plant_type":
+        const updatedPlantType = plant_type.map((item, index) =>
+          index === position ? !item : item
+        )
+        // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
+        dispatch(togglePlantTypeData(updatedPlantType))
+        break
       case "habitat":
         const updatedHabitat = habitat.map((item, index) =>
           index === position ? !item : item
@@ -142,6 +151,7 @@ const SideNav = ({
   }
 
   const onSelectorChange = (filter) => {
+    console.log(activeFilterList)
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -167,6 +177,7 @@ const SideNav = ({
       <div className={isLoading == true ? "disable-sidebar" : "options"}>
         <SideNavContent
           options={options}
+          plant_type={plant_type}
           habitat={habitat}
           flower_colour={flower_colour}
           lip_shape={lip_shape}
@@ -209,6 +220,7 @@ const SideNav = ({
 
 const mapStateToProps = (state) => {
   return {
+    plant_type: state.selector.plant_type,
     habitat: state.selector.habitat,
     flower_colour: state.selector.flower_colour,
     fruit_type: state.selector.fruit_type,
