@@ -1,11 +1,5 @@
 const plant_type = ["Fern", "Non-woody", "Woody"]
-const habitat = [
-  "aquatic",
-  "terrestrial",
-  "wetlands",
-  "terrestrial, wetlands",
-  "aquatic, wetlands",
-]
+const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_colour = [
   "blue to purple",
   "green to brown",
@@ -66,6 +60,7 @@ const fruit_type = [
   "cone",
   "fruit with wings",
 ]
+
 // const new_brunswick_county = [
 //   "albert county",
 //   "carleton county",

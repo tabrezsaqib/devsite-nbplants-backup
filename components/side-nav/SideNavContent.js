@@ -3,6 +3,7 @@
 import * as api from "../../generics/api"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { useDispatch } from "react-redux"
+import { useRouter } from "next/router"
 import SideNavPopover from "./SideNavPopover"
 
 const SideNavContent = ({
@@ -28,10 +29,11 @@ const SideNavContent = ({
   popoverStatus,
   triggerToolTip,
 }) => {
+  const router = useRouter()
   const optionNames = [
     {
       key: "plant_type",
-      group: "initial",
+      group: router.query.type,
       value: "Plant Type",
     },
     {
@@ -87,7 +89,7 @@ const SideNavContent = ({
     {
       key: "fruit_type",
       group: "none",
-      value: "fruit_type",
+      value: "Fruit Type",
     },
     // {
     //   key: "native_or_introduced_or_invasive",
@@ -190,11 +192,13 @@ const SideNavContent = ({
               </div>
             ))}
             {key == "flower_colour" ? <span>&nbsp;&nbsp;</span> : <span></span>}
-            {api.capitalizeFirstLetter(data)}{" "}
+
+            {api.capitalizeFirstLetter(data)}
           </label>
         </div>
       )
     })
+    console.log(option)
     return option
   }
 
@@ -205,6 +209,22 @@ const SideNavContent = ({
 
   return (
     <>
+      <div>
+        {optionNames.map((item) => (
+          <div key={item.key}>
+            {item.group == "all" && (
+              <div>
+                <h6 className="selector-heading">
+                  <i className="bi bi-check2-square" />
+                  &nbsp;&nbsp;
+                  <strong>{item.value}</strong>
+                </h6>
+                <div className="d-flex flex-wrap">{getOption(item.key)}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
       <div>
         {optionNames.map((item) => (
           <div key={item.key}>
@@ -221,64 +241,68 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      <div className="accordion mt-3 mb-3" id="accordion1">
-        <div className="accordion-item">
-          <h2 className="accordion-header" id="headingOne">
-            <button
-              className="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flowers"
-              aria-expanded="true"
-              aria-controls="flowers">
-              Flowers
-            </button>
-          </h2>
-          <div
-            id="flowers"
-            className="accordion-collapse collapse"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordion1">
-            <div className="accordion-body">
-              <div>
-                {optionNames.map((item) => (
-                  <div key={item.key}>
-                    {item.group == "flowers" && (
-                      <div>
-                        <div className="d-flex">
-                          <h6 className="selector-heading">
-                            <i className="bi bi-check2-square" />
-                            &nbsp;&nbsp;
-                            <strong>{item.value}</strong>
-                          </h6>
-                          {(item.key == "inflorescence" ||
-                            item.key == "petal_symmetry") && (
-                            <SideNavPopover
-                              triggerPopUp={() => triggerPopUp(item.key, true)}
-                              popoverData={popoverData}
-                              popoverStatus={popoverStatus}
-                            />
+      {router.query.type !== "Fern" && (
+        <div className="accordion mt-2 mb-2" id="accordion1">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="headingOne">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flowers"
+                aria-expanded="true"
+                aria-controls="flowers">
+                Flowers
+              </button>
+            </h2>
+            <div
+              id="flowers"
+              className="accordion-collapse collapse"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordion1">
+              <div className="accordion-body">
+                <div>
+                  {optionNames.map((item) => (
+                    <div key={item.key}>
+                      {item.group == "flowers" && (
+                        <div>
+                          <div className="d-flex">
+                            <h6 className="selector-heading">
+                              <i className="bi bi-check2-square" />
+                              &nbsp;&nbsp;
+                              <strong>{item.value}</strong>
+                            </h6>
+                            {(item.key == "inflorescence" ||
+                              item.key == "petal_symmetry") && (
+                              <SideNavPopover
+                                triggerPopUp={() =>
+                                  triggerPopUp(item.key, true)
+                                }
+                                popoverData={popoverData}
+                                popoverStatus={popoverStatus}
+                              />
+                            )}
+                          </div>
+                          {item.key == "inflorescence" ? (
+                            <div id="four-column" className="d-flex flex-wrap">
+                              {getOption(item.key)}
+                            </div>
+                          ) : (
+                            <div className="d-flex flex-wrap">
+                              {getOption(item.key)}
+                            </div>
                           )}
                         </div>
-                        {item.key == "inflorescence" ? (
-                          <div id="four-column" className="d-flex flex-wrap">
-                            {getOption(item.key)}
-                          </div>
-                        ) : (
-                          <div className="d-flex flex-wrap">
-                            {getOption(item.key)}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="accordion mb-3" id="accordion2">
+      )}
+      <div className="accordion mt-2 mb-2" id="accordion2">
         <div className="accordion-item">
           <h2 className="accordion-header" id="heading2">
             <button
@@ -338,7 +362,7 @@ const SideNavContent = ({
       <style jsx>{`
         .selector-heading {
           font-size: 13px;
-          margin-top: 10px;
+          margin: 5px 5px;
           font-weight: 900;
         }
 

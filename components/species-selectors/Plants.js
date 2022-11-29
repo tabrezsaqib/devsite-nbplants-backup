@@ -81,7 +81,6 @@ const Plants = ({
         return (filteredList.current = plant_data.filter((item) => {
           return activeFilterList.every(function (element) {
             return filterKeys.some((key) => {
-              console.log("Element: ", element)
               if (key == "plant_type") {
                 return item.acf[key].includes(element)
               }

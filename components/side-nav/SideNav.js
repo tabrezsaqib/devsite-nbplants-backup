@@ -203,7 +203,7 @@ const SideNav = ({
         .sidebar {
           border-radius: 10px;
           padding: 10px;
-          margin-top: 15px;
+          margin-top: 0px;
           height: auto;
           margin-bottom: 25px;
           padding-bottom: 25px;
