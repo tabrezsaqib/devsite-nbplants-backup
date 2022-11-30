@@ -55,12 +55,17 @@ const fruit_type = [
   "follicle",
   "nut",
   "pod",
+  "fleshy",
   "silicle",
   "stone",
   "cone",
   "fruit with wings",
 ]
 
+const leaf_duration = ["deciduous", "coniferous"]
+const leaf_divisions = ["0", "1", "2", "3"]
+const spore_shape = ["irregular", "kidney", "oblong", "oval", "round"]
+const spore_location = ["away from edge", "cone at tip", "edge", "separate"]
 // const new_brunswick_county = [
 //   "albert county",
 //   "carleton county",
@@ -93,4 +98,8 @@ export {
   stems,
   fruit_type,
   petal_symmetry,
+  leaf_duration,
+  leaf_divisions,
+  spore_shape,
+  spore_location,
 }

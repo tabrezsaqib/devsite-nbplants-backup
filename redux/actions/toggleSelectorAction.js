@@ -50,6 +50,30 @@ export const toggleLeafArrangementData = (option) => async (dispatch) => {
     payload: option,
   })
 }
+export const toggleLeafDuration = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_LEAF_DURATION,
+    payload: option,
+  })
+}
+export const toggleLeafletDivisions = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_LEAFLET_DIVISIONS,
+    payload: option,
+  })
+}
+export const toggleSporeShape = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SPORE_SHAPE,
+    payload: option,
+  })
+}
+export const toggleSporeLocation = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SPORE_LOCATION,
+    payload: option,
+  })
+}
 // export const toggleCountyData = (option) => async (dispatch) => {
 //   dispatch({
 //     type: types.TOGGLE_COUNTY,

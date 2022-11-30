@@ -16,6 +16,10 @@ const SideNavContent = ({
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  leaf_duration,
+  leaf_divisions,
+  spore_location,
+  spore_shape,
   native_or_introduced_or_invasive,
   leaf_shape,
   petal_symmetry,
@@ -80,6 +84,28 @@ const SideNavContent = ({
       key: "leaf_type",
       group: "leaves",
       value: "Leaf Type",
+    },
+    {
+      key: "leaf_duration",
+      group: router.query.type == "Woody" && "leaves",
+      value: "Leaf Duration",
+    },
+    {
+      key: "spore_location",
+      group: router.query.type == "Fern" && "spores",
+      value: "Spore location",
+    },
+    {
+      key: "spore_shape",
+      group: router.query.type == "Fern" && "spores",
+      value: "Spore shape",
+    },
+    {
+      key: "leaf_divisions",
+      group:
+        (router.query.type == "Woody" || router.query.type == "Fern") &&
+        "leaves",
+      value: "Leaflet Divisions",
     },
     {
       key: "stems",
@@ -162,8 +188,16 @@ const SideNavContent = ({
                 ? lip_shape[index]
                 : key == "fruit_type"
                 ? fruit_type[index]
+                : key == "leaf_duration"
+                ? leaf_duration[index]
+                : key == "leaf_divisions"
+                ? leaf_divisions[index]
                 : key == "leaf_blade_edges"
                 ? leaf_blade_edges[index]
+                : key == "spore_shape"
+                ? spore_shape[index]
+                : key == "spore_location"
+                ? spore_location[index]
                 : // : key == "native_or_introduced_or_invasive"
                 // ? native_or_introduced_or_invasive[index]
                 key == "leaf_shape"
@@ -198,7 +232,6 @@ const SideNavContent = ({
         </div>
       )
     })
-    console.log(option)
     return option
   }
 
@@ -343,6 +376,49 @@ const SideNavContent = ({
           </div>
         </div>
       </div>
+      {router.query.type == "Fern" && (
+        <div className="accordion mt-2 mb-2" id="accordion2">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="heading3">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#spores"
+                aria-expanded="true"
+                aria-controls="spores">
+                Spores
+              </button>
+            </h2>
+            <div
+              id="spores"
+              className="accordion-collapse collapse"
+              aria-labelledby="heading3"
+              data-bs-parent="#accordion2">
+              <div className="accordion-body">
+                <div>
+                  {optionNames.map((item) => (
+                    <div key={item.key}>
+                      {item.group == "spores" && (
+                        <div>
+                          <h6 className="selector-heading">
+                            <i className="bi bi-check2-square" />
+                            &nbsp;&nbsp;
+                            <strong>{item.value}</strong>
+                          </h6>
+                          <div className="d-flex flex-wrap">
+                            {getOption(item.key)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div>
         {optionNames.map((item) => (
           <div key={item.key}>

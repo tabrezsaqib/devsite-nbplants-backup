@@ -8,6 +8,8 @@ const initialState = {
   lip_shape: new Array(options.lip_shape.length).fill(false),
   leaf_blade_edges: new Array(options.leaf_blade_edges.length).fill(false),
   leaf_type: new Array(options.leaf_type.length).fill(false),
+  leaf_duration: new Array(options.leaf_duration.length).fill(false),
+  leaf_divisions: new Array(options.leaf_divisions.length).fill(false),
   leaf_arrangement: new Array(options.leaf_arrangement.length).fill(false),
   // new_brunswick_county: new Array(options.new_brunswick_county.length).fill(
   //   false
@@ -16,6 +18,8 @@ const initialState = {
   //   options.native_or_introduced_or_invasive.length
   // ).fill(false),
   leaf_shape: new Array(options.leaf_shape.length).fill(false),
+  spore_shape: new Array(options.spore_shape.length).fill(false),
+  spore_location: new Array(options.spore_location.length).fill(false),
   stems: new Array(options.stems.length).fill(false),
   petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
   inflorescence: new Array(options.inflorescence.length).fill(false),
@@ -61,6 +65,26 @@ export const selectorsReducer = (state = initialState, action) => {
       return {
         ...state,
         leaf_arrangement: action.payload,
+      }
+    case types.TOGGLE_LEAF_DURATION:
+      return {
+        ...state,
+        leaf_duration: action.payload,
+      }
+    case types.TOGGLE_LEAFLET_DIVISIONS:
+      return {
+        ...state,
+        leaf_divisions: action.payload,
+      }
+    case types.TOGGLE_SPORE_SHAPE:
+      return {
+        ...state,
+        spore_shape: action.payload,
+      }
+    case types.TOGGLE_SPORE_LOCATION:
+      return {
+        ...state,
+        spore_location: action.payload,
       }
     // case types.TOGGLE_COUNTY:
     //   return {

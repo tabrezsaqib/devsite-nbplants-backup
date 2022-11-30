@@ -18,6 +18,10 @@ import {
   toggleNative,
   toggleStemsData,
   togglePetalSymmetry,
+  toggleLeafDuration,
+  toggleLeafletDivisions,
+  toggleSporeShape,
+  toggleSporeLocation,
 } from "../../redux/actions/toggleSelectorAction"
 import {
   getPopoverData,
@@ -37,6 +41,10 @@ const SideNav = ({
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  leaf_duration,
+  leaf_divisions,
+  spore_shape,
+  spore_location,
   new_brunswick_county,
   activeFilterList,
   // native_or_introduced_or_invasive,
@@ -84,8 +92,8 @@ const SideNav = ({
         dispatch(toggleLipShape(updatedLipShape))
         break
 
-      case "fruits":
-        const updatedFruits = fruits.map((item, index) =>
+      case "fruit_type":
+        const updatedFruits = fruit_type.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleFruits(updatedFruits))
@@ -113,6 +121,31 @@ const SideNav = ({
           (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
         )
         dispatch(toggleLeafTypeData(updatedLeafType))
+        break
+
+      case "leaf_duration":
+        const updatedLeafDuration = leaf_duration.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleLeafDuration(updatedLeafDuration))
+        break
+      case "leaf_divisions":
+        const updatedLeafletDivisions = leaf_divisions.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleLeafletDivisions(updatedLeafletDivisions))
+        break
+      case "spore_shape":
+        const updatedSporeShape = spore_shape.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleSporeShape(updatedSporeShape))
+        break
+      case "spore_location":
+        const updatedSporeLocation = spore_location.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleSporeLocation(updatedSporeLocation))
         break
       // case "new_brunswick_county":
       //   const updatedCounty = new_brunswick_county.map((item, index) =>
@@ -151,7 +184,6 @@ const SideNav = ({
   }
 
   const onSelectorChange = (filter) => {
-    console.log(activeFilterList)
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -185,6 +217,10 @@ const SideNav = ({
           fruit_type={fruit_type}
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
+          leaf_duration={leaf_duration}
+          leaf_divisions={leaf_divisions}
+          spore_location={spore_location}
+          spore_shape={spore_shape}
           // new_brunswick_county={new_brunswick_county}
           // native_or_introduced_or_invasive={native_or_introduced_or_invasive}
           leaf_shape={leaf_shape}
@@ -228,6 +264,10 @@ const mapStateToProps = (state) => {
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
+    leaf_duration: state.selector.leaf_duration,
+    leaf_divisions: state.selector.leaf_divisions,
+    spore_location: state.selector.spore_location,
+    spore_shape: state.selector.spore_shape,
     // new_brunswick_county: state.selector.new_brunswick_county,
     // native_or_introduced_or_invasive:
     //   state.selector.native_or_introduced_or_invasive,
