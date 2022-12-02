@@ -7,6 +7,12 @@ export const togglePlantTypeData = (option) => async (dispatch) => {
     payload: option,
   })
 }
+export const toggleTypeData = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_TYPE,
+    payload: option,
+  })
+}
 
 export const toggleHabitatData = (option) => async (dispatch) => {
   dispatch({

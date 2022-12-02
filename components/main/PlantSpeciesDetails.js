@@ -356,15 +356,22 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
-                {plant_details.acf.type && (
-                  <div className="d-flex label-value-section">
-                    <p>
-                      <strong>Type: &nbsp;</strong>
-                      {api.capitalizeFirstLetter(plant_details.acf.type)}
-                    </p>
-                  </div>
-                )}
+                {plant_details.acf.type.length !== 0 &&
+                  plant_details.acf.type.map((item, index) => (
+                    <div className="d-flex label-value-section" key={index}>
+                      <p>
+                        <strong>Type: &nbsp;</strong>
+                      </p>
+                      <div>
+                        <p>
+                          {api.capitalizeFirstLetter(item)}
+                          &nbsp;
+                        </p>
+                      </div>
+                    </div>
+                  ))}
               </div>
+
               <h4>
                 <strong>Characteristics</strong>
               </h4>
@@ -460,15 +467,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
 
                           {plant_details.acf.characteristics.flower_colour
                             .length !== 0 && (
-                            <div className="d-flex label-value-section">
+                            <div className="d-flex">
                               <p>
                                 <strong>Flower Colour: &nbsp;</strong>
                               </p>
                               {plant_details.acf.characteristics.flower_colour.map(
                                 (item, index) => (
-                                  <div
-                                    className="d-flex label-value-section"
-                                    key={index}>
+                                  <div className="d-flex" key={index}>
                                     <p>
                                       {api.capitalizeFirstLetter(item)}
                                       {item !==

@@ -17,6 +17,7 @@ export const GET_COUNTY = "GET_COUNTY"
 
 //Toggle selectors
 export const TOGGLE_PLANT_TYPE = "TOGGLE_PLANT_TYPE"
+export const TOGGLE_TYPE = "TOGGLE_TYPE"
 export const TOGGLE_HABITAT = "TOGGLE_HABITAT"
 export const TOGGLE_FLOWER_PETAL_COLOR = "TOGGLE_FLOWER_PETAL_COLOR"
 export const TOGGLE_FRUITS = "TOGGLE_FRUITS"

@@ -33,18 +33,6 @@ const Plants = ({
   isLoading,
   itemsPerPage,
   activeFilterList,
-  plant_type,
-  habitat,
-  fruit_type,
-  flower_colour,
-  leaf_blade_edges,
-  leaf_type,
-  leaf_arrangement,
-  // native_or_introduced_or_invasive,
-  leaf_shape,
-  petal_symmetry,
-  inflorescence,
-  stems,
   itemOffset,
   pageCount,
   toggle_pagination,
@@ -81,7 +69,7 @@ const Plants = ({
         return (filteredList.current = plant_data.filter((item) => {
           return activeFilterList.every(function (element) {
             return filterKeys.some((key) => {
-              if (key == "plant_type") {
+              if (key == "plant_type" || key == "type") {
                 return item.acf[key].includes(element)
               }
 
@@ -236,18 +224,6 @@ const Plants = ({
     itemOffset,
     itemsPerPage,
     isLoading,
-    plant_type,
-    habitat,
-    fruit_type,
-    flower_colour,
-    leaf_blade_edges,
-    leaf_type,
-    leaf_arrangement,
-    // native_or_introduced_or_invasive,
-    petal_symmetry,
-    leaf_shape,
-    stems,
-    inflorescence,
     router,
     activeFilterList,
     localStore,
@@ -343,19 +319,6 @@ const mapStateToProps = (state) => {
     grass_like_plants: state.post.grass_like_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
-    plant_type: state.selector.plant_type,
-    habitat: state.selector.habitat,
-    flower_colour: state.selector.flower_colour,
-    leaf_blade_edges: state.selector.leaf_blade_edges,
-    leaf_type: state.selector.leaf_type,
-    leaf_arrangement: state.selector.leaf_arrangement,
-    // native_or_introduced_or_invasive:
-    //   state.selector.native_or_introduced_or_invasive,
-    leaf_shape: state.selector.leaf_shape,
-    petal_symmetry: state.selector.petal_symmetry,
-    inflorescence: state.selector.inflorescence,
-    stems: state.selector.stems,
-    fruit_type: state.selector.fruit_type,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     toggle_pagination: state.pagination.toggle_pagination,

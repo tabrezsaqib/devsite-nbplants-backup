@@ -6,6 +6,7 @@ import SideNavContent from "./SideNavContent"
 
 import {
   togglePlantTypeData,
+  toggleTypeData,
   toggleHabitatData,
   toggleFlowerPetalColorData,
   toggleLeafBladeEdgesData,
@@ -34,6 +35,7 @@ import {
 import { resetPageCount } from "../../redux/actions/paginationAction"
 const SideNav = ({
   plant_type,
+  type,
   habitat,
   flower_colour,
   lip_shape,
@@ -71,6 +73,13 @@ const SideNav = ({
         )
         // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
         dispatch(togglePlantTypeData(updatedPlantType))
+        break
+      case "type":
+        const updatedType = type.map((item, index) =>
+          index === position ? !item : item
+        )
+        // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
+        dispatch(toggleTypeData(updatedType))
         break
       case "habitat":
         const updatedHabitat = habitat.map((item, index) =>
@@ -210,6 +219,7 @@ const SideNav = ({
         <SideNavContent
           options={options}
           plant_type={plant_type}
+          type={type}
           habitat={habitat}
           flower_colour={flower_colour}
           lip_shape={lip_shape}
@@ -257,6 +267,7 @@ const SideNav = ({
 const mapStateToProps = (state) => {
   return {
     plant_type: state.selector.plant_type,
+    type: state.selector.type,
     habitat: state.selector.habitat,
     flower_colour: state.selector.flower_colour,
     fruit_type: state.selector.fruit_type,

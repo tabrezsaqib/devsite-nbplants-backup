@@ -10,6 +10,7 @@ const SideNavContent = ({
   options,
   habitat,
   plant_type,
+  type,
   flower_colour,
   lip_shape,
   fruit_type,
@@ -39,6 +40,11 @@ const SideNavContent = ({
       key: "plant_type",
       group: router.query.type,
       value: "Plant Type",
+    },
+    {
+      key: "type",
+      group: "none",
+      value: "Type",
     },
     {
       key: "habitat",
@@ -93,12 +99,12 @@ const SideNavContent = ({
     {
       key: "spore_location",
       group: router.query.type == "Fern" && "spores",
-      value: "Spore location",
+      value: "Spore Location",
     },
     {
       key: "spore_shape",
       group: router.query.type == "Fern" && "spores",
-      value: "Spore shape",
+      value: "Spore Shape",
     },
     {
       key: "leaf_divisions",
@@ -182,6 +188,8 @@ const SideNavContent = ({
                 ? habitat[index]
                 : key == "plant_type"
                 ? plant_type[index]
+                : key == "type"
+                ? type[index]
                 : key == "flower_colour"
                 ? flower_colour[index]
                 : key == "lip_shape"

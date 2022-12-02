@@ -113,6 +113,7 @@ export const triggerToolTip = (status) => async (dispatch) => {
 }
 export const searchByKeyword = (slug) => async (dispatch) => {
   const response = await api.get(`${SEARCH_URL}search?keyword=${slug}`)
+  console.log(response)
 
   if (response.data == null) {
     dispatch({

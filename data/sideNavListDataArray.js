@@ -1,4 +1,5 @@
 const plant_type = ["Fern", "Non-woody", "Woody"]
+const type = ["Native", "Introduced", "Native hybrid"]
 const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_colour = [
   "blue to purple",
@@ -86,6 +87,7 @@ const spore_location = ["away from edge", "cone at tip", "edge", "separate"]
 
 export {
   plant_type,
+  type,
   habitat,
   flower_colour,
   inflorescence,
