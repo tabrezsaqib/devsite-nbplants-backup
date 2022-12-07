@@ -6,7 +6,7 @@ const WoodyPlantSelector = () => {
     <div className="block">
       <img src="../images/woody-plant-icon.png" alt="woody plant icon" />
       <h4>Woody Plants</h4>
-      <p>In progress</p>
+
       <style jsx>{`
         .block {
           padding: 30px 20px;

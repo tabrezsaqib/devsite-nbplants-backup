@@ -16,9 +16,8 @@ const leaf_blade_edges = ["lobed", "smooth (Entire)", "teethed", "no leaves"]
 
 const leaf_shape = [
   "arrow",
-  "elliptical",
-  "heart",
   "fern-like",
+  "heart",
   "kidney-shaped",
   "lance",
   "linear",

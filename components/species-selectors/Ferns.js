@@ -6,6 +6,7 @@ const Ferns = () => {
     <div className="block">
       <img src="../images/fern.png" alt="fern plant icon" />
       <h4>Ferns</h4>
+      <p>In progress</p>
 
       <style jsx>{`
         .block {

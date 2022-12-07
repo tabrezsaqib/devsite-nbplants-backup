@@ -52,7 +52,7 @@ const SpeciesOption = () => {
         <a onClick={() => optionSelector("Fern")}>
           <Ferns />
         </a>
-        <a onClick={() => optionSelector("Non-woody")}>
+        <a onClick={() => optionSelector("Non-woody")} className="disabled">
           <GrassLike />
         </a>
       </div>

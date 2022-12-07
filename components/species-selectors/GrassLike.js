@@ -6,6 +6,7 @@ const GrassLike = () => {
     <div className="block">
       <img src="../images/grasses.png" alt="grass-like plant icon" />
       <h4>Glass-like Plants</h4>
+      <p>In progress</p>
 
       <style jsx>{`
         .block {
