@@ -386,12 +386,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
-                {plant_details.acf.characteristics.conservation_rank && (
+                {plant_details.acf.conservation_rank && (
                   <div className="d-flex label-value-section">
                     <p>
                       <strong>Conservation Rank: &nbsp;</strong>
                     </p>
-                    {plant_details.acf.characteristics.conservation_rank}
+                    {plant_details.acf.conservation_rank}
                   </div>
                 )}
                 <div className="d-flex">
@@ -914,7 +914,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .content-section {
           background-color: #ffffff;
           margin: 15px 0px;
-          border-radius: 10px;
+          border-left: 1px solid #e0e1e3;
         }
         .img-container {
           border-radius: 12px;
@@ -1046,9 +1046,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           }
         }
         .unique-characteristics {
-          margin: 10px 6px;
+          margin-left: 10px;
           font-size: 14px;
-          :global(ul) {
+          :global(ol) {
             padding: 0px !important;
           }
         }
