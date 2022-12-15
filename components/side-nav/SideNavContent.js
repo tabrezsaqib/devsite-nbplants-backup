@@ -234,7 +234,6 @@ const SideNavContent = ({
               </div>
             ))}
             {key == "flower_colour" ? <span>&nbsp;&nbsp;</span> : <span></span>}
-
             {api.capitalizeFirstLetter(data)}
           </label>
         </div>
