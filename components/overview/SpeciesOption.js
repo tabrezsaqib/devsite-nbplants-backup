@@ -13,8 +13,10 @@ const SpeciesOption = () => {
       Router.push({
         pathname: "/plants",
         query: {
-          type,
+          type: "Woody",
         },
+      }).then(() => {
+        Router.reload()
       })
     }
     if (type == "Non-woody") {
@@ -22,8 +24,10 @@ const SpeciesOption = () => {
       Router.push({
         pathname: "/plants",
         query: {
-          type,
+          type: "Non-woody",
         },
+      }).then(() => {
+        Router.reload()
       })
     }
     if (type == "Fern") {
@@ -31,8 +35,10 @@ const SpeciesOption = () => {
       Router.push({
         pathname: "/plants",
         query: {
-          type,
+          type: "Fern",
         },
+      }).then(() => {
+        Router.reload()
       })
     }
   }

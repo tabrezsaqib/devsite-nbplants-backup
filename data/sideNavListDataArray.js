@@ -1,4 +1,11 @@
-const plant_type = ["Fern", "Non-woody", "Woody"]
+let param
+if (typeof window !== "undefined") {
+  // browser code
+  let searchParams = new URLSearchParams(window.location.search)
+  param = searchParams.get("type")
+}
+
+let plant_type = ["Fern", "Non-woody", "Woody"]
 const type = ["Native", "Introduced", "Native hybrid"]
 const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_colour = [
@@ -14,7 +21,7 @@ const flower_colour = [
 const leaf_arrangement = ["alternate", "basal", "opposite", "no leaves"]
 const leaf_blade_edges = ["lobed", "smooth (Entire)", "teethed", "no leaves"]
 
-const leaf_shape = [
+let leaf_shape = [
   "arrow",
   "fern-like",
   "heart",
@@ -28,6 +35,7 @@ const leaf_shape = [
   "scales",
   "spoon",
 ]
+
 const leaf_type = ["compound", "segmented", "simple", "no leaves"]
 const petal_symmetry = ["bilateral", "radial"]
 
@@ -83,7 +91,17 @@ const spore_location = ["away from edge", "cone at tip", "edge", "separate"]
 //   "york county",
 //   "westmorland county",
 // ]
-
+if (param !== "Fern") {
+  let index = leaf_shape.indexOf("rounded")
+  if (index !== -1) {
+    leaf_shape.splice(index, 1)
+  }
+}
+if (param !== "Woody") {
+  let removeItems = ["maple-like", "scales", "needles"]
+  const newArray = leaf_shape.filter((v) => !removeItems.includes(v))
+  leaf_shape = newArray
+}
 export {
   plant_type,
   type,

@@ -297,7 +297,7 @@ const SideNavContent = ({
             </h2>
             <div
               id="flowers"
-              className="accordion-collapse collapse"
+              className="accordion-collapse"
               aria-labelledby="headingOne"
               data-bs-parent="#accordion1">
               <div className="accordion-body">
@@ -357,7 +357,7 @@ const SideNavContent = ({
           </h2>
           <div
             id="leaves"
-            className="accordion-collapse collapse"
+            className="accordion-collapse"
             aria-labelledby="heading2"
             data-bs-parent="#accordion2">
             <div className="accordion-body">
