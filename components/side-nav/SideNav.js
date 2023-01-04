@@ -5,6 +5,8 @@ import * as localStore from "../../generics/localStore"
 import SideNavContent from "./SideNavContent"
 
 import {
+  togglePlantTypeData,
+  toggleTypeData,
   toggleHabitatData,
   toggleFlowerPetalColorData,
   toggleLeafBladeEdgesData,
@@ -17,6 +19,10 @@ import {
   toggleNative,
   toggleStemsData,
   togglePetalSymmetry,
+  toggleLeafDuration,
+  toggleLeafletDivisions,
+  toggleSporeShape,
+  toggleSporeLocation,
 } from "../../redux/actions/toggleSelectorAction"
 import {
   getPopoverData,
@@ -28,16 +34,22 @@ import {
 } from "../../redux/actions/selectorFilterAction"
 import { resetPageCount } from "../../redux/actions/paginationAction"
 const SideNav = ({
+  plant_type,
+  type,
   habitat,
-  flower_petal_colour,
+  flower_colour,
   lip_shape,
-  fruits,
+  fruit_type,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  leaf_duration,
+  leaf_divisions,
+  spore_shape,
+  spore_location,
   new_brunswick_county,
   activeFilterList,
-  native_or_introduced_or_invasive,
+  // native_or_introduced_or_invasive,
   leaf_shape,
   stems,
   petal_symmetry,
@@ -55,6 +67,20 @@ const SideNav = ({
 
   const handleOnChange = (position, option) => {
     switch (option) {
+      case "plant_type":
+        const updatedPlantType = plant_type.map((item, index) =>
+          index === position ? !item : item
+        )
+        // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
+        dispatch(togglePlantTypeData(updatedPlantType))
+        break
+      case "type":
+        const updatedType = type.map((item, index) =>
+          index === position ? !item : item
+        )
+        // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
+        dispatch(toggleTypeData(updatedType))
+        break
       case "habitat":
         const updatedHabitat = habitat.map((item, index) =>
           index === position ? !item : item
@@ -62,8 +88,8 @@ const SideNav = ({
         // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
         dispatch(toggleHabitatData(updatedHabitat))
         break
-      case "flower_petal_colour":
-        const updatedFlowerPetalColor = flower_petal_colour.map((item, index) =>
+      case "flower_colour":
+        const updatedFlowerPetalColor = flower_colour.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleFlowerPetalColorData(updatedFlowerPetalColor))
@@ -75,8 +101,8 @@ const SideNav = ({
         dispatch(toggleLipShape(updatedLipShape))
         break
 
-      case "fruits":
-        const updatedFruits = fruits.map((item, index) =>
+      case "fruit_type":
+        const updatedFruits = fruit_type.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleFruits(updatedFruits))
@@ -104,6 +130,31 @@ const SideNav = ({
           (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
         )
         dispatch(toggleLeafTypeData(updatedLeafType))
+        break
+
+      case "leaf_duration":
+        const updatedLeafDuration = leaf_duration.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleLeafDuration(updatedLeafDuration))
+        break
+      case "leaf_divisions":
+        const updatedLeafletDivisions = leaf_divisions.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleLeafletDivisions(updatedLeafletDivisions))
+        break
+      case "spore_shape":
+        const updatedSporeShape = spore_shape.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleSporeShape(updatedSporeShape))
+        break
+      case "spore_location":
+        const updatedSporeLocation = spore_location.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleSporeLocation(updatedSporeLocation))
         break
       // case "new_brunswick_county":
       //   const updatedCounty = new_brunswick_county.map((item, index) =>
@@ -167,15 +218,21 @@ const SideNav = ({
       <div className={isLoading == true ? "disable-sidebar" : "options"}>
         <SideNavContent
           options={options}
+          plant_type={plant_type}
+          type={type}
           habitat={habitat}
-          flower_petal_colour={flower_petal_colour}
+          flower_colour={flower_colour}
           lip_shape={lip_shape}
           leaf_blade_edges={leaf_blade_edges}
-          fruits={fruits}
+          fruit_type={fruit_type}
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
-          new_brunswick_county={new_brunswick_county}
-          native_or_introduced_or_invasive={native_or_introduced_or_invasive}
+          leaf_duration={leaf_duration}
+          leaf_divisions={leaf_divisions}
+          spore_location={spore_location}
+          spore_shape={spore_shape}
+          // new_brunswick_county={new_brunswick_county}
+          // native_or_introduced_or_invasive={native_or_introduced_or_invasive}
           leaf_shape={leaf_shape}
           stems={stems}
           petal_symmetry={petal_symmetry}
@@ -190,11 +247,9 @@ const SideNav = ({
       </div>
       <style jsx>{`
         .sidebar {
-          background-color: #ffffff;
-          border: 1px solid #e0e1e3;
           border-radius: 10px;
-          padding: 10px 12px;
-          margin-top: 15px;
+          padding: 10px;
+          margin-top: 0px;
           height: auto;
           margin-bottom: 25px;
           padding-bottom: 25px;
@@ -211,16 +266,22 @@ const SideNav = ({
 
 const mapStateToProps = (state) => {
   return {
+    plant_type: state.selector.plant_type,
+    type: state.selector.type,
     habitat: state.selector.habitat,
-    flower_petal_colour: state.selector.flower_petal_colour,
-    fruits: state.selector.fruits,
+    flower_colour: state.selector.flower_colour,
+    fruit_type: state.selector.fruit_type,
     lip_shape: state.selector.lip_shape,
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
     leaf_arrangement: state.selector.leaf_arrangement,
+    leaf_duration: state.selector.leaf_duration,
+    leaf_divisions: state.selector.leaf_divisions,
+    spore_location: state.selector.spore_location,
+    spore_shape: state.selector.spore_shape,
     // new_brunswick_county: state.selector.new_brunswick_county,
-    native_or_introduced_or_invasive:
-      state.selector.native_or_introduced_or_invasive,
+    // native_or_introduced_or_invasive:
+    //   state.selector.native_or_introduced_or_invasive,
     leaf_shape: state.selector.leaf_shape,
     stems: state.selector.stems,
     petal_symmetry: state.selector.petal_symmetry,

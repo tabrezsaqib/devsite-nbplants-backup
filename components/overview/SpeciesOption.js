@@ -3,16 +3,20 @@ import NonWoodyPlantSelector from "../species-selectors/NonWoodyPlantSelector"
 import WoodyPlantSelector from "../species-selectors/WoodyPlantSelector"
 import Router from "next/router"
 import styles from "../../styles/Global.module.scss"
+import Ferns from "../species-selectors/Ferns"
+import GrassLike from "../species-selectors/GrassLike"
 
 const SpeciesOption = () => {
   const optionSelector = (type) => {
-    if (type == "woody") {
-      localStorage.setItem("route", "woody")
+    if (type == "Woody") {
+      localStorage.setItem("route", "Woody")
       Router.push({
         pathname: "/plants",
         query: {
-          type,
+          type: "Woody",
         },
+      }).then(() => {
+        Router.reload()
       })
     }
     if (type == "Non-woody") {
@@ -20,8 +24,21 @@ const SpeciesOption = () => {
       Router.push({
         pathname: "/plants",
         query: {
-          type,
+          type: "Non-woody",
         },
+      }).then(() => {
+        Router.reload()
+      })
+    }
+    if (type == "Fern") {
+      localStorage.setItem("route", "Fern")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type: "Fern",
+        },
+      }).then(() => {
+        Router.reload()
       })
     }
   }
@@ -32,11 +49,17 @@ const SpeciesOption = () => {
           styles.responsive_selection_blocks,
           "selection-blocks d-flex align-items-center justify-content-evenly",
         ].join(" ")}>
-        <a className="disabled" onClick={() => optionSelector("woody")}>
+        <a onClick={() => optionSelector("Woody")}>
           <WoodyPlantSelector />
         </a>
         <a onClick={() => optionSelector("Non-woody")}>
           <NonWoodyPlantSelector />
+        </a>
+        <a onClick={() => optionSelector("Fern")}>
+          <Ferns />
+        </a>
+        <a onClick={() => optionSelector("Non-woody")} className="disabled">
+          <GrassLike />
         </a>
       </div>
       <style jsx>{`

@@ -2,6 +2,8 @@ import * as types from "../types"
 const initialState = {
   all_plants: [],
   woody_plants: [],
+  ferns: [],
+  grass_like_plants: [],
   nonwoody_plants: [],
   plant_details: [],
   search_results: [],
@@ -28,6 +30,16 @@ export const getPlantsReducer = (state = initialState, action) => {
       return {
         ...state,
         woody_plants: action.payload,
+      }
+    case types.GET_FERNS_DATA:
+      return {
+        ...state,
+        ferns: action.payload,
+      }
+    case types.GET_GRASS_LIKE_PLANTS:
+      return {
+        ...state,
+        grass_like_plants: action.payload,
       }
     case types.GET_PLANT:
       return {

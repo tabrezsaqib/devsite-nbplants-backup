@@ -4,7 +4,7 @@ const API_URL = process.env.API_URL
 const SEARCH_URL = process.env.SEARCH_URL
 
 export const fetchAllPlantPosts = () => async (dispatch) => {
-  const response = await api.get(`${API_URL}plants_db?order=desc`)
+  const response = await api.get(`${API_URL}plants_db`)
   dispatch({
     type: types.GET_ALL_PLANTS,
     payload: response.data,
@@ -16,9 +16,7 @@ export const fetchAllPlantPosts = () => async (dispatch) => {
 }
 
 export const fetchNonWoodyPlantPosts = (type) => async (dispatch) => {
-  const response = await api.get(
-    `${API_URL}plants_db?plant_type=${type}&?order=desc`
-  )
+  const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
   dispatch({
     type: types.GET_NONWOODY_PLANTS,
     payload: response.data,
@@ -33,6 +31,30 @@ export const fetchWoodyPlantPosts = (type) => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
   dispatch({
     type: types.GET_WOODY_PLANTS,
+    payload: response.data,
+  })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
+  })
+}
+
+export const fetchFernPosts = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
+  dispatch({
+    type: types.GET_FERNS_DATA,
+    payload: response.data,
+  })
+  dispatch({
+    type: types.IS_LOADING,
+    payload: false,
+  })
+}
+
+export const fetchGrassLikePosts = (type) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants_db?plant_type=${type}`)
+  dispatch({
+    type: types.GET_GRASS_LIKE_PLANTS,
     payload: response.data,
   })
   dispatch({
@@ -91,6 +113,7 @@ export const triggerToolTip = (status) => async (dispatch) => {
 }
 export const searchByKeyword = (slug) => async (dispatch) => {
   const response = await api.get(`${SEARCH_URL}search?keyword=${slug}`)
+  console.log(response)
 
   if (response.data == null) {
     dispatch({

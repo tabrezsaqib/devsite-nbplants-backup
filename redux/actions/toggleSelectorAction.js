@@ -1,6 +1,19 @@
 import * as types from "../types"
 import * as localStore from "../../generics/localStore"
 
+export const togglePlantTypeData = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_PLANT_TYPE,
+    payload: option,
+  })
+}
+export const toggleTypeData = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_TYPE,
+    payload: option,
+  })
+}
+
 export const toggleHabitatData = (option) => async (dispatch) => {
   dispatch({
     type: types.TOGGLE_HABITAT,
@@ -40,6 +53,30 @@ export const toggleLeafTypeData = (option) => async (dispatch) => {
 export const toggleLeafArrangementData = (option) => async (dispatch) => {
   dispatch({
     type: types.TOGGLE_LEAF_ARRANGEMENT,
+    payload: option,
+  })
+}
+export const toggleLeafDuration = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_LEAF_DURATION,
+    payload: option,
+  })
+}
+export const toggleLeafletDivisions = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_LEAFLET_DIVISIONS,
+    payload: option,
+  })
+}
+export const toggleSporeShape = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SPORE_SHAPE,
+    payload: option,
+  })
+}
+export const toggleSporeLocation = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SPORE_LOCATION,
     payload: option,
   })
 }

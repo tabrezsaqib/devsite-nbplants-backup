@@ -3,17 +3,24 @@
 import * as api from "../../generics/api"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { useDispatch } from "react-redux"
+import { useRouter } from "next/router"
 import SideNavPopover from "./SideNavPopover"
 
 const SideNavContent = ({
   options,
   habitat,
-  flower_petal_colour,
+  plant_type,
+  type,
+  flower_colour,
   lip_shape,
-  fruits,
+  fruit_type,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
+  leaf_duration,
+  leaf_divisions,
+  spore_location,
+  spore_shape,
   native_or_introduced_or_invasive,
   leaf_shape,
   petal_symmetry,
@@ -27,21 +34,27 @@ const SideNavContent = ({
   popoverStatus,
   triggerToolTip,
 }) => {
+  const router = useRouter()
   const optionNames = [
-    // {
-    //   key: "plant_type",
-    //   group: "initial",
-    //   value: "Plant Type",
-    // },
+    {
+      key: "plant_type",
+      group: router.query.type,
+      value: "Plant Type",
+    },
+    {
+      key: "type",
+      group: "none",
+      value: "Type",
+    },
     {
       key: "habitat",
       group: "initial",
       value: "Habitat",
     },
     {
-      key: "flower_petal_colour",
+      key: "flower_colour",
       group: "flowers",
-      value: "Flower Petal Colour",
+      value: "Flower Colour",
     },
     {
       key: "inflorescence",
@@ -79,20 +92,42 @@ const SideNavContent = ({
       value: "Leaf Type",
     },
     {
+      key: "leaf_duration",
+      group: router.query.type == "Woody" && "leaves",
+      value: "Leaf Duration",
+    },
+    {
+      key: "spore_location",
+      group: router.query.type == "Fern" && "spores",
+      value: "Spore Location",
+    },
+    {
+      key: "spore_shape",
+      group: router.query.type == "Fern" && "spores",
+      value: "Spore Shape",
+    },
+    {
+      key: "leaf_divisions",
+      group:
+        (router.query.type == "Woody" || router.query.type == "Fern") &&
+        "leaves",
+      value: "Leaflet Divisions",
+    },
+    {
       key: "stems",
       group: "none",
       value: "Stems",
     },
     {
-      key: "fruits",
+      key: "fruit_type",
       group: "none",
-      value: "Fruits",
+      value: "Fruit Type",
     },
-    {
-      key: "native_or_introduced_or_invasive",
-      group: "none",
-      value: "Type",
-    },
+    // {
+    //   key: "native_or_introduced_or_invasive",
+    //   group: "none",
+    //   value: "Type",
+    // },
   ]
 
   const colorValues = [
@@ -129,6 +164,7 @@ const SideNavContent = ({
       label: "doesn't apply",
     },
   ]
+
   let id = 0
   const dispatch = useDispatch()
   const getOption = (key) => {
@@ -150,17 +186,29 @@ const SideNavContent = ({
                 ? leaf_type[index]
                 : key == "habitat"
                 ? habitat[index]
-                : key == "flower_petal_colour"
-                ? flower_petal_colour[index]
+                : key == "plant_type"
+                ? plant_type[index]
+                : key == "type"
+                ? type[index]
+                : key == "flower_colour"
+                ? flower_colour[index]
                 : key == "lip_shape"
                 ? lip_shape[index]
-                : key == "fruits"
-                ? fruits[index]
+                : key == "fruit_type"
+                ? fruit_type[index]
+                : key == "leaf_duration"
+                ? leaf_duration[index]
+                : key == "leaf_divisions"
+                ? leaf_divisions[index]
                 : key == "leaf_blade_edges"
                 ? leaf_blade_edges[index]
-                : key == "native_or_introduced_or_invasive"
-                ? native_or_introduced_or_invasive[index]
-                : key == "leaf_shape"
+                : key == "spore_shape"
+                ? spore_shape[index]
+                : key == "spore_location"
+                ? spore_location[index]
+                : // : key == "native_or_introduced_or_invasive"
+                // ? native_or_introduced_or_invasive[index]
+                key == "leaf_shape"
                 ? leaf_shape[index]
                 : key == "stems"
                 ? stems[index]
@@ -178,21 +226,15 @@ const SideNavContent = ({
                 <img
                   src={value.color}
                   className={
-                    data == value.label && key == "flower_petal_colour"
-                      ? ""
-                      : "hide"
+                    data == value.label && key == "flower_colour" ? "" : "hide"
                   }
                   width="15px"
                   alt="color values"
                 />
               </div>
             ))}
-            {key == "flower_petal_colour" ? (
-              <span>&nbsp;&nbsp;</span>
-            ) : (
-              <span></span>
-            )}
-            {api.capitalizeFirstLetter(data)}{" "}
+            {key == "flower_colour" ? <span>&nbsp;&nbsp;</span> : <span></span>}
+            {api.capitalizeFirstLetter(data)}
           </label>
         </div>
       )
@@ -210,6 +252,22 @@ const SideNavContent = ({
       <div>
         {optionNames.map((item) => (
           <div key={item.key}>
+            {item.group == "all" && (
+              <div>
+                <h6 className="selector-heading">
+                  <i className="bi bi-check2-square" />
+                  &nbsp;&nbsp;
+                  <strong>{item.value}</strong>
+                </h6>
+                <div className="d-flex flex-wrap">{getOption(item.key)}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div>
+        {optionNames.map((item) => (
+          <div key={item.key}>
             {item.group == "initial" && (
               <div>
                 <h6 className="selector-heading">
@@ -223,59 +281,68 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      <div className="accordion mt-3 mb-3" id="accordion1">
-        <div className="accordion-item">
-          <h2 className="accordion-header" id="headingOne">
-            <button
-              className="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#flowers"
-              aria-expanded="true"
-              aria-controls="flowers">
-              Flowers
-            </button>
-          </h2>
-          <div
-            id="flowers"
-            className="accordion-collapse collapse show"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordion1">
-            <div className="accordion-body">
-              <div>
-                {optionNames.map((item) => (
-                  <div key={item.key}>
-                    {item.group == "flowers" && (
-                      <div>
-                        <div className="d-flex">
-                          <h6 className="selector-heading">
-                            <i className="bi bi-check2-square" />
-                            &nbsp;&nbsp;
-                            <strong>{item.value}</strong>
-                          </h6>
-                          {(item.key == "inflorescence" ||
-                            item.key == "petal_symmetry") && (
-                            <SideNavPopover
-                              triggerPopUp={() => triggerPopUp(item.key, true)}
-                              popoverData={popoverData}
-                              popoverStatus={popoverStatus}
-                            />
+      {router.query.type !== "Fern" && (
+        <div className="accordion mt-2 mb-2" id="accordion1">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="headingOne">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flowers"
+                aria-expanded="true"
+                aria-controls="flowers">
+                Flowers
+              </button>
+            </h2>
+            <div
+              id="flowers"
+              className="accordion-collapse"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordion1">
+              <div className="accordion-body">
+                <div>
+                  {optionNames.map((item) => (
+                    <div key={item.key}>
+                      {item.group == "flowers" && (
+                        <div>
+                          <div className="d-flex">
+                            <h6 className="selector-heading">
+                              <i className="bi bi-check2-square" />
+                              &nbsp;&nbsp;
+                              <strong>{item.value}</strong>
+                            </h6>
+                            {(item.key == "inflorescence" ||
+                              item.key == "petal_symmetry") && (
+                              <SideNavPopover
+                                triggerPopUp={() =>
+                                  triggerPopUp(item.key, true)
+                                }
+                                popoverData={popoverData}
+                                popoverStatus={popoverStatus}
+                              />
+                            )}
+                          </div>
+                          {item.key == "inflorescence" ? (
+                            <div id="four-column" className="d-flex flex-wrap">
+                              {getOption(item.key)}
+                            </div>
+                          ) : (
+                            <div className="d-flex flex-wrap">
+                              {getOption(item.key)}
+                            </div>
                           )}
                         </div>
-
-                        <div className="d-flex flex-wrap">
-                          {getOption(item.key)}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="accordion mb-3" id="accordion2">
+      )}
+      <div className="accordion mt-2 mb-2" id="accordion2">
         <div className="accordion-item">
           <h2 className="accordion-header" id="heading2">
             <button
@@ -290,7 +357,7 @@ const SideNavContent = ({
           </h2>
           <div
             id="leaves"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse"
             aria-labelledby="heading2"
             data-bs-parent="#accordion2">
             <div className="accordion-body">
@@ -316,6 +383,49 @@ const SideNavContent = ({
           </div>
         </div>
       </div>
+      {router.query.type == "Fern" && (
+        <div className="accordion mt-2 mb-2" id="accordion2">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="heading3">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#spores"
+                aria-expanded="true"
+                aria-controls="spores">
+                Spores
+              </button>
+            </h2>
+            <div
+              id="spores"
+              className="accordion-collapse collapse"
+              aria-labelledby="heading3"
+              data-bs-parent="#accordion2">
+              <div className="accordion-body">
+                <div>
+                  {optionNames.map((item) => (
+                    <div key={item.key}>
+                      {item.group == "spores" && (
+                        <div>
+                          <h6 className="selector-heading">
+                            <i className="bi bi-check2-square" />
+                            &nbsp;&nbsp;
+                            <strong>{item.value}</strong>
+                          </h6>
+                          <div className="d-flex flex-wrap">
+                            {getOption(item.key)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div>
         {optionNames.map((item) => (
           <div key={item.key}>
@@ -335,7 +445,7 @@ const SideNavContent = ({
       <style jsx>{`
         .selector-heading {
           font-size: 13px;
-          margin-top: 10px;
+          margin: 5px 5px;
           font-weight: 900;
         }
 

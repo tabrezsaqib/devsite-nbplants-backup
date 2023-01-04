@@ -7,6 +7,8 @@ import {
   fetchAllPlantPosts,
   fetchNonWoodyPlantPosts,
   fetchWoodyPlantPosts,
+  fetchFernPosts,
+  fetchGrassLikePosts,
   getAllPlantsCount,
   getAllNonWoodyPlantsCount,
   getAllWoodyPlantsCount,
@@ -26,19 +28,11 @@ const Plants = ({
   all_plants,
   nonwoody_plants,
   woody_plants,
+  ferns,
+  grass_like_plants,
   isLoading,
   itemsPerPage,
   activeFilterList,
-  habitat,
-  flower_petal_colour,
-  leaf_blade_edges,
-  leaf_type,
-  leaf_arrangement,
-  // native_or_introduced_or_invasive,
-  leaf_shape,
-  petal_symmetry,
-  inflorescence,
-  stems,
   itemOffset,
   pageCount,
   toggle_pagination,
@@ -75,6 +69,10 @@ const Plants = ({
         return (filteredList.current = plant_data.filter((item) => {
           return activeFilterList.every(function (element) {
             return filterKeys.some((key) => {
+              if (key == "plant_type" || key == "type") {
+                return item.acf[key].includes(element)
+              }
+
               return item.acf.characteristics[key].includes(element)
             })
           })
@@ -161,6 +159,7 @@ const Plants = ({
   useEffect(() => {
     if (router.query.type == "all") {
       dispatch(fetchAllPlantPosts())
+
       filterPlantsTypeData(all_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
@@ -170,21 +169,47 @@ const Plants = ({
         filteredList.current.length
       dispatch(setItemOffset(newOffset))
     }
-    // if (router.query.type == "woody") {
-    //   dispatch(fetchWoodyPlantPosts(router.query.type))
-    //   filterPlantsTypeData(woody_plants)
-    //   paginationEngine()
-    //   let localStoreValue = localStore.getCurrentPage()
-    //   localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
-    //   const newOffset =
-    //     (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-    //     filteredList.current.length
-    //   dispatch(setItemOffset(newOffset))
-    // }
+    if (router.query.type == "Woody") {
+      dispatch(fetchWoodyPlantPosts(router.query.type))
+      filterPlantsTypeData(woody_plants)
+      paginationEngine()
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
 
     if (router.query.type == "Non-woody") {
-      dispatch(fetchNonWoodyPlantPosts())
+      dispatch(fetchNonWoodyPlantPosts(router.query.type))
       filterPlantsTypeData(nonwoody_plants)
+      paginationEngine()
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+
+    if (router.query.type == "Fern") {
+      dispatch(fetchFernPosts(router.query.type))
+      filterPlantsTypeData(ferns)
+      paginationEngine()
+      let localStoreValue = localStore.getCurrentPage()
+      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+
+      const newOffset =
+        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+        filteredList.current.length
+      dispatch(setItemOffset(newOffset))
+    }
+
+    if (router.query.type == "Grass-like") {
+      dispatch(fetchFernPosts(router.query.type))
+      filterPlantsTypeData(grass_like_plants)
       paginationEngine()
       let localStoreValue = localStore.getCurrentPage()
       localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
@@ -199,16 +224,6 @@ const Plants = ({
     itemOffset,
     itemsPerPage,
     isLoading,
-    habitat,
-    flower_petal_colour,
-    leaf_blade_edges,
-    leaf_type,
-    leaf_arrangement,
-    // native_or_introduced_or_invasive,
-    petal_symmetry,
-    leaf_shape,
-    stems,
-    inflorescence,
     router,
     activeFilterList,
     localStore,
@@ -300,19 +315,10 @@ const mapStateToProps = (state) => {
     all_plants: state.post.all_plants,
     woody_plants: state.post.woody_plants,
     nonwoody_plants: state.post.nonwoody_plants,
+    ferns: state.post.ferns,
+    grass_like_plants: state.post.grass_like_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
-    habitat: state.selector.habitat,
-    flower_petal_colour: state.selector.flower_petal_colour,
-    leaf_blade_edges: state.selector.leaf_blade_edges,
-    leaf_type: state.selector.leaf_type,
-    leaf_arrangement: state.selector.leaf_arrangement,
-    native_or_introduced_or_invasive:
-      state.selector.native_or_introduced_or_invasive,
-    leaf_shape: state.selector.leaf_shape,
-    petal_symmetry: state.selector.petal_symmetry,
-    inflorescence: state.selector.inflorescence,
-    stems: state.selector.stems,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     toggle_pagination: state.pagination.toggle_pagination,

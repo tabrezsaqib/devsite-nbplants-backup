@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
 
-const WoodyPlantSelector = () => {
+const GrassLike = () => {
   return (
     <div className="block">
-      <img src="../images/woody-plant-icon.png" alt="woody plant icon" />
-      <h4>Woody Plants</h4>
+      <img src="../images/grasses.png" alt="grass-like plant icon" />
+      <h4>Grass-like Plants</h4>
+      <p>In progress</p>
 
       <style jsx>{`
         .block {
@@ -20,10 +21,13 @@ const WoodyPlantSelector = () => {
             font-size: 18px;
             font-weight: bold;
           }
+          span {
+            font-size: 14px;
+          }
         }
       `}</style>
     </div>
   )
 }
 
-export default WoodyPlantSelector
+export default GrassLike

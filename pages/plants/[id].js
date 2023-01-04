@@ -23,8 +23,9 @@ const PlantsDetails = ({ plant_details }) => {
 export default PlantsDetails
 
 export async function getStaticPaths() {
-  const response = await fetch(`${API_URL}plants_db?order=desc`)
+  const response = await fetch(`${API_URL}plants_db`)
   const postList = await response.json()
+
   return {
     paths: postList.map((post) => {
       return {

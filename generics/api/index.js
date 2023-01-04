@@ -53,6 +53,6 @@ export async function post(url, params = {}) {
     })
 }
 
-export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1)
+export function capitalizeFirstLetter(data) {
+  return data.toString().charAt(0).toUpperCase() + data.slice(1)
 }

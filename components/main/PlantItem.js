@@ -7,15 +7,16 @@ const PlantItem = ({ plant }) => {
       <div
         className={
           (plant.acf.plant_type == "Non-woody" ||
-            plant.acf.plant_type == "woody") &&
+            plant.acf.plant_type == "Woody") &&
           "content-box"
         }>
         <div className="img-container">
           <img
             src={
-              plant.acf.image_url !== undefined &&
-              plant.acf.image_url[0].full_image_url
-                ? plant.acf.image_url[0].full_image_url
+              Object.hasOwn(plant.acf, "image_url") == true
+                ? plant.acf.image_url.length > 0
+                  ? plant.acf.image_url[0].full_image_url
+                  : plant.acf.image_url.full_image_url
                 : "../images/no_result_found.png"
             }
             alt=""
@@ -25,7 +26,7 @@ const PlantItem = ({ plant }) => {
           <h4 className="heading mt-3">{plant.acf.common_name}</h4>
           <div className="d-flex flex-column">
             <span>
-              <i>{`${plant.acf.genus} ${plant.acf.species}`}</i>
+              <i>{`${plant.title}`}</i>
             </span>
             <div className="d-flex flex-wrap tags">
               {plant.acf.characteristics.habitat.map((val, index) => (
@@ -48,20 +49,16 @@ const PlantItem = ({ plant }) => {
                   {api.capitalizeFirstLetter(val)}, &nbsp;
                 </span>
               ))}
-              {plant.acf.characteristics.flower_petal_colour.map(
-                (val, index) => (
-                  <span key={index}>
-                    {api.capitalizeFirstLetter(val)}
-                    {val !==
-                    plant.acf.characteristics.flower_petal_colour
-                      .slice(-1)
-                      .pop()
-                      ? ","
-                      : ""}
-                    &nbsp;
-                  </span>
-                )
-              )}
+              {plant.acf.characteristics.flower_colour.map((val, index) => (
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}
+                  {val !==
+                  plant.acf.characteristics.flower_colour.slice(-1).pop()
+                    ? ","
+                    : ""}
+                  &nbsp;
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -90,6 +87,7 @@ const PlantItem = ({ plant }) => {
         }
         .description {
           padding: 5px 15px 15px;
+          font-size: 15px;
         }
         .hidden {
           display: none;
