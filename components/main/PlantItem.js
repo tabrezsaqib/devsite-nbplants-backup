@@ -7,7 +7,8 @@ const PlantItem = ({ plant }) => {
       <div
         className={
           (plant.acf.plant_type == "Non-woody" ||
-            plant.acf.plant_type == "Woody") &&
+            plant.acf.plant_type == "Woody" ||
+            plant.acf.plant_type == "Fern") &&
           "content-box"
         }>
         <div className="img-container">

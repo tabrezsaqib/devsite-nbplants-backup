@@ -158,7 +158,7 @@ const Plants = ({
   // }
   useEffect(() => {
     if (router.query.type == "all") {
-      dispatch(fetchAllPlantPosts())
+      dispatch(fetchAllPlantPosts(router.query.type))
 
       filterPlantsTypeData(all_plants)
       paginationEngine()
@@ -207,18 +207,18 @@ const Plants = ({
       dispatch(setItemOffset(newOffset))
     }
 
-    if (router.query.type == "Grass-like") {
-      dispatch(fetchFernPosts(router.query.type))
-      filterPlantsTypeData(grass_like_plants)
-      paginationEngine()
-      let localStoreValue = localStore.getCurrentPage()
-      localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
+    // if (router.query.type == "Grass-like") {
+    //   dispatch(fetchFernPosts(router.query.type))
+    //   filterPlantsTypeData(grass_like_plants)
+    //   paginationEngine()
+    //   let localStoreValue = localStore.getCurrentPage()
+    //   localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
 
-      const newOffset =
-        (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-        filteredList.current.length
-      dispatch(setItemOffset(newOffset))
-    }
+    //   const newOffset =
+    //     (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
+    //     filteredList.current.length
+    //   dispatch(setItemOffset(newOffset))
+    // }
   }, [
     dispatch,
     itemOffset,

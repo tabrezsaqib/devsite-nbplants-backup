@@ -44,7 +44,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             ? "all"
             : route == "Non-woody"
             ? "Non-woody"
-            : route == "Woody" && "Woody",
+            : route == "Woody"
+            ? "Woody"
+            : route == "Fern" && "Fern",
       },
     }).then(() => {})
   }
