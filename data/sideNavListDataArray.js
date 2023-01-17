@@ -6,7 +6,7 @@ if (typeof window !== "undefined") {
 }
 
 let plant_type = ["Fern", "Non-woody", "Woody"]
-const type = ["Native", "Introduced", "Native hybrid"]
+const type = ["native", "introduced", "native hybrid"]
 const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_colour = [
   "blue to purple",

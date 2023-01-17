@@ -46,7 +46,7 @@ export async function post(url, params = {}) {
     body: JSON.stringify(params),
   })
     .then(async (response) => {
-      return await response.json()
+      return await response
     })
     .catch((err) => {
       console.log(err)

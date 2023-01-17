@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { connect, useDispatch } from "react-redux"
+import { toast } from "react-toastify"
 import { FileUploader } from "react-drag-drop-files"
 import { postFileData } from "../../redux/actions/postFileDataAction"
 
-const DataUploader = ({ plants_list }) => {
+const DataUploader = ({}) => {
   const dispatch = useDispatch()
   const fileTypes = ["JSON"]
   const [file, setFile] = useState(null)
@@ -16,6 +17,8 @@ const DataUploader = ({ plants_list }) => {
         dispatch(postFileData(post))
       }
     }
+    toast.success("Data uploaded successfully")
+
     // const post = {
     //   title: "Arethusa bulbosa",
     //   status: "publish",
@@ -76,9 +79,7 @@ const DataUploader = ({ plants_list }) => {
   )
 }
 const mapStateToProps = (state) => {
-  return {
-    plants_list: state.json_data.plants_list,
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(DataUploader)

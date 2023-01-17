@@ -17,25 +17,6 @@ const ListPlantSpecies = ({
   // let filteredList
   const router = useRouter()
   const loaderDataCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  // if (activeFilterList.length === 0) {
-  //   filteredList = plants_list
-  // } else {
-  //   const filterKeys = Object.keys(options)
-  //   filteredList = plants_list.filter((item) => {
-  //     if (
-  //       router.query.type == item.acf.plant_type ||
-  //       router.query.type == "all"
-  //     ) {
-  //       return filterKeys.some((key) => {
-  //         return item.acf.characteristics[key].some((element) => {
-  //           return activeFilterList.includes(element)
-  //         })
-  //       })
-  //     }
-  //   })
-  // }
-
-  // console.log("Active list", activeFilterList)
 
   return (
     <div className="d-flex flex-wrap">
@@ -61,13 +42,6 @@ const ListPlantSpecies = ({
           )
         })
       ) : isLoading == true ? (
-        // <div
-        //   className={[
-        //     styles.image_loader_media_query,
-        //     "d-flex align-items-center img-container",
-        //   ].join(" ")}>
-        //   <img src="../../images/loading.gif" alt="loader" />
-        // </div>
         <div className="d-flex flex-wrap">
           {loaderDataCount.map((data, index) => (
             <div key={index} className={[loaderStyles.loader_box].join(" ")}>
