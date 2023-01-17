@@ -24,6 +24,7 @@ const Admin = () => {
     mounted && (
       <div>
         <h4>Drag and drop your files here...</h4>
+
         {isLoggedIn == true && (
           <div>
             <DataUploader />

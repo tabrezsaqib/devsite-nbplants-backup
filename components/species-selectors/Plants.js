@@ -49,17 +49,13 @@ const Plants = ({
   const [currentItems, setCurrentItems] = useState([])
   const [currentPage, setCurrentPage] = useState(false)
 
-  // const [pageClick, setPageClick] = useState(false)
   const [currentPageNumber, setCurrentPageNumber] = useState(0)
-  // const [pageCount, setPageCount] = useState(0)
-
-  // Here we use item offsets; we could also use page offsets following the API or data you're working with.
-  // const [itemOffset, setItemOffset] = useState(0)
 
   const router = useRouter()
   let filteredList = useRef(new Array())
   let currentSelectedPage = useRef(0)
 
+  //Sidebar Selector filtering
   const filterPlantsTypeData = (plant_data) => {
     try {
       if (activeFilterList.length === 0) {
@@ -86,19 +82,6 @@ const Plants = ({
   const paginationEngine = () => {
     const endOffset = itemOffset + itemsPerPage
     setCurrentItems(filteredList.current.slice(itemOffset, endOffset))
-    // setCurrentItems(filteredList.current)
-    // dispatch(
-    //   setPageCount(
-    //     Math.ceil(
-    //       (nonwoody_plants_count || all_plants_count || woody_plants_count) /
-    //         itemsPerPage
-    //     )
-    //   )
-    // )
-    // const newOffset =
-    //   (currentPage == true && currentSelectedPage.current * itemsPerPage) %
-    //   (nonwoody_plants_count || all_plants_count || woody_plants_count)
-    // dispatch(setItemOffset(newOffset))
     dispatch(
       setPageCount(Math.ceil(filteredList.current.length / itemsPerPage))
     )
@@ -113,16 +96,6 @@ const Plants = ({
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    // setCurrentPage(true)
-    // setPageClick(true)
-    // await fetchPlantsData(event.selected)
-
-    // currentSelectedPage.current = event.selected
-    // localStore.setCurrentPage(event.selected)
-    // const newOffset =
-    //   (event.selected * itemsPerPage) %
-    //   (nonwoody_plants_count || all_plants_count || woody_plants_count)
-    // dispatch(setItemOffset(newOffset))
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -138,24 +111,6 @@ const Plants = ({
     dispatch(setItemOffset(newOffset))
   }
 
-  // const fetchPlantsData = async (page) => {
-  //   if (router.query.type == "all") {
-  //     await dispatch(fetchAllPlantPosts(page))
-  //     await filterPlantsTypeData(all_plants)
-  //     await paginationEngine()
-  //   }
-
-  //   if (router.query.type == "woody") {
-  //     await dispatch(fetchWoodyPlantPosts(page, router.query.type))
-  //     await filterPlantsTypeData(woody_plants)
-  //     await paginationEngine()
-  //   }
-  //   if (router.query.type == "nonwoody") {
-  //     await dispatch(fetchNonWoodyPlantPosts(page, router.query.type))
-  //     await filterPlantsTypeData(nonwoody_plants)
-  //     await paginationEngine()
-  //   }
-  // }
   useEffect(() => {
     if (router.query.type == "all") {
       dispatch(fetchAllPlantPosts(router.query.type))
@@ -206,19 +161,6 @@ const Plants = ({
         filteredList.current.length
       dispatch(setItemOffset(newOffset))
     }
-
-    // if (router.query.type == "Grass-like") {
-    //   dispatch(fetchFernPosts(router.query.type))
-    //   filterPlantsTypeData(grass_like_plants)
-    //   paginationEngine()
-    //   let localStoreValue = localStore.getCurrentPage()
-    //   localStoreValue && setCurrentPageNumber(localStore.getCurrentPage())
-
-    //   const newOffset =
-    //     (resetCount == true ? 0 : currentPageNumber * itemsPerPage) %
-    //     filteredList.current.length
-    //   dispatch(setItemOffset(newOffset))
-    // }
   }, [
     dispatch,
     itemOffset,

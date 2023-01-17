@@ -3,6 +3,7 @@ module.exports = {
   env: {
     BASE_URL: process.env.BASE_URL,
     API_URL: process.env.API_URL,
+    API_POST_URL: process.env.API_POST_URL,
     AUTH_URL: process.env.AUTH_URL,
     SEARCH_URL: process.env.SEARCH_URL,
   },
