@@ -14,6 +14,7 @@ const DataUploader = ({}) => {
     fileReader.onload = () => {
       const posts = JSON.parse(fileReader.result)
       for (let post of posts) {
+        setFile(file)
         dispatch(postFileData(post))
       }
     }
@@ -56,7 +57,7 @@ const DataUploader = ({}) => {
 
   return (
     <>
-      <div className="d-flex dropzone flex-column justify-content-center align-items-center">
+      <div className="d-flex dropzone flex-column mb-4">
         <>
           <FileUploader
             handleChange={handleChange}
@@ -64,15 +65,27 @@ const DataUploader = ({}) => {
             name="file"
             types={fileTypes}
           />
-          <p>{file ? `File name: ${file.name}` : "no files uploaded yet"}</p>
+          <p>
+            {file ? (
+              `File name: ${file.name}`
+            ) : (
+              <h5 className="text-center mt-3">No files uploaded yet</h5>
+            )}
+          </p>
         </>
       </div>
       <style jsx>{`
         .dropzone {
-          width: 500px;
+          margin: 20px auto;
+          width: 800px;
           height: 500px;
           background-color: #f8f9fa;
           border: 1px solid #e0e1e3;
+        }
+        :global(.hyiOnG) {
+          width: 100% !important;
+          margin-top: 20px !important;
+          max-width: 700px !important;
         }
       `}</style>
     </>
