@@ -23,14 +23,15 @@ const Admin = () => {
   return (
     mounted && (
       <div>
-        <h4>Drag and drop your files here...</h4>
-
+        <div className="d-flex justify-content-center align-items-center">
+          <h4 className="mt-4 me-3">Drag and drop your files here...</h4>
+          <button className="btn btn-success" onClick={onLogOut}>
+            Log out
+          </button>
+        </div>
         {isLoggedIn == true && (
           <div>
             <DataUploader />
-            <button className="btn btn-success" onClick={onLogOut}>
-              Log out
-            </button>
           </div>
         )}
       </div>

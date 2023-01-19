@@ -34,7 +34,6 @@ export async function adminLogin(url, params = {}) {
 }
 
 export async function post(url, params = {}) {
-  console.log(params)
   let accessToken = localStore.getToken()
   return fetch(url, {
     method: "POST",
