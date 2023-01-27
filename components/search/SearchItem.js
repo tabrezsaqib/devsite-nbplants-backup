@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
+import * as api from "../../generics/api"
 
-const SeachItem = ({ plant }) => {
+const SearchItem = ({ plant }) => {
   return (
     <>
       <div className="content-box">
@@ -23,20 +24,28 @@ const SeachItem = ({ plant }) => {
             </span>
             <div className="d-flex flex-wrap tags">
               {plant.acf.characteristics.habitat.map((val, index) => (
-                <span key={index}>{val}, &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.leaf_type.map((val, index) => (
-                <span key={index}>{val} &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.leaf_arrangement.map((val, index) => (
-                <span key={index}>{val} &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.leaf_blade_edges.map((val, index) => (
-                <span key={index}>{val} &nbsp;</span>
+                <span key={index}>
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
+                </span>
               ))}
               {plant.acf.characteristics.flower_colour.map((val, index) => (
                 <span key={index}>
-                  {val}
+                  {api.capitalizeFirstLetter(val)}, &nbsp;
                   {val !==
                   plant.acf.characteristics.flower_colour.slice(-1).pop()
                     ? ","
@@ -85,4 +94,4 @@ const SeachItem = ({ plant }) => {
   )
 }
 
-export default SeachItem
+export default SearchItem
