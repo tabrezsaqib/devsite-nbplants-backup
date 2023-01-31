@@ -21,17 +21,23 @@ const contact = () => {
       <section>
         <div className="container">
           <div className="row">
-            <div className="col-lg-3">
-              <h4>Address:</h4>
-              <p>
-                Fredericton Botanic Garden <br />
-                10 Cameron Court
-                <br /> Fredericton, NB E3B 2R9 Canada
-              </p>
-              <h4>Email:</h4>
-              <p>fredbotanicgarden@gmail.com</p>
-              <h4>Phone:</h4>
-              <p>(506) 452-9269</p>
+            <div className="col-lg-6 d-flex justify-content-around">
+              <div>
+                <h4>Address:</h4>
+                <p>
+                  Fredericton Botanic Garden <br />
+                  10 Cameron Court
+                  <br /> Fredericton, NB E3B 2R9 Canada
+                </p>
+              </div>
+              <div>
+                <h4>Email:</h4>
+                <p>fredbotanicgarden@gmail.com</p>
+              </div>
+              <div>
+                <h4>Phone:</h4>
+                <p>(506) 452-9269</p>
+              </div>
             </div>
             {/* <div className="col-lg-4">
             <h4 className="mb-4">Find us on</h4>
@@ -43,9 +49,9 @@ const contact = () => {
               loading="lazy"
             />
           </div> */}
-            <div className="col-lg-5">
-              <h4 className="mb-4">Send us a message</h4>
-              {/* <form action="">
+            {/* <div className="col-lg-5"> */}
+            {/* <h4 className="mb-4">Send us a message</h4> */}
+            {/* <form action="">
               <div className="form-group mb-3">
                 <label htmlFor="firstname">
                   <i className="bi bi-person-fill" />
@@ -84,8 +90,8 @@ const contact = () => {
                 Submit
               </button>
             </form> */}
-              <ContactForm />
-            </div>
+            {/* <ContactForm /> */}
+            {/* </div> */}
           </div>
         </div>
       </section>
