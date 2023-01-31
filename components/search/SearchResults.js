@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import { searchByKeyword } from "../../redux/actions/getPlantsAction"
-import SeachItem from "./SeachItem"
+import SearchItem from "./SearchItem"
 import SearchFormValidate from "./SearchFormValidate"
 import * as localStore from "../../generics/localStore"
 
@@ -119,7 +119,7 @@ const SearchResults = ({
                         query: { type: plant.acf.plant_type },
                       }}>
                       <a>
-                        <SeachItem plant={plant} />
+                        <SearchItem plant={plant} />
                       </a>
                     </Link>
                   </div>

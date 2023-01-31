@@ -810,6 +810,73 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 </div>
 
+                {/* SPORES */}
+                {router.query.type == "Fern" && (
+                  <div className="accordion mb-3" id="accordion3">
+                    <div className="accordion-item">
+                      <h2 className="accordion-header" id="headingThree">
+                        <button
+                          className="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree"
+                          // aria-expanded="true"
+                          aria-controls="collapseThree">
+                          <strong>Spores</strong>
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseThree"
+                        className="accordion-collapse show"
+                        aria-labelledby="headingThree"
+                        data-bs-parent="#accordion3">
+                        <div className="accordion-body">
+                          <div className="d-flex flex-wrap">
+                            {plant_details.acf.characteristics.spore_location
+                              .length !== 0 &&
+                              plant_details.acf.characteristics.spore_location.map(
+                                (item, index) => (
+                                  <div
+                                    className="d-flex label-value-section"
+                                    key={index}>
+                                    <p>
+                                      <strong>Spore Location: &nbsp;</strong>
+                                    </p>
+                                    <div>
+                                      <p>
+                                        {api.capitalizeFirstLetter(item)}
+                                        &nbsp;
+                                      </p>
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            {plant_details.acf.characteristics.spore_shape
+                              .length !== 0 &&
+                              plant_details.acf.characteristics.spore_shape.map(
+                                (item, index) => (
+                                  <div
+                                    className="d-flex label-value-section"
+                                    key={index}>
+                                    <p>
+                                      <strong>Spore Shape: &nbsp;</strong>
+                                    </p>
+                                    <div>
+                                      <p>
+                                        {api.capitalizeFirstLetter(item)}
+                                        &nbsp;
+                                      </p>
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {plant_details.acf.characteristics.position_of_hairs && (
                   <div className="d-flex">
                     <p>
