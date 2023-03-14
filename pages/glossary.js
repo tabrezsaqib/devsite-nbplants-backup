@@ -276,7 +276,7 @@ const about = () => {
                 root association with a fungal host
               </p>
               <p>
-                <strong>Pedicel</strong>: stalk of a single flower in a flower's
+                <strong>Pedicel</strong>: stalk of a single flower in a flower’s
                 arrangement (inflorescence)
               </p>
               <p>
