@@ -21,7 +21,7 @@ const about = () => {
               </p>
               <p>
                 <strong>Achene fruit</strong>: a small, dry, one-seeded fruit
-                that doesn&apos;t open when mature
+                that doesn’t open when mature
               </p>
               <p>
                 <strong>Alternate leaves</strong>: Leaves are on a stem; not
@@ -44,11 +44,11 @@ const about = () => {
               </p>
               <p>
                 <strong>Basal leaves</strong>: Leaves are at the base of the
-                plant&apos;s stem
+                plant’s stem
               </p>
               <p>
                 <strong>Berry</strong>: fleshy fruit with 2 or more seeds that
-                doesn&apos;t open when mature
+                doesn’t open when mature
               </p>
               <p>
                 <strong>Bilateral petal symmetry</strong>: flower can only be
@@ -228,7 +228,7 @@ const about = () => {
                 other; typically 3 or more times longer than wide
               </p>
               <p>
-                <strong>Lenticel</strong>:
+                <strong>Lenticel</strong>:{" "}
               </p>
               <p>
                 <strong>Lobed</strong>: deep indents on edges of leaves or
@@ -276,8 +276,8 @@ const about = () => {
                 root association with a fungal host
               </p>
               <p>
-                <strong>Pedicel</strong>: stalk of a single flower in a
-                flower&apos;s arrangement (inflorescence)
+                <strong>Pedicel</strong>: stalk of a single flower in a flower's
+                arrangement (inflorescence)
               </p>
               <p>
                 <strong>Peduncle</strong>: primary flower stalk bearing a single
@@ -370,7 +370,7 @@ const about = () => {
               </p>
               <p>
                 <strong>Spur</strong>: hollow sac-like projection of a sepal or
-                petal that often carries nectar e.g. Columbine ({" "}
+                petal that often carries nectar e.g. Columbine (
                 <em>Aquilegia</em>)
               </p>
               <p>

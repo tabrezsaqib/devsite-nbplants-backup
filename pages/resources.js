@@ -16,15 +16,15 @@ const about = () => {
               <p>
                 Boland, Todd. 2011.{" "}
                 <em>Trees and Shrubs, Newfoundland and Labrador</em>. Portugal
-                Cove-St. Philip&apos;s, NL: Boulder Publications.
+                Cove-St. Philip’s, NL: Boulder Publications.
               </p>
               <p>
                 Boland, Todd. 2012. <em>Trees and Shrubs of the Maritimes</em>.
-                Portugal Cove-St. Philip&apos;s, NL: Boulder Publications.
+                Portugal Cove-St. Philip’s, NL: Boulder Publications.
               </p>
               <p>
                 Boland, Todd. 2015. <em>Wildflowers of New Brunswick</em>.
-                Portugal Cove-St. Philip&apos;s, NL: Boulder Publications.
+                Portugal Cove-St. Philip’s, NL: Boulder Publications.
               </p>
               <p>
                 Campbell, Christopher S. and Hyland, Fay (botanists) and
@@ -61,9 +61,9 @@ const about = () => {
               <p>
                 Fernald, Merritt Lyndon. 1950{" "}
                 <em>
-                  Gray&apos;s Manual of Botany: A handbook of the flowering
-                  plants and ferns of the central and northeastern United States
-                  and adjacent Canada
+                  Gray’s Manual of Botany: A handbook of the flowering plants
+                  and ferns of the central and northeastern United States and
+                  adjacent Canada
                 </em>{" "}
                 (8th (centennial) ed.). Portland, Oregon: Dioscorides Press.
               </p>
@@ -79,7 +79,7 @@ const about = () => {
                 Haines, Arthur. Illustrated by Elizabeth Farnsworth and Gordon
                 Morrison. 2011.
                 <em>
-                  New England Wild FLower Society&apos;s Flora Novae Angliae: A
+                  New England Wild FLower Society’s Flora Novae Angliae: A
                   Manual for the Identification of Native and Naturalized Higher
                   Vascular Plants of New England
                 </em>
@@ -160,20 +160,20 @@ const about = () => {
               <p>
                 Young, C. Mary. 2015.{" "}
                 <em>
-                  Nature&apos;s Bounty: Four Centuries of Plant Exploration in
-                  New Brunswick
+                  Nature’s Bounty: Four Centuries of Plant Exploration in New
+                  Brunswick
                 </em>
                 . Fredericton, NB: UNB Libraries, University of New Brunswick.
               </p>
               <p>
                 Zinck, Marian. 1998.{" "}
-                <em>Roland&apos;s Flora of Nova Scotia, Vol 1</em>. NS: Nova
-                Scotia Museum and Nimbus Publishing.
+                <em>Roland’s Flora of Nova Scotia, Vol 1</em>. NS: Nova Scotia
+                Museum and Nimbus Publishing.
               </p>
               <p>
                 Zinck, Marian. 1998.{" "}
-                <em>Roland&apos;s Flora of Nova Scotia, Vol 2</em>. NS: Nova
-                Scotia Museum and Nimbus Publishing.
+                <em>Roland’s Flora of Nova Scotia, Vol 2</em>. NS: Nova Scotia
+                Museum and Nimbus Publishing.
               </p>
 
               <h3>
