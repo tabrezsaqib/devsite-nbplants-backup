@@ -33,6 +33,16 @@ const about = () => {
                 the stalk (filament) of the stamen
               </p>
               <p>
+                <strong>Acaulescent</strong>: without a stem
+              </p>
+              <p>
+                <strong>Awn</strong>: slender bristle-shaped appendage at the
+                tip, especially on grasses
+              </p>
+              <p>
+                <strong>Axil</strong>: inside angle where leaf and stem connect
+              </p>
+              <p>
                 <strong>Basal leaves</strong>: Leaves are at the base of the
                 plant’s stem
               </p>
@@ -47,7 +57,7 @@ const about = () => {
               <p>
                 <strong>Bract</strong>: small or modified leaf, usually at the
                 base of a flower or flower arrangement. Bracts can be more
-                visibly than petals on many flowers e.g. Bunchberry
+                visible than petals on many flowers e.g. Bunchberry
               </p>
               <p>
                 <strong>Calcareous</strong>: calcium rich
@@ -66,24 +76,24 @@ const about = () => {
                 compound pistil
               </p>
               <p>
-                <strong>Cauline</strong>: cauline leaves are on stems
+                <strong>Caulescent</strong>: with a stem. Cauline leaves are on
+                stems.
               </p>
               <p>
                 <strong>Chasmogamous</strong>: flowers that are open and
                 cross-pollinate (for violets these are the spring flowers)
               </p>
               <p>
+                <strong>Ciliate</strong>: fine marginal hairs
+              </p>
+              <p>
                 <strong>Cleistogamous</strong>: flowers that remain closed and
                 self-pollinate (for violets these are fall flowers)
               </p>
               <p>
-                <strong>Conservation ranks / S ranks</strong> (definitions
+                <strong>Conservation ranks: S ranks</strong> (definitions
                 supplied by the{" "}
-                <a
-                  target="_blank"
-                  href="http://accdc.com//"
-                  className="links"
-                  rel="noreferrer">
+                <a target="_blank" href="http://accdc.com//" rel="noreferrer">
                   Atlantic Canada Conservation Data Centre (ACCDC)
                 </a>
                 <ul>
@@ -136,11 +146,19 @@ const about = () => {
                 <strong>Cucullate</strong>: hooded or resembling a hood
               </p>
               <p>
+                <strong>Cyme</strong>: Flower arrangement in which the terminal
+                flower on each bract blooms and fruits first.
+              </p>
+              <p>
                 <strong>Dehiscent</strong>: opens on maturity
               </p>
               <p>
                 <strong>Dicot</strong>: group of flowering plants with two seed
                 leaves
+              </p>
+              <p>
+                <strong>Dimorphic</strong>: ferns with both fertile and sterile
+                fronds
               </p>
               <p>
                 <strong>Elliptical</strong>: broadest in the middle and tapering
@@ -159,27 +177,58 @@ const about = () => {
                 splits along a single suture on one side of the mature carpel
               </p>
               <p>
-                <strong>Indehiscent</strong>: does not open on maturity (refers
-                to fruits)
+                <strong>Frond</strong>: leaf of ferns
+              </p>
+              <p>
+                <strong>Gemma</strong>: cell(s) that separate from the parent
+                plant to create a new plant. In plants such as <em>Huperzia</em>{" "}
+                that have asexual reproduction.
+              </p>
+              <p>
+                <strong>Glabrous</strong>: Smooth, without hairs
+              </p>
+              <p>
+                <strong>Glaucous</strong>: Covered with fine, usually white,
+                powder or waxy coating
+              </p>
+              <p>
+                <strong>Gynostgium</strong>: Fused anther and stigma
+              </p>
+              <p>
+                <strong>Hood</strong>: Appendage around stamen (ex.{" "}
+                <em>Asclepias</em>)
+              </p>
+              <p>
+                <strong>Hypogynous disk</strong>: (ex. <em>Orthilia secunda</em>
+              </p>
+              <p>
+                <strong>Indehiscent</strong>: does not open on maturity
+              </p>
+              <p>
+                <strong>Indusium</strong>: thin epidermal extension covering the
+                sorus or spore bearing structure of ferns
               </p>
               <p>
                 <strong>Inflorescence</strong>: flower arrangement
               </p>
               <p>
-                <strong>Introduced</strong>: plant not present in New Brunswick
-                prior to the arrival of European settlers
+                <strong>Introduced plants</strong>: plant not present in New
+                Brunswick prior to the arrival of European settlers
               </p>
               <p>
                 <strong>Invasive</strong>: plant that presents a threat to the
                 existing ecosystem
               </p>
               <p>
+                <strong>Labellum</strong>: Lip - modified, usually lowest petal
+                of the Orchid family
+              </p>
+              <p>
                 <strong>Lance</strong>: broader towards one end, tapering to the
                 other; typically 3 or more times longer than wide
               </p>
               <p>
-                <strong>Lip</strong>: Labellum, the modified petal of plants in
-                the Orchid family; usually the lowest petal
+                <strong>Lenticel</strong>:{" "}
               </p>
               <p>
                 <strong>Lobed</strong>: deep indents on edges of leaves or
@@ -190,8 +239,8 @@ const about = () => {
                 seed leaf and parallel-veined leaves. e.g. Orchids
               </p>
               <p>
-                <strong>Native</strong>: plant was present in New Brunswick
-                prior to the arrival of European settlers
+                <strong>Native plants</strong>: plant was present in New
+                Brunswick prior to the arrival of European settlers
               </p>
               <p>
                 <strong>No leaves</strong>: also includes no apparent leaves
@@ -201,9 +250,9 @@ const about = () => {
                 each year; Herbaceous
               </p>
               <p>
-                <strong>Nut</strong>: fruit with a single locule and a single
-                seed surrounded by a thick, hard pericarp, often subtended by an
-                involucre
+                <strong>Nut</strong>: fruit with a single locule (ovary chamber)
+                and a single seed surrounded by a thick, hard pericarp, often
+                supported by a whorl of bracts
               </p>
               <p>
                 <strong>Opposite</strong>: stem leaves grow opposite each other;
@@ -223,21 +272,25 @@ const about = () => {
                 of stalked flowers
               </p>
               <p>
-                <strong>Pedicel</strong>: stalk of a single flower in a
-                flower&apos;s arrangement (inflorescence)
+                <strong>Parasitic Plant</strong>: obtains nutrients through a
+                root association with a fungal host
+              </p>
+              <p>
+                <strong>Pedicel</strong>: stalk of a single flower in a flower’s
+                arrangement (inflorescence)
               </p>
               <p>
                 <strong>Peduncle</strong>: primary flower stalk bearing a single
                 flower or a flower cluster
               </p>
               <p>
-                <strong>Perianth</strong>: floral envelope consisting of calyx
-                and/or corolla
+                <strong>Perianth</strong>: outer part of a flower consisting of
+                sepal and/or petals
               </p>
               <p>
                 <strong>Petal symmetry</strong>: bilateral (flower can only be
                 divided evenly in one way e.g. Orchids), radial (flower can be
-                divided evenly multiple wayse.g. Asters)
+                divided evenly multiple ways e.g. Asters)
               </p>
               <p>
                 <strong>Petal</strong>: one of the highly modified leaves of a
@@ -250,12 +303,21 @@ const about = () => {
                 with each stigma atop a style
               </p>
               <p>
+                <strong>Pith</strong>: spongy tissue in the centre of a stem;
+                colour and form can be an identifying feature in the twigs of
+                woody plants
+              </p>
+              <p>
                 <strong>Pod</strong>: any dry fruit that opens when mature e.g.
                 Pea family
               </p>
               <p>
                 <strong>Raceme</strong>: flower arrangement where each flower is
                 on an individual stalk along a central stem
+              </p>
+              <p>
+                <strong>Rachis</strong>: axis of a compound leaf or
+                inflorescence
               </p>
               <p>
                 <strong>Radial petal symmetry</strong>: flower can be divided
@@ -289,12 +351,22 @@ const about = () => {
                 family
               </p>
               <p>
-                <strong>Solitary Flower</strong>: a single flower that is not
+                <strong>Sinus</strong>: space between two lobes or teeth on a
+                leaf
+              </p>
+              <p>
+                <strong>Solitary flower</strong>: a single flower that is not
                 part of a grouped flower arrangement (inflorescence)
               </p>
               <p>
                 <strong>Spike</strong>: flower arrangement with stalkless
                 (sessile) flowers arranged on a stem
+              </p>
+              <p>
+                <strong>Spinulose</strong>: with small sharp spines
+              </p>
+              <p>
+                <strong>Sporophore</strong>: fertile blade
               </p>
               <p>
                 <strong>Spur</strong>: hollow sac-like projection of a sepal or
@@ -311,16 +383,22 @@ const about = () => {
                 pollen, usually has a sticky or papillose surface
               </p>
               <p>
-                <strong>Stipe</strong>: stalk (more precise terms: petiole,
-                peduncle, style)
+                <strong>Stipe</strong>: portion of a fern stalk below the leaves
               </p>
               <p>
                 <strong>Stipule</strong>: bract-like or leafy appendage at the
                 base of a petiole or sessile leaf
               </p>
               <p>
+                <strong>Stomata</strong>: pores that allow gases to pass in and
+                out of leaves. Appear on conifer needles as white dots.
+              </p>
+              <p>
                 <strong>Style</strong>: stalk of the pistil that connects the
                 ovary and the stigma
+              </p>
+              <p>
+                <strong>Tropophore</strong>: sterile blade
               </p>
               <p>
                 <strong>Umbel</strong>: flattish topped flower arrangement with
