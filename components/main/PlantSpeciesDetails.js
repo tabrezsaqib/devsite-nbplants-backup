@@ -630,7 +630,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   plant_details.acf.characteristics.stems.map((item, index) => (
                     <div className="d-flex label-value-section" key={index}>
                       <p>
-                        <strong>Stems: &nbsp;</strong>
+                        <strong>Stems and/or Twigs: &nbsp;</strong>
                       </p>
                       <div>
                         <p>
@@ -928,7 +928,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             {plant_details.acf.characteristics.fruit_length && (
                               <div className="d-flex label-value-section">
                                 <p>
-                                  <strong>Fruit Length: &nbsp;</strong>
+                                  <strong>Fruit Size: &nbsp;</strong>
                                 </p>
                                 {api.capitalizeFirstLetter(
                                   plant_details.acf.characteristics.fruit_length

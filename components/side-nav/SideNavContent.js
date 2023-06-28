@@ -116,7 +116,7 @@ const SideNavContent = ({
     {
       key: "stems",
       group: "none",
-      value: "Stems",
+      value: "Stems and/or Twigs",
     },
     {
       key: "fruit_type",
