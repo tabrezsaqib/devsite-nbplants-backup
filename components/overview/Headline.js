@@ -5,7 +5,7 @@ const Headline = () => {
     <div className="mb-4">
       <h2>Discover the Plants of New Brunswick</h2>
       <p>
-        A pictorial guide to the orchids and violets of New Brunswick.
+        A pictorial guide to the plants of New Brunswick.
         <br />
         Additional plants will be added in future years.
       </p>

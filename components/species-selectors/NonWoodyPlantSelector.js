@@ -6,10 +6,11 @@ const NonWoodyPlantSelector = () => {
     <div className="block">
       <img src="../images/non-woody-icon.png" alt="nonwoody plant icon" />
       <h4>Non-woody Plants</h4>
-      <span>
+      {/* <span>
         <strong>Orchids</strong> and <strong>Violets</strong> <br></br>Others in
         Progress
-      </span>
+      </span> */}
+      <p>In progress</p>
       <style jsx>{`
         .block {
           padding: 30px 20px;
