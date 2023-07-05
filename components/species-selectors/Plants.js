@@ -181,6 +181,7 @@ const Plants = ({
   const toggleSidebarVisibility = () => {
     setSidebarVisibility(!sidebarVisibility)
   }
+
   return (
     <div className="row">
       <div className="col-lg-3 col-sm-12">

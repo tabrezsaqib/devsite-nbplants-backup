@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css"
 import { useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import SideNavPopover from "./SideNavPopover"
+import React, {useState} from "react"
 
 const SideNavContent = ({
   options,
@@ -246,7 +247,6 @@ const SideNavContent = ({
     dispatch(triggerToolTip(status))
     dispatch(getPopoverData(key, status))
   }
-
   return (
     <>
       <div>
