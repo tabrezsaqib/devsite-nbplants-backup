@@ -182,6 +182,14 @@ const Plants = ({
     setSidebarVisibility(!sidebarVisibility)
   }
 
+  const dropDownValues = [20, 50, 100]
+
+  const handleItemsPerPageChange = (event) => {
+    const newItemsPerPage = parseInt(event.target.value)
+    itemsPerPage = newItemsPerPage
+    paginationEngine(itemsPerPage)
+  }
+
   return (
     <div className="row">
       <div className="col-lg-3 col-sm-12">
@@ -212,6 +220,21 @@ const Plants = ({
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
+          {isLoading === true ? ""
+            : 
+            <div 
+          // className="d-flex flex-row justify-content-center align-items-center align-self-center"
+          >
+                <span className="itemsLabel">Content Per Page:</span>
+                <select 
+                className="displayDropdown"
+                onChange={handleItemsPerPageChange}>
+                  {dropDownValues.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
+                </select>
+            </div>
+            }
           <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
           <ReactPaginate
             className={toggle_pagination === true ? "hide" : ""}
@@ -247,6 +270,28 @@ const Plants = ({
           margin-bottom: 27px;
           border: 1px solid #e0e1e3;
           border-radius: 15px;
+        }
+        .itemsLabel{
+          color: #333333;
+          background: #ffffff;
+          margin: 0px 0px 0px 0px;
+          padding: 6px 12px;
+        }
+        .displayDropDown{
+          color: #333333;
+          background: #ffffff;
+          margin: 0px 0px 0px 0px;
+          padding: 6px 12px;
+          fontSize: 16px;
+          border: 1px solid #dee2e6;
+          borderRadius: 0.25rem;
+          option:hover::after{
+            background: #1D9D47;
+            color: #ffffff;
+          }
+          option:hover{
+            cursor:pointer;
+          }
         }
       `}</style>
     </div>
