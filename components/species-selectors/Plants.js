@@ -220,12 +220,13 @@ const Plants = ({
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
+          <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
           {isLoading === true ? ""
             : 
             <div 
           // className="d-flex flex-row justify-content-center align-items-center align-self-center"
           >
-                <span className="itemsLabel">Content Per Page:</span>
+                <span className="itemsLabel">Species Per Page:</span>
                 <select 
                 className="displayDropdown"
                 onChange={handleItemsPerPageChange}>
@@ -235,7 +236,6 @@ const Plants = ({
                 </select>
             </div>
             }
-          <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
           <ReactPaginate
             className={toggle_pagination === true ? "hide" : ""}
             nextLabel="next >"
