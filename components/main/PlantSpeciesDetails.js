@@ -699,10 +699,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                     <strong>Leaf Duration: &nbsp;</strong>
                                   </p>
                                   <div>
+                                    {api.capitalizeFirstLetter(item) === "Coniferous"?
+                                    <p>Evergreen &nbsp;</p>
+                                    :
                                     <p>
                                       {api.capitalizeFirstLetter(item)}
                                       &nbsp;
                                     </p>
+                                    }
                                   </div>
                                 </div>
                               )
