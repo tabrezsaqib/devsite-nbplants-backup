@@ -5,7 +5,7 @@ const NonWoodyPlantSelector = () => {
   return (
     <div className="block">
       <img src="../images/non-woody-icon.png" alt="nonwoody plant icon" />
-      <h4>Non-woody Plants</h4>
+      <h4>Non-woody Plants <span>(not Fern or Grass)</span></h4>
       {/* <span>
         <strong>Orchids</strong> and <strong>Violets</strong> <br></br>Others in
         Progress

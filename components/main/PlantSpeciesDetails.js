@@ -337,7 +337,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
               </div>
-              {plant_details.acf.varieties && (
+              {/* {plant_details.acf.varieties && (
                 <div>
                   <p>
                     <strong>Varieties: &nbsp;</strong>
@@ -348,7 +348,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
               <div className="d-flex label-value-section mt-2">
                 {plant_details.acf.plant_type && (
                   <div className="d-flex label-value-section">
@@ -965,6 +965,18 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </div>
                       </div>
                     </div>
+                    {plant_details.acf.varieties && (
+                            <div className="varietiesContainer">
+                              <p>
+                                <strong>Varieties: &nbsp;</strong>
+                              </p>
+                              <div className="d-flex flex-column">
+                                <div className="rtc-content">
+                                  {ReactHtmlParser(plant_details.acf.varieties)}
+                                </div>
+                              </div>
+                            </div>
+                            )}
                   </div>
                 )}
 
@@ -1190,6 +1202,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           font-weight: bold;
           text-align: right;
           color: #0e9d47;
+        }
+        .varietiesContainer{
+          margin: 16px 0 0 0;
         }
       `}</style>
     </div>

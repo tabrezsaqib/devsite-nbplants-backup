@@ -5,7 +5,7 @@ const Ferns = () => {
   return (
     <div className="block">
       <img src="../images/fern.png" alt="fern plant icon" />
-      <h4>Ferns</h4>
+      <h4>Fern/Fern Ally</h4>
       <p>In progress</p>
 
       <style jsx>{`
