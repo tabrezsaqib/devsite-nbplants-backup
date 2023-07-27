@@ -688,7 +688,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       data-bs-parent="#accordion2">
                       <div className="accordion-body">
                         <div className="d-flex flex-wrap">
-                          {plant_details.acf.characteristics.leaf_duration
+                          {/* {plant_details.acf.characteristics.leaf_duration
                             .length !== 0 &&
                             plant_details.acf.characteristics.leaf_duration.map(
                               (item, index) => (
@@ -710,13 +710,42 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                   </div>
                                 </div>
                               )
-                            )}
+                            )} */}
+                          {plant_details.acf.characteristics.leaf_duration
+                              .length !== 0 && (
+                                <div className="d-flex label-value-section">
+                                  <p>
+                                    <strong>Leaf Duration: &nbsp;</strong>
+                                  </p>
+                                  {plant_details.acf.characteristics.leaf_duration.map(
+                                    (item, index) => (
+                                      <div className="d-flex" key={index}>
+                                        {api.capitalizeFirstLetter(item) === "Coniferous"?
+                                        <p>Evergreen &nbsp;</p>
+                                        :
+                                        <p>
+                                          {api.capitalizeFirstLetter(item)}
+                                          {item !==
+                                          plant_details.acf.characteristics.leaf_duration
+                                          .slice(-1)
+                                          .pop() ? (
+                                            <span>, &nbsp;</span>
+                                          ) : (
+                                            ""
+                                          )}
+                                          </p>
+                                         }
+                                        </div>
+                                      )
+                                    )}
+                                  </div>
+                              )}
                           {plant_details.acf.characteristics.leaf_type
                             .length !== 0 &&
                             plant_details.acf.characteristics.leaf_type.map(
                               (item, index) => (
                                 <div
-                                  className="d-flex label-value-section"
+                                  className="d-flex"
                                   key={index}>
                                   <p>
                                     <strong>Leaf Type: &nbsp;</strong>
@@ -969,8 +998,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </div>
                       </div>
                     </div>
-                    {plant_details.acf.varieties && (
-                            <div className="varietiesContainer">
+                  </div>
+                )}
+                {plant_details.acf.varieties && (
+                            <div>
                               <p>
                                 <strong>Varieties: &nbsp;</strong>
                               </p>
@@ -981,8 +1012,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               </div>
                             </div>
                             )}
-                  </div>
-                )}
 
                 {/* {plant_details.acf.characteristics.wildlife_benefits && (
                   <div className="d-flex label-value-section">
@@ -1206,9 +1235,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           font-weight: bold;
           text-align: right;
           color: #0e9d47;
-        }
-        .varietiesContainer{
-          margin: 16px 0 0 0;
         }
       `}</style>
     </div>
