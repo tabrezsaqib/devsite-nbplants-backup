@@ -92,11 +92,11 @@ const SideNavContent = ({
       group: "leaves",
       value: "Leaf Type",
     },
-    {
-      key: "leaf_duration",
-      group: router.query.type == "Woody" && "leaves",
-      value: "Leaf Duration",
-    },
+    // {
+    //   key: "leaf_duration",
+    //   group: router.query.type == "Woody" && "leaves",
+    //   value: "Leaf Duration",
+    // },
     {
       key: "spore_location",
       group: router.query.type == "Fern" && "spores",
