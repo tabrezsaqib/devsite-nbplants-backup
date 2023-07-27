@@ -745,7 +745,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             plant_details.acf.characteristics.leaf_type.map(
                               (item, index) => (
                                 <div
-                                  className="d-flex"
+                                  className="d-flex d-flex label-value-section"
                                   key={index}>
                                   <p>
                                     <strong>Leaf Type: &nbsp;</strong>
