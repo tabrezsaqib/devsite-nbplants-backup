@@ -192,12 +192,18 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               plant_details.acf.image_url.length > 0 &&
                               plant_details.acf.image_url.map((item, index) => (
                                 <div className="each-slide" key={index}>
-                                  <div
+                                  {/* <div
                                     style={{
                                       backgroundImage: `url(${
                                         plant_details.acf.image_url[
                                           slideIndex || index
                                         ].full_image_url
+                                      })`,
+                                    }}></div> */}
+                                    <div
+                                    style={{
+                                      backgroundImage: `url(${
+                                        item.full_image_url
                                       })`,
                                     }}></div>
                                   <p className="img-caption">{item.caption}</p>
