@@ -17,8 +17,8 @@ const about = () => {
       {`
         .aboutPageContainer{
          position: relative;
-       overflow:hidden;
-       margin:0;
+        overflow:hidden;
+        margin:0;
          padding-top: 100%;
         }
         .aboutPageContent{
@@ -34,8 +34,7 @@ const about = () => {
         @media screen and (min-width: 1200px){
           .aboutPageContainer{
             position: relative;
-          overflow:scoll;
-          margin:0;
+            margin:0;
             padding-top: 57%;
            }
            .aboutPageContent{

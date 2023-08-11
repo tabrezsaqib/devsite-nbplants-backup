@@ -16,8 +16,8 @@ const contact = () => {
       {`
         .contactPageContainer{
          position: relative;
-       overflow:hidden;
-       margin:0;
+         overflow:hidden;
+         margin:0;
          padding-top: 100%;
         }
         .contactPageContent{
@@ -34,9 +34,8 @@ const contact = () => {
         @media screen and (min-width: 1200px){
           .contactPageContainer{
             position: relative;
-          overflow:scoll;
-          margin:0;
-            padding-top: 57%;
+            margin:0;
+            padding-top: 30%;
            }
            .contactPageContent{
              position: absolute;
