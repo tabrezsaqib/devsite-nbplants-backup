@@ -92,6 +92,9 @@ const Footer = () => {
                 <li>
                   <a href="/resources">Resources</a>
                 </li>
+                {/* <li>
+                  <a href="/families">Plant Families</a>
+                </li> */}
               </ul>
             </div>
             {/* <div className="social-links">
