@@ -10,7 +10,9 @@ const glossary = () => {
       <div className="glossaryPageContainer">
         <iframe 
         className="glossaryPageContent"
-        src="https://api-v2.newbrunswickplants.ca/glossary/">
+        src="https://api-v2.newbrunswickplants.ca/glossary/"
+        frameBorder="0"
+        >
         </iframe>
       </div>
       <style jsx>
@@ -19,6 +21,7 @@ const glossary = () => {
          position: relative;
          overflow:hidden;
          margin:0;
+         height: 100%;
          padding-top: 100vh;
         }
         .glossaryPageContent{
@@ -27,17 +30,17 @@ const glossary = () => {
           border: 0;
           margin:0;
           left:0;
-          width: 100%;
+          width: 105%;
           height:100%;
         }
         @media screen and (min-width: 1200px){
           .glossaryPageContainer{
+            padding-top: 4200px;
            }
            .glossaryPageContent{
              position: absolute;
-             width: 100vw;
-             height: 100vh;
-             box-sizing:border-box;
+             width: 100%;
+             height: 4200px;
              top:0;
              border: 0;
              margin:0;
