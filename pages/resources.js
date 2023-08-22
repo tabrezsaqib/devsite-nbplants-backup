@@ -2,9 +2,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import Footer from "../components/layouts/Footer";
+import Header from "../components/layouts/Header";
+import Navbar from "../components/layouts/Navbar";
+
+
 
 const resources = () => {
   return (
+    <>
+    <Header />
+    <Navbar />
     <div>
       <div className="resourcesPageContainer">
         <iframe 
@@ -46,6 +54,8 @@ const resources = () => {
       `}
     </style>
     </div>
+    <Footer />
+  </>
   )
 }
 

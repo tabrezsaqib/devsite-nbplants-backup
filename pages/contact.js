@@ -3,8 +3,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 
+import Footer from "../components/layouts/Footer";
+import Header from "../components/layouts/Header";
+import Navbar from "../components/layouts/Navbar";
+
+
 const contact = () => {
   return (
+    <>
+    <Header />
+    <Navbar />
     <div>
       <div className="contactPageContainer">
         <iframe 
@@ -16,8 +24,8 @@ const contact = () => {
       {`
         .contactPageContainer{
          position: relative;
-         overflow:hidden;
-         margin:0;
+       overflow:hidden;
+       margin:0;
          padding-top: 100%;
         }
         .contactPageContent{
@@ -28,7 +36,6 @@ const contact = () => {
           left:0;
           width: 100%;
           height:100%;
-          
         }
         
         @media screen and (min-width: 1200px){
@@ -51,6 +58,8 @@ const contact = () => {
       `}
     </style>
     </div>
+    <Footer />
+    </>
   )
 }
 

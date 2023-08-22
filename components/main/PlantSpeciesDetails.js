@@ -8,6 +8,10 @@ import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
 
+import Header from "../layouts/Header"
+import Navbar from "../layouts/Navbar"
+import Footer from "../layouts/Footer"
+
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
   const [slideIndex, setSlideIndex] = useState(null)
@@ -52,6 +56,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   }
 
   return (
+    <>
+    <Header />
+    <Navbar />
     <div className="mt-3">
       {plant_details.length !== 0 ? (
         <div className="row" key={plant_details.id}>
@@ -192,18 +199,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               plant_details.acf.image_url.length > 0 &&
                               plant_details.acf.image_url.map((item, index) => (
                                 <div className="each-slide" key={index}>
-                                  {/* <div
+                                  <div
                                     style={{
                                       backgroundImage: `url(${
                                         plant_details.acf.image_url[
                                           slideIndex || index
                                         ].full_image_url
-                                      })`,
-                                    }}></div> */}
-                                    <div
-                                    style={{
-                                      backgroundImage: `url(${
-                                        item.full_image_url
                                       })`,
                                     }}></div>
                                   <p className="img-caption">{item.caption}</p>
@@ -343,7 +344,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
               </div>
-              {/* {plant_details.acf.varieties && (
+              {plant_details.acf.varieties && (
                 <div>
                   <p>
                     <strong>Varieties: &nbsp;</strong>
@@ -354,7 +355,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 </div>
-              )} */}
+              )}
               <div className="d-flex label-value-section mt-2">
                 {plant_details.acf.plant_type && (
                   <div className="d-flex label-value-section">
@@ -632,7 +633,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
 
-                {/* {plant_details.acf.characteristics.stems.length !== 0 &&
+                {plant_details.acf.characteristics.stems.length !== 0 &&
                   plant_details.acf.characteristics.stems.map((item, index) => (
                     <div className="d-flex label-value-section" key={index}>
                       <p>
@@ -645,33 +646,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </p>
                       </div>
                     </div>
-                  ))} */}
-
-                  {plant_details.acf.characteristics.stems
-                  .length !== 0 && (
-                    <div className="d-flex">
-                      <p>
-                        <strong>Stems and/or Twigs: &nbsp;</strong>
-                      </p>
-                      {plant_details.acf.characteristics.stems.map(
-                        (item, index) => (
-                          <div className="d-flex" key={index}>
-                            <p>
-                              {api.capitalizeFirstLetter(item)}
-                              {item !==
-                              plant_details.acf.characteristics.stems
-                              .slice(-1)
-                              .pop() ? (
-                                <span>, &nbsp;</span>
-                              ) : (
-                                ""
-                              )}
-                              </p>
-                            </div>
-                          )
-                        )}
-                      </div>
-                  )}
+                  ))}
 
                 {/* LEAVES */}
                 <div className="accordion mb-3" id="accordion2">
@@ -694,7 +669,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       data-bs-parent="#accordion2">
                       <div className="accordion-body">
                         <div className="d-flex flex-wrap">
-                          {/* {plant_details.acf.characteristics.leaf_duration
+                          {plant_details.acf.characteristics.leaf_duration
                             .length !== 0 &&
                             plant_details.acf.characteristics.leaf_duration.map(
                               (item, index) => (
@@ -705,53 +680,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                     <strong>Leaf Duration: &nbsp;</strong>
                                   </p>
                                   <div>
-                                    {api.capitalizeFirstLetter(item) === "Coniferous"?
-                                    <p>Evergreen &nbsp;</p>
-                                    :
                                     <p>
                                       {api.capitalizeFirstLetter(item)}
                                       &nbsp;
                                     </p>
-                                    }
                                   </div>
                                 </div>
                               )
-                            )} */}
-                          {plant_details.acf.characteristics.leaf_duration
-                              .length !== 0 && (
-                                <div className="d-flex label-value-section">
-                                  <p>
-                                    <strong>Leaf Duration: &nbsp;</strong>
-                                  </p>
-                                  {plant_details.acf.characteristics.leaf_duration.map(
-                                    (item, index) => (
-                                      <div className="d-flex" key={index}>
-                                        {api.capitalizeFirstLetter(item) === "Coniferous"?
-                                        <p>Evergreen &nbsp;</p>
-                                        :
-                                        <p>
-                                          {api.capitalizeFirstLetter(item)}
-                                          {item !==
-                                          plant_details.acf.characteristics.leaf_duration
-                                          .slice(-1)
-                                          .pop() ? (
-                                            <span>, &nbsp;</span>
-                                          ) : (
-                                            ""
-                                          )}
-                                          </p>
-                                         }
-                                        </div>
-                                      )
-                                    )}
-                                  </div>
-                              )}
+                            )}
                           {plant_details.acf.characteristics.leaf_type
                             .length !== 0 &&
                             plant_details.acf.characteristics.leaf_type.map(
                               (item, index) => (
                                 <div
-                                  className="d-flex d-flex label-value-section"
+                                  className="d-flex label-value-section"
                                   key={index}>
                                   <p>
                                     <strong>Leaf Type: &nbsp;</strong>
@@ -1006,18 +948,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 )}
-                {plant_details.acf.varieties && (
-                            <div>
-                              <p>
-                                <strong>Varieties: &nbsp;</strong>
-                              </p>
-                              <div className="d-flex flex-column">
-                                <div className="rtc-content">
-                                  {ReactHtmlParser(plant_details.acf.varieties)}
-                                </div>
-                              </div>
-                            </div>
-                            )}
 
                 {/* {plant_details.acf.characteristics.wildlife_benefits && (
                   <div className="d-flex label-value-section">
@@ -1244,7 +1174,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         }
       `}</style>
     </div>
+    <Footer />
+    </>
   )
 }
 
-export default PlantSpeciesDetails
+export default PlantSpeciesDetails;

@@ -22,6 +22,8 @@ module.exports = {
   //     "/login": { page: "/login" },
   //     "/plants": { page: "/plants" },
   //     "/plants/[id]": { page: "/plants/[id]" },
+  //     "/families": { page: "/families" },
+  //     "/home": {page: "/home"}
   //   }
   // },
   trailingSlash: true,
