@@ -2,9 +2,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import Footer from "../components/layouts/Footer";
+import Header from "../components/layouts/Header";
+import Navbar from "../components/layouts/Navbar";
+
 
 const families = () => {
   return (
+    <>
+    <Header />
+    <Navbar />
     <div>
       <div className="familiesPageContainer">
         <iframe 
@@ -18,7 +25,8 @@ const families = () => {
          position: relative;
          overflow:hidden;
          margin:0;
-         padding-top: 100vh;
+         height:100%;
+         padding-top: 100%;
         }
         .familiesPageContent{
           position: absolute;
@@ -26,7 +34,7 @@ const families = () => {
           border: 0;
           margin:0;
           left:0;
-          width: 100%;
+          width: 105%;
           height:100%;
         }
         @media screen and (min-width: 1200px){
@@ -35,7 +43,7 @@ const families = () => {
            .familiesPageContent{
              position: absolute;
              width: 100vw;
-             height: 100vh;
+             height: 200vh;
              box-sizing:border-box;
              top:0;
              border: 0;
@@ -46,6 +54,8 @@ const families = () => {
       `}
     </style>
     </div>
+    <Footer />
+    </>
   )
 }
 

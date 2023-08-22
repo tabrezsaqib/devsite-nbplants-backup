@@ -1,17 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, {useLayoutEffect, useEffect, useRef, useState, Component, ReactPropTypes } from "react";
 import axios from "axios";
+import * as ReactDOM  from 'react-dom';
+
+import Footer from "../components/layouts/Footer";
+import Header from "../components/layouts/Header";
+import Navbar from "../components/layouts/Navbar";
+import IframeResizer from "iframe-resizer-react";
 
 
+function Glossary  () {
 
-const glossary = () => {
+  const [bodyHeight, setbodyHeight] = useState(0);
+  const elementRef = useRef();
+
   return (
-    <div>
-      <div className="glossaryPageContainer">
+    <>
+    <Header />
+    <Navbar />
+    <div >
+       <div  className="glossaryPageContainer">
+      
         <iframe 
         className="glossaryPageContent"
         src="https://api-v2.newbrunswickplants.ca/glossary/"
-        frameBorder="0"
+frameBorder="0"
         >
         </iframe>
       </div>
@@ -21,7 +34,7 @@ const glossary = () => {
          position: relative;
          overflow:hidden;
          margin:0;
-         height: 100%;
+         height:100%;
          padding-top: 100vh;
         }
         .glossaryPageContent{
@@ -35,12 +48,12 @@ const glossary = () => {
         }
         @media screen and (min-width: 1200px){
           .glossaryPageContainer{
-            padding-top: 4200px;
+            padding-top: 4200px;  
            }
            .glossaryPageContent{
              position: absolute;
              width: 100%;
-             height: 4200px;
+             height:  4200px;
              top:0;
              border: 0;
              margin:0;
@@ -50,7 +63,9 @@ const glossary = () => {
       `}
     </style>
     </div>
+    <Footer />
+    </>
   )
 }
 
-export default glossary;
+export default Glossary;
