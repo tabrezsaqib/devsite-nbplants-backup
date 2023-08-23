@@ -6,7 +6,6 @@ import * as ReactDOM  from 'react-dom';
 import Footer from "../components/layouts/Footer";
 import Header from "../components/layouts/Header";
 import Navbar from "../components/layouts/Navbar";
-import IframeResizer from "iframe-resizer-react";
 
 
 function Glossary  () {
