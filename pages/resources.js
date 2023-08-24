@@ -21,36 +21,37 @@ const resources = () => {
         </iframe>
       </div>
       <style jsx>
-      {`
-        .resourcesPageContainer{
-         position: relative;
-         overflow:hidden;
+       {`
+       .resourcesPageContainer{
+        position: relative;
+        overflow:hidden;
+        margin:0;
+        height:100%;
+        padding-top: 100vh;
+       }
+       .resourcesPageContent{
+         position: absolute;
+         top:0;
+         border: 0;
          margin:0;
-         padding-top: 100vh;
-        }
-        .resourcesPageContent{
-          position: absolute;
-          top:0;
-          border: 0;
-          margin:0;
-          left:0;
-          width: 100%;
-          height:100%;
-        }
-        @media screen and (min-width: 1200px){
-          .resourcesPageContainer{
-           }
-           .resourcesPageContent{
-             position: absolute;
-             width: 100vw;
-             height: 100vh;
-             box-sizing:border-box;
-             top:0;
-             border: 0;
-             margin:0;
-             left:0;
-           }
+         left:0;
+         width: 105%;
+         height:100%;
+       }
+       @media screen and (min-width: 1200px){
+         .resourcesPageContainer{
+           padding-top: 2400px;  
           }
+          .resourcesPageContent{
+            position: absolute;
+            width: 100%;
+            height:  2400px;
+            top:0;
+            border: 0;
+            margin:0;
+            left:0;
+          }
+         }
       `}
     </style>
     </div>
