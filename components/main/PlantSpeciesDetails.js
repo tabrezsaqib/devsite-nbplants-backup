@@ -336,7 +336,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  {ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.plant_family))}
+                  <em>{ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.plant_family))}</em>
                 </div>
               )}
               <div className="mb-3">
