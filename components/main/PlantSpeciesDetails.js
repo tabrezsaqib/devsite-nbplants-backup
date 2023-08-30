@@ -55,6 +55,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     }).then(() => {})
   }
 
+  console.log("Image Data",plant_details.featured_image);
+
   return (
     <>
     <Header />
