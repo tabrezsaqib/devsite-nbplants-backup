@@ -41,6 +41,20 @@ const SpeciesOption = () => {
         Router.reload()
       })
     }
+    if (type == "Grass") {
+      localStorage.setItem("route", "Grass")
+      Router.push(
+      //   {
+      //   pathname: "/plants",
+      //   query: {
+      //     type: "Grass",
+      //   },
+      // }
+      "/grass"
+      ).then(() => {
+        Router.reload()
+      })
+    }
   }
   return (
     <div className="d-flex justify-content-center">
@@ -58,7 +72,9 @@ const SpeciesOption = () => {
         <a onClick={() => optionSelector("Fern")}>
           <Ferns />
         </a>
-        <a onClick={() => optionSelector("Non-woody")} className="disabled">
+        <a onClick={() => optionSelector("Grass")} 
+        // className="disabled"
+        >
           <GrassLike />
         </a>
       </div>
