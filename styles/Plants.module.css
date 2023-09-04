@@ -22,11 +22,11 @@
     font-size: 16px;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
-    option:hover::after{
+    .optionContent:hover::after{
       background: #1D9D47;
       color: #ffffff;
     }
-    option:hover{
+    .optionContent:hover{
       cursor:pointer;
     }
   }
