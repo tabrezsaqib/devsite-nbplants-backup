@@ -2,20 +2,16 @@ import React from "react"
 import ReactHtmlParser from "react-html-parser"
 import { useDispatch } from "react-redux"
 import { triggerToolTip } from "../../redux/actions/getPlantsAction"
-import styles from "../../styles/SideNavPopover.module.css"
-
 const SideNavPopover = ({ triggerPopUp, popoverData, popoverStatus }) => {
   const dispatch = useDispatch()
   const cancelToolTip = (status) => {
     dispatch(triggerToolTip(status))
   }
-
-
   return (
     <div className="d-flex align-self-center">
       <h6
         data-bs-toggle="modal"
-        className={[styles.tooltipPopUp, "align-self-center"].join(" ")}
+        className="tooltipPopUp align-self-center"
         data-bs-target="#sideNavPopUp"
         onClick={() => triggerPopUp([], false)}>
         <i className="bi bi-info-circle-fill" />
@@ -50,6 +46,12 @@ const SideNavPopover = ({ triggerPopUp, popoverData, popoverStatus }) => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .tooltipPopUp {
+          margin: 0px 8px !important;
+          cursor: pointer;
+        }
+      `}</style>
     </div>
   )
 }

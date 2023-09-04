@@ -3,7 +3,6 @@ import { connect, useDispatch } from "react-redux"
 import * as options from "../../data/sideNavListDataArray"
 import * as localStore from "../../generics/localStore"
 import SideNavContent from "./SideNavContent"
-import styles from "../../styles/SideNav.module.css"
 
 import {
   togglePlantTypeData,
@@ -215,8 +214,8 @@ const SideNav = ({
   }
 
   return (
-    <div className={[styles.sidebar, "d-flex", "flex-column", "justify-content-between"].join(" ")}>
-      <div className={isLoading == true ? styles.disableSidebar : "options"}>
+    <div className="sidebar d-flex flex-column justify-content-between">
+      <div className={isLoading == true ? "disable-sidebar" : "options"}>
         <SideNavContent
           options={options}
           plant_type={plant_type}
@@ -246,6 +245,21 @@ const SideNav = ({
           popoverStatus={popoverStatus}
         />
       </div>
+      <style jsx>{`
+        .sidebar {
+          border-radius: 10px;
+          padding: 10px;
+          margin-top: 0px;
+          height: auto;
+          margin-bottom: 25px;
+          padding-bottom: 25px;
+        }
+        .disable-sidebar {
+          filter: grayscale(100%);
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      `}</style>
     </div>
   )
 }

@@ -23,7 +23,6 @@ import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
 import * as options from "../../data/sideNavListDataArray"
 import styles from "../../styles/Global.module.scss"
-import localstyles from "../../styles/Plants.module.css"
 
 const Plants = ({
   all_plants,
@@ -216,51 +215,86 @@ const Plants = ({
       <div
         className={
           filteredList.current.length == 0
-            ? [styles.error_bg_media_query, localstyles.errorBg, "col-lg-9"].join(" ")
+            ? [styles.error_bg_media_query, "error-bg col-lg-9"].join(" ")
             : "col-lg-9 col-sm-12"
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
-          <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
           {isLoading === true ? ""
-            : 
-            <div 
-          // className="d-flex flex-row justify-content-center align-items-center align-self-center"
-          >
-                <span className={localstyles.itemsLabel}>Species Per Page:</span>
-                <select 
-                className={localstyles.displayDropDown}
-                onChange={handleItemsPerPageChange}>
-                  {dropDownValues.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-            </div>
-            }
-          <ReactPaginate
-            className={toggle_pagination === true ? localstyles.hide : ""}
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            forcePage={resetCount == true ? 0 : currentPageNumber - 0}
-            // forcePage={currentPageNumber - 0}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakLabel="..."
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            containerClassName="pagination"
-            activeClassName="active"
-            renderOnZeroPageCount={null}
-          />
+          : 
+          <div 
+        // className="d-flex flex-row justify-content-center align-items-center align-self-center"
+        
+        >
+              <span className="itemsLabel">Content Per Page:</span>
+              <select 
+              className="displayDropdown"
+              onChange={handleItemsPerPageChange}>
+                {dropDownValues.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+          </div>
+          }
+          <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
+            <ReactPaginate
+              className={toggle_pagination === true ? "hide" : ""}
+              nextLabel="next >"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              forcePage={resetCount == true ? 0 : currentPageNumber - 0}
+              // forcePage={currentPageNumber - 0}
+              pageCount={pageCount}
+              previousLabel="< previous"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
+              renderOnZeroPageCount={null}
+            />
         </div>
       </div>
+      <style jsx>{`
+        .hide {
+          display: none;
+        }
+        .error-bg {
+          background-color: #ffffff;
+          margin-top: 16px;
+          margin-bottom: 27px;
+          border: 1px solid #e0e1e3;
+          border-radius: 15px;
+        }
+        .itemsLabel{
+          color: #333333;
+          background: #ffffff;
+          margin: 0px 0px 0px 0px;
+          padding: 6px 12px;
+        }
+        .displayDropDown{
+          color: #333333;
+          background: #ffffff;
+          margin: 0px 0px 0px 0px;
+          padding: 6px 12px;
+          fontSize: 16px;
+          border: 1px solid #dee2e6;
+          borderRadius: 0.25rem;
+          option:hover::after{
+            background: #1D9D47;
+            color: #ffffff;
+          }
+          option:hover{
+            cursor:pointer;
+          }
+        }
+      `}</style>
     </div>
   )
 }

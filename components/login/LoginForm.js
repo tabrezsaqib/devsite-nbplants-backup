@@ -1,5 +1,4 @@
 import { useState } from "react"
-import styles from "../../styles/LoginForm.module.css"
 
 const LoginForm = ({ login, error }) => {
   const [details, setDetails] = useState({ username: "", password: "" })
@@ -14,7 +13,7 @@ const LoginForm = ({ login, error }) => {
         <div className="col-lg-4"></div>
         <div className="col-lg-4">
           <h2 className="text-center mt-4">Please login as Admin</h2>
-          <div className={[styles.formSection, "form-section"].join(" ")}>
+          <div className="form-section">
             <form onSubmit={submitHandler}>
               <div className="form-group">
                 {/* <label htmlFor="username">Username</label> */}
@@ -49,6 +48,15 @@ const LoginForm = ({ login, error }) => {
         </div>
         <div className="col-lg-4"></div>
       </div>
+
+      <style jsx>{`
+        .form-section {
+          margin-top: 60px;
+          padding: 30px;
+          border: 1px solid #e0e1e3;
+          margin-bottom: 60px;
+        }
+      `}</style>
     </>
   )
 }
