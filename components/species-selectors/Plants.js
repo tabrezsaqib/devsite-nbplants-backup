@@ -220,45 +220,44 @@ const Plants = ({
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
-          {isLoading === true ? ""
-          : 
-          <div 
-        // className="d-flex flex-row justify-content-center align-items-center align-self-center"
-        
-        >
-              <span className="itemsLabel">Content Per Page:</span>
-              <select 
-              className="displayDropdown"
-              onChange={handleItemsPerPageChange}>
-                {dropDownValues.map((option, index) => (
-                  <option key={index} value={option}>{option}</option>
-                ))}
-              </select>
-          </div>
-          }
           <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
-            <ReactPaginate
-              className={toggle_pagination === true ? "hide" : ""}
-              nextLabel="next >"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={5}
-              forcePage={resetCount == true ? 0 : currentPageNumber - 0}
-              // forcePage={currentPageNumber - 0}
-              pageCount={pageCount}
-              previousLabel="< previous"
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              previousLinkClassName="page-link"
-              nextClassName="page-item"
-              nextLinkClassName="page-link"
-              breakLabel="..."
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              containerClassName="pagination"
-              activeClassName="active"
-              renderOnZeroPageCount={null}
-            />
+          {isLoading === true ? ""
+            : 
+            <div 
+          // className="d-flex flex-row justify-content-center align-items-center align-self-center"
+          >
+                <span className="itemsLabel">Species Per Page:</span>
+                <select 
+                className="displayDropdown"
+                onChange={handleItemsPerPageChange}>
+                  {dropDownValues.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
+                </select>
+            </div>
+            }
+          <ReactPaginate
+            className={toggle_pagination === true ? "hide" : ""}
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            forcePage={resetCount == true ? 0 : currentPageNumber - 0}
+            // forcePage={currentPageNumber - 0}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
+          />
         </div>
       </div>
       <style jsx>{`
