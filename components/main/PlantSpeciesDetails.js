@@ -948,7 +948,26 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 )}
+
+                {/* {plant_details.acf.characteristics.wildlife_benefits && (
+                  <div className="d-flex label-value-section">
+                    <p>
+                      <strong>Wildlife Benefits: &nbsp;</strong>
+                    </p>
+                    {plant_details.acf.characteristics.wildlife_benefits}
+                  </div>
+                )} */}
                 <div className="mb-3">
+                  {/* {plant_details.acf.characteristics.uses && (
+                    <div className="d-flex flex-column">
+                      <p>
+                        <strong>Uses: </strong>
+                      </p>
+                      <div className="rtc-content">
+                        {ReactHtmlParser(plant_details.acf.uses)}
+                      </div>
+                    </div>
+                  )} */}
                 </div>
               </div>
             </div>

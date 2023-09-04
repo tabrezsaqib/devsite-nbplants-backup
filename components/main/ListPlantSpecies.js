@@ -7,7 +7,6 @@ import * as options from "../../data/sideNavListDataArray"
 import styles from "../../styles/Global.module.scss"
 import loaderStyles from "../../styles/Loader.module.scss"
 import LoaderThumbnail from "./LoaderThumbnail"
-import ListPlantSpeciesStyles from "../../styles/ListPlantSpecies.module.css"
 
 const ListPlantSpecies = ({
   plants_list,
@@ -29,7 +28,6 @@ const ListPlantSpecies = ({
               className={[
                 "box-container",
                 styles.box_container_media_query,
-                ListPlantSpeciesStyles.boxContainer,
               ].join(" ")}>
               <Link
                 href={{
@@ -54,15 +52,39 @@ const ListPlantSpecies = ({
       ) : (
         filteredList.length == 0 &&
         activeFilterList.length > 0 && (
-          <div
-          className={[ListPlantSpeciesStyles.infoSection, "info-section", "d-flex", "align-items-center", "justify-content-center" ].join(" ")}>
+          <div className="info-section d-flex align-items-center justify-content-center">
             <div className="d-flex flex-column text-center">
-              <img className={styles.imgContent} src="../../images/no_result_found.png" alt="" />
+              <img src="../../images/no_result_found.png" alt="" />
               <h3>Oops! No data found!</h3>
             </div>
           </div>
         )
       )}
+      <style jsx>{`
+        .box-container {
+          background-color: #ffffff;
+          margin: 10px 10px 20px;
+          border-radius: 15px;
+          border: 1px solid #e0e1e3;
+          flex-grow: 1;
+          width: 240px;
+        }
+        .info-section {
+          height: 100%;
+          width: 100%;
+        }
+        .img-container {
+          img {
+            top: 50%;
+            left: 58%;
+            width: 80px;
+          }
+        }
+
+        :global(.thumbnails:hover) {
+          color: #1d9d47 !important;
+        }
+      `}</style>
     </div>
   )
 }
