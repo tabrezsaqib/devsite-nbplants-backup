@@ -77,15 +77,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <div className="d-flex flex-column mt-2">
                   <div className="d-flex">
                     <h2 className="heading">
-                      <strong>
-                        {api.capitalizeEveryWord(plant_details.acf.common_name)}
-                      </strong>
+                      <strong>{plant_details.acf.common_name}</strong>
                     </h2>
                     <h4 className="align-self-center pt-2">
                       <strong>
                         <i>
                           &nbsp;&nbsp;
-                          {`${api.capitalizeFirstLetter(plant_details.title)}`}
+                          {`${plant_details.title}`}
                         </i>
                       </strong>
                     </h4>
@@ -95,7 +93,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       <p>
                         <strong>Alternate Names: &nbsp;</strong>
                       </p>
-                      {ReactHtmlParser(api.capitalizeEveryWord(plant_details.acf.synonyms_english))}
+                      {ReactHtmlParser(plant_details.acf.synonyms_english)}
                     </div>
                   )}
                 </div>
@@ -149,7 +147,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <div className="row">
                   <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
                     <div className="unique-characteristics">
-                    {ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.unique_characteristics))}
+                      {ReactHtmlParser(
+                        plant_details.acf.unique_characteristics
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
@@ -207,9 +207,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                         ].full_image_url
                                       })`,
                                     }}></div>
-                                  <p className="img-caption">
-                                    {api.capitalizeEveryWord(item.caption)}
-                                  </p>
+                                  <p className="img-caption">{item.caption}</p>
                                 </div>
                               ))}
                           </Slide>
@@ -259,7 +257,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               alt="plant image"
                             />
                             <p className="img-caption">
-                            {api.capitalizeEveryWord(plant_details.featured_image.caption)}
+                              {plant_details.featured_image.caption}
                             </p>
                           </div>
                         )}
@@ -289,15 +287,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 <div className="d-flex flex-column mt-2">
                   <div className="d-flex">
                     <h2 className="heading">
-                      <strong>
-                        {api.capitalizeEveryWord(plant_details.acf.common_name)}
-                      </strong>
+                      <strong>{plant_details.acf.common_name}</strong>
                     </h2>
                     <h4 className="align-self-center pt-2">
                       <strong>
                         <i>
                           &nbsp;&nbsp;
-                          {api.capitalizeFirstLetter(plant_details.title)}
+                          {plant_details.title}
                         </i>
                       </strong>
                     </h4>
@@ -307,7 +303,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       <p>
                         <strong>Alternate Names: &nbsp;</strong>
                       </p>
-                      {ReactHtmlParser(api.capitalizeEveryWord(plant_details.acf.synonyms_english))}
+                      {ReactHtmlParser(plant_details.acf.synonyms_english)}
                     </div>
                   )}
                 </div>
@@ -318,7 +314,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Wolastoqey: &nbsp;</strong>
                     </p>
-                    <p>{ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.wolastoqey))}</p>
+                    <p>{ReactHtmlParser(plant_details.acf.wolastoqey)}</p>
                   </div>
                 )}
                 &nbsp;&nbsp;
@@ -327,7 +323,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Mi&apos;gmaq: &nbsp;</strong>
                     </p>
-                    <p>{ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.migmaq))}</p>
+                    <p>{ReactHtmlParser(plant_details.acf.migmaq)}</p>
                   </div>
                 )}
               </div>
@@ -336,14 +332,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  <em>{ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.plant_family))}</em>
+                  {ReactHtmlParser(plant_details.acf.plant_family)}
                 </div>
               )}
               <div className="mb-3">
                 {plant_details.acf.description && (
                   <div className="d-flex flex-column">
                     <div className="rtc-content">
-                      {ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.description))}
+                      {ReactHtmlParser(plant_details.acf.description)}
                     </div>
                   </div>
                 )}
@@ -355,7 +351,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </p>
                   <div className="d-flex flex-column">
                     <div className="rtc-content">
-                      {ReactHtmlParser(api.capitalizeFirstLetter(plant_details.acf.varieties))}
+                      {ReactHtmlParser(plant_details.acf.varieties)}
                     </div>
                   </div>
                 </div>
@@ -395,7 +391,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <div className="d-flex label-value-section">
                     <p>
                       <strong>Invasive: &nbsp;</strong>
-                      {api.capitalizeFirstLetter(plant_details.acf.characteristics.invasive)}
+                      {plant_details.acf.characteristics.invasive}
                     </p>
                   </div>
                 )}
@@ -404,7 +400,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Conservation Rank: &nbsp;</strong>
                     </p>
-                    {api.capitalizeFirstLetter(plant_details.acf.conservation_rank)}
+                    {plant_details.acf.conservation_rank}
                   </div>
                 )}
                 <div className="d-flex">
@@ -474,7 +470,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               <div className="d-flex label-value-section">
                                 <p>
                                   <strong>Bloom Time: &nbsp;</strong>
-                                  {api.capitalizeEveryWord(plant_details.acf.characteristics.bloom_time)}
+                                  {plant_details.acf.characteristics.bloom_time}
                                 </p>
                               </div>
                             )}
@@ -596,8 +592,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 <p>
                                   <strong>Lip Description: &nbsp;</strong>
                                   {
-                                    api.capitalizeFirstLetter(plant_details.acf.characteristics
-                                      .lip_description)
+                                    plant_details.acf.characteristics
+                                      .lip_description
                                   }
                                 </p>
                               </div>
@@ -607,7 +603,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 <p>
                                   <strong>Nectar Spur: &nbsp;</strong>
                                 </p>
-                                {api.capitalizeFirstLetter(plant_details.acf.characteristics.nectar_spur)}
+                                {plant_details.acf.characteristics.nectar_spur}
                               </div>
                             )}
 
@@ -892,7 +888,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <div className="d-flex">
                     <p>
                       <strong>Position of Hairs: &nbsp;</strong>
-                      {api.capitalizeFirstLetter(plant_details.acf.characteristics.position_of_hairs)}
+                      {plant_details.acf.characteristics.position_of_hairs}
                     </p>
                   </div>
                 )}
@@ -952,26 +948,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 )}
-
-                {/* {plant_details.acf.characteristics.wildlife_benefits && (
-                  <div className="d-flex label-value-section">
-                    <p>
-                      <strong>Wildlife Benefits: &nbsp;</strong>
-                    </p>
-                    {plant_details.acf.characteristics.wildlife_benefits}
-                  </div>
-                )} */}
                 <div className="mb-3">
-                  {/* {plant_details.acf.characteristics.uses && (
-                    <div className="d-flex flex-column">
-                      <p>
-                        <strong>Uses: </strong>
-                      </p>
-                      <div className="rtc-content">
-                        {ReactHtmlParser(plant_details.acf.uses)}
-                      </div>
-                    </div>
-                  )} */}
                 </div>
               </div>
             </div>
@@ -1183,4 +1160,4 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   )
 }
 
-export default PlantSpeciesDetails;
+export default PlantSpeciesDetails

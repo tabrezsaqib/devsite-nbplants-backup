@@ -8,6 +8,7 @@ import { searchByKeyword } from "../../redux/actions/getPlantsAction"
 import SearchItem from "./SearchItem"
 import SearchFormValidate from "./SearchFormValidate"
 import * as localStore from "../../generics/localStore"
+import styles from "../../styles/SearchResults.module.css"
 
 const SearchResults = ({
   search_results,
@@ -102,13 +103,13 @@ const SearchResults = ({
                 : "d-flex flex-wrap"
             }>
             {isLoading ? (
-              <div className="d-flex align-items-center img-container">
-                <img src="../../images/loading.gif" alt="loader" />
+              <div className={[styles.imgContainer, "d-flex align-items-center"].join(" ")}>
+                <img className={[styles.imgContent]} src="../../images/loading.gif" alt="loader" />
               </div>
             ) : hasSearchKeyword == true ? (
               currentItems == null ? (
-                <div className="d-flex align-items-center img-container">
-                  <img src="../../images/loading.gif" alt="loader" />
+                <div className={[styles.imgContainer, "d-flex align-items-center"].join(" ")}>
+                  <img className={[styles.imgContent]} src="../../images/loading.gif" alt="loader" />
                 </div>
               ) : currentItems !== "Nothing found" ? (
                 currentItems.map((plant, index) => (
@@ -136,7 +137,7 @@ const SearchResults = ({
               )
             ) : (
               <div>
-                <div className="search-area flex-column d-flex align-items-center justify-content-center">
+                <div className={[styles.searchArea, "d-flex", "flex-column", "align-items-center", "justify-content-center"].join(" ")}>
                   <h2>Search by keyword</h2>
                   <SearchFormValidate
                     submitSearchQuery={submitSearchQuery}
@@ -168,18 +169,6 @@ const SearchResults = ({
             renderOnZeroPageCount={null}
           />
         </div>
-        <style jsx>{`
-          .img-container {
-            padding-top: 20%;
-            padding-bottom: 20%;
-            img {
-              width: 80px;
-            }
-          }
-          .search-area {
-            height: 400px;
-          }
-        `}</style>
       </div>
     </>
   )
