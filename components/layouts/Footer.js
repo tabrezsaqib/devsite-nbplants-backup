@@ -76,7 +76,7 @@ const Footer = () => {
               className={[styles.footer_media_query, footerStyle.footerNav].join(" ")}>
               <ul className={[footerStyle.footerList, "d-flex flex-column flex-wrap"].join(" ")}>
                 <li className={footerStyle.footerListItem}>
-                  <a className={footerStyle.footerLink} href="/">Home</a>
+                  <a className={footerStyle.footerLink} href="/home">Home</a>
                 </li>
                 <li className={footerStyle.footerListItem} onClick={refresh}>
                   <a className={footerStyle.footerLink}>Species</a>
