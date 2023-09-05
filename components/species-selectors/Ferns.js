@@ -6,7 +6,7 @@ const Ferns = () => {
   return (
     <div className={styles.block}>
       <img className={styles.imgContent} src="../images/fern.png" alt="fern plant icon" />
-      <h4 className={styles.h4Content}>Ferns</h4>
+      <h4 className={styles.h4Content}>Fern/Fern Ally</h4>
       <p>In progress</p>
     </div>
   )
