@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import SideNavPopover from "./SideNavPopover"
 import React, {useState} from "react"
+import styles from "../../styles/SideNavContent.module.css"
+
 
 const SideNavContent = ({
   options,
@@ -173,7 +175,7 @@ const SideNavContent = ({
       return (
         <div className="form-check" key={index}>
           <input
-            className="form-check-input"
+            className={[styles.formCheckInput, "form-check-input"].join(" ")}
             type="checkbox"
             value={data}
             id={id}
@@ -221,7 +223,7 @@ const SideNavContent = ({
             }
             onChange={(e) => handleOnChange(index, key)}
           />
-          <label className="form-check-label" htmlFor={id}>
+          <label className={[styles.formCheckLabel, "form-check-label"].join(" ")} htmlFor={id}>
             {colorValues.map((value, index) => (
               <div key={index} className="color-value">
                 <img
@@ -254,8 +256,8 @@ const SideNavContent = ({
           <div key={item.key}>
             {item.group == "all" && (
               <div>
-                <h6 className="selector-heading">
-                  <i className="bi bi-check2-square" />
+                <h6 className={[styles.selectorHeading, "selector-heading"].join(" ")}>
+                  <i className={[styles.biCheck2Square, "bi bi-check2-square"].join(" ")}/>
                   &nbsp;&nbsp;
                   <strong>{item.value}</strong>
                 </h6>
@@ -270,8 +272,8 @@ const SideNavContent = ({
           <div key={item.key}>
             {item.group == "initial" && (
               <div>
-                <h6 className="selector-heading">
-                  <i className="bi bi-check2-square" />
+                <h6 className={[styles.selectorHeading, "selector-heading"].join(" ")}>
+                  <i className={[styles.biCheck2Square, "bi bi-check2-square"].join(" ")}/>
                   &nbsp;&nbsp;
                   <strong>{item.value}</strong>
                 </h6>
@@ -286,7 +288,7 @@ const SideNavContent = ({
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
               <button
-                className="accordion-button"
+                className={[styles.accordionButton, "accordion-button"].join(" ")}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#flowers"
@@ -307,8 +309,8 @@ const SideNavContent = ({
                       {item.group == "flowers" && (
                         <div>
                           <div className="d-flex">
-                            <h6 className="selector-heading">
-                              <i className="bi bi-check2-square" />
+                            <h6 className={[styles.selectorHeading, "selector-heading"].join(" ")}>
+                              <i className={[styles.biCheck2Square, "bi bi-check2-square"].join(" ")} />
                               &nbsp;&nbsp;
                               <strong>{item.value}</strong>
                             </h6>
@@ -346,7 +348,7 @@ const SideNavContent = ({
         <div className="accordion-item">
           <h2 className="accordion-header" id="heading2">
             <button
-              className="accordion-button"
+              className={[styles.accordionButton, "accordion-button"].join(" ")}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#leaves"
@@ -366,8 +368,8 @@ const SideNavContent = ({
                   <div key={item.key}>
                     {item.group == "leaves" && (
                       <div>
-                        <h6 className="selector-heading">
-                          <i className="bi bi-check2-square" />
+                        <h6 className={[styles.selectorHeading, "selector-heading"].join(" ")}>
+                          <i className={[styles.biCheck2Square, "bi bi-check2-square"].join(" ")} />
                           &nbsp;&nbsp;
                           <strong>{item.value}</strong>
                         </h6>
@@ -388,7 +390,7 @@ const SideNavContent = ({
           <div className="accordion-item">
             <h2 className="accordion-header" id="heading3">
               <button
-                className="accordion-button"
+                className={[styles.accordionButton, "accordion-button"].join(" ")}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#spores"
@@ -408,8 +410,8 @@ const SideNavContent = ({
                     <div key={item.key}>
                       {item.group == "spores" && (
                         <div>
-                          <h6 className="selector-heading">
-                            <i className="bi bi-check2-square" />
+                          <h6 className={[styles.selectorHeading, "selector-heading"].join(" ")}>
+                            <i className={[styles.biCheck2Square, "bi bi-check2-square"].join(" ")} />
                             &nbsp;&nbsp;
                             <strong>{item.value}</strong>
                           </h6>
@@ -431,8 +433,8 @@ const SideNavContent = ({
           <div key={item.key}>
             {item.group == "none" && (
               <div>
-                <h6 className="selector-heading">
-                  <i className="bi bi-check2-square" />
+                <h6 className={[styles.selectorHeading, "selector-heading"].join(" ")}>
+                  <i className={[styles.biCheck2Square, "bi bi-check2-square"].join(" ")} />
                   &nbsp;&nbsp;
                   <strong>{item.value}</strong>
                 </h6>
@@ -442,42 +444,6 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      <style jsx>{`
-        .selector-heading {
-          font-size: 13px;
-          margin: 5px 5px;
-          font-weight: 900;
-        }
-
-        :global(.bi-check2-square::before) {
-          font-weight: 600 !important;
-        }
-        :global(.form-check-input:hover) {
-          cursor: pointer !important;
-        }
-        :global(.form-check-label:hover) {
-          cursor: pointer !important;
-        }
-        .accordion-button:not(.collapsed) {
-          color: #1d9d47;
-          background-color: #f8f9fa;
-        }
-        .accordion-button:not(.collapsed)::after {
-          filter: invert(13%) sepia(68%) saturate(2891%) hue-rotate(346deg)
-            brightness(104%) contrast(97%);
-          -webkit-filter: invert(13%) sepia(68%) saturate(2891%)
-            hue-rotate(346deg) brightness(104%) contrast(97%);
-          -ms-filter: invert(13%) sepia(68%) saturate(2891%) hue-rotate(346deg)
-            brightness(104%) contrast(97%);
-        }
-        .accordion-button {
-          padding: 0.5rem 1.25rem;
-          background-color: #f8f9fa;
-        }
-        :global(.form-check-label) {
-          pointer-events: none;
-        }
-      `}</style>
     </>
   )
 }
