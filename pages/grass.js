@@ -9,6 +9,41 @@ import Navbar from "../components/layouts/Navbar";
 
 
 const grass = () => {
+  const optionSelector = (type) => {
+    if (type == "Woody") {
+      localStorage.setItem("route", "Woody")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type: "Woody",
+        },
+      }).then(() => {
+        Router.reload()
+      })
+    }
+    if (type == "Non-woody") {
+      localStorage.setItem("route", "Non-woody")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type: "Non-woody",
+        },
+      }).then(() => {
+        Router.reload()
+      })
+    }
+    if (type == "Fern") {
+      localStorage.setItem("route", "Fern")
+      Router.push({
+        pathname: "/plants",
+        query: {
+          type: "Fern",
+        },
+      }).then(() => {
+        Router.reload()
+      })
+    }
+  }
   return (
     <>
     <Header />
@@ -27,9 +62,9 @@ const grass = () => {
             <thead>
               <tr>
                 <th></th>
-                <th>Grasses (<em>Poaceae</em>)</th>
-                <th>Rushes (<em>Juncaceae</em> and <em>Juncaginaceae</em>)</th>
-                <th>Sedges (<em>Cyperaceae</em>)</th>
+                <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Woody")}>Grasses (<em>Poaceae</em>)</a></th>
+                <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Non-woody")}>Rushes (<em>Juncaceae</em> and <em>Juncaginaceae</em>)</a></th>
+                <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Fern")}>Sedges (<em>Cyperaceae</em>)</a></th>
               </tr>
             </thead>
             <tbody>
