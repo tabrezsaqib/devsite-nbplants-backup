@@ -23,7 +23,7 @@ const Navbar = () => {
     <div>
       <nav className={[styles.navContainer, "navbar", "navbar-expand-lg", "fixed-top", "navbar-light", "bg-light"].join(" ")}>
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/home">
             <div className={[styles.logoContainer, "logo-container"].join(" ")}>
               <img
                 className={styles.logoImg}
