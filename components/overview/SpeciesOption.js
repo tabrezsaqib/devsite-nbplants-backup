@@ -45,14 +45,9 @@ const SpeciesOption = () => {
     if (type == "Grass") {
       localStorage.setItem("route", "Grass")
       Router.push(
-      //   {
-      //   pathname: "/plants",
-      //   query: {
-      //     type: "Grass",
-      //   },
-      // }
       "/grass"
-      ).then(() => {
+      )
+      .then(() => {
         Router.reload()
       })
     }
@@ -73,7 +68,7 @@ const SpeciesOption = () => {
         <a className={localstyles.speciesLink} onClick={() => optionSelector("Fern")}>
           <Ferns />
         </a>
-        <a className={localstyles.speciesLink} onClick={() => optionSelector("Non-woody")} 
+        <a className={localstyles.speciesLink} onClick={() => optionSelector("Grass")} 
         // className="disabled"
         >
           <GrassLike />
