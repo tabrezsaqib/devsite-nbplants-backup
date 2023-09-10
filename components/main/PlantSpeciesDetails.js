@@ -892,7 +892,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
-                {/* FRUIT TYPE */}
+                {/* FRUITS */}
                 {router.query.type !== "Fern" && (
                   <div className="accordion mb-3" id="accordion3">
                     <div className="accordion-item">
@@ -904,7 +904,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           data-bs-target="#collapseThree"
                           aria-expanded="true"
                           aria-controls="collapseThree">
-                          <strong>Fruit type</strong>
+                          <strong>Fruits</strong>
                         </button>
                       </h2>
                       <div
