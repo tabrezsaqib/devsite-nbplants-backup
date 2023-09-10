@@ -170,6 +170,7 @@ const SideNavContent = ({
   const dispatch = useDispatch()
   const getOption = (key) => {
     const option = options[key].map((data, index) => {
+      console.log("data",data)
       return (
         <div className="form-check" key={index}>
           <input
