@@ -50,7 +50,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
             ? "Non-woody"
             : route == "Woody"
             ? "Woody"
-            : route == "Fern" && "Fern",
+            : route == "Fern/Fern Ally" && "Fern/Fern Ally",
       },
     }).then(() => {})
   }
@@ -445,7 +445,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 )}
 
                 {/* FLOWERS */}
-                {router.query.type !== "Fern" && (
+                {router.query.type !== "Fern/Fern Ally" && (
                   <div className="accordion mb-3" id="accordion1">
                     <div className="accordion-item">
                       <h2 className="accordion-header" id="headingOne">
@@ -818,7 +818,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 </div>
 
                 {/* SPORES */}
-                {router.query.type == "Fern" && (
+                {router.query.type == "Fern/Fern Ally" && (
                   <div className="accordion mb-3" id="accordion3">
                     <div className="accordion-item">
                       <h2 className="accordion-header" id="headingThree">
@@ -893,7 +893,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
                 {/* FRUITS */}
-                {router.query.type !== "Fern" && (
+                {router.query.type !== "Fern/Fern Ally" && (
                   <div className="accordion mb-3" id="accordion3">
                     <div className="accordion-item">
                       <h2 className="accordion-header" id="headingThree">

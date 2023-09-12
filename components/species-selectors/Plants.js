@@ -150,7 +150,7 @@ const Plants = ({
       dispatch(setItemOffset(newOffset))
     }
 
-    if (router.query.type == "Fern") {
+    if (router.query.type == "Fern/Fern Ally") {
       dispatch(fetchFernPosts(router.query.type))
       filterPlantsTypeData(ferns)
       paginationEngine()

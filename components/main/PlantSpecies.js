@@ -13,7 +13,7 @@ const PlantSpecies = ({ plant }) => {
           {/* {console.log("Non Woody: ", plant)} */}
           <PlantItem plant={plant} />
         </>
-      ) : router.pathname == `/plants` && router.query.type == `Fern` ? (
+      ) : router.pathname == `/plants` && router.query.type == `Fern/Fern Ally` ? (
         <>
           {/* {console.log("Non Woody: ", plant)} */}
           <PlantItem plant={plant} />
@@ -29,7 +29,7 @@ const PlantSpecies = ({ plant }) => {
           className={
             plant.acf.plant_type == "Non-woody" ||
             plant.acf.plant_type == "Woody" ||
-            plant.acf.plant_type == "Fern"
+            plant.acf.plant_type == "Fern/Fern Ally"
               ? "hidden"
               : "content-box"
           }>
