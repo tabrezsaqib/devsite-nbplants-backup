@@ -282,7 +282,7 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      {router.query.type !== "Fern" && plant.acf.plant_type!== "Fern" (
+      {router.query.type !== "Fern" && (
         <div className="accordion mt-2 mb-2" id="accordion1">
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
