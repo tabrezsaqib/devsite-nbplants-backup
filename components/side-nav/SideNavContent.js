@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import SideNavPopover from "./SideNavPopover"
 import React, {useState} from "react"
+import plant_type from "./SideNav"
 
 const SideNavContent = ({
   options,
@@ -282,7 +283,7 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      {router.query.type !== "Fern" && (
+      {router.query.type !== "Fern" && plant_type !== "Fern" (
         <div className="accordion mt-2 mb-2" id="accordion1">
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
