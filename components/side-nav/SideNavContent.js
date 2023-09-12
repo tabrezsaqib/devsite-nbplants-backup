@@ -99,18 +99,18 @@ const SideNavContent = ({
     // },
     {
       key: "spore_location",
-      group: router.query.type == "Fern/Fern Ally" && "spores",
+      group: router.query.type == "Fern" && "spores",
       value: "Spore Location",
     },
     {
       key: "spore_shape",
-      group: router.query.type == "Fern/Fern Ally" && "spores",
+      group: router.query.type == "Fern" && "spores",
       value: "Spore Shape",
     },
     {
       key: "leaf_divisions",
       group:
-        (router.query.type == "Woody" || router.query.type == "Fern/Fern Ally") &&
+        (router.query.type == "Woody" || router.query.type == "Fern") &&
         "leaves",
       value: "Leaflet Divisions",
     },
@@ -282,7 +282,7 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      {router.query.type !== "Fern/Fern Ally" && (
+      {router.query.type !== "Fern" && (
         <div className="accordion mt-2 mb-2" id="accordion1">
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
@@ -384,7 +384,7 @@ const SideNavContent = ({
           </div>
         </div>
       </div>
-      {router.query.type == "Fern/Fern Ally" && (
+      {router.query.type == "Fern" && (
         <div className="accordion mt-2 mb-2" id="accordion2">
           <div className="accordion-item">
             <h2 className="accordion-header" id="heading3">
