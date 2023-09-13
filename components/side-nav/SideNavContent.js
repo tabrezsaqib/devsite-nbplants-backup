@@ -36,6 +36,7 @@ const SideNavContent = ({
   triggerToolTip,
 }) => {
   const router = useRouter()
+  console.log(router.query.type)
   const optionNames = [
     {
       key: "plant_type",
@@ -282,7 +283,7 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      {router.query.type !== "Fern" && (
+      {(router.query.type === "Fern" || plant_type[0] === true) ? '' : (
         <div className="accordion mt-2 mb-2" id="accordion1">
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">

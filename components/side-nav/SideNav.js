@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react"
+import dynamic from 'next/dynamic'
+
 import { connect, useDispatch } from "react-redux"
 import * as options from "../../data/sideNavListDataArray"
 import * as localStore from "../../generics/localStore"
-import SideNavContent from "./SideNavContent"
+const SideNavContent = dynamic(
+  () => import('./SideNavContent'),
+  { ssr: false }
+)
 import styles from "../../styles/SideNav.module.css"
 
 import {
