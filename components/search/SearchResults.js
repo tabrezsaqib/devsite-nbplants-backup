@@ -114,7 +114,7 @@ const SearchResults = ({
               ) : currentItems !== "Nothing found" ? (
                 currentItems.map((plant, index) => (
                   <div key={index}>
-                    <Link
+                    <Link legacyBehavior
                       href={{
                         pathname: `/plants/${plant.slug}`,
                         query: { type: plant.acf.plant_type },
