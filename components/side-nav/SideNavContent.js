@@ -45,7 +45,7 @@ const SideNavContent = ({
     },
     {
       key: "type",
-      group: "none",
+      group: "last",
       value: "Type",
     },
     {
@@ -100,12 +100,12 @@ const SideNavContent = ({
     // },
     {
       key: "spore_location",
-      group: router.query.type == "Fern" && "spores",
+      group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
       value: "Spore Location",
     },
     {
       key: "spore_shape",
-      group: router.query.type == "Fern" && "spores",
+      group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
       value: "Spore Shape",
     },
     {
@@ -122,7 +122,7 @@ const SideNavContent = ({
     },
     {
       key: "fruit_type",
-      group: "none",
+      group: "fruits",
       value: "Fruit Type",
     },
     // {
@@ -385,7 +385,50 @@ const SideNavContent = ({
           </div>
         </div>
       </div>
-      {router.query.type == "Fern" && (
+      {(router.query.type === "Fern" || plant_type[0] === true) ? '' : (
+        <div className="accordion mt-2 mb-2" id="accordion2">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="heading3">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#fruits"
+                aria-expanded="true"
+                aria-controls="fruits">
+                Fruits
+              </button>
+            </h2>
+            <div
+              id="fruits"
+              className="accordion-collapse collapse show"
+              aria-labelledby="heading3"
+              data-bs-parent="#accordion2">
+              <div className="accordion-body">
+                <div>
+                  {optionNames.map((item) => (
+                    <div key={item.key}>
+                      {item.group == "fruits" && (
+                        <div>
+                          <h6 className="selector-heading">
+                            <i className="bi bi-check2-square" />
+                            &nbsp;&nbsp;
+                            <strong>{item.value}</strong>
+                          </h6>
+                          <div className="d-flex flex-wrap">
+                            {getOption(item.key)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {(router.query.type === "Fern" || plant_type[0] === true) && (
         <div className="accordion mt-2 mb-2" id="accordion2">
           <div className="accordion-item">
             <h2 className="accordion-header" id="heading3">
@@ -432,6 +475,22 @@ const SideNavContent = ({
         {optionNames.map((item) => (
           <div key={item.key}>
             {item.group == "none" && (
+              <div>
+                <h6 className="selector-heading">
+                  <i className="bi bi-check2-square" />
+                  &nbsp;&nbsp;
+                  <strong>{item.value}</strong>
+                </h6>
+                <div className="d-flex flex-wrap">{getOption(item.key)}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div>
+        {optionNames.map((item) => (
+          <div key={item.key}>
+            {item.group == "last" && (
               <div>
                 <h6 className="selector-heading">
                   <i className="bi bi-check2-square" />
