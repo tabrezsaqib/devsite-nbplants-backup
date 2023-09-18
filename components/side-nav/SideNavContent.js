@@ -55,7 +55,7 @@ const SideNavContent = ({
     },
     {
       key: "flower_colour",
-      group: "flowers",
+      group: (plant_type[3] === false) && "flowers",
       value: "Flower Colour",
     },
     {
@@ -65,12 +65,12 @@ const SideNavContent = ({
     },
     {
       key: "lip_shape",
-      group: "flowers",
+      group: (plant_type[3] === false) && "flowers",
       value: "Lip Shape",
     },
     {
       key: "petal_symmetry",
-      group: "flowers",
+      group: (plant_type[3] === false) && "flowers",
       value: "Petal Symmetry",
     },
     {
@@ -80,24 +80,24 @@ const SideNavContent = ({
     },
     {
       key: "leaf_blade_edges",
-      group: "leaves",
+      group: (plant_type[3] === false) && "leaves",
       value: "Leaf Blade Edges",
     },
     {
       key: "leaf_shape",
-      group: "leaves",
+      group: (plant_type[3] === false) && "leaves",
       value: "Leaf Shape",
     },
     {
       key: "leaf_type",
-      group: "leaves",
+      group: (plant_type[3] === false) && "leaves",
       value: "Leaf Type",
     },
-    // {
-    //   key: "leaf_duration",
-    //   group: router.query.type == "Woody" && "leaves",
-    //   value: "Leaf Duration",
-    // },
+    {
+      key: "leaf_duration",
+      group: (router.query.type == "Woody" || plant_type[2] === true || plant_type[3] === false) && "leaves",
+      value: "Leaf Duration",
+    },
     {
       key: "spore_location",
       group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
@@ -111,7 +111,7 @@ const SideNavContent = ({
     {
       key: "leaf_divisions",
       group:
-        (router.query.type == "Woody" || router.query.type == "Fern") &&
+        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true) &&
         "leaves",
       value: "Leaflet Divisions",
     },

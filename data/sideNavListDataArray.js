@@ -5,8 +5,8 @@ if (typeof window !== "undefined") {
   param = searchParams.get("type")
 }
 
-let plant_type = ["Fern", "Non-woody", "Woody"]
-const type = ["native", "introduced", "native hybrid"]
+let plant_type = ["Fern", "Non-woody", "Woody", "Grass-like"]
+const type = ["native", "introduced", "hybrid"]
 const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_colour = [
   "blue to purple",
@@ -14,12 +14,12 @@ const flower_colour = [
   "orange",
   "pink to red",
   "white",
-  "yellow",
+  "yellow to orange",
   "don't know",
 ]
 
 const leaf_arrangement = ["alternate", "basal", "opposite", "no leaves"]
-const leaf_blade_edges = ["lobed", "smooth (Entire)", "teethed", "no leaves"]
+const leaf_blade_edges = ["lobed", "smooth (Entire)", "toothed", "no leaves"]
 
 let leaf_shape = [
   "arrow",
@@ -36,23 +36,24 @@ let leaf_shape = [
   "spoon",
 ]
 
-const leaf_type = ["compound", "segmented", "simple", "no leaves"]
+const leaf_type = ["compound", "needles/Scales", "simple", "no leaves"]
 const petal_symmetry = ["bilateral", "radial"]
 
 const inflorescence = [
+  "catkin",
+  "composite",
+  "cluster",
+  "cyme",
   "panicle",
   "raceme",
   "spike",
   "solitary flower",
   "umbel",
-  "doesn't apply",
-  "cyme",
-  "cluster",
   "whorl",
-  "composite",
+  "doesn't apply",
 ]
 
-const stems = ["hairy", "smooth", "no stem", "scales"]
+const stems = ["hairy", "scales", "smooth", "thorns or prickles", "no stem"]
 
 const lip_shape = ["pouch", "not pouch-like"]
 // const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
@@ -60,20 +61,22 @@ const fruit_type = [
   "achene",
   "berry",
   "capsule",
-  "follicle",
-  "nut",
-  "pod",
-  "fleshy",
-  "silicle",
-  "stone",
+  "catkin",
   "cone",
   "fruit with wings",
+  "grain",
+  "nut",
+  "pod",
+  "spore",
+  "stone",
+  "other"
+  
 ]
 
-const leaf_duration = ["deciduous", "coniferous"]
+const leaf_duration = ["deciduous", "evergreen"]
 const leaf_divisions = ["0", "1", "2", "3"]
 const spore_shape = ["irregular", "kidney", "oblong", "oval", "round"]
-const spore_location = ["away from edge", "cone at tip", "edge", "separate"]
+const spore_location = ["separate stalk", "tip of plant", "underside of leaf", "other"]
 // const new_brunswick_county = [
 //   "albert county",
 //   "carleton county",
@@ -101,6 +104,11 @@ if (param !== "Woody") {
   let removeItems = ["maple-like", "scales", "needles"]
   const newArray = leaf_shape.filter((v) => !removeItems.includes(v))
   leaf_shape = newArray
+}
+if (param === "Grass-like") {
+  let removeItems = ["catkin", "composite", "cyme", "solitary flower", "umbel", "whorl"]
+  const newArray = inflorescence.filter((v) => !removeItems.includes(v))
+  inflorescence = newArray
 }
 export {
   plant_type,

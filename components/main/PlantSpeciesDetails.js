@@ -731,7 +731,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             .length !== 0 && (
                             <div className="d-flex label-value-section">
                               <p>
-                                <strong>Leaf Blade Edges: &nbsp;</strong>
+                                <strong>Leaf Edge: &nbsp;</strong>
                               </p>
                               {plant_details.acf.characteristics.leaf_blade_edges.map(
                                 (item, index) => (
