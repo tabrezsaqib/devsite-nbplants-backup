@@ -128,5 +128,5 @@ export {
   leaf_duration,
   leaf_divisions,
   spore_shape,
-  spore_location,
+  spore_location
 }

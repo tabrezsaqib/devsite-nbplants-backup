@@ -81,7 +81,7 @@ const SideNavContent = ({
     {
       key: "leaf_blade_edges",
       group: (plant_type[3] === false) && "leaves",
-      value: "Leaf Blade Edges",
+      value: "Leaf Edge",
     },
     {
       key: "leaf_shape",
