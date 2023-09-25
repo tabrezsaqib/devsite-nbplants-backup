@@ -115,7 +115,7 @@ export const searchByKeyword = (slug) => async (dispatch) => {
   const response = await api.get(
     `${SEARCH_URL}search?keyword=${slug}&per_page=50`
   )
-  console.log(response)
+//  console.log(response)
 
   if (response.data == null) {
     dispatch({

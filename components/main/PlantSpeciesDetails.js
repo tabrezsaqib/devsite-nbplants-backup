@@ -207,7 +207,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                         ].full_image_url
                                       })`,
                                     }}></div>
-                                  <p className="img-caption">{item.caption}</p>
+                                  <p className="img-caption" key={index}>{plant_details.acf.image_url[
+                                      slideIndex || index
+                                    ].caption}</p>
                                 </div>
                               ))}
                           </Slide>

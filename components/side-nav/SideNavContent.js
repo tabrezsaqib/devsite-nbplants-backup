@@ -36,7 +36,7 @@ const SideNavContent = ({
   triggerToolTip,
 }) => {
   const router = useRouter()
-  console.log(router.query.type)
+  console.log(options,flower_colour, type)
   const optionNames = [
     {
       key: "plant_type",
@@ -152,6 +152,10 @@ const SideNavContent = ({
     {
       color: "../../images/w.png",
       label: "white",
+    },
+    {
+      color: "../../images/oy.png",
+      label: "yellow to orange",
     },
     {
       color: "../../images/pr.png",
