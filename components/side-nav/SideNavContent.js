@@ -330,7 +330,7 @@ const SideNavContent = ({
                             )}
                           </div>
                           {item.key == "inflorescence" ? (
-                            <div id="four-column" className="d-flex flex-wrap">
+                            <div id="three-column" className="d-flex flex-wrap">
                               {getOption(item.key)}
                             </div>
                           ) : (
