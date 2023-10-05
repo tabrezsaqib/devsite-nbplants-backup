@@ -660,7 +660,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 (item, index) => (
                                   <div className="d-flex" key={index}>
                                     <p>
-                                      {api.capitalizeFirstLetter(item)}
+                                      {api.capitalizeFirstLetter(item)}, &nbsp;
                                     </p>
                                   </div>
                                 )
