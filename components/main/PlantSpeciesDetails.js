@@ -635,7 +635,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
 
-                {plant_details.acf.characteristics.stems.length !== 0 &&
+                {/* {plant_details.acf.characteristics.stems.length !== 0 &&
                   plant_details.acf.characteristics.stems.map((item, index) => (
                     <div className="d-flex label-value-section" key={index}>
                       <p>
@@ -648,7 +648,25 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </p>
                       </div>
                     </div>
-                  ))}
+                  ))} */}
+
+                        {plant_details.acf.characteristics.stems
+                            .length !== 0 && (
+                            <div className="d-flex label-value-section">
+                              <p>
+                                <strong>Stems and/or Twigs: &nbsp;</strong>
+                              </p>
+                              {plant_details.acf.characteristics.stems.map(
+                                (item, index) => (
+                                  <div className="d-flex" key={index}>
+                                    <p>
+                                      {api.capitalizeFirstLetter(item)}
+                                    </p>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          )}
 
                 {/* LEAVES */}
                 <div className="accordion mb-3" id="accordion2">
