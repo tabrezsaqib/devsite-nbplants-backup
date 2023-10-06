@@ -24,7 +24,7 @@ import {
   toggleLeafShapeData,
   toggleNative,
   toggleStemsData,
-  toggleGrowthType,
+  toggleGrowthForm,
   togglePetalSymmetry,
   toggleLeafDuration,
   toggleLeafletDivisions,
@@ -59,7 +59,7 @@ const SideNav = ({
   // native_or_introduced_or_invasive,
   leaf_shape,
   stems,
-  growth_type,
+  growth_form,
   petal_symmetry,
   inflorescence,
   isLoading,
@@ -177,11 +177,11 @@ const SideNav = ({
         )
         dispatch(toggleStemsData(updatedStems))
         break
-      case "growth_type":
-        const updatedGrowthType = growth_type.map((item, index) =>
+      case "growth_form":
+        const updatedGrowthForm = growth_form.map((item, index) =>
           index === position ? !item : item
         )
-        dispatch(toggleGrowthType(updatedGrowthType))
+        dispatch(toggleGrowthForm(updatedGrowthForm))
         break
       case "native_or_introduced_or_invasive":
         const updatedNative = native_or_introduced_or_invasive.map(
@@ -249,7 +249,7 @@ const SideNav = ({
           // native_or_introduced_or_invasive={native_or_introduced_or_invasive}
           leaf_shape={leaf_shape}
           stems={stems}
-          growth_type={growth_type}
+          growth_form={growth_form}
           petal_symmetry={petal_symmetry}
           inflorescence={inflorescence}
           onSelectorChange={onSelectorChange}
@@ -284,7 +284,7 @@ const mapStateToProps = (state) => {
     //   state.selector.native_or_introduced_or_invasive,
     leaf_shape: state.selector.leaf_shape,
     stems: state.selector.stems,
-    growth_type: state.selector.growth_type,
+    growth_form: state.selector.growth_form,
     petal_symmetry: state.selector.petal_symmetry,
     inflorescence: state.selector.inflorescence,
     activeFilterList: state.selector.activeFilterList,

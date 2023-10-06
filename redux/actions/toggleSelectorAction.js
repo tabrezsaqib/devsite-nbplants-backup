@@ -111,9 +111,9 @@ export const toggleStemsData = (option) => async (dispatch) => {
     payload: option,
   })
 }
-export const toggleGrowthType = (option) => async (dispatch) => {
+export const toggleGrowthForm = (option) => async (dispatch) => {
   dispatch({
-    type: types.TOGGLE_GROWTH_TYPE,
+    type: types.TOGGLE_GROWTH_FORM,
     payload: option,
   })
 }

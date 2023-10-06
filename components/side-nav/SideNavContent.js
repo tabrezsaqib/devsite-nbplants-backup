@@ -27,7 +27,7 @@ const SideNavContent = ({
   petal_symmetry,
   inflorescence,
   stems,
-  growth_type,
+  growth_form,
   // new_brunswick_county,
   onSelectorChange,
   handleOnChange,
@@ -122,9 +122,9 @@ const SideNavContent = ({
       value: "Stems and/or Twigs",
     },
     {
-      key: "growth_type",
+      key: "growth_form",
       group: "none",
-      value: "Growth Type",
+      value: "Growth Form",
     },
     {
       key: "fruit_type",
@@ -225,8 +225,8 @@ const SideNavContent = ({
                 ? leaf_shape[index]
                 : key == "stems"
                 ? stems[index]
-                : key == "growth_type"
-                ? growth_type[index]
+                : key == "growth_form"
+                ? growth_form[index]
                 : key == "petal_symmetry"
                 ? petal_symmetry[index]
                 : key == "inflorescence"
