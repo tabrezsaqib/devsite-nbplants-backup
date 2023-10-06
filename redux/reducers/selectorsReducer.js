@@ -22,6 +22,7 @@ const initialState = {
   spore_shape: new Array(options.spore_shape.length).fill(false),
   spore_location: new Array(options.spore_location.length).fill(false),
   stems: new Array(options.stems.length).fill(false),
+  growth_type: new Array(options.growth_type.length).fill(false),
   petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
   inflorescence: new Array(options.inflorescence.length).fill(false),
   fruit_type: new Array(options.fruit_type.length).fill(false),
@@ -112,6 +113,11 @@ export const selectorsReducer = (state = initialState, action) => {
         ...state,
         stems: action.payload,
       }
+      case types.TOGGLE_GROWTH_TYPE:
+        return {
+          ...state,
+          growth_type: action.payload,
+        }
     case types.TOGGLE_SHAPE:
       return {
         ...state,

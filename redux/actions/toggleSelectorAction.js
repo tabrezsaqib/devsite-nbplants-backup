@@ -111,6 +111,12 @@ export const toggleStemsData = (option) => async (dispatch) => {
     payload: option,
   })
 }
+export const toggleGrowthType = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_GROWTH_TYPE,
+    payload: option,
+  })
+}
 export const togglePetalSymmetry = (option) => async (dispatch) => {
   dispatch({
     type: types.TOGGLE_PETAL_SYMMETRY,

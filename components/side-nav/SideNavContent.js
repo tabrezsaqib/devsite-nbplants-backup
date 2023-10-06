@@ -27,6 +27,7 @@ const SideNavContent = ({
   petal_symmetry,
   inflorescence,
   stems,
+  growth_type,
   // new_brunswick_county,
   onSelectorChange,
   handleOnChange,
@@ -119,6 +120,11 @@ const SideNavContent = ({
       key: "stems",
       group: "none",
       value: "Stems and/or Twigs",
+    },
+    {
+      key: "growth_type",
+      group: "none",
+      value: "Growth Type",
     },
     {
       key: "fruit_type",
@@ -219,6 +225,8 @@ const SideNavContent = ({
                 ? leaf_shape[index]
                 : key == "stems"
                 ? stems[index]
+                : key == "growth_type"
+                ? growth_type[index]
                 : key == "petal_symmetry"
                 ? petal_symmetry[index]
                 : key == "inflorescence"
@@ -265,7 +273,12 @@ const SideNavContent = ({
                   &nbsp;&nbsp;
                   <strong>{item.value}</strong>
                 </h6>
-                <div className="d-flex flex-wrap">{getOption(item.key)}</div>
+                <div className="d-flex flex-wrap">{getOption(item.key) === "Fern"? "Fern/Fern Ally" 
+                                                  :getOption(item.key) === "Grass-like"? "Grass-like"
+                                                  : getOption(item.key) === "Non-woody"? "Non-woody (not Fern or Grass)"
+                                                  :getOption(item.key) === "Woody"? "Woody"
+                                                  :getOption(item.key)}
+                </div>
               </div>
             )}
           </div>
