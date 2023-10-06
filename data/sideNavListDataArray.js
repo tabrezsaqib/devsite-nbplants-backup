@@ -54,7 +54,7 @@ const inflorescence = [
 ]
 
 const stems = ["hairy", "scales", "smooth", "thorns or prickles", "no stem"]
-const growth_type = ["creeping", "shrub", "tree", "upright", "vining"]
+const growth_type = ["creeping", "shrub", "tree", "upright (Non-woody)", "vining"]
 
 const lip_shape = ["pouch", "not pouch-like"]
 // const native_or_introduced_or_invasive = ["Native", "Introduced", "Invasive"]
