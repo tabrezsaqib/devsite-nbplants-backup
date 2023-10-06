@@ -74,6 +74,16 @@ const fruit_type = [
   
 ]
 
+const fruit_color = [
+  "black",
+  "blue to purple",
+  "brown",
+  "green",
+  "pink to red",
+  "yellow to orange",
+  "white"
+]
+
 const leaf_duration = ["deciduous", "evergreen"]
 const leaf_divisions = ["0", "1", "2", "3"]
 const spore_shape = ["irregular", "kidney", "oblong", "oval", "round"]
@@ -126,6 +136,7 @@ export {
   stems,
   growth_form,
   fruit_type,
+  fruit_color,
   petal_symmetry,
   leaf_duration,
   leaf_divisions,

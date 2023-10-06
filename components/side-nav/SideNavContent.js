@@ -15,6 +15,7 @@ const SideNavContent = ({
   flower_colour,
   lip_shape,
   fruit_type,
+  fruit_color,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -131,6 +132,11 @@ const SideNavContent = ({
       group: "fruits",
       value: "Fruit Type",
     },
+    {
+      key: "fruit_color",
+      group: "fruits",
+      value: "Fruit Color",
+    },
     // {
     //   key: "native_or_introduced_or_invasive",
     //   group: "none",
@@ -209,6 +215,8 @@ const SideNavContent = ({
                 ? lip_shape[index]
                 : key == "fruit_type"
                 ? fruit_type[index]
+                : key == "fruit_color"
+                ? fruit_color[index]
                 : key == "leaf_duration"
                 ? leaf_duration[index]
                 : key == "leaf_divisions"

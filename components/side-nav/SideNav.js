@@ -20,6 +20,7 @@ import {
   toggleLeafArrangementData,
   toggleLipShape,
   toggleFruits,
+  toggleFruitColor,
   toggleInflorescence,
   toggleLeafShapeData,
   toggleNative,
@@ -47,6 +48,7 @@ const SideNav = ({
   flower_colour,
   lip_shape,
   fruit_type,
+  fruit_color,
   leaf_blade_edges,
   leaf_type,
   leaf_arrangement,
@@ -114,6 +116,12 @@ const SideNav = ({
           index === position ? !item : item
         )
         dispatch(toggleFruits(updatedFruits))
+        break
+      case "fruit_color":
+        const updatedFruitColor = fruit_color.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleFruitColor(updatedFruitColor))
         break
       case "leaf_arrangement":
         const updatedLeafArrangement = leaf_arrangement.map((item, index) =>
@@ -239,6 +247,7 @@ const SideNav = ({
           lip_shape={lip_shape}
           leaf_blade_edges={leaf_blade_edges}
           fruit_type={fruit_type}
+          fruit_color={fruit_color}
           leaf_type={leaf_type}
           leaf_arrangement={leaf_arrangement}
           leaf_duration={leaf_duration}
@@ -271,6 +280,7 @@ const mapStateToProps = (state) => {
     habitat: state.selector.habitat,
     flower_colour: state.selector.flower_colour,
     fruit_type: state.selector.fruit_type,
+    fruit_color: state.selector.fruit_color,
     lip_shape: state.selector.lip_shape,
     leaf_blade_edges: state.selector.leaf_blade_edges,
     leaf_type: state.selector.leaf_type,
