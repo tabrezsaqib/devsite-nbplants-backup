@@ -36,7 +36,7 @@ let leaf_shape = [
   "spoon",
 ]
 
-const leaf_type = ["compound", "needles / Scales", "simple", "no leaves"]
+const leaf_type = ["compound", "needles / scales", "simple", "no leaves"]
 const petal_symmetry = ["bilateral", "radial"]
 
 const inflorescence = [
