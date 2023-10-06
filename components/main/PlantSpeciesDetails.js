@@ -609,7 +609,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               </div>
                             )}
 
-                            {plant_details.acf.characteristics.stipule_shape
+                            {/* {plant_details.acf.characteristics.stipule_shape
                               .length !== 0 &&
                               plant_details.acf.characteristics.stipule_shape.map(
                                 (item, index) => (
@@ -627,7 +627,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                     </div>
                                   </div>
                                 )
-                              )}
+                              )} */}
+                              {plant_details.acf.characteristics.stipule_shape && (
+                              <div className="d-flex label-value-section">
+                                <p>
+                                  <strong>Stipule Shape: &nbsp;</strong>
+                                </p>
+                                {api.capitalizeFirstLetter(plant_details.acf.characteristics.stipule_shape)}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
