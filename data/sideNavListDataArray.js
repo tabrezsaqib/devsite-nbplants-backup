@@ -88,6 +88,8 @@ const leaf_duration = ["deciduous", "evergreen"]
 const leaf_divisions = ["0", "1", "2", "3"]
 const spore_shape = ["irregular", "kidney", "oblong", "oval", "round"]
 const spore_location = ["separate stalk", "tip of plant", "underside of leaf", "other"]
+const spore_covering = ["absent", "present"]
+const spore_under_leaf = ["away from edge", "edge"]
 // const new_brunswick_county = [
 //   "albert county",
 //   "carleton county",
@@ -141,5 +143,7 @@ export {
   leaf_duration,
   leaf_divisions,
   spore_shape,
-  spore_location
+  spore_location,
+  spore_covering,
+  spore_under_leaf
 }

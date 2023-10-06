@@ -21,6 +21,8 @@ const initialState = {
   leaf_shape: new Array(options.leaf_shape.length).fill(false),
   spore_shape: new Array(options.spore_shape.length).fill(false),
   spore_location: new Array(options.spore_location.length).fill(false),
+  spore_covering: new Array(options.spore_covering.length).fill(false),
+  spore_under_leaf: new Array(options.spore_under_leaf.length).fill(false),
   stems: new Array(options.stems.length).fill(false),
   growth_form: new Array(options.growth_form.length).fill(false),
   petal_symmetry: new Array(options.petal_symmetry.length).fill(false),
@@ -93,6 +95,16 @@ export const selectorsReducer = (state = initialState, action) => {
       return {
         ...state,
         spore_location: action.payload,
+      }
+    case types.TOGGLE_SPORE_COVERING:
+      return {
+        ...state,
+        spore_covering: action.payload,
+      }
+    case types.TOGGLE_SPORE_UNDER_LEAF:
+      return {
+        ...state,
+        spore_under_leaf: action.payload,
       }
     // case types.TOGGLE_COUNTY:
     //   return {

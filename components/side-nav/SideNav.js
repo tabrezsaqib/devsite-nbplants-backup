@@ -31,6 +31,8 @@ import {
   toggleLeafletDivisions,
   toggleSporeShape,
   toggleSporeLocation,
+  toggleSporeCovering,
+  toggleSporeUnderLeaf
 } from "../../redux/actions/toggleSelectorAction"
 import {
   getPopoverData,
@@ -56,6 +58,8 @@ const SideNav = ({
   leaf_divisions,
   spore_shape,
   spore_location,
+  spore_covering,
+  spore_under_leaf,
   new_brunswick_county,
   activeFilterList,
   // native_or_introduced_or_invasive,
@@ -172,6 +176,18 @@ const SideNav = ({
         )
         dispatch(toggleSporeLocation(updatedSporeLocation))
         break
+      case "spore_covering":
+        const updatedSporeCovering = spore_covering.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleSporeCovering(updatedSporeCovering))
+        break
+      case "spore_under_leaf":
+        const updatedSporeUnderLeaf = spore_under_leaf.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleSporeUnderLeaf(updatedSporeUnderLeaf))
+        break
       // case "new_brunswick_county":
       //   const updatedCounty = new_brunswick_county.map((item, index) =>
       //     index === position ? !item : item
@@ -254,6 +270,8 @@ const SideNav = ({
           leaf_divisions={leaf_divisions}
           spore_location={spore_location}
           spore_shape={spore_shape}
+          spore_covering={spore_covering}
+          spore_under_leaf={spore_under_leaf}
           // new_brunswick_county={new_brunswick_county}
           // native_or_introduced_or_invasive={native_or_introduced_or_invasive}
           leaf_shape={leaf_shape}
@@ -289,6 +307,8 @@ const mapStateToProps = (state) => {
     leaf_divisions: state.selector.leaf_divisions,
     spore_location: state.selector.spore_location,
     spore_shape: state.selector.spore_shape,
+    spore_covering: state.selector.spore_covering,
+    spore_under_leaf: state.selector.spore_under_leaf,
     // new_brunswick_county: state.selector.new_brunswick_county,
     // native_or_introduced_or_invasive:
     //   state.selector.native_or_introduced_or_invasive,

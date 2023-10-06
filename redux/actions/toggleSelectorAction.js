@@ -86,6 +86,18 @@ export const toggleSporeLocation = (option) => async (dispatch) => {
     payload: option,
   })
 }
+export const toggleSporeCovering = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SPORE_COVERING,
+    payload: option,
+  })
+}
+export const toggleSporeUnderLeaf = (option) => async (dispatch) => {
+  dispatch({
+    type: types.TOGGLE_SPORE_UNDER_LEAF,
+    payload: option,
+  })
+}
 // export const toggleCountyData = (option) => async (dispatch) => {
 //   dispatch({
 //     type: types.TOGGLE_COUNTY,
