@@ -297,11 +297,7 @@ const SideNavContent = ({
                   &nbsp;&nbsp;
                   <strong>{item.value}</strong>
                 </h6>
-                <div className="d-flex flex-wrap">{getOption(item.key) === "Fern"? "Fern/Fern Ally" 
-                                                  :getOption(item.key) === "Grass-like"? "Grass-like"
-                                                  : getOption(item.key) === "Non-woody"? "Non-woody (not Fern or Grass)"
-                                                  :getOption(item.key) === "Woody"? "Woody"
-                                                  :getOption(item.key)}
+                <div className="d-flex flex-wrap">{getOption(item.key)}
                 </div>
               </div>
             )}
