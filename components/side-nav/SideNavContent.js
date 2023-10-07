@@ -120,7 +120,7 @@ const SideNavContent = ({
     {
       key: "spore_under_leaf",
       group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
-      value: "Spore Underside of Leaf",
+      value: "Spore Position",
     },
     {
       key: "leaf_divisions",
@@ -193,6 +193,18 @@ const SideNavContent = ({
       color: "../../images/dn.png",
       label: "doesn't apply",
     },
+    {
+      color: "../../images/brwn.png",
+      label: "brown",
+    },
+    {
+      color: "../../images/green.png",
+      label: "green",
+    },
+    {
+      color: "../../images/black.png",
+      label: "black",
+    },
   ]
 
   let id = 0
@@ -264,16 +276,17 @@ const SideNavContent = ({
               <div key={index} className="color-value">
                 <img
                   src={value.color}
+                  style={{borderRadius:'7px'}}
                   className={
-                    data == value.label && key == "flower_colour" ? "" : "hide"
+                    data == value.label && (key == "flower_colour" || "fruit_color") ? "" : "hide"
                   }
                   width="15px"
                   alt="color values"
                 />
               </div>
             ))}
-            {key == "flower_colour" ? <span>&nbsp;&nbsp;</span> : <span></span>}
-            {api.capitalizeFirstLetter(data)}
+            {key == "flower_colour" || "fruit_color" ? <span>&nbsp;&nbsp;</span> : <span></span>}
+            {api.capitalizeFirstLetter(data === 'Fern'? 'Fern / Fern Ally':data === 'Non-woody'?'Non-woody (not Fern or Grass)': data)}
           </label>
         </div>
       )
@@ -291,7 +304,7 @@ const SideNavContent = ({
         {optionNames.map((item) => (
           <div key={item.key}>
             {item.group == "all" && (
-              <div>
+              <div id={item.key}>
                 <h6 className="selector-heading">
                   <i className="bi bi-check2-square" />
                   &nbsp;&nbsp;
