@@ -119,7 +119,7 @@ const SideNavContent = ({
     },
     {
       key: "spore_under_leaf",
-      group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
+      group: ((router.query.type == "Fern" || plant_type[0] === true) && (spore_location[2] === true) ) && "spores",
       value: "Spore Position",
     },
     {
