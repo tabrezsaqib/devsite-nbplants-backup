@@ -709,7 +709,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               )}
                             </div>
                        )}
-                       
+
                 {/* LEAVES */}
                 <div className="accordion mb-3" id="accordion2">
                   <div className="accordion-item">
@@ -1114,7 +1114,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 {plant_details.acf.varieties && (
                 <div>
                   <p>
-                    <strong>Varieties: &nbsp;</strong>
+                    <strong>Varieties, Subspecies, and Hybrids: &nbsp;</strong>
                   </p>
                   <div className="d-flex flex-column">
                     <div className="rtc-content">
