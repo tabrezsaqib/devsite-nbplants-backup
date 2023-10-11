@@ -683,7 +683,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 (item, index) => (
                                   <div className="d-flex" key={index}>
                                     <p>
-                                      {api.capitalizeFirstLetter(item)}, &nbsp;
+                                      {api.capitalizeFirstLetter(item)}
+                                      {index + 1 === plant_details.acf.characteristics.stems.length ? '' : ","} &nbsp;
                                     </p>
                                   </div>
                                 )
@@ -700,7 +701,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 (item, index) => (
                                   <div className="d-flex" key={index}>
                                     <p>
-                                      {api.capitalizeFirstLetter(item)}, &nbsp;
+                                      {api.capitalizeFirstLetter(item)}
+                                      {index + 1 === plant_details.acf.characteristics.growth_form.length ? '' : ","} &nbsp;
                                     </p>
                                   </div>
                                 )

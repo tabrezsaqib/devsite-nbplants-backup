@@ -25,7 +25,8 @@ const SearchItem = ({ plant }) => {
               <strong>Common name:</strong> {plant.acf.common_name}
             </span>
             <div className={["d-flex", "flex-wrap", styles.tags, "tags"].join(" ")}>
-              {plant.acf.characteristics.habitat.map((val, index) => (
+            {plant.acf.characteristics === ''? <>{
+              plant.acf.characteristics.habitat.map((val, index) => (
                 <span className={styles.spanContent} key={index}>
                   {api.capitalizeFirstLetter(val)}, &nbsp;
                 </span>
@@ -54,7 +55,7 @@ const SearchItem = ({ plant }) => {
                     : ""}
                   &nbsp;
                 </span>
-              ))}
+              ))}</>:''}
             </div>
           </div>
         </div>
