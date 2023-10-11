@@ -709,6 +709,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               )}
                             </div>
                        )}
+                       
                 {/* LEAVES */}
                 <div className="accordion mb-3" id="accordion2">
                   <div className="accordion-item">
