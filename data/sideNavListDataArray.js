@@ -5,7 +5,7 @@ if (typeof window !== "undefined") {
   param = searchParams.get("type")
 }
 
-let plant_type = ["Fern", "Grass-like", "Non-woody", "Woody", ]
+let plant_type = ["Fern", "Grass-like", "Woody", "Non-woody"]
 const type = ["native", "introduced", "hybrid"]
 const habitat = ["aquatic", "terrestrial", "wetlands"]
 const flower_colour = [

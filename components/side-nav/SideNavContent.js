@@ -99,7 +99,7 @@ const SideNavContent = ({
     },
     {
       key: "leaf_duration",
-      group: (router.query.type == "Woody" || plant_type[3] === true || plant_type[1] === false) && "leaves",
+      group: (router.query.type == "Woody" || plant_type[2] === true || plant_type[1] === false) && "leaves",
       value: "Leaf Duration",
     },
     {
@@ -125,7 +125,7 @@ const SideNavContent = ({
     {
       key: "leaf_divisions",
       group:
-        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[3] === true) &&
+        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true) &&
         "leaves",
       value: "Leaflet Divisions",
     },
@@ -286,7 +286,7 @@ const SideNavContent = ({
               </div>
             ))}
             {key == "flower_colour" || "fruit_color" ? <span>&nbsp;&nbsp;</span> : <span></span>}
-            {api.capitalizeFirstLetter(data === 'Fern'? 'Fern / Fern Ally':data === 'Non-woody'?'Non-woody (not Fern or Grass)': data)}
+            {api.capitalizeFirstLetter(data === 'Fern'? 'Fern / Fern Ally':data === 'Non-woody'?'All Other Plants': data)}
           </label>
         </div>
       )
