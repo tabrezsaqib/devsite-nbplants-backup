@@ -409,7 +409,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Conservation Rank: &nbsp;</strong>
                     </p>
-                    {plant_details.acf.conservation_rank}
+                    {api.capitalizeEveryWord(plant_details.acf.conservation_rank)}
                   </div>
                 )}
                 <div className="d-flex">
@@ -444,6 +444,24 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   )}
                 </div>
+                {plant_details.acf.characteristics.growth_form
+                          .length !== 0 && (
+                            <div className="d-flex label-value-section">
+                              <p>
+                                <strong>Growth Form: &nbsp;</strong>
+                              </p>
+                              {plant_details.acf.characteristics.growth_form.map(
+                                (item, index) => (
+                                  <div className="d-flex" key={index}>
+                                    <p>
+                                      {api.capitalizeFirstLetter(item)}
+                                      {index + 1 === plant_details.acf.characteristics.growth_form.length ? '' : ","} &nbsp;
+                                    </p>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                )}
                 {plant_details.acf.characteristics.height && (
                   <div className="d-flex label-value-section">
                     <p>
@@ -452,7 +470,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
-
                 {/* FLOWERS */}
                 {router.query.type !== "Fern" && (
                   <div className="accordion mb-3" id="accordion1">
@@ -691,24 +708,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               )}
                             </div>
                           )}
-                        {plant_details.acf.characteristics.growth_form
-                          .length !== 0 && (
-                            <div className="d-flex label-value-section">
-                              <p>
-                                <strong>Growth Form: &nbsp;</strong>
-                              </p>
-                              {plant_details.acf.characteristics.growth_form.map(
-                                (item, index) => (
-                                  <div className="d-flex" key={index}>
-                                    <p>
-                                      {api.capitalizeFirstLetter(item)}
-                                      {index + 1 === plant_details.acf.characteristics.growth_form.length ? '' : ","} &nbsp;
-                                    </p>
-                                  </div>
-                                )
-                              )}
-                            </div>
-                       )}
 
                 {/* LEAVES */}
                 <div className="accordion mb-3" id="accordion2">
