@@ -136,7 +136,7 @@ const SideNavContent = ({
     },
     {
       key: "growth_form",
-      group: (plant_type[1] === false) && "none",
+      group: (plant_type[1] === false) && "initial",
       value: "Growth Form",
     },
     {
