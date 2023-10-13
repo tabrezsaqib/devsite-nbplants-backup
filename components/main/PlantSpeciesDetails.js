@@ -334,7 +334,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  {ReactHtmlParser(plant_details.acf.plant_family)}
+                  <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em>
                 </div>
               )}
               <div className="d-flex">
