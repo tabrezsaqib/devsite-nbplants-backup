@@ -22,9 +22,9 @@ const SideNavContent = ({
   leaf_duration,
   leaf_divisions,
   spore_location,
+  spore_under_leaf,
   spore_shape,
   spore_covering,
-  spore_under_leaf,
   native_or_introduced_or_invasive,
   leaf_shape,
   petal_symmetry,
@@ -108,6 +108,11 @@ const SideNavContent = ({
       value: "Spore Location",
     },
     {
+      key: "spore_under_leaf",
+      group: ((router.query.type == "Fern" || plant_type[0] === true) && (spore_location[2] === true) ) && "spores",
+      value: "Spore Position",
+    },
+    {
       key: "spore_shape",
       group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
       value: "Spore Shape",
@@ -116,11 +121,6 @@ const SideNavContent = ({
       key: "spore_covering",
       group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
       value: "Spore Covering",
-    },
-    {
-      key: "spore_under_leaf",
-      group: ((router.query.type == "Fern" || plant_type[0] === true) && (spore_location[2] === true) ) && "spores",
-      value: "Spore Position",
     },
     {
       key: "leaf_divisions",
@@ -136,7 +136,7 @@ const SideNavContent = ({
     },
     {
       key: "growth_form",
-      group: "none",
+      group: (plant_type[1] === false) && "none",
       value: "Growth Form",
     },
     {
