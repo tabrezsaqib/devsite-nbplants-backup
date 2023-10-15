@@ -11,6 +11,7 @@ import styles from "../../styles/Global.module.scss"
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
+import Link from "next/link"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -334,7 +335,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em>
+                  {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
+                  <Link href="/plantFamilyDetails" style={{ fontStyle: 'italic' }}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   <span>&#x3B;&nbsp;</span>
                   {plant_details.acf.family_english && (
                     <div className="d-flex">

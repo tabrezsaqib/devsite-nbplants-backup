@@ -231,22 +231,26 @@ const SideNav = ({
   }
 
   const onSelectorChange = (filter) => {
+    let filterName = filter
+    if (filter === 'spore') {
+      filterName = 'Fern'
+    }
     window.scrollTo({
       top: 0,
       behavior: "smooth",
       /* you can also use 'auto' behaviour
          in place of 'smooth' */
     })
-    if (activeFilterList.includes(filter)) {
-      const filterIndex = activeFilterList.indexOf(filter)
+    if (activeFilterList.includes(filterName)) {
+      const filterIndex = activeFilterList.indexOf(filterName)
       const newFilter = [...activeFilterList]
       newFilter.splice(filterIndex, 1) //Remove one element from the newFilter i.e array.splice(index, how many items)
-      dispatch(selectorFilterData(filter))
+      dispatch(selectorFilterData(filterName))
       dispatch(activeFilterData(newFilter))
       dispatch(resetPageCount(true))
     } else {
-      dispatch(selectorFilterData(filter))
-      dispatch(activeFilterData([...activeFilterList, filter]))
+      dispatch(selectorFilterData(filterName))
+      dispatch(activeFilterData([...activeFilterList, filterName]))
       dispatch(resetPageCount(true))
     }
   }
