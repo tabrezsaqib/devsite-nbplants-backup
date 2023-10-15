@@ -24,7 +24,7 @@ const PlantSpecies = ({ plant }) => {
         </>
       ) : router.query.type == "all" ? (
         <PlantItem plant={plant} />
-      ) : router.pathname == "/plantFamilyDetails" ? (
+      ) : router.pathname.includes("/family") ? (
         <PlantItem plant={plant} />
       ) : (
         <div

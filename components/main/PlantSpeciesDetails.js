@@ -23,6 +23,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     setSlideIndex(index)
   }
 
+  const removeTags=(str)=> { 
+    if ((str===null) || (str==='')) 
+        return false; 
+    else
+        str = str.toString();  
+    return str.replace( /(<([^>]+)>)/ig, ''); 
+  } 
+
   const back = () => {
     slideRef.current.goBack()
     setSlideIndex(0)
@@ -335,8 +343,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
-                  <Link href="/plantFamilyDetails" style={{ fontStyle: 'italic' }}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
+                  <Link href={{
+                      pathname: `/family/${removeTags(plant_details.acf.plant_family)}`
+                    }} style={{ fontStyle: 'italic' }}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   <span>&#x3B;&nbsp;</span>
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
@@ -658,42 +667,19 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 {api.capitalizeFirstLetter(plant_details.acf.characteristics.stipule_shape)}
                               </div>
                             )}
-                            {/* {plant_details.acf.characteristics.flower_description && (
-                                <div className="d-flex label-value-section">
+                          </div>
+                          <div className="mb-3">
+                              {plant_details.acf.characteristics.flower_description && (
+                                <div >
                                   <p>
                                     <strong>Flower Description: &nbsp;</strong>
                                   </p>
-                                  {plant_details.acf.characteristics.flower_description}
-                                </div>
-                            )} */}
-                            {plant_details.acf.characteristics.flower_description && (
-                                <div className="d-flex flex-column">
                                   <div className="rtc-content">
                                     {ReactHtmlParser(plant_details.acf.characteristics.flower_description)}
                                   </div>
                                 </div>
-                            )}
-
-                            {/* {plant_details.acf.characteristics.stipule_shape
-                              .length !== 0 &&
-                              plant_details.acf.characteristics.stipule_shape.map(
-                                (item, index) => (
-                                  <div
-                                    className="d-flex label-value-section"
-                                    key={index}>
-                                    <p>
-                                      <strong>Stipule Shape: &nbsp;</strong>
-                                    </p>
-                                    <div>
-                                      <p>
-                                        {api.capitalizeFirstLetter(item)}
-                                        &nbsp;
-                                      </p>
-                                    </div>
-                                  </div>
-                                )
-                              )} */}
-                          </div>
+                              )}
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -863,25 +849,19 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               }
                             </div>
                           )}
-                          {plant_details.acf.characteristics.leaf_description.length !== 0 &&
-                               
-                               <div
-                                 className="d-flex flex-column"
-                                 >
-                                 <p>
-                                   <strong>Leaf Description: &nbsp;</strong>
-                                 </p>
-                                 {plant_details.acf.characteristics.leaf_description && 
-                                 (
-                                     <div className="d-flex flex-column">
-                                       <div className="rtc-content">
-                                         {ReactHtmlParser(plant_details.acf.characteristics.leaf_description)}
-                                       </div>
-                                     </div>
-                                 )}
-                               </div>
-                           }
                         </div>
+                        <div className="mb-3">
+                            {plant_details.acf.characteristics.leaf_description && (
+                              <div >
+                                <p>
+                                  <strong>Leaf Description: &nbsp;</strong>
+                                </p>
+                                <div className="rtc-content">
+                                  {ReactHtmlParser(plant_details.acf.characteristics.leaf_description)}
+                                </div>
+                              </div>
+                            )}
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -1077,25 +1057,19 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                     </div>
                                   )
                                 )}
-                                {plant_details.acf.characteristics.spore_description.length !== 0 &&
-                               
-                                    <div
-                                      className="d-flex flex-column"
-                                      >
-                                      <p>
-                                        <strong>Spore Description: &nbsp;</strong>
-                                      </p>
-                                      {plant_details.acf.characteristics.spore_description && 
-                                      (
-                                          <div className="d-flex flex-column">
-                                            <div className="rtc-content">
-                                              {ReactHtmlParser(plant_details.acf.characteristics.spore_description)}
-                                            </div>
-                                          </div>
-                                      )}
-                                    </div>
-                                }
-                          </div>
+                              </div>
+                              <div className="mb-3">
+                              {plant_details.acf.characteristics.spore_description && (
+                                <div >
+                                  <p>
+                                    <strong>Spore Description: &nbsp;</strong>
+                                  </p>
+                                  <div className="rtc-content">
+                                    {ReactHtmlParser(plant_details.acf.characteristics.spore_description)}
+                                  </div>
+                                </div>
+                              )}
+                              </div>
                         </div>
                       </div>
                     </div>
