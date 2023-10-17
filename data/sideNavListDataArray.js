@@ -51,7 +51,7 @@ const inflorescence = [
   "solitary flower",
   "umbel",
   "whorl",
-  "doesn't apply",
+  "other",
 ]
 
 const stems = ["hairy", "scales", "smooth", "thorns or prickles", "no stem"]
