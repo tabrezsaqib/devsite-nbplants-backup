@@ -24,9 +24,7 @@ const PlantSpecies = ({ plant }) => {
         </>
       ) : router.query.type == "all" ? (
         <PlantItem plant={plant} />
-      ) : router.pathname.includes("/family") ? (
-        <PlantItem plant={plant} />
-      ) : (
+      )  : (
         <div
           className={
             plant.acf.plant_type == "Non-woody" ||
