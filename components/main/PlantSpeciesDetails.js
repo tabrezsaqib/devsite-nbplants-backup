@@ -354,25 +354,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   )}
                 </div>
               )}
-              {/* <div className="d-flex">
-                  {plant_details.acf.family_english && (
-                    <div className="d-flex">
-                      <p>
-                        <strong>Family English: &nbsp;</strong>
-                      </p>
-                      <p>{ReactHtmlParser(plant_details.acf.family_english)}</p>
-                    </div>
-                  )}
-                  &nbsp;&nbsp;
-                  {plant_details.acf.family_french && (
-                    <div className="d-flex">
-                      <p>
-                        <strong>Family French: &nbsp;</strong>
-                      </p>
-                      <p>{ReactHtmlParser(plant_details.acf.family_french)}</p>
-                    </div>
-                  )}
-                </div> */}
               <div className="mb-3">
                 {plant_details.acf.description && (
                   <div className="d-flex flex-column">
