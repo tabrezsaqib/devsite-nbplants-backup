@@ -461,7 +461,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 {plant_details.acf.characteristics.height && (
                   <div className="d-flex label-value-section">
                     <p>
-                      <strong>Height: &nbsp;</strong>
+                      <strong>Size: &nbsp;</strong>
                       {plant_details.acf.characteristics.height}
                     </p>
                   </div>
