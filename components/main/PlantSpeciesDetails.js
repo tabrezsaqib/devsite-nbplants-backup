@@ -11,6 +11,7 @@ import styles from "../../styles/Global.module.scss"
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
+import Link from "next/link"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -21,6 +22,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     setSlide(true)
     setSlideIndex(index)
   }
+
+  const removeTags=(str)=> { 
+    if ((str===null) || (str==='')) 
+        return false; 
+    else
+        str = str.toString();  
+    return str.replace( /(<([^>]+)>)/ig, ''); 
+  } 
 
   const back = () => {
     slideRef.current.goBack()
@@ -334,7 +343,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em>
+                  {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
+                  <Link href={{
+                      pathname: `/family/${removeTags(plant_details.acf.plant_family)}`
+                    }} style={{ fontStyle: 'italic' }}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
