@@ -359,6 +359,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </p>
                   <Link 
                     href="/plantFamilyDetails"
+                    style={{ fontStyle: 'italic' }}
                     onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
