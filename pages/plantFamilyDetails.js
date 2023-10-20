@@ -44,6 +44,7 @@ const plantFamilyDetails = ({ plantFamily }) => {
           <div className="grid-container">
             <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} />
           </div>
+          <p>Site in progress. Not all species yet available.</p>
         </div> : ''}
       <style jsx>{`
         .heading {
