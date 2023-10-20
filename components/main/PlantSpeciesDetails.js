@@ -7,29 +7,26 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
+import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
 
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
 import Link from "next/link"
+import { useDispatch } from "react-redux"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
   const [slideIndex, setSlideIndex] = useState(null)
   const slideRef = useRef()
   const router = useRouter()
+  const dispatch = useDispatch()
+  const API_URL = process.env.API_URL
+
   const slideShow = (index) => {
     setSlide(true)
     setSlideIndex(index)
   }
-
-  const removeTags=(str)=> { 
-    if ((str===null) || (str==='')) 
-        return false; 
-    else
-        str = str.toString();  
-    return str.replace( /(<([^>]+)>)/ig, ''); 
-  } 
 
   const back = () => {
     slideRef.current.goBack()
@@ -47,6 +44,16 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     indicators: true,
   }
 
+  const loadPlantFamily = async (param) => {
+    // fetch single post detail
+    const response = await fetch(`${API_URL}plants_db`)
+    const all_plants = await response.json();
+    const plant_family_details = all_plants.filter((data) => data.acf.plant_family.includes(param))
+   console.log(plant_family_details)
+    dispatch(setPlantFamilyDetails(plant_family_details))
+  }
+
+
   const refresh = () => {
     let route = localStorage.getItem("route")
     Router.push({
@@ -63,7 +70,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       },
     }).then(() => {})
   }
-
   return (
     <>
     <Header />
@@ -343,7 +349,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em>
+                  <Link 
+                    href="/plantFamilyDetails"
+                    onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
+                  {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
