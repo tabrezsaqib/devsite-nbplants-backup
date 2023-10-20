@@ -34,9 +34,6 @@ const plantFamilyDetails = ({ plantFamily }) => {
             </div>
           </div>
           <div className="d-flex flex-column">
-            <p>
-              <strong>Description: &nbsp;</strong>
-            </p>
             <div className="rtc-content">
               {ReactHtmlParser(plantFamily[0].acf.family_description)}
             </div>
