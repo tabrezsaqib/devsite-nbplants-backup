@@ -89,7 +89,7 @@ const SideNavContent = ({
     },
     {
       key: "leaf_shape",
-      group: (plant_type[0] === false && plant_type[1] === false) && "leaves",
+      group: (plant_type[0] === false && plant_type[1] === false && fruit_type[9] === false) && "leaves",
       value: "Leaf Shape",
     },
     {
@@ -104,28 +104,28 @@ const SideNavContent = ({
     },
     {
       key: "spore_location",
-      group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
+      group: (router.query.type == "Fern" || plant_type[0] === true || fruit_type[9] === true) && "spores",
       value: "Spore Location",
     },
     {
       key: "spore_under_leaf",
-      group: ((router.query.type == "Fern" || plant_type[0] === true) && (spore_location[2] === true) ) && "spores",
+      group: ((router.query.type == "Fern" || plant_type[0] === true || fruit_type[9] === true) && (spore_location[2] === true) ) && "spores",
       value: "Spore Position",
     },
     {
       key: "spore_shape",
-      group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
+      group: (router.query.type == "Fern" || plant_type[0] === true || fruit_type[9] === true) && "spores",
       value: "Spore Shape",
     },
     {
       key: "spore_covering",
-      group: (router.query.type == "Fern" || plant_type[0] === true) && "spores",
+      group: (router.query.type == "Fern" || plant_type[0] === true || fruit_type[9] === true) && "spores",
       value: "Spore Covering",
     },
     {
       key: "leaf_divisions",
       group:
-        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true) &&
+        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true || fruit_type[9] === true) &&
         "leaves",
       value: "Leaflet Divisions",
     },
@@ -333,7 +333,7 @@ const SideNavContent = ({
           </div>
         ))}
       </div>
-      {(router.query.type === "Fern" || plant_type[0] === true) ? '' : (
+      {(router.query.type === "Fern" || plant_type[0] === true || fruit_type[9] === true) ? '' : (
         <div className="accordion mt-2 mb-2" id="accordion1">
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
@@ -435,7 +435,7 @@ const SideNavContent = ({
           </div>
         </div>
       </div>
-      {(router.query.type === "Fern" || plant_type[0] === true) ? '' : (
+      {(router.query.type === "Fern" || plant_type[0] === true || fruit_type[9] === true) ? '' : (
         <div className="accordion mt-2 mb-2" id="accordion2">
           <div className="accordion-item">
             <h2 className="accordion-header" id="heading3">
@@ -478,7 +478,7 @@ const SideNavContent = ({
           </div>
         </div>
       )}
-      {(router.query.type === "Fern" || plant_type[0] === true) && (
+      {(router.query.type === "Fern" || plant_type[0] === true || fruit_type[9] === true) && (
         <div className="accordion mt-2 mb-2" id="accordion2">
           <div className="accordion-item">
             <h2 className="accordion-header" id="heading3">

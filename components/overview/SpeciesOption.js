@@ -59,9 +59,6 @@ const SpeciesOption = () => {
           styles.responsive_selection_blocks,
           "selection-blocks d-flex align-items-center justify-content-evenly",
         ].join(" ")}>
-        <a className={localstyles.speciesLink} onClick={() => optionSelector("Woody")}>
-          <WoodyPlantSelector />
-        </a>
         <a className={localstyles.speciesLink} onClick={() => optionSelector("Fern")}>
           <Ferns />
         </a>
@@ -69,6 +66,9 @@ const SpeciesOption = () => {
         // className="disabled"
         >
           <GrassLike />
+        </a>
+        <a className={localstyles.speciesLink} onClick={() => optionSelector("Woody")}>
+          <WoodyPlantSelector />
         </a>
         <a className={localstyles.speciesLink} onClick={() => optionSelector("Non-woody")}>
           <NonWoodyPlantSelector />

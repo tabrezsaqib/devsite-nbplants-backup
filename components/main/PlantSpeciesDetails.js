@@ -7,17 +7,22 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
+import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
 
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
 import Link from "next/link"
+import { useDispatch } from "react-redux"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
   const [slideIndex, setSlideIndex] = useState(null)
   const slideRef = useRef()
   const router = useRouter()
+  const dispatch = useDispatch()
+  const API_URL = process.env.API_URL
+
   const slideShow = (index) => {
     setSlide(true)
     setSlideIndex(index)
@@ -47,6 +52,16 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     indicators: true,
   }
 
+  const loadPlantFamily = async (param) => {
+    // fetch single post detail
+    const response = await fetch(`${API_URL}plants_db`)
+    const all_plants = await response.json();
+    const plant_family_details = all_plants.filter((data) => data.acf.plant_family.includes(param))
+   console.log(plant_family_details)
+    dispatch(setPlantFamilyDetails(plant_family_details))
+  }
+
+
   const refresh = () => {
     let route = localStorage.getItem("route")
     Router.push({
@@ -63,7 +78,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       },
     }).then(() => {})
   }
-
   return (
     <>
     <Header />
@@ -343,10 +357,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
+                  <Link 
+                    href="/plantFamilyDetails"
+                    onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
-                  <Link href={{
-                      pathname: `/family/${removeTags(plant_details.acf.plant_family)}`
-                    }} style={{ fontStyle: 'italic' }}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
@@ -464,7 +478,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 {plant_details.acf.characteristics.height && (
                   <div className="d-flex label-value-section">
                     <p>
-                      <strong>Height: &nbsp;</strong>
+                      <strong>Size: &nbsp;</strong>
                       {plant_details.acf.characteristics.height}
                     </p>
                   </div>
@@ -660,7 +674,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                     {ReactHtmlParser(plant_details.acf.characteristics.flower_description)}
                                   </div>
                                 </div>
-                              )}
+                            )}
                           </div>
                         </div>
                       </div>
@@ -836,7 +850,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             {plant_details.acf.characteristics.leaf_description && (
                               <div >
                                 <p>
-                                  <strong>Leaf Description: &nbsp;</strong>
+                                  <strong>Leaves Description: &nbsp;</strong>
                                 </p>
                                 <div className="rtc-content">
                                   {ReactHtmlParser(plant_details.acf.characteristics.leaf_description)}
