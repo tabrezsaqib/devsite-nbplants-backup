@@ -28,14 +28,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     setSlideIndex(index)
   }
 
-  const removeTags=(str)=> { 
-    if ((str===null) || (str==='')) 
-        return false; 
-    else
-        str = str.toString();  
-    return str.replace( /(<([^>]+)>)/ig, ''); 
-  } 
-
   const back = () => {
     slideRef.current.goBack()
     setSlideIndex(0)
@@ -199,6 +191,37 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 </div>
               </div>
+<br></br>
+              <div>
+                  {plant_details.id === 8257?<>
+                  <p>
+                    <strong>Distribution <span>&copy;</span> ACCDC</strong>
+                  </p>
+                  <div className="row">
+                    <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <div
+                        className={
+                          plant_details.id !== null
+                            ? "featured-image"
+                            : "featured-image disable-pointer-events"
+                        }
+                        data-bs-toggle="modal"
+                        data-bs-target="#distribution-map">
+                           {plant_details.id == null ? (
+                          <div className="d-flex flex-column text-center stock-img-container">
+                            <img src="../../images/no_result_found.png" alt="" />
+                            <span>Oops! No images found!</span>
+                          </div>
+                        ) : (
+                          <img
+                            src={`../../images/${plant_details.id}.png`}
+                            alt="Distribution map"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div></>:""}
+              </div>
               <div
                 className="modal fade"
                 id="exampleModal"
@@ -291,6 +314,48 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 </div>
               </div>
+
+              <div
+                  className="modal fade"
+                  id="distribution-map"
+                  tabIndex="-1"
+                  aria-labelledby="distribution-map-label"
+                  aria-hidden="true">
+                  <div className="modal-dialog modal-dialog-centered modal-xl">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"></button>
+                      </div>
+                      <div className="modal-body" style={{ margin: "0 auto" }}>
+                        <div className="modal-image-container">
+                          {plant_details.id !== 8257 ? (
+                            <div className="d-flex flex-column text-center stock-img-container">
+                              <img
+                                src="../../images/no_result_found.png"
+                                alt=""
+                              />
+                              {/* <h3>Oops! No images found!</h3> */}
+                            </div>
+                          ) : (
+                            <div>
+                              <img
+                                src={`../../images/${plant_details.id}.png`}
+                                alt="Distribution map"
+                              />
+                              <p className="img-caption">
+                              <span>&copy;</span> ACCDC
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
             </div>
           </div>
           <div className="col-lg-9">
