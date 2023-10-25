@@ -195,7 +195,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               <div>
                   {plant_details.id === 8257?<>
                   <p>
-                    <strong>Distribution <span>&copy;</span> ACCDC</strong>
+                  <strong>Distribution </strong><span style={{float:'right', fontSize:'12px'}}>&copy;ACCDC</span> 
                   </p>
                   <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -347,7 +347,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 alt="Distribution map"
                               />
                               <p className="img-caption">
-                              <span>&copy;</span> ACCDC
+                               <span>&copy;</span> ACCDC
                               </p>
                             </div>
                           )}

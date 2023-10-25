@@ -41,12 +41,20 @@ const plantFamilyDetails = ({ plantFamily }) => {
           <div className="grid-container">
             <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} />
           </div>
-          <p>Site in progress. Not all species yet available.</p>
+          <div className="site-in-progress">
+          Site in progress. Not all species yet available.
+          </div>
         </div> : ''}
       <style jsx>{`
         .heading {
           font-size: 2rem;
           color: #0e9d47;
+        }
+        .site-in-progress{
+          margin-top: 30px;
+          margin-bottom:50px;
+          text-align: left;
+          font-size: 20px;
         }
         .rtc-content {
           background-color: #f6f7f9;
