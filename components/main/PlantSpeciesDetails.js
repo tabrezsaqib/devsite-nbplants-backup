@@ -193,7 +193,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               </div>
 <br></br>
               <div>
-                  {plant_details.id === 8257?<>
+                  {plant_details.acf.distribution_map_id?<>
                   <p>
                   <strong>Distribution </strong><span style={{float:'right', fontSize:'12px'}}>&copy;ACCDC</span> 
                   </p>
@@ -201,20 +201,20 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                       <div
                         className={
-                          plant_details.id !== null
+                          plant_details.acf.distribution_map_id !== null
                             ? "featured-image"
                             : "featured-image disable-pointer-events"
                         }
                         data-bs-toggle="modal"
                         data-bs-target="#distribution-map">
-                           {plant_details.id == null ? (
+                           {plant_details.acf.distribution_map_id == null ? (
                           <div className="d-flex flex-column text-center stock-img-container">
                             <img src="../../images/no_result_found.png" alt="" />
                             <span>Oops! No images found!</span>
                           </div>
                         ) : (
                           <img
-                            src={`../../images/${plant_details.id}.png`}
+                            src={`../../images/maps/${plant_details.acf.distribution_map_id}.jpg`}
                             alt="Distribution map"
                           />
                         )}
@@ -332,7 +332,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       </div>
                       <div className="modal-body" style={{ margin: "0 auto" }}>
                         <div className="modal-image-container">
-                          {plant_details.id !== 8257 ? (
+                          {plant_details.acf.distribution_map_id ? (
                             <div className="d-flex flex-column text-center stock-img-container">
                               <img
                                 src="../../images/no_result_found.png"
@@ -343,7 +343,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           ) : (
                             <div>
                               <img
-                                src={`../../images/${plant_details.id}.png`}
+                                src={`../../images/maps/${plant_details.acf.distribution_map_id}.jpg`}
                                 alt="Distribution map"
                               />
                               <p className="img-caption">
