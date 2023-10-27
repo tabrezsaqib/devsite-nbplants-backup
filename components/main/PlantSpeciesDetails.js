@@ -550,7 +550,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 )}
                 {/* FLOWERS */}
-                {router.query.type !== "Fern" && (
+                {(router.query.type !== "Fern" && (plant_details.acf.characteristics.bloom_time || 
+                 plant_details.acf.characteristics.flower_colour.length !== 0 || plant_details.acf.characteristics.inflorescence.length !== 0 ||
+                 plant_details.acf.characteristics.number_flowers || plant_details.acf.characteristics.number_petals ||
+                 plant_details.acf.characteristics.petal_symmetry.length !== 0 || plant_details.acf.characteristics.lip_shape.length !== 0 ||
+                 plant_details.acf.characteristics.lip_description  || plant_details.acf.characteristics.nectar_spur ||
+                 plant_details.acf.characteristics.flower_description || plant_details.acf.characteristics.stipule_shape || 
+                 plant_details.acf.characteristics.stems.length !== 0 
+                 )) 
+                && (
                   <div className="accordion mb-3" id="accordion1">
                     <div className="accordion-item">
                       <h2 className="accordion-header" id="headingOne">
