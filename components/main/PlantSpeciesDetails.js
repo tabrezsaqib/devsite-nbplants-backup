@@ -53,6 +53,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     dispatch(setPlantFamilyDetails(plant_family_details))
   }
 
+  const formatCase = (data) => {
+    if (data[0].search('sna') >= 0 || data[0].search('Sna') >= 0) {
+      return <div>{ data[0].replace(/sna/ig,'SNA')} </div>
+    } else {
+      return <div style={{ textTransform: 'capitalize' }}>{data[0]}</div>
+    }
+  }
 
   const refresh = () => {
     let route = localStorage.getItem("route")
@@ -480,7 +487,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>
                       <strong>Conservation Rank: &nbsp;</strong>
                     </p>
-                    {api.capitalizeEveryWord(plant_details.acf.conservation_rank)}
+                    {formatCase(plant_details.acf.conservation_rank)}
                   </div>
                 )}
                 {plant_details.acf.characteristics.invasive && (
