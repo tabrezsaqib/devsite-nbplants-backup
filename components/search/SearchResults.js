@@ -97,10 +97,10 @@ const SearchResults = ({
               isLoading
                 ? "d-flex justify-content-center flex-wrap"
                 : router.query.keyword == ""
-                ? ""
-                : currentItems == null
-                ? "d-flex justify-content-center flex-wrap"
-                : "d-flex flex-wrap"
+                  ? ""
+                  : currentItems == null
+                    ? "d-flex justify-content-center flex-wrap"
+                    : "d-flex flex-wrap"
             }>
             {isLoading ? (
               <div className={[styles.imgContainer, "d-flex", "align-items-center", "img-container"].join(" ")}>
@@ -142,7 +142,7 @@ const SearchResults = ({
                   <SearchFormValidate
                     submitSearchQuery={submitSearchQuery}
                     search_bar={true}
-                    // fetchPlantPosts={fetchPlantPost}
+                  // fetchPlantPosts={fetchPlantPost}
                   />
                 </div>
               </div>

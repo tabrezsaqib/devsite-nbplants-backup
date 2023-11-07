@@ -54,6 +54,9 @@ const Navbar = () => {
               <li className={[styles.navItem, "nav-item"].join(" ")} onClick={refresh}>
                 <a className="nav-link">Species</a>
               </li>
+              <li className={[styles.navItem, "nav-item"].join(" ")} >
+                <a className="nav-link" aria-current="page" href="/plantFamilies">Families</a>
+              </li>
               <li className={[styles.navItem, "nav-item"].join(" ")}>
                 <a className="nav-link" href="/about" tabIndex="-1">
                   About

@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
-import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
+
 
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"
@@ -45,19 +45,19 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   }
 
   const loadPlantFamily = async (param) => {
-    // fetch single post detail
-    const response = await fetch(`${API_URL}plants_db`)
-    const all_plants = await response.json();
-    const plant_family_details = all_plants.filter((data) => data.acf.plant_family.includes(param))
-   console.log(plant_family_details)
-    dispatch(setPlantFamilyDetails(plant_family_details))
+    Router.push({
+      pathname: "/plantFamilyDetails",
+      query: { keyword: param },
+    }).then(() => {
+      Router.reload()
+    })
   }
 
   const formatCase = (data) => {
-    if (data[0].search('sna') >= 0 || data[0].search('Sna') >= 0) {
-      return <div>{ data[0].replace(/sna/ig,'SNA')} </div>
-    } else {
-      return <div style={{ textTransform: 'capitalize' }}>{data[0]}</div>
+    if (data.search('sna') >= 0 || data.search('Sna') >= 0) {
+      return data.replace(/sna/ig,'SNA')  
+    }else{
+      return data
     }
   }
 
@@ -429,11 +429,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  <Link 
-                    href="/plantFamilyDetails"
-                    style={{ fontStyle: 'italic',color: '#0e9d47' }}
-                    onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
-                  {/* <em>{ReactHtmlParser(plant_details.acf.plant_family)}</em> */}
+                  <Link
+                      href="/plantFamilyDetails"
+                      style={{ fontStyle: 'italic',color: '#0e9d47' }}
+                      onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
@@ -482,14 +481,31 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               <hr />
 
               <div className="d-flex flex-column">
-                {plant_details.acf.conservation_rank && (
-                  <div className="d-flex label-value-section">
-                    <p>
-                      <strong>Conservation Rank: &nbsp;</strong>
-                    </p>
-                    {formatCase(plant_details.acf.conservation_rank)}
-                  </div>
-                )}
+              {plant_details.acf.conservation_rank ?
+                      plant_details.acf.conservation_rank.length !== 0 && (
+                        <div className="d-flex">
+                          <p>
+                            <strong>Conservation Rank: &nbsp;</strong>
+                          </p>
+                          {plant_details.acf.conservation_rank.map(
+                            (item, index) => (
+                              <div className="d-flex" key={index}>
+                                <p>
+                                  {api.capitalizeFirstLetter(formatCase(item))}
+                                  {item !==
+                                    plant_details.acf.conservation_rank
+                                      .slice(-1)
+                                      .pop() ? (
+                                    <span>, &nbsp;</span>
+                                  ) : (
+                                    ""
+                                  )}
+                                </p>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      ) : ''}
                 {plant_details.acf.characteristics.invasive && (
                   <div className="d-flex label-value-section">
                     <p>
