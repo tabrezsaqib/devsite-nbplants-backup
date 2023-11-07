@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import * as api from "../generics/api";
+import axios from "axios";
+import styles from "../styles/families.module.css"
 import ReactHtmlParser from "react-html-parser"
-import { useRouter } from "next/router"
+import { connect } from "react-redux"
 
-const SEARCH_URL = process.env.SEARCH_URL
 
 import Footer from "../components/layouts/Footer";
 import Header from "../components/layouts/Header";
@@ -12,21 +12,7 @@ import Navbar from "../components/layouts/Navbar";
 import ListPlantSpecies from "../components/main/ListPlantSpecies";
 
 
-const PlantFamilyDetails = () => {
-  const [plantFamily, setPlantFamily] = useState([]);
-  const router = useRouter()
-  useEffect(() => {
-    fetchDetails();
-  }, [router.query.keyword])
-
-  const fetchDetails = async () => {
-    const response = await api.get(
-      `${SEARCH_URL}search?keyword=${router.query.keyword}&per_page=50`
-    )
-    console.log(response.data)
-    response.data.shift();
-    setPlantFamily(response.data.length > 0 ? response.data : [])
-  }
+const plantFamilyDetails = ({ plantFamily }) => {
   const isLoading = false;
   return (
     <>
@@ -79,4 +65,9 @@ const PlantFamilyDetails = () => {
   )
 }
 
-export default PlantFamilyDetails
+const mapStateToProps = (state) => {
+  return {
+    plantFamily: state.post.plantFamily,
+  }
+}
+export default connect(mapStateToProps)(plantFamilyDetails)
