@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
-// import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
+import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
 
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"
@@ -44,23 +44,23 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     indicators: true,
   }
 
-  // const loadPlantFamily = async (param) => {
-  //   // fetch single post detail
-  //   const response = await fetch(`${API_URL}plants_db`)
-  //   const all_plants = await response.json();
-  //   const plant_family_details = all_plants.filter((data) => data.acf.plant_family.includes(param))
-  //  console.log(plant_family_details)
-  //   dispatch(setPlantFamilyDetails(plant_family_details))
-  // }
-
   const loadPlantFamily = async (param) => {
-    Router.push({
-      pathname: "/plantFamilyDetails",
-      query: { keyword: param },
-    }).then(() => {
-      Router.reload()
-    })
+    // fetch single post detail
+    const response = await fetch(`${API_URL}plants_db`)
+    const all_plants = await response.json();
+    const plant_family_details = all_plants.filter((data) => data.acf.plant_family.includes(param))
+   console.log(plant_family_details)
+    dispatch(setPlantFamilyDetails(plant_family_details))
   }
+
+  // const loadPlantFamily = async (param) => {
+  //   Router.push({
+  //     pathname: "/plantFamilyDetails",
+  //     query: { keyword: param },
+  //   }).then(() => {
+  //     Router.reload()
+  //   })
+  // }
 
   const formatCase = (data) => {
     if (data.search('sna') >= 0 || data.search('Sna') >= 0) {
@@ -438,14 +438,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <p>
                     <strong>Plant Family: &nbsp;</strong>
                   </p>
-                  {/* <Link 
+                  <Link 
                     href="/plantFamilyDetails"
                     style={{ fontStyle: 'italic',color: '#0e9d47' }}
-                    onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link> */}
-                    <Link
+                    onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
+                    {/* <Link
                       href="/plantFamilyDetails"
                       style={{ fontStyle: 'italic',color: '#0e9d47' }}
-                      onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link>
+                      onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.plant_family)}</Link> */}
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">

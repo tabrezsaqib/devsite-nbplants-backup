@@ -27,17 +27,15 @@ const PlantItem = ({ plant }) => {
           <h4 className="heading mt-3">{plant.acf.common_name}</h4>
           <div className="d-flex flex-column">
             <span>
-              <i>{`${plant.title.rendered ? plant.title.rendered : plant.title }`}</i>
+              <i>{`${plant.title}`}</i>
             </span>
             <div className="d-flex flex-wrap tags">
-              {plant.acf.characteristics.habitat.length > 0 &&
-               plant.acf.characteristics.habitat.map((val, index) => (
+              {plant.acf.characteristics.habitat.map((val, index) => (
                 <span key={index}>
                   {api.capitalizeFirstLetter(val)}, &nbsp;
                 </span>
               ))}
-              {plant.acf.characteristics.leaf_type.length>0 && 
-              plant.acf.characteristics.leaf_type.map((val, index) => (
+              {plant.acf.characteristics.leaf_type.map((val, index) => (
                 <span key={index}>
                   {api.capitalizeFirstLetter(val)}, &nbsp;
                 </span>
