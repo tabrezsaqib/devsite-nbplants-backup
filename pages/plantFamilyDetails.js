@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import styles from "../styles/families.module.css"
+import * as api from "../generics/api";
 import ReactHtmlParser from "react-html-parser"
-import { connect } from "react-redux"
+import { useRouter } from 'next/router'
 
+const SEARCH_URL = process.env.SEARCH_URL
 
 import Footer from "../components/layouts/Footer";
 import Header from "../components/layouts/Header";
@@ -12,7 +12,25 @@ import Navbar from "../components/layouts/Navbar";
 import ListPlantSpecies from "../components/main/ListPlantSpecies";
 
 
-const plantFamilyDetails = ({ plantFamily }) => {
+const PlantFamilyDetails = () => {
+  const [plantFamily, setPlantFamily] = useState([]);
+  const router = useRouter()
+  useEffect(() => {
+    if(router.query.keyword){
+    fetchDetails();
+    }
+  }, [router])
+
+  const fetchDetails = async () => {
+    const response = await api.get(
+      `${SEARCH_URL}search?keyword=${router.query.keyword}&per_page=50`
+    )
+    console.log(response.data)
+    response.data.shift();
+    setPlantFamily(response.data.length > 0 ? response.data : [])
+  }
+
+
   const isLoading = false;
   return (
     <>
@@ -34,14 +52,19 @@ const plantFamilyDetails = ({ plantFamily }) => {
             </div>
           </div>
           <div className="d-flex flex-column">
+            <p>
+              <strong>Description: &nbsp;</strong>
+            </p>
             <div className="rtc-content">
               {ReactHtmlParser(plantFamily[0].acf.family_description)}
             </div>
           </div>
-          <div className="grid-container">
+          <div >
             <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} />
           </div>
-          <p>Site in progress. Not all species yet available.</p>
+          <div className="site-in-progress">
+            Site in progress. Not all species yet available.
+          </div>
         </div> : ''}
       <style jsx>{`
         .heading {
@@ -65,9 +88,4 @@ const plantFamilyDetails = ({ plantFamily }) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    plantFamily: state.post.plantFamily,
-  }
-}
-export default connect(mapStateToProps)(plantFamilyDetails)
+export default PlantFamilyDetails
