@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
-// import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
+import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
 
 import Header from "../layouts/Header"
 import Navbar from "../layouts/Navbar"

@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import * as api from "../../generics/api";
+import axios from "axios";
 import ReactHtmlParser from "react-html-parser"
 import { useRouter } from 'next/router'
 import ListPlantSpecies from '../main/ListPlantSpecies'
 import styles from "../../styles/SearchResults.module.css"
+import { connect } from "react-redux"
 
 const SEARCH_URL = process.env.SEARCH_URL
 

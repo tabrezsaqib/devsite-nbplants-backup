@@ -4,7 +4,7 @@ import ReactHtmlParser from "react-html-parser"
 import { useRouter } from 'next/router'
 import Link from "next/link";
 import styles from "../../styles/SearchResults.module.css"
-
+import { setPlantFamilyDetails } from "../../redux/actions/getPlantsAction"
 import * as api from "../../generics/api"
 const API_URL = process.env.API_URL
 

@@ -28,6 +28,7 @@ const PlantItem = ({ plant }) => {
           <div className="d-flex flex-column">
             <span>
               <i>{`${plant.title.rendered ? plant.title.rendered : plant.title}`}</i>
+              {/* <i>{`${plant.title}`}</i> */}
             </span>
             <div className="d-flex flex-wrap tags">
               {plant.acf.characteristics > 0 ? <>
