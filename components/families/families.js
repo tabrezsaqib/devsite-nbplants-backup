@@ -24,34 +24,35 @@ const Families = () => {
 
     const loadPlantFamily = async (param) => {
         if (param) {
-          Router.push({
-            pathname: "/plantFamilyDetails",
-            query: { keyword: param },
-          }).then(() => {
-            Router.reload()
-          })
+            Router.push({
+                pathname: "/plantFamilyDetails",
+                query: { keyword: param },
+            }).then(() => {
+                Router.reload()
+            })
         }
-      }
+    }
 
     return (
         <>
-             {isLoading ? (
-                <div  className={ "d-flex center-align"}>
+            {isLoading ? (
+                <div className={"d-flex center-align"}>
                     <img className={styles.imgContent} src="../../images/loading.gif" alt="loader" />
                 </div>) :
                 Object.keys(plantFamily).length > 0 &&
                 <div style={{ margin: '10px' }}>
                     <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Plant Families</h2>
-                    {Object.keys(plantFamily).slice().sort().map((family, i) => (
-                        <div key={i} className="listOfPlants">
-                            <span className="familyLink"
-                                onClick={() => loadPlantFamily(plantFamily[family][0]['acf']['plant_family'])}>
-                                {ReactHtmlParser(plantFamily[family][0]['acf']['plant_family'])}
-                            </span>
-                            /
-                            <span className="familyEnglish">{plantFamily[family][0]['acf']['family_english'] ? plantFamily[family][0]['acf']['family_english'] : '-'}</span>
-                        </div>))
-                    }
+                    <div className="row " >
+                        {Object.keys(plantFamily).slice().sort().map((family, i) => (
+                            <>  <div key={i} className="listOfPlants  col-sm-12 col-md-12  col-lg-6 ">
+                                <span className="familyLink"
+                                    onClick={() => loadPlantFamily(plantFamily[family][0]['acf']['plant_family'])}>
+                                    {ReactHtmlParser(plantFamily[family][0]['acf']['plant_family'])}
+                                </span>
+                                /
+                                <span className="familyEnglish">{plantFamily[family][0]['acf']['family_english'] ? plantFamily[family][0]['acf']['family_english'] : '-'}</span>
+                            </div></>))
+                        }</div>
                 </div>}
             <style jsx>{`
         .familyLink {
