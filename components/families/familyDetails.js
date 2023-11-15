@@ -53,9 +53,6 @@ const FamilyDetails = () => {
                             </div>
                         </div>
                         <div className="d-flex flex-column">
-                            <p>
-                                <strong>Description: &nbsp;</strong>
-                            </p>
                             <div className="rtc-content">
                                 {ReactHtmlParser(plantFamily[0].acf.family_description)}
                             </div>
@@ -64,7 +61,7 @@ const FamilyDetails = () => {
                             <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} />
                         </div>
                         <div className="site-in-progress">
-                            Site in progress. Not all species yet available.
+                            Site in progress. All species may not be available yet.
                         </div>
                     </div> : ''}
             <style jsx>{`
