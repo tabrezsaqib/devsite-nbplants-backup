@@ -10,16 +10,22 @@ import Navbar from "../components/layouts/Navbar";
 
 export default function home() {
   return (
-    <div className={styles.flexContent}>
-      <Header />
-      <Navbar />
-      <div className="col-md-12 col-lg-12 " >
-        <div className="d-flex flex-column text-center">
-          <Headline />
-          <SpeciesOption />
+    <>
+    <Header />
+    <Navbar />
+    <div className={styles.main}>
+      <div className={styles.selectionArea}>
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="d-flex flex-column text-center">
+              <Headline />
+              <SpeciesOption />
+            </div>
+          </div>
         </div>
       </div>
-      <Footer />
     </div>
+    <Footer />
+    </>
   )
 }

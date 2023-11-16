@@ -86,7 +86,7 @@ const fruit_color = [
 ]
 
 const leaf_duration = ["deciduous", "evergreen"]
-const leaf_divisions = ["0", "1", "2", "3"]
+const leaf_divisions = ["0", "1", "2", "3", "4-9", "10 or more"]
 const spore_shape = ["irregular", "kidney", "oblong", "oval", "round"]
 const spore_location = ["separate stalk", "tip of plant", "underside of leaf", "other"]
 const spore_covering = ["absent", "present"]
