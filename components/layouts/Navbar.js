@@ -50,7 +50,7 @@ const Navbar = () => {
                 <a className="nav-link active" aria-current="page" href="/home">
                   Home
                 </a>
-              </li>
+              </li> 
               <li className={[styles.navItem, "nav-item"].join(" ")} onClick={refresh}>
                 <a className="nav-link">Species</a>
               </li>
