@@ -24,6 +24,7 @@ import SideNav from "../side-nav/SideNav"
 import * as options from "../../data/sideNavListDataArray"
 import styles from "../../styles/Global.module.scss"
 import localstyles from "../../styles/Plants.module.css"
+import { array } from "yup"
 
 const Plants = ({
   all_plants,
@@ -34,6 +35,7 @@ const Plants = ({
   isLoading,
   itemsPerPage,
   activeFilterList,
+  plant_type,
   itemOffset,
   pageCount,
   toggle_pagination,
@@ -58,22 +60,40 @@ const Plants = ({
 
   //Sidebar Selector filtering
   const filterPlantsTypeData = (plant_data) => {
+    filteredList.current = plant_data
     try {
       if (activeFilterList.length === 0) {
         return (filteredList.current = plant_data)
       } else {
+        const arr = []
         const filterKeys = Object.keys(options)
-        return (filteredList.current = plant_data.filter((item) => {
-          return activeFilterList.every(function (element) {
-            return filterKeys.some((key) => {
-              if (key == "plant_type" || key == "type") {
-                return item.acf[key].includes(element)
+        activeFilterList.map((element) => {
+          for (let i = 0; i < Object.keys(options).length; i++) {
+            if (options[Object.keys(options)[i]].includes(element)) {
+              let a = Object.keys(options)[i]
+              if (arr[a]) {
+                arr[a].push(element)
+              } else {
+                arr[a] = [element]
               }
-
-              return item.acf.characteristics[key].includes(element)
-            })
+            }
+          }
+        })
+        console.log(Object.keys(arr).length)
+        for (let i = 0; i < Object.keys(arr).length; i++) {
+          let element = Object.keys(arr)[i]
+          console.log(arr[element])
+          let f = filteredList.current.filter((item) => {
+            console.log(element, item.acf.characteristics)
+            if (element == "plant_type" || element == "type") {
+              console.log('sd')
+              return arr[element].includes(item.acf[element])
+            }
+            return arr[element].some(ai => item.acf.characteristics[element].includes(ai));
           })
-        }))
+          console.log(f)
+          filteredList.current = f
+        }
       }
     } catch (error) {
       console.log(error.message)
@@ -169,6 +189,7 @@ const Plants = ({
     isLoading,
     router,
     activeFilterList,
+    plant_type,
     localStore,
     currentPageNumber,
     currentPage,
@@ -216,27 +237,27 @@ const Plants = ({
       <div
         className={
           filteredList.current.length == 0
-            ? [styles.error_bg_media_query,localstyles.errorBg, "col-lg-9"].join(" ")
+            ? [styles.error_bg_media_query, localstyles.errorBg, "col-lg-9"].join(" ")
             : "col-lg-9 col-sm-12"
         }>
         {/* <h4>Non Woody Plants..</h4> */}
         <div className="grid-container">
           <ListPlantSpecies filteredList={currentItems} isLoading={isLoading} />
           {isLoading === true ? ""
-            : 
-            <div 
-          // className="d-flex flex-row justify-content-center align-items-center align-self-center"
-          >
-                <span className={localstyles.itemsLabel}>Species Per Page:</span>
-                <select 
+            :
+            <div
+            // className="d-flex flex-row justify-content-center align-items-center align-self-center"
+            >
+              <span className={localstyles.itemsLabel}>Species Per Page:</span>
+              <select
                 className={localstyles.displayDropdown}
                 onChange={handleItemsPerPageChange}>
-                  {dropDownValues.map((option, index) => (
-                    <option className={localstyles.optionContent} key={index} value={option}>{option}</option>
-                  ))}
-                </select>
+                {dropDownValues.map((option, index) => (
+                  <option className={localstyles.optionContent} key={index} value={option}>{option}</option>
+                ))}
+              </select>
             </div>
-            }
+          }
           <ReactPaginate
             className={toggle_pagination === true ? localstyles.hide : ""}
             nextLabel="next >"
@@ -274,6 +295,7 @@ const mapStateToProps = (state) => {
     grass_like_plants: state.post.grass_like_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
+    plant_type: state.selector.plant_type,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
     toggle_pagination: state.pagination.toggle_pagination,
