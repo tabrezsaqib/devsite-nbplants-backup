@@ -36,6 +36,7 @@ const Plants = ({
   itemsPerPage,
   activeFilterList,
   plant_type,
+  allType,
   itemOffset,
   pageCount,
   toggle_pagination,
@@ -65,34 +66,37 @@ const Plants = ({
       if (activeFilterList.length === 0) {
         return (filteredList.current = plant_data)
       } else {
-        const arr = []
-        const filterKeys = Object.keys(options)
+        let filter = {}
+        Object.entries(allType).map((item) => {
+          if (Array.isArray(item[1])) {
+            if (item[1].includes(true)) {
+              filter[item[0]] = []
+              return item[1].map((data, index) => { if (data === true) filter[item[0]].push(options[item[0]][index]) })
+            }
+          }
+          return
+        })
+        const filterWithSelector = {}
         activeFilterList.map((element) => {
-          for (let i = 0; i < Object.keys(options).length; i++) {
-            if (options[Object.keys(options)[i]].includes(element)) {
-              let a = Object.keys(options)[i]
-              if (arr[a]) {
-                arr[a].push(element)
-              } else {
-                arr[a] = [element]
-              }
+          const listOfSelector = Object.keys(options);
+          for (let i = 0; i < listOfSelector.length; i++) {
+            if (options[listOfSelector[i]].includes(element)) {
+              let type = listOfSelector[i]
+              if (filterWithSelector[type]) filterWithSelector[type].push(element)
+              else filterWithSelector[type] = [element]
             }
           }
         })
-        console.log(Object.keys(arr).length)
-        for (let i = 0; i < Object.keys(arr).length; i++) {
-          let element = Object.keys(arr)[i]
-          console.log(arr[element])
-          let f = filteredList.current.filter((item) => {
-            console.log(element, item.acf.characteristics)
+        for (let i = 0; i < Object.keys(filter).length; i++) {
+          let element = Object.keys(filter)[i];
+          const filteredPlants = filteredList.current.filter((item) => {
             if (element == "plant_type" || element == "type") {
-              console.log('sd')
-              return arr[element].includes(item.acf[element])
+              return filter[element].some(ai => item.acf[element].includes(ai));
             }
-            return arr[element].some(ai => item.acf.characteristics[element].includes(ai));
+            // console.log(filterWithSelector)
+            return filter[element].some(ai => item.acf.characteristics[element].includes(ai));
           })
-          console.log(f)
-          filteredList.current = f
+          filteredList.current = filteredPlants
         }
       }
     } catch (error) {
@@ -190,6 +194,7 @@ const Plants = ({
     router,
     activeFilterList,
     plant_type,
+    allType,
     localStore,
     currentPageNumber,
     currentPage,
@@ -295,6 +300,7 @@ const mapStateToProps = (state) => {
     grass_like_plants: state.post.grass_like_plants,
     isLoading: state.post.isLoading,
     activeFilterList: state.selector.activeFilterList,
+    allType: state.selector,
     plant_type: state.selector.plant_type,
     itemOffset: state.pagination.itemOffset,
     pageCount: state.pagination.pageCount,
