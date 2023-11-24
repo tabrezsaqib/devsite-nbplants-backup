@@ -435,7 +435,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
-                      {/* {plant_details.acf.family_english} */}
                       <span className="familyLink" onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.family_english)}</span>
                     </div>
                   )}
