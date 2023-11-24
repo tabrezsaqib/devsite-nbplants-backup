@@ -55,7 +55,10 @@ const ListPlantSpecies = ({
           <div className="info-section d-flex align-items-center justify-content-center">
             <div className="d-flex flex-column text-center">
               <img src="../../images/no_result_found.png" alt="" />
-              <h3>Oops! No data found!</h3>
+              <h3>Oops! No data found!
+                <br></br>
+                Site in progress. Not all species available yet.
+              </h3>
             </div>
           </div>
         )
