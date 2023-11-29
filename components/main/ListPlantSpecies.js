@@ -7,6 +7,7 @@ import * as options from "../../data/sideNavListDataArray"
 import styles from "../../styles/Global.module.scss"
 import loaderStyles from "../../styles/Loader.module.scss"
 import LoaderThumbnail from "./LoaderThumbnail"
+import SelectedFilter from "./selectedFilter"
 
 const ListPlantSpecies = ({
   plants_list,
@@ -19,6 +20,8 @@ const ListPlantSpecies = ({
   const loaderDataCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
   return (
+  <div >
+    <SelectedFilter />
     <div className="d-flex flex-wrap">
       {filteredList.length > 0 ? (
         filteredList.map((data, index) => {
@@ -63,7 +66,7 @@ const ListPlantSpecies = ({
             </div>
           </div>
         )
-      )}
+      )}</div>
       <style jsx>{`
         .box-container {
           background-color: #ffffff;
