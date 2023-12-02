@@ -248,8 +248,8 @@ export default function SelectedFilter() {
     return (
         <div style={{ marginLeft: '10px' }}>
             {activeFilterList.length >= 1 &&
-                <div style={{ marginBottom: '10px' }}> {activeFilterList.length} item(s) Selected.
-                    <span className='linklike' onClick={handleClearAll} >Clear All</span></div>}
+                <div style={{ marginBottom: '10px', fontSize:'14px' }}> {activeFilterList.length} item(s) Selected.
+                    <span className='linklike' onClick={handleClearAll} ><b>Clear All</b></span></div>}
             <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
                 {Object.keys(listOfSelector).map((option, index) => (
                     listOfSelector[option].map((name, i) => (
@@ -260,7 +260,7 @@ export default function SelectedFilter() {
             <style jsx>
                 {`.linklike{
                         text-decoration: underline;
-                        color: #0d6efd;
+                        color:  #198754;
                         cursor: pointer;
                         margin-left: 5px;
                 }`}

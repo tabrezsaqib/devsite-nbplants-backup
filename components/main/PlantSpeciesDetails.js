@@ -782,7 +782,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 { ( plant_details.acf.characteristics.leaf_duration.length !== 0 || plant_details.acf.characteristics.leaf_type.length !== 0 ||
                   plant_details.acf.characteristics.leaf_arrangement.length !== 0 || plant_details.acf.characteristics.leaf_blade_edges.length !== 0 ||
                   plant_details.acf.characteristics.leaf_shape.length !== 0 || plant_details.acf.characteristics.leaf_number || 
-                  plant_details.acf.characteristics.leaflet_divisions  || plant_details.acf.characteristics.leaves_per_node || 
+                  plant_details.acf.characteristics.leaflet_divisions.length !==0  || plant_details.acf.characteristics.leaves_per_node || 
                   plant_details.acf.characteristics.leaf_description) &&
                 <div className="accordion mb-3" id="accordion2">
                   <div className="accordion-item">
@@ -923,7 +923,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             </div>
                           )}
                           {plant_details.acf.characteristics
-                            .leaflet_divisions && (
+                            .leaflet_divisions.length>0 && (
                             <div className="d-flex label-value-section">
                               <p>
                                 <strong>Leaflet Divisions: &nbsp;</strong>
