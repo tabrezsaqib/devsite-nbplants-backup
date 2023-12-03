@@ -8,6 +8,7 @@ import styles from "../../styles/Global.module.scss"
 import loaderStyles from "../../styles/Loader.module.scss"
 import LoaderThumbnail from "./LoaderThumbnail"
 import SelectedFilter from "./selectedFilter"
+import { useEffect, useState } from "react"
 
 const ListPlantSpecies = ({
   plants_list,
@@ -18,13 +19,23 @@ const ListPlantSpecies = ({
   // let filteredList
   const router = useRouter()
   const loaderDataCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const [filteredListSorted, setFilteredListSorted] = useState([])
+  useEffect(() => {
+    const sorted = [...filteredList].sort((a, b) => {
+      if (a.title.rendered && b.title.rendered)
+      return a.title.rendered.localeCompare(b.title.rendered)
+      else
+      return a.title.localeCompare(b.title)
+    });
+    setFilteredListSorted(sorted)
+  }, [filteredList])
 
   return (
   <div >
     <SelectedFilter />
     <div className="d-flex flex-wrap">
-      {filteredList.length > 0 ? (
-        filteredList.map((data, index) => {
+      {filteredListSorted.length > 0 ? (
+        filteredListSorted.map((data, index) => {
           return (
             <div
               key={data.id}
@@ -53,7 +64,7 @@ const ListPlantSpecies = ({
           ))}
         </div>
       ) : (
-        filteredList.length == 0 &&
+        filteredListSorted.length == 0 &&
         activeFilterList.length > 0 && (
           <div className="info-section d-flex align-items-center justify-content-center">
             <div className="d-flex flex-column text-center">
