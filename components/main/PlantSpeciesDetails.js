@@ -14,6 +14,7 @@ import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
+import FamilyDetails from "../families/familyDetails"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -231,6 +232,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div></>:""}
               </div>
+              {plant_details.acf.similar_species &&
+                    <div>
+                      <br></br>
+                      <p><strong>Explore Similar Plants</strong></p>
+                      <FamilyDetails plant_id={plant_details.acf.similar_species} />
+                      {/* <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} /> */}
+                    </div>
+              }
               <div
                 className="modal fade"
                 id="exampleModal"
@@ -407,7 +416,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   )}
                 </div>
               </div>
-              <div className="d-flex">
                 {plant_details.acf.wolastoqey && (
                   <div className="d-flex">
                     <p>
@@ -416,7 +424,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>{ReactHtmlParser(plant_details.acf.wolastoqey)}</p>
                   </div>
                 )}
-                &nbsp;&nbsp;
                 {plant_details.acf.migmaq && (
                   <div className="d-flex">
                     <p>
@@ -425,7 +432,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <p>{ReactHtmlParser(plant_details.acf.migmaq)}</p>
                   </div>
                 )}
-              </div>
               {plant_details.acf.plant_family && (
                 <div className="d-flex label-value-section">
                   <p>

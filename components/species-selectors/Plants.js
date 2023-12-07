@@ -64,7 +64,7 @@ const Plants = ({
     filteredList.current = plant_data
     try {
       if (activeFilterList.length === 0) {
-        return (filteredList.current = plant_data)
+        return (filteredList.current = plant_data) 
       } else {
         let filter = {}
         Object.entries(allType).map((item) => {
