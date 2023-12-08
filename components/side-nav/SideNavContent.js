@@ -89,13 +89,20 @@ const SideNavContent = ({
     },
     {
       key: "leaf_shape",
-      group: (plant_type[0] === false && plant_type[1] === false && fruit_type[9] === false) && "leaves",
+      group: (router.query.type != "Fern" && plant_type[0] === false && plant_type[1] === false && fruit_type[9] === false) && "leaves",
       value: "Leaf Shape",
     },
     {
       key: "leaf_type",
       group: (plant_type[1] === false) && "leaves",
       value: "Leaf Type",
+    },
+    {
+      key: "leaflet_divisions",
+      group:
+        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true || fruit_type[9] === true) && (leaf_type[0] === true) &&
+        "leaves",
+      value: "Leaflet Divisions",
     },
     {
       key: "leaf_duration",
@@ -123,20 +130,13 @@ const SideNavContent = ({
       value: "Spore Covering",
     },
     {
-      key: "leaflet_divisions",
-      group:
-        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true || fruit_type[9] === true) &&
-        "leaves",
-      value: "Leaflet Divisions",
-    },
-    {
       key: "stems",
       group: "none",
       value: "Stems and/or Twigs",
     },
     {
       key: "growth_form",
-      group: (plant_type[1] === false) && "initial",
+      group: (router.query.type != "Fern" && plant_type[0] === false && plant_type[1] === false) && "initial",
       value: "Growth Form",
     },
     {
@@ -206,7 +206,7 @@ const SideNavContent = ({
       label: "black",
     },
   ]
-
+  
   let id = 0
   const dispatch = useDispatch()
   const getOption = (key) => {
@@ -286,7 +286,7 @@ const SideNavContent = ({
               </div>
             ))}
             {key == "flower_colour" || "fruit_color" ? <span>&nbsp;&nbsp;</span> : <span></span>}
-            {api.capitalizeFirstLetter(data === 'Fern'? 'Fern / Fern Ally':data === 'Non-woody'?'All Other Plants': data)}
+            {api.capitalizeFirstLetter(data === 'Fern'? 'Ferns / Fern Allies':data === 'Non-woody'?'All Other Plants': data)}
           </label>
         </div>
       )
