@@ -100,7 +100,7 @@ const SideNavContent = ({
     {
       key: "leaflet_divisions",
       group:
-        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true || fruit_type[9] === true) && (leaf_type[0] === true) &&
+        (router.query.type == "Woody" || router.query.type == "Fern"|| plant_type[0] === true || plant_type[2] === true || fruit_type[9] === true) &&
         "leaves",
       value: "Leaflet Divisions",
     },

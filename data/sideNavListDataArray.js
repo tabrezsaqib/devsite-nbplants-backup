@@ -124,10 +124,11 @@ const spore_under_leaf = ["away from edge", "edge"]
 //   const newArray = inflorescence.filter((v) => !removeItems.includes(v))
 //   inflorescence = newArray
 // }
-// if (router.query.type == router.query.type == "Fern"){
-//   let removeItems = ["4-9", "10 or more"]
-//   const newArray = leaflet_divisions.filter((v) => !removeItems.includes(v))
-//   leaflet_divisions = newArray
+
+// if (param !== "Woody") {
+//   let removeItems = ["maple-like", "scales", "needles"]
+//   const newArray = leaf_shape.filter((v) => !removeItems.includes(v))
+//   leaf_shape = newArray
 // }
 
 export {
