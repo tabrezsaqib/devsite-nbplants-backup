@@ -14,7 +14,7 @@ const ListPlantSpecies = ({
   plants_list,
   activeFilterList,
   isLoading,
-  filteredList,
+  filteredList, pg, rpg
 }) => {
   // let filteredList
   const router = useRouter()
@@ -35,7 +35,7 @@ const ListPlantSpecies = ({
     <SelectedFilter />
     <div className="d-flex flex-wrap">
       {filteredListSorted.length > 0 ? (
-        filteredListSorted.map((data, index) => {
+        filteredListSorted.slice(pg * rpg, pg * rpg + rpg).map((data, index) => {
           return (
             <div
               key={data.id}

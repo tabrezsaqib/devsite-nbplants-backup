@@ -87,7 +87,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     <div className="mt-3">
       {plant_details.length !== 0 ? (
         <div className="row" key={plant_details.id}>
-          <div className="col-lg-3">
+          <div className="col-lg-3" style={{borderRight: '1px solid #e0e1e3'}}> 
             <div className="side-bar">
               <div className={styles.intro_media_mobile}>
                 <div className="d-flex justify-content-between">
@@ -1262,7 +1262,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .content-section {
           background-color: #ffffff;
           margin: 15px 0px;
-          border-left: 1px solid #e0e1e3;
         }
         .img-container {
           border-radius: 12px;
