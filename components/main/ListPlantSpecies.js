@@ -35,7 +35,9 @@ const ListPlantSpecies = ({
     <SelectedFilter />
     <div className="d-flex flex-wrap">
       {filteredListSorted.length > 0 ? (
-        filteredListSorted.slice(pg * rpg, pg * rpg + rpg).map((data, index) => {
+        ((rpg && pg >= 0)?filteredListSorted.slice(pg * rpg, pg * rpg + rpg):filteredListSorted).map((data, index) => {
+        // filteredListSorted.slice(pg * rpg, pg * rpg + rpg).map((data, index) => {
+        // filteredListSorted.map((data, index) => {
           return (
             <div
               key={data.id}

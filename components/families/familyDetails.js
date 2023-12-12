@@ -5,13 +5,18 @@ import ReactHtmlParser from "react-html-parser"
 import { useRouter } from 'next/router'
 import ListPlantSpecies from '../main/ListPlantSpecies'
 import styles from "../../styles/SearchResults.module.css"
+import Collapse from '@mui/material/Collapse';
 
 const SEARCH_URL = process.env.SEARCH_URL
+
+const API_POST_URL = process.env.API_POST_URL
 
 const FamilyDetails = ({ plant_id }) => {
     const [plantFamily, setPlantFamily] = useState([]);
     const [isLoading, setLoading] = useState(true)
     const router = useRouter()
+    const [isReadMore, setIsReadMore] = useState(true);
+    const toggleReadMore = () => { setIsReadMore(!isReadMore) };
 
     useEffect(() => {
 
@@ -72,7 +77,16 @@ const FamilyDetails = ({ plant_id }) => {
                         </div>
                         <div className="d-flex flex-column">
                             <div className="rtc-content">
+                                {/* {ReactHtmlParser(plantFamily[0].acf.family_description)} */}
+                                {isReadMore ? ReactHtmlParser(plantFamily[0].acf.family_description.slice(0, 1500)) 
+                                : <Collapse orientation="horizontal" in={true}> 
                                 {ReactHtmlParser(plantFamily[0].acf.family_description)}
+                                </Collapse>}
+                                    {plantFamily[0].acf.family_description.length > 1500 &&
+                                        <span onClick={toggleReadMore}>
+                                            <div className="moreLink">   {isReadMore ? 'Read more' : 'Show less'}</div>
+                                        </span>
+                                    }
                             </div>
                         </div></>}
                         <div >
@@ -87,6 +101,11 @@ const FamilyDetails = ({ plant_id }) => {
         .heading {
           font-size: 2rem;
           color: #0e9d47;
+        }
+        .moreLink{
+            cursor: pointer;
+            text-decoration: underline;
+            color: #0e9d47;
         }
         .site-in-progress{
           margin-top: 30px;
