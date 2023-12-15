@@ -84,7 +84,7 @@ const FamilyDetails = ({ plant_id }) => {
                                 </Collapse>}
                                     {plantFamily[0].acf.family_description.length > 1500 &&
                                         <span onClick={toggleReadMore}>
-                                            <div className="moreLink">   {isReadMore ? 'Read more' : 'Show less'}</div>
+                                            <div className="moreLink">   {isReadMore ? '...so ...Read more' : 'Show less'}</div>
                                         </span>
                                     }
                             </div>

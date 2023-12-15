@@ -81,7 +81,7 @@ const ListPlantSpecies = ({
           border-radius: 15px;
           border: 1px solid #e0e1e3;
           flex-grow: 1;
-          width: 240px;
+          width: 200px;
         }
         .info-section {
           height: 100%;
