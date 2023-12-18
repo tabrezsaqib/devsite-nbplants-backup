@@ -34,12 +34,15 @@ const SearchResults = ({ search_results }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!router.isReady) return
-    if (router.query.keyword) {
-      setHasSearchKeyWord(true)
-      dispatch(searchByKeyword(router.query.keyword))
-      setLoading(false)
+    async function fetch() {
+      if (!router.isReady) return
+      if (router.query.keyword) {
+        setHasSearchKeyWord(true)
+        dispatch(searchByKeyword(router.query.keyword))
+        setLoading(false)
+      }
     }
+    fetch();
   }, [
     dispatch,
     router,
