@@ -38,7 +38,7 @@ const SearchResults = ({ search_results }) => {
       if (!router.isReady) return
       if (router.query.keyword) {
         setHasSearchKeyWord(true)
-        dispatch(searchByKeyword(router.query.keyword))
+        await dispatch(searchByKeyword(router.query.keyword))
         setLoading(false)
       }
     }
