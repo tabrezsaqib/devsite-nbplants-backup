@@ -48,7 +48,7 @@ const SideNavContent = ({
     if (router.query.type == "Fern" || plant_type[0] === true) {
       setSelector({ ...options, 'leaflet_divisions': options.leaflet_divisions.slice(0, 3), 'stems': options.stems.slice(0, 3) })
     }
-    if (router.query.type == "Woody" || plant_type[2] === true) {
+    else if (router.query.type == "Woody" || plant_type[2] === true) {
       setSelector({ ...options, 'leaf_type': options.leaf_type.slice(0, 3), 'growth_form': [...options.growth_form.slice(0,1),...options.growth_form.slice(2)], 'habitat': options.habitat.slice(1,3),  'stems': [...options.stems.slice(0, 1), ...options.stems.slice(2,4)]})
     }
     else{
