@@ -59,6 +59,10 @@ const Plants = ({
   const [rowsPerPage, setRowsPerPage] = useState(20);
 
   const handleChangePage = (event, newPage) => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
     setPage(newPage);
   }
 
