@@ -137,12 +137,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       onClick={() => slideShow(index)}>
-                      <img src={item.thumbnail_image_url} alt="plant image" />
+                      <img src={item.thumbnail_image_url} alt="plant image" onContextMenu={(e)=>e.preventDefault()} />
                     </div>
                   ))
                 ) : (
                   <div className="d-flex flex-column text-center stock-img-container">
-                    <img src="../../images/no_result_found.png" alt="" />
+                    <img src="../../images/no_result_found.png" alt="" onContextMenu={(e)=>e.preventDefault()} />
                     <span>Oops! No images found!</span>
                   </div>
                 )}
@@ -188,13 +188,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       data-bs-target="#featured-image">
                       {plant_details.featured_image.image_url == null ? (
                         <div className="d-flex flex-column text-center stock-img-container">
-                          <img src="../../images/no_result_found.png" alt="" />
+                          <img src="../../images/no_result_found.png" alt="" onContextMenu={(e)=>e.preventDefault()} />
                           <span>Oops! No images found!</span>
                         </div>
                       ) : (
                         <img
                           src={plant_details.featured_image.image_url}
-                          alt="plant image"
+                          alt="plant image" onContextMenu={(e)=>e.preventDefault()}
                         />
                       )}
                     </div>
@@ -225,7 +225,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         ) : (
                           <img
                             src={`../../images/maps/${plant_details.acf.distribution_map_id}.jpg`}
-                            alt="Distribution map"
+                            alt="Distribution map" onContextMenu={(e)=>e.preventDefault()}
                           />
                         )}
                       </div>
@@ -263,7 +263,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               plant_details.acf.image_url.length > 0 &&
                               plant_details.acf.image_url.map((item, index) => (
                                 <div className="each-slide" key={index}>
-                                  <div
+                                  <div onContextMenu={(e)=>e.preventDefault()}
                                     style={{
                                       backgroundImage: `url(${
                                         plant_details.acf.image_url[
@@ -312,7 +312,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           <div className="d-flex flex-column text-center stock-img-container">
                             <img
                               src="../../images/no_result_found.png"
-                              alt=""
+                              alt="" onContextMenu={(e)=>e.preventDefault()}
                             />
                             {/* <h3>Oops! No images found!</h3> */}
                           </div>
@@ -320,7 +320,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           <div>
                             <img
                               src={plant_details.featured_image.image_url}
-                              alt="plant image"
+                              alt="plant image" onContextMenu={(e)=>e.preventDefault()}
                             />
                             <p className="img-caption">
                               {plant_details.featured_image.caption}
@@ -354,7 +354,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             <div className="d-flex flex-column text-center stock-img-container">
                               <img
                                 src="../../images/no_result_found.png"
-                                alt=""
+                                alt="" onContextMenu={(e)=>e.preventDefault()}
                               />
                               {/* <h3>Oops! No images found!</h3> */}
                             </div>
@@ -362,7 +362,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             <div>
                               <img
                                 src={`../../images/maps/${plant_details.acf.distribution_map_id}.jpg`}
-                                alt="Distribution map"
+                                alt="Distribution map" onContextMenu={(e)=>e.preventDefault()}
                               />
                               <p className="img-caption">
                                <span>Source: </span>AC CDC 2019
