@@ -70,6 +70,9 @@ const ListPlantSpecies = ({
                 <br></br>
                 <br></br>
                 <h3>Oops! No data found!</h3>
+                <div className="site-in-progress">
+                            Site in progress. All species may not be available yet.
+                </div>
               </div>
             </div>
           )
@@ -93,6 +96,12 @@ const ListPlantSpecies = ({
             left: 58%;
             width: 80px;
           }
+        }
+        .site-in-progress{
+          margin-top: 30px;
+          margin-bottom:50px;
+          text-align: center;
+          font-size: 20px;
         }
 
         :global(.thumbnails:hover) {
