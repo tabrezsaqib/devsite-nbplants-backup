@@ -5,6 +5,7 @@ import ReactHtmlParser from "react-html-parser"
 import { useRouter } from 'next/router'
 import ListPlantSpecies from '../main/ListPlantSpecies'
 import styles from "../../styles/SearchResults.module.css"
+import TablePagination from '@mui/material/TablePagination';
 
 const SEARCH_URL = process.env.SEARCH_URL
 
@@ -12,20 +13,34 @@ const ConservationRankDetails = ({ plant_id }) => {
     const [plantFamily, setPlantFamily] = useState([]);
     const [isLoading, setLoading] = useState(true)
     const router = useRouter();
+    const [page, setPage] = useState(1);
+    const [rowsPerPage, setRowsPerPage] = useState(20);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+        fetchDetails(router.query.keyword, newPage, rowsPerPage)
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(1);
+        fetchDetails(router.query.keyword, 0, parseInt(event.target.value, 10))
+    };
 
     useEffect(() => {
         async function fetch() {
             if (!router.isReady) return
             if (router.query.keyword) {
-                fetchDetails(router.query.keyword);
+                fetchDetails(router.query.keyword, page, rowsPerPage);
             }
         }
         fetch()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router, router.isReady, router.query.keyword])
 
-    const fetchDetails = async (char) => {
-        const response = await api.get(`${SEARCH_URL}search?keyword=${char}&per_page=50`)
+    const fetchDetails = async (char, pg, rpg) => {
+        setLoading(true)
+        const response = await api.get(`${SEARCH_URL}search?keyword=${char}&per_page=${rpg}&page=${pg}`)
         setLoading(false)
         const filtered = response.data.filter((res) => { console.log(res.acf.conservation_rank); if (res.acf.conservation_rank) return res.acf.conservation_rank.includes(char) })
         setPlantFamily(filtered)
@@ -46,16 +61,36 @@ const ConservationRankDetails = ({ plant_id }) => {
                                 </h2>
                             </div>
                         </div> </>
-
-                    <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} />
+                    {plantFamily.length > 0 ?
+                        <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} /> :
+                        <div className="NoData">No Data. Site in progress. All species may not be available yet.</div>}
+                    <div className="d-flex">
+                        <TablePagination
+                            component="div"
+                            count={-1}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            rowsPerPage={rowsPerPage}
+                            showFirstButton
+                            showLastButton
+                            labelRowsPerPage="Species Per Page:"
+                            rowsPerPageOptions={[20, 30, 50]}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                            sx={{ padding: 0 }}
+                        /></div>
                     <div className="site-in-progress">
-                        Site in progress. Not all species yet available.
+                        Site in progress. All species may not be available yet.
                     </div>
                 </div>}
             <style jsx>{`
         .heading {
           font-size: 2rem;
           color: #0e9d47;
+        }
+        .NoData{
+            text-align: center;
+            font-size: x-large;
+            margin: 7%;
         }
         .site-in-progress{
           margin-top: 30px;
