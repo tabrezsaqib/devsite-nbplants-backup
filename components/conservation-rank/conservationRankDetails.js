@@ -46,6 +46,18 @@ const ConservationRankDetails = ({ plant_id }) => {
         setPlantFamily(filtered)
     }
 
+    const formatCase = (data) => {
+        if (data.search('sna') >= 0 || data.search('Sna') >= 0) {
+            return data.replace(/sna/ig, 'SNA')
+        } else {
+            return data
+        }
+    }
+
+    const capitalizeAfterColon = (inputString) => {
+        return inputString.replace(/(:\s*\w)/g, match => match.toUpperCase());
+    }
+
     return (
         <>
             {isLoading ? (
@@ -57,7 +69,7 @@ const ConservationRankDetails = ({ plant_id }) => {
                         <div className="d-flex flex-column mt-2">
                             <div className="d-flex">
                                 <h2 className="heading">
-                                    <i>{api.capitalizeFirstLetter(router.query.keyword)}</i>
+                                    <i>{api.capitalizeFirstLetter(formatCase(capitalizeAfterColon(router.query.keyword)))}</i>
                                 </h2>
                             </div>
                         </div> </>

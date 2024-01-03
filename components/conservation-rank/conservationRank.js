@@ -45,6 +45,10 @@ const ConservationRank = () => {
         }
     }
 
+    const capitalizeAfterColon = (inputString) => {
+        return inputString.replace(/(:\s*\w)/g, match => match.toUpperCase());
+    }
+
     return (
         <>
             {isLoading ? (
@@ -60,7 +64,7 @@ const ConservationRank = () => {
                                 <span className="familyLink"
                                     onClick={() => loadPlantFamily(family)}>
 
-                                    {api.capitalizeFirstLetter(formatCase(family))}
+                                    {api.capitalizeFirstLetter(formatCase(capitalizeAfterColon(family)))}
                                 </span>
                             </div></>))
                         }</div>
