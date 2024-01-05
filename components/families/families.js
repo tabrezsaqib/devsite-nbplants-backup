@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import ReactHtmlParser from "react-html-parser"
 import Router from "next/router"
-import Link from "next/link";
 import styles from "../../styles/SearchResults.module.css"
 
 import * as api from "../../generics/api"
@@ -52,7 +51,7 @@ const Families = () => {
                                 /
                                 <span className="familyEnglish"
                                     onClick={() => loadPlantFamily(plantFamily[family][0]['acf']['plant_family'])}>
-                                    {ReactHtmlParser(plantFamily[family][0]['acf']['family_english'])}
+                                    {plantFamily[family][0]['acf']['family_english'] ? plantFamily[family][0]['acf']['family_english'] : '-'}
                                 </span>
                             </div></>))
                         }</div>
