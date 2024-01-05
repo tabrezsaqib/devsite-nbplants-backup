@@ -50,7 +50,10 @@ const Families = () => {
                                     {ReactHtmlParser(plantFamily[family][0]['acf']['plant_family'])}
                                 </span>
                                 /
-                                <span className="familyEnglish">{plantFamily[family][0]['acf']['family_english'] ? plantFamily[family][0]['acf']['family_english'] : '-'}</span>
+                                <span className="familyEnglish"
+                                    onClick={() => loadPlantFamily(plantFamily[family][0]['acf']['plant_family'])}>
+                                    {ReactHtmlParser(plantFamily[family][0]['acf']['family_english'])}
+                                </span>
                             </div></>))
                         }</div>
                 </div>}
@@ -71,6 +74,7 @@ const Families = () => {
         }
         .familyEnglish{
             margin-left:8px;
+            cursor: pointer
         }`}</style>
         </>
     )
