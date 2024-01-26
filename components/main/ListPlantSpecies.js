@@ -3,7 +3,6 @@ import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import PlantSpecies from "./PlantSpecies"
-import * as options from "../../data/sideNavListDataArray"
 import styles from "../../styles/Global.module.scss"
 import loaderStyles from "../../styles/Loader.module.scss"
 import LoaderThumbnail from "./LoaderThumbnail"
@@ -11,12 +10,10 @@ import SelectedFilter from "./selectedFilter"
 import { useEffect, useState } from "react"
 
 const ListPlantSpecies = ({
-  plants_list,
   activeFilterList,
   isLoading,
   filteredList, pg, rpg
 }) => {
-  const router = useRouter()
   const loaderDataCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const [filteredListSorted, setFilteredListSorted] = useState([])
   useEffect(() => {

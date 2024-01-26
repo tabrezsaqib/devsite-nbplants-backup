@@ -6,6 +6,8 @@ import styles from "../../styles/Global.module.scss"
 import Ferns from "../species-selectors/Ferns"
 import GrassLike from "../species-selectors/GrassLike"
 import localstyles from "../../styles/SpeciesOption.module.css"
+import Link from "next/link"
+
 
 const SpeciesOption = () => {
   const optionSelector = (type) => {
@@ -17,7 +19,7 @@ const SpeciesOption = () => {
           type: "Woody",
         },
       }).then(() => {
-        Router.reload()
+        // Router.reload()
       })
     }
     if (type == "Non-woody") {
@@ -28,7 +30,7 @@ const SpeciesOption = () => {
           type: "Non-woody",
         },
       }).then(() => {
-        Router.reload()
+        // Router.reload()
       })
     }
     if (type == "Fern") {
@@ -39,7 +41,7 @@ const SpeciesOption = () => {
           type: "Fern",
         },
       }).then(() => {
-        Router.reload()
+        // Router.reload()
       })
     }
     if (type == "Grass") {
@@ -48,7 +50,7 @@ const SpeciesOption = () => {
       "/grass"
       )
       .then(() => {
-        Router.reload()
+        // Router.reload()
       })
     }
   }
@@ -59,9 +61,9 @@ const SpeciesOption = () => {
           styles.responsive_selection_blocks,
           "selection-blocks d-flex align-items-center justify-content-evenly",
         ].join(" ")}>
-        <a className={localstyles.speciesLink} onClick={() => optionSelector("Fern")}>
-          <Ferns />
-        </a>
+          <a className={localstyles.speciesLink} onClick={() => optionSelector("Fern")}>
+            <Ferns />
+          </a>
         <a className={localstyles.speciesLink} onClick={() => optionSelector("Grass")} 
         // className="disabled"
         >

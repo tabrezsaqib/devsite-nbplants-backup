@@ -51,7 +51,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         pathname: "/plantFamilyDetails",
         query: { keyword: param },
       }).then(() => {
-        Router.reload()
+        // Router.reload()
       })
     }
   }
@@ -223,7 +223,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         data-bs-target="#distribution-map">
                            {plant_details.acf.distribution_map_id == '' ? (
                           <div className="d-flex flex-column text-center stock-img-container">
-                            <img src="../../images/no_result_found.png" alt="" />
+                            <img src="../../images/no_result_found.png" alt="" onContextMenu={(e)=>e.preventDefault()}/>
                             <span>Oops! No images found!</span>
                           </div>
                         ) : (
