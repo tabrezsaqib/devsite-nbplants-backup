@@ -91,15 +91,6 @@ const Plants = ({ all_plants, nonwoody_plants,woody_plants, ferns, isLoading, ac
           filterPlantsTypeData(all_plants)
         }
       }
-
-      else if (router.query.type == "Fern") {
-        if (ferns.length === 0) {
-          await dispatch(fetchFernPosts(router.query.type))
-        } else {
-          filterPlantsTypeData(ferns)
-        }
-      }
-
       else if (router.query.type == "Woody") {
         if (woody_plants.length === 0) {
           await dispatch(fetchWoodyPlantPosts(router.query.type))
@@ -109,12 +100,18 @@ const Plants = ({ all_plants, nonwoody_plants,woody_plants, ferns, isLoading, ac
         }
 
       }
-
       else if (router.query.type == "Non-woody") {
         if (nonwoody_plants.length === 0) {
           await dispatch(fetchNonWoodyPlantPosts(router.query.type))
         } else {
           await filterPlantsTypeData(nonwoody_plants)
+        }
+      }
+      else if (router.query.type == "Fern") {
+        if (ferns.length === 0) {
+          await dispatch(fetchFernPosts(router.query.type))
+        } else {
+          filterPlantsTypeData(ferns)
         }
       }
     }
