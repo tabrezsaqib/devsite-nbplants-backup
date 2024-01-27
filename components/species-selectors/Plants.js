@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { connect, useDispatch } from "react-redux"
 import { useRouter } from "next/router"
-import { fetchNonWoodyPlantPosts, fetchWoodyPlantPosts, fetchFernPosts } from "../../redux/actions/getPlantsAction"
+import { fetchNonWoodyPlantPosts, fetchWoodyPlantPosts, fetchFernPosts , fetchAllPlantPosts} from "../../redux/actions/getPlantsAction"
 import TablePagination from '@mui/material/TablePagination';
 import ListPlantSpecies from "../main/ListPlantSpecies"
 import SideNav from "../side-nav/SideNav"
