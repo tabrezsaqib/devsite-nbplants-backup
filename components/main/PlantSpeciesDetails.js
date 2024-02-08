@@ -7,6 +7,8 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
+import mapGreen from "../../public/images/map-green.png"
+import mapGrey from "../../public/images/map-grey.png"
 
 
 import Header from "../layouts/Header"
@@ -208,7 +210,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
               <div>
                   {plant_details.acf.distribution_map_id ? <>
                   <p>
-                    <strong>Distribution </strong><span style={{float:'right', fontSize:'12px'}}>Source: AC CDC 2019</span> 
+                    <strong>Distribution </strong><span style={{float:'right', fontSize:'12px'}}>Source: AC CDC, 2023</span>
                   </p>
                   <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -368,7 +370,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 alt="Distribution map" onContextMenu={(e)=>e.preventDefault()}
                               />
                               <p className="img-caption">
-                               <span>Source: </span>AC CDC 2019
+                               <span>Source: </span>AC CDC, 2023
                               </p>
                             </div>
                           )}

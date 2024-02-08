@@ -23,7 +23,7 @@ function Glossary  () {
       
         <iframe 
         className={styles.glossaryPageContent}
-        src="https://api-v2.newbrunswickplants.ca/glossary/"
+        src="https://devsite-nbplants.api-v2.newbrunswickplants.ca/glossary/"
 frameBorder="0"
         >
         </iframe>
