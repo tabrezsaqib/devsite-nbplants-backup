@@ -7,8 +7,6 @@ import { useRouter } from "next/router"
 import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
-import mapGreen from "../../public/images/map-green.png"
-import mapGrey from "../../public/images/map-grey.png"
 
 
 import Header from "../layouts/Header"
