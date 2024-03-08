@@ -43,9 +43,13 @@ const ConservationRankDetails = ({ plant_id }) => {
     const fetchDetails = async (char) => {
         setLoading(true)
         let arr = []
-        for (let i = 0; i < all_plants.length; i++) {
-            if (all_plants[i].acf.conservation_rank.includes(char))
-                arr.push(all_plants[i])
+        try {
+            for (let i = 0; i < all_plants.length; i++) {
+                if (all_plants[i].acf.conservation_rank.includes(char))
+                    arr.push(all_plants[i])
+            }
+        } catch (error) {
+            setIsError(true)
         }
         // const response = await api.get(`${SEARCH_URL}search?keyword=${char}&per_page=${rpg}&page=${pg}`)
         setLoading(false)
