@@ -165,16 +165,22 @@ export const searchByKeyword = (slug) => async (dispatch) => {
   const response = await api.get(`${API_URL}plants_db_search?plant_type=${slug}`);
   /// const filtered = response.data.filter((res) => res.acf.plantsnb_id === char.replace(/\s+/g, ""))
   // const filteredRes = response.data.filter((data) => data.acf.common_name && (data.acf.family_english.indexOf(slug) !== -1))
-  if (response == null) {
+  try {
+    if (response == null) {
+      dispatch({
+        type: types.GET_SEARCH_RESULTS,
+        payload: response.data,
+      })
+    } else {
+      let sorted = response.data.sort((a, b) => a.acf.latin.localeCompare(b.acf.latin))
+      dispatch({
+        type: types.GET_SEARCH_RESULTS,
+        payload: sorted,
+      })
+    }
+  } catch (error) {
     dispatch({
-      type: types.GET_SEARCH_RESULTS,
-      payload: response.data,
-    })
-  } else {
-    let sorted = response.data.sort((a, b) => a.acf.latin.localeCompare(b.acf.latin))
-    dispatch({
-      type: types.GET_SEARCH_RESULTS,
-      payload: sorted,
+      type: types.IS_ERROR_SEARCH,
     })
   }
 }

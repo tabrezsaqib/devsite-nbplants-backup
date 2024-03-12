@@ -15,7 +15,8 @@ const initialState = {
   popoverData: [],
   popoverStatus: false,
   plantFamily: [],
-  plantsError:false
+  plantsError:false,
+  searchError: false
 }
 export const getPlantsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -29,6 +30,12 @@ export const getPlantsReducer = (state = initialState, action) => {
       return {
         ...state,
         plantsError: true,
+        isLoading: false,
+      }
+    case types.IS_ERROR_SEARCH:
+      return {
+        ...state,
+        searchError: true,
         isLoading: false,
       }
     case types.GET_NONWOODY_PLANTS:
@@ -70,6 +77,7 @@ export const getPlantsReducer = (state = initialState, action) => {
       return {
         ...state,
         search_results: action.payload,
+        searchError: false
       }
     case types.GET_ALL_PLANTS_COUNT:
       return {
