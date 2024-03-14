@@ -53,7 +53,6 @@ const ListPlantSpecies = ({
                 <div>
                 <Alert severity="error" >
                 <AlertTitle>Plant Not Found </AlertTitle>
-               This plant is not available now. Please check back again later.
             </Alert>
                 </div>
             )
