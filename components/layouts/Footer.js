@@ -1,25 +1,11 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-/* eslint-disable @next/next/no-img-element */
-import React, {Component} from "react"
-import Router from "next/router"
-import { useDispatch } from "react-redux"
-import { togglePagination } from "../../redux/actions/paginationAction"
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react"
+import Link from "next/link"
 import styles from "../../styles/Global.module.scss"
 import localstyles from "../../styles/Footer.module.css"
-import Link from "next/link"
 
 
-const Footer = () => {
-  const dispatch = useDispatch()
-  const refresh = () => {
-    dispatch(togglePagination(true))
-    Router.push({
-      pathname: "/plants",
-      query: { type: "all" },
-    }).then(() => {
-      Router.reload()
-    })
-  }
+function Footer() {
   return (
     <section className={[localstyles.footer, "footer"].join(" ")}>
       <div className="container">
