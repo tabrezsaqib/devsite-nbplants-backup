@@ -74,13 +74,30 @@ function ConservationRank() {
                                     {api.capitalizeFirstLetter(formatCase(capitalizeAfterColon(family)))}
                                 </span>
                             </div></>))
-                        }</div>
+                        }
+                        <div className="listOfPlants  col-sm-12 col-md-12  col-lg-12">
+                            <span className="invasiveLink"
+                                onClick={() => loadPlantFamily("Invasive")}>
+                                Invasive Species
+                            </span>
+                        </div>
+                        <br></br>
+                        <br></br>
+                        </div>
                 </div>}
             <style jsx>{`
         .familyLink {
             color: #0e9d47;
             font-style: italic;
             font-weight:bold;
+            margin-right: 8px;
+            font-size: 23px;
+            cursor: pointer
+        }
+        .invasiveLink {
+            color: #0e9d47;
+            font-weight:bold;
+            font-size: 2rem;
             margin-right: 8px;
             cursor: pointer
         }
