@@ -157,7 +157,8 @@ function ConservationRankDetails() {
                 <div style={{ margin: '10px' }}>
                         <div className="d-flex justify-content-between">
                         <h2 className="heading">
-                            <i>{router.query.keyword === 'Invasive' ? router.query.keyword + ' Plants' : api.capitalizeFirstLetter(formatCase(capitalizeAfterColon(router.query.keyword)))} </i>
+                            {router.query.keyword === 'Invasive' ? <div>{api.capitalizeFirstLetter(router.query.keyword)}  Plants</div> :
+                            <i> {api.capitalizeFirstLetter(formatCase(capitalizeAfterColon(router.query.keyword)))} </i>}
                         </h2>
                         <a className="d-flex back-arrow" style={{ cursor: 'pointer', color:'#0e9d47' }} onClick={() => router.back()}>
                             <h4>
@@ -167,11 +168,11 @@ function ConservationRankDetails() {
                         </a>
                     </div>
                     {router.query.keyword === 'Invasive' && <div className="d-flex flex-column">
-                        <div >
-                            <ClampedDiv>
+                        <div style={{ backgroundColor: '#f6f7f9', padding: '15px', borderRadius: '10px' }}>
                             Plants that have been “accidentally or deliberately introduced into ecosystems beyond their native range and whose introduction or spread
-negatively impacts the environment, economy, and/or society including human health.” - <br></br> <a class="links" href="https://www.nbinvasives.ca/" style={{color: '#1d9d47'}}target="_blank" rel="noopener noreferrer">New Brunswick Invasive Species Council</a>
-                            </ClampedDiv>
+                            negatively impacts the environment, economy, and/or society including human health.” -
+                            <a style={{color:'#0e9d47'}} href="https://www.nbinvasives.ca/" target="_blank">  <img style={{height:'30px', marginLeft:'10px'}} src="https://images.squarespace-cdn.com/content/v1/6144adb9289b694822c3db7b/d90bd94b-def7-4184-8aad-f84ffec19e9b/favicon.ico?format=100w"/>
+                             <i> New Brunswick Invasive Species Council</i></a>
                         </div>
                     </div>}
                     {plantFamily.length > 0 ?
