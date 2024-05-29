@@ -11,7 +11,7 @@ const plants = () => {
   return (
     <>
       <Head>
-        <title>{router.query.type == "all"? 'Species | New Brunswick Plants' : router.query.type + ' | New Brunswick Plants'}</title>
+        <title>{router.query.type == "all"? 'Species | NB Plants' : router.query.type + ' | NB Plants'}</title>
       </Head>
       <Navbar />
       <div>
