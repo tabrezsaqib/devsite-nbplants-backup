@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import * as api from "../../generics/api"
+import ErrorIcon from '@mui/icons-material/Error';
 
 const PlantItem = ({ plant }) => {
   return (
@@ -11,7 +12,8 @@ const PlantItem = ({ plant }) => {
             plant.acf.plant_type == "Fern") &&
           "content-box"
         }>
-        <div className="img-container">
+        <div className="img-container" style={{ position: 'relative' }}>
+        {plant.acf.characteristics.invasive &&  <ErrorIcon color="error" sx={{ position: 'absolute', right: '5px', top: '3px' }} />}
           <img
             src={
               plant.acf.gallery_view_image !== undefined && plant.acf.gallery_view_image
@@ -84,11 +86,11 @@ const PlantItem = ({ plant }) => {
           border-top-right-radius: 15px;
           border-top-left-radius: 15px;
           border-bottom: 1px solid #e0e1e3;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+        }
+        .img-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
         .description {
           padding: 5px 15px 15px;
