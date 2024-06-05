@@ -104,7 +104,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           <div className="col-lg-3" style={{borderRight: '1px solid #e0e1e3'}}> 
             <div className="side-bar">
               <div className={styles.intro_media_mobile}>
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between d-print-none">
                   <span>&nbsp;</span>
                   <a className="d-flex back-arrow" onClick={() => router.back()}>
                     <h4>
@@ -167,7 +167,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   plant_details.acf.image_url.length > 6 && (
                     <a
                       data-bs-toggle="modal"
-                      className="view-more"
+                      className="view-more d-print-none"
                       data-bs-target="#exampleModal"
                       onClick={() => slideShow(slideIndex)}>
                       View more
@@ -184,14 +184,14 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   <strong>Unique Characteristics</strong>
                 </p>
                 <div className="row">
-                  <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                  <div className="col-sm-10 col-md-10 col-lg-12 col-xl-6">
                     <div className="unique-characteristics">
                       {ReactHtmlParser(
                         plant_details.acf.unique_characteristics
                       )}
                     </div>
                   </div>
-                  <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                  <div className="col-sm-2 col-md-2 col-lg-12 col-xl-6">
                     <div
                       className={
                         plant_details.featured_image.image_url !== false || plant_details.featured_image.image_url !== null
@@ -215,12 +215,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 </div>
               </div>
-<br></br>
-              <div>
+              <br></br> 
+              <div className="d-none d-lg-block">
                   {plant_details.acf.distribution_map_id ? <>
                     <div className="row">
-                    <div className="col-md-12 col-lg-4">  <strong>Distribution </strong></div>
-                    <div className="col-md-12  col-lg-8">
+                    <div className="col-md-3 col-lg-4">  <strong>Distribution </strong></div>
+                    <div className="col-md-3  col-lg-8">
                     <span style={{float:'right', fontSize:'12px' , display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
                       Source: AC CDC, 2023
                         <span style={{ float: 'right', fontSize: '12px', textAlign:'right' }}>
@@ -233,7 +233,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div className="col-sm-6 col-md-6 col-lg-12 col-xl-12">
                       <div
                         className={
                           plant_details.acf.distribution_map_id !== ''
@@ -258,7 +258,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div></>:""}
               </div>
               {plant_details.acf.similar_species &&
-                    <div>
+                    <div className="d-none d-lg-block">
                       <br></br>
                       <p><strong>Explore Similar Plants</strong></p>
                       <FamilyDetails plant_id={plant_details.acf.similar_species} />
@@ -412,7 +412,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 "content-section",
               ].join(" ")}>
               <div className={styles.intro_media_desktop}>
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between d-print-none">
                   <span>&nbsp;</span>
                   <a className="d-flex back-arrow" onClick={() => router.back()}>
                     <h4>
@@ -1292,35 +1292,64 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   </div>
                 </div>
                )}
-                {/* {plant_details.acf.characteristics.wildlife_benefits && (
-                  <div className="d-flex label-value-section">
-                    <p>
-                      <strong>Wildlife Benefits: &nbsp;</strong>
-                    </p>
-                    {plant_details.acf.characteristics.wildlife_benefits}
-                  </div>
-                )} */}
-                <div className="mb-3">
-                  {/* {plant_details.acf.characteristics.uses && (
-                    <div className="d-flex flex-column">
-                      <p>
-                        <strong>Uses: </strong>
-                      </p>
-                      <div className="rtc-content">
-                        {ReactHtmlParser(plant_details.acf.uses)}
-                      </div>
-                    </div>
-                  )} */}
-                </div>
               </div>
             </div>
+            <div className="d-lg-none d-xl-none d-sm-block d-md-block">
+            {plant_details.acf.distribution_map_id ? <>
+                    <div className="row">
+                    <div className="col-md-3 col-lg-4">  <strong>Distribution </strong></div>
+                    <div className="col-md-3  col-lg-8">
+                    <span style={{float:'right', fontSize:'12px' , display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
+                      Source: AC CDC, 2023
+                        <span style={{ float: 'right', fontSize: '12px', textAlign:'right' }}>
+                        <div><span className="grey-dot"></span>
+                          Recent (&gt;= 2000)</div>
+                          <div> <span className="green-dot"></span>
+                          Historic (&lt; 2000)</div>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-sm-6 col-md-6 col-lg-12 col-xl-12">
+                      <div
+                        className={
+                          plant_details.acf.distribution_map_id !== ''
+                            ? "featured-image"
+                            : "featured-image disable-pointer-events"
+                        }
+                        data-bs-toggle="modal"
+                        data-bs-target="#distribution-map">
+                           {plant_details.acf.distribution_map_id == '' ? (
+                          <div className="d-flex flex-column text-center stock-img-container">
+                            <img src="../../images/no_result_found.png" alt="" onContextMenu={(e)=>e.preventDefault()}/>
+                            <span>Oops! No images found!</span>
+                          </div>
+                        ) : (
+                          <img
+                            src={`../../images/maps/${plant_details.acf.distribution_map_id}.png`}
+                            alt="Distribution map" onContextMenu={(e)=>e.preventDefault()}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div></>:""}
+            </div>
+            {plant_details.acf.similar_species &&
+                    <div className="d-lg-none d-xl-none d-sm-block d-md-block">
+                      <br></br>
+                      <p><strong>Explore Similar Plants</strong></p>
+                      <FamilyDetails plant_id={plant_details.acf.similar_species} />
+                      {/* <ListPlantSpecies filteredList={plantFamily} isLoading={isLoading} /> */}
+                    </div>
+              }
           </div>
         </div>
       ) : (
         <div style={{ margin: '5% 0 20% 0', padding: '0 5%' }}> <BrokenPageAlert /> </div>
       )}
       <style jsx>{`
-        .heading {
+         .heading {
           font-size: 2rem;
           color: #0e9d47;
         }
