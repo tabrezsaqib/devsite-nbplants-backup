@@ -533,7 +533,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   {plant_details.acf.family_english?<span>&#x3B;&nbsp;</span> : ""}
                   {plant_details.acf.family_english && (
                     <div className="d-flex">
-                      <span className="familyLink" onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.family_english)}</span>
+                      <span className="familyEnglish" onClick={() => loadPlantFamily(plant_details.acf.plant_family)}> {ReactHtmlParser(plant_details.acf.family_english)}</span>
                     </div>
                   )}
                 </div>
@@ -1515,6 +1515,10 @@ const PlantSpeciesDetails = ({ plant_details }) => {
         .familyLink{
           color: #0e9d47;
           font-style: italic;
+          font-weight: bold;
+          cursor: pointer
+        }
+        .familyEnglish{
           font-weight: bold;
           cursor: pointer
         }
