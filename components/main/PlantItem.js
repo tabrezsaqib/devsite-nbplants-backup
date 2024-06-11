@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import * as api from "../../generics/api"
-import ErrorIcon from '@mui/icons-material/Error';
+import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 
 const PlantItem = ({ plant }) => {
   return (
@@ -13,7 +13,7 @@ const PlantItem = ({ plant }) => {
           "content-box"
         }>
         <div className="img-container" style={{ position: 'relative' }}>
-        {plant.acf.characteristics.invasive &&  <ErrorIcon color="error" sx={{ position: 'absolute', right: '5px', top: '3px' }} />}
+        {plant.acf.characteristics.invasive &&  <ErrorOutlineRoundedIcon sx={{ position: 'absolute',color:'white',borderRadius:'40px', backgroundColor:'red', right: '5px', top: '3px' }} />}
           <img
             src={
               plant.acf.gallery_view_image !== undefined && plant.acf.gallery_view_image

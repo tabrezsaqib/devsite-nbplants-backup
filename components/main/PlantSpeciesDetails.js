@@ -8,7 +8,7 @@ import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
 import BrokenPageAlert from "../../generics/brokenPageAlert";
-
+import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 
 import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
@@ -144,7 +144,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                             className={[styles.tooltipPopUp, "tooltipPopUp align-self-center"].join(" ")}
                             data-bs-target="#sideNavPopUp12"
                             onClick={() => triggerPopUp(false)}>
-                            <i className="bi bi-info-circle-fill" />
+                            <ErrorOutlineRoundedIcon  sx={{color:'white',borderRadius:'40px', backgroundColor:'red'}} />
                           </h6>}
                       </strong>
                     </h4>
@@ -495,7 +495,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         className={[styles.tooltipPopUp, "tooltipPopUp align-self-center"].join(" ")}
                         data-bs-target="#sideNavPopUp12"
                         onClick={() => triggerPopUp(false)}>
-                        <i className="bi bi-info-circle-fill" />
+                        <ErrorOutlineRoundedIcon  sx={{color:'white',borderRadius:'40px', backgroundColor:'red'}} />
                       </h6>}
                   </div>
                   {plant_details.acf.synonyms_english && (
