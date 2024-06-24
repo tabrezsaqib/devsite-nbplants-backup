@@ -110,6 +110,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       },
     }).then(() => {})
   }
+  console.log('aaaaa',plant_details);
   return (
     <>
     <Navbar />
@@ -325,9 +326,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                       })`,
                                     }}></div>
                                 <Stack direction="row" justifyContent='space-between'>
-                                  <p className="img-caption" key={index}>Description: {plant_details.acf.image_url[
+                                  {/* <p className="img-caption" key={index}>Description: {plant_details.acf.gallery_view_image[
                                       slideIndex || index
-                                    ].title}</p>
+                                    ].description}</p> */}
                                   <p className="img-caption" key={index}>{plant_details.acf.image_url[
                                       slideIndex || index
                                     ].caption}</p>
