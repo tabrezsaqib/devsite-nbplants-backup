@@ -18,7 +18,6 @@ import {
   triggerToolTip,
 } from "../../redux/actions/getPlantsAction"
 import FamilyDetails from "../families/familyDetails"
-import { Stack } from "@mui/material"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -110,7 +109,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
       },
     }).then(() => {})
   }
-  console.log('aaaaa',plant_details);
+
   return (
     <>
     <Navbar />
@@ -325,14 +324,9 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                         ].full_image_url
                                       })`,
                                     }}></div>
-                                <Stack direction="row" justifyContent='space-between'>
-                                  {/* <p className="img-caption" key={index}>Description: {plant_details.acf.gallery_view_image[
-                                      slideIndex || index
-                                    ].description}</p> */}
                                   <p className="img-caption" key={index}>{plant_details.acf.image_url[
                                       slideIndex || index
                                     ].caption}</p>
-                                </Stack>
                                 </div>
                               ))}
                           </Slide>
