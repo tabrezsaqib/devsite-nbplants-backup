@@ -527,22 +527,23 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </p>
                   </div>
                 )}
-                {plant_details.acf.type.length !== 0 &&
-                  plant_details.acf.type.map((item, index) => (
-                    <div className="d-flex label-value-section" key={index}>
-                      <p>
-                        <strong>Type: &nbsp;</strong>
-                      </p>
-                      <div>
-                        <p>
-                          {api.capitalizeFirstLetter(item)}
-                          &nbsp;
-                        </p>
-                      </div>
-                    </div>
-                  ))}
               </div>
-
+              <div className="d-flex label-value-section mt-2">
+                {plant_details.acf.type.length !== 0 &&
+                    plant_details.acf.type.map((item, index) => (
+                      <div className="d-flex label-value-section" key={index}>
+                        <p>
+                          <strong>Type: &nbsp;</strong>
+                        </p>
+                        <div>
+                          <p>
+                            {api.capitalizeFirstLetter(item)}
+                            &nbsp;
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+              </div>
               {/* <h4>
                 <strong>Characteristics</strong>
               </h4>
