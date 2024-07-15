@@ -33,14 +33,24 @@ const SearchFormValidate = ({ submitSearchQuery, search_bar }) => {
             id="outlined-adornment-amount"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
+            onKeyDown={(ev) => {
+              if (ev.key === 'Enter') {
+                ev.preventDefault();
+                handleSubmit()
+              }
+            }}
+            sx={{paddingRight:'13px'}}
             endAdornment={<InputAdornment position="end">
               <IconButton
                 aria-label="search"
                 edge="end"
                 onClick={handleSubmit}
-                onMouseDown={handleSubmit}
+                sx={{ backgroundColor: '#0e9d47', borderRadius:0, 
+                  "&:hover": {
+                    backgroundColor: '#0e9d47'
+                  }}}
               >
-                <SearchSharp sx={{ color: '#0e9d47' }} />
+                <SearchSharp sx={{ color: 'white' }} />
               </IconButton>
             </InputAdornment>}
             placeholder="Search Plants.."
