@@ -13,22 +13,44 @@ import Link from "next/link";
 import styles from "../../styles/SearchResults.module.css"
 import { DialogContent, DialogActions, Button, Divider, Stack, IconButton } from "@mui/material";
 import { Close, Print } from "@mui/icons-material";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import SortIcon from '@mui/icons-material/Sort'
 
 function PlantListModal({ openModal, handleModal }) {
     const [isLoading, setLoading] = useState(false)
     const { filteredPlantList } = useSelector(state => state.post)
+    const [alignment, setAlignment] = React.useState('latin');
 
+    const handleChange = (event, newAlignment) => {
+        if (newAlignment !== null) {
+            setAlignment(newAlignment);
+        }
+    };
    
 
     return (
         <>
             <Dialog onClose={handleModal} open={openModal} maxWidth="md">
-                <DialogTitle>
+                <DialogTitle sx={{ pr: 0 }}>
                     <Stack direction="row" justifyContent="space-between">
                         <div>
-                            Plant List
+                            Plants List
                         </div>
                         <div>
+                            <span className="sortBy" > Sort By:</span>
+                            <ToggleButtonGroup
+                                size="small"
+                                color="success"
+                                value={alignment}
+                                exclusive
+                                onChange={handleChange}
+                                aria-label="Platform"
+                                sx={{ display: 'contents' }}
+                            >
+                                <ToggleButton sx={{ textTransform: 'none', fontWeight: '600' }} value="latin"><SortIcon />Latin Name</ToggleButton>
+                                <ToggleButton sx={{ textTransform: 'none', fontWeight: '600' }} value="english"><SortIcon />English Name</ToggleButton>
+                            </ToggleButtonGroup>
                             <Button  sx={{displayPrint: 'none'}} color="success"  variant="contained" endIcon={<Print />} onClick={() => { window.print() }}>
                                 Print
                             </Button>
@@ -53,14 +75,15 @@ function PlantListModal({ openModal, handleModal }) {
                                                 pathname: `/plants/${family.slug}`,
                                                 query: { type: family.acf.plant_type },
                                             }}>
-                                            <a className="familyLink">  {ReactHtmlParser(family.acf.common_name)}</a>
-                                        </Link> /
+                                            <a className="familyLink">  {ReactHtmlParser(family.acf.latin)}</a>
+                                        </Link> 
+                                        /
                                         <Link legacyBehavior
                                             href={{
                                                 pathname: `/plants/${family.slug}`,
                                                 query: { type: family.acf.plant_type },
                                             }}>
-                                            <a className="familyLink">  {ReactHtmlParser(family.acf.latin)}</a>
+                                            <a className="familyEnglish">  {ReactHtmlParser(family.acf.common_name)}</a>
                                         </Link>
 
                                     </div></>))
@@ -81,12 +104,25 @@ function PlantListModal({ openModal, handleModal }) {
                 margin-right: 8px;
                 cursor: pointer
             }
+            .familyEnglish{
+            margin-left:8px;
+            cursor: pointer
+            }
             .center-align{
                 margin-left: 50%;
             }
             .listOfPlants{
-                text-align:center;
                 margin: 10px 0;
+            }
+            .sortBy{
+                font-size:14px;
+                margin-right:10px
+            }
+            @media print {
+                .listOfPlants{
+                    text-align:left;
+                    margin: 10px 0;
+                }
             }`
             }</style>
         </>
