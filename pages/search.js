@@ -18,7 +18,7 @@ const search = ({ search_results }) => {
         <SearchResults itemsPerPage={20} />}
       </div>
       <br></br>
-      {search_results.length !== 1 ? <Footer isFixed={true} /> : null}
+      {search_results.length !== 1 ? <Footer isFixed={search_results.length > 6 ? false : true} /> : null}
   </>
   )
 }
