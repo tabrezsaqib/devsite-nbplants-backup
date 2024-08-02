@@ -641,7 +641,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       </div>
                     }
                   </div>
-                  {plant_details.acf.characteristics.cycle ?
+                  {plant_details.acf.characteristics.cycle && 
+                  plant_details.acf.characteristics.cycle.length !== 0  ?
                       plant_details.acf.characteristics.cycle !== 0 && (
                         <div className="d-flex">
                           <p>
