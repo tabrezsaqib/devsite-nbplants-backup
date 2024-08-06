@@ -838,19 +838,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                 {api.capitalizeFirstLetter(plant_details.acf.characteristics.stipule_shape)}
                               </Grid>
                             )}
-                          </Grid>
-                          <div className="mb-3">
                               {plant_details.acf.characteristics.flower_description && (
-                                <div >
-                                  <p>
+                                 <Grid item xs={12} sm={12} md={12} lg={12} >
                                     <strong>Flower Description: &nbsp;</strong>
-                                  </p>
                                   <div className="rtc-content">
                                     {ReactHtmlParser(plant_details.acf.characteristics.flower_description)}
                                   </div>
-                                </div>
+                                 </Grid>
                             )}
-                          </div>
+                          </Grid>
                         </div>
                       </div>
                     </div>
@@ -995,19 +991,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                               }
                             </Grid>
                           )}
-                        </Grid>
-                        <div className="mb-3">
                             {plant_details.acf.characteristics.leaf_description && (
-                              <div >
-                                <p>
+                               <Grid item xs={12} sm={12} md={12} lg={12} >
                                   <strong>Leaves Description: &nbsp;</strong>
-                                </p>
                                 <div className="rtc-content">
                                   {ReactHtmlParser(plant_details.acf.characteristics.leaf_description)}
                                 </div>
-                              </div>
+                              </Grid>
                             )}
-                        </div>
+                        </Grid>
                       </div>
                     </div>
                   </div>
@@ -1076,14 +1068,12 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                               </Grid>
                                             )}
                                           {plant_details.acf.characteristics.seed_dispersal && (
-                                            <div className="d-flex label-value-section">
-                                              <p>
+                                            <Grid item xs={12} sm={12} md={6} lg={6} >
                                                 <strong>Seed Dispersal: &nbsp;</strong>
-                                              </p>
                                               {api.capitalizeFirstLetter(
                                                 plant_details.acf.characteristics.seed_dispersal 
                                               )}
-                                            </div>
+                                            </Grid>
                                           )}
                                       </Grid>
                                     </div>
@@ -1158,19 +1148,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                                     </Grid>
                                   )
                                 )}
-                          </Grid>
-                          <div className="mb-3">
                               {plant_details.acf.characteristics.spore_description && (
-                                <div >
-                                  <p>
+                                 <Grid item xs={12} sm={12} md={12} lg={12} >
                                     <strong>Spore Description: &nbsp;</strong>
-                                  </p>
                                   <div className="rtc-content">
                                     {ReactHtmlParser(plant_details.acf.characteristics.spore_description)}
                                   </div>
-                                </div>
+                                 </Grid>
                               )}
-                          </div>
+                          </Grid>
                         </div>
                       </div>
                     </div>

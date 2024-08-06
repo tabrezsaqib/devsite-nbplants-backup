@@ -4,6 +4,7 @@ import Head from "next/head";
 import Navbar from "../components/layouts/Navbar";
 import PlantSpeciesDetails from "../components/main/PlantSpeciesDetails";
 import { connect } from "react-redux"
+import styles from "../styles/about.module.css"
 
 const search = ({ search_results }) => {
   return (
@@ -12,13 +13,14 @@ const search = ({ search_results }) => {
           <title>Search | NB Plants</title>
       </Head>
       <Navbar />
-      <div className="pt-4">
+      <div>
+        <div className={styles.aboutPageContainer}>
       {search_results.length === 1 ?
           <PlantSpeciesDetails plant_details={search_results[0]} /> :
         <SearchResults itemsPerPage={20} />}
+        </div>
       </div>
-      <br></br>
-      {search_results.length !== 1 ? <Footer isFixed={search_results.length > 6 ? false : true} /> : null}
+      {search_results.length === 1 ? '' :  <Footer isFixed={search_results.length > 6 ? false : true} />}
   </>
   )
 }
