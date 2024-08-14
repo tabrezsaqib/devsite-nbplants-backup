@@ -16,21 +16,22 @@ import { Close } from '@mui/icons-material';
 
 
 const HtmlTooltip = styled(({ className, handleTooltipClose, open, ...props }) => (
-    // <ClickAwayListener onClickAway={handleTooltipClose}>
-    <Tooltip arrow PopperProps={{ disablePortal: true, }}
-        onClose={handleTooltipClose}
-        open={open}
-        disableFocusListener
-        disableHoverListener
-        disableTouchListener placement="right" {...props} classes={{ popper: className }} />
-    // </ClickAwayListener>
+    <ClickAwayListener onClickAway={handleTooltipClose}>
+        <div>
+            <Tooltip arrow PopperProps={{ disablePortal: true, }}
+                onClose={handleTooltipClose}
+                open={open}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener placement="right" {...props} classes={{ popper: className }} />
+        </div></ClickAwayListener>
 ))(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
-        backgroundColor: '#f3fff6',
+        backgroundColor: 'white',
         color: 'rgba(0, 0, 0, 0.87)',
-        maxWidth: '90%',
-        maxHeight: '80vh',
-        border: '1px solid #dadde9',
+        maxWidth: '100%',
+        padding: '0',
+        border: '2px solid black',
     },
 }));
 
@@ -52,8 +53,8 @@ export default function CustomizedTooltips({ name }) {
                     open={open}
                     title={
                         <React.Fragment>
-                            <Stack direction='row' justifyContent='space-between'>
-                                <h5 className="modal-title" id="exampleModalLabel">
+                            <Stack direction='row' justifyContent='space-between' alignItems='center'>
+                                <h5 className="modal-title" id="exampleModalLabel" style={{ fontSize: '17px' }}>
                                     Flower Arrangement (Inflorescence)
                                 </h5>
                                 <IconButton aria-label="close" onClick={handleTooltipClose}>
@@ -62,14 +63,14 @@ export default function CustomizedTooltips({ name }) {
                             </Stack>
                             <Divider sx={{ mb: '10px' }} />
                             <FormGroup>
-                                <FormControlLabel control={<Checkbox color="success" defaultChecked size="small" />} sx={{ fontSize: '13px' }} label={ReactHtmlParser(`<b>Cyme: </b>flattish topped flower arrangement with stalked flower rising from one point of a common stalk; the inner flowers bloom first`)} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '13px' }} label={ReactHtmlParser("<b>Panicle:  </b>loose irregular arrangement of stalked flowers; each branch has multiple stalked flowers; a panicle is made up of multiple racemes")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '13px' }} label={ReactHtmlParser("<b>Raceme: </b> flower arrangement where each flower is on an individual stalk along a central stem; a panicle includes multiple racemes")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '13px' }} label={ReactHtmlParser("<b>Solitary flower:  </b>a single flower that is not part of a grouped flower arrangement")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '13px' }} label={ReactHtmlParser("<b>Spike:  </b>flower arrangement with stalkless (sessile) flowers arranged on a stem <img src='/images/popup-img.png' style={{border:'1px solid grey'}} height='100x' width='100x'></img>")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '13px' }} label={ReactHtmlParser("<b>Umbel:  </b>flattish topped flower arrangement with stalked flowers rising from one point of a common stalk; the outer flowers open first <img src='/images/popup-img.png' style={{border:'1px solid grey'}} height='100x' width='100x'></img>")} />
+                                <FormControlLabel sx={{ fontSize: '9px' }} control={<Checkbox color="success" defaultChecked size="small" sx={{ fontSize: '9px' }} />} label={ReactHtmlParser(`<span class='labelDesc'><b>Cyme: </b><span class='labelDesc'>flattish topped flower arrangement with stalked flower rising from one point of a common stalk; the inner flowers bloom first</span></span>  <img src='/images/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>`)} />
+                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Panicle:  </b><span class='labelDesc'>loose irregular arrangement of stalked flowers; each branch has multiple stalked flowers; a panicle is made up of multiple racemes </span></span>  <img src='/images/leaf.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
+                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Raceme: </b> <span class='labelDesc'>flower arrangement where each flower is on an individual stalk along a central stem; a panicle includes multiple racemes</span></span>   <img src='/images/leaf.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
+                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Solitary flower:  </b><span class='labelDesc'>a single flower that is not part of a grouped flower arrangement</span></span>   ")} />
+                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Spike:  </b><span class='labelDesc'>flower arrangement with stalkless (sessile) flowers arranged on a stem</span></span> <img src='/images/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
+                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Umbel:  </b><span class='labelDesc'>flattish topped flower arrangement with stalked flowers rising from one point of a common stalk; the outer flowers open first </span></span>  <img src='/images/leaf.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
                             </FormGroup>
-                            <div style={{ textAlign: 'right' }}>
+                            <div style={{ textAlign: 'right', padding: '8px' }}>
                                 <Button variant="contained" color='success' size='small'>Apply Selection</Button>
                             </div>
                         </React.Fragment>
@@ -82,8 +83,8 @@ export default function CustomizedTooltips({ name }) {
                     open={open}
                     title={
                         <React.Fragment>
-                            <Stack direction='row' justifyContent='space-between'>
-                                <h5 className="modal-title" id="exampleModalLabel" style={{ fontSize: '17px', }}>
+                            <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
+                                <h5 style={{ fontSize: '17px' }}>
                                     Petal symmetry
                                 </h5>
                                 <IconButton aria-label="close" onClick={handleTooltipClose}>
@@ -92,10 +93,10 @@ export default function CustomizedTooltips({ name }) {
                             </Stack>
                             <Divider sx={{ mb: '10px' }} />
                             <FormGroup>
-                                <FormControlLabel control={<Checkbox color="success" defaultChecked size="small" />} sx={{ fontSize: '13px' }} label={`Bilateral petal symmetry: flower can only be divided evenly in one way e.g. Orchids`} />
-                                <FormControlLabel required control={<Checkbox color="success" size="small" />} sx={{ fontSize: '13px' }} label="Radial petal symmetry: flower can be divided evenly multiple ways e.g. Asters" />
+                                <FormControlLabel control={<Checkbox color="success" defaultChecked size="small" />} sx={{ fontSize: '12px' }} label={`Bilateral petal symmetry: flower can only be divided evenly in one way e.g. Orchids`} />
+                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label="Radial petal symmetry: flower can be divided evenly multiple ways e.g. Asters" />
                             </FormGroup>
-                            <div style={{ textAlign: 'right' }}>
+                            <div style={{ textAlign: 'right', padding: '8px' }}>
                                 <Button variant="contained" color='success' size='small'>Apply Selection</Button>
                             </div>
                         </React.Fragment>
@@ -106,9 +107,29 @@ export default function CustomizedTooltips({ name }) {
             <style>
                 {`
                     .MuiTooltip-arrow::before{
-                        border: 1px solid #dadde9;
+                        border: 2px solid black;
                         background-color: #e6f6f1;
-                    }`}
+                    }
+                    .MuiFormControlLabel-label{
+                        font-size: 12px
+                    }
+                    .MuiFormControlLabel-label {
+                        display:flex;
+                        align-items:center;
+                        gap:18px
+                    }
+                    .MuiTooltip-tooltip .MuiStack-root{
+                        background-color:#e7f9e8;
+                        padding: 0 8px;
+                    }
+                    .MuiFormGroup-root{
+                        padding: 8px
+                    }
+                    .labelDesc{
+                        width: 35vw
+                    }
+                   
+                    `}
             </style>
         </div>
 
