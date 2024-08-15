@@ -94,6 +94,11 @@ const SideNavContent = ({
       value: "Petal Symmetry",
     },
     {
+      key: "leaf_type",
+      group: (plant_type[1] === false) && "leaves",
+      value: "Leaf Type",
+    },
+    {
       key: "leaf_arrangement",
       group: "leaves",
       value: "Leaf Arrangement",
@@ -107,11 +112,6 @@ const SideNavContent = ({
       key: "leaf_shape",
       group: (router.query.type != "Fern" && plant_type[0] === false && plant_type[1] === false && fruit_type[9] === false) && "leaves",
       value: "Leaf Shape",
-    },
-    {
-      key: "leaf_type",
-      group: (plant_type[1] === false) && "leaves",
-      value: "Leaf Type",
     },
     {
       key: "leaflet_divisions",
