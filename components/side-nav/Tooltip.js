@@ -8,10 +8,9 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
-import Typography from '@mui/material/Typography';
+import Router from "next/router"
 import { Divider, Stack } from '@mui/material';
-import { Close } from '@mui/icons-material';
+import { Close, ErrorOutlineOutlined } from '@mui/icons-material';
 
 
 
@@ -32,6 +31,7 @@ const HtmlTooltip = styled(({ className, handleTooltipClose, open, ...props }) =
         maxWidth: '100%',
         padding: '0',
         border: '2px solid black',
+        fontFamily: "Lato, Droid Sans, Helvetica Neue, sans-serif !important"
     },
 }));
 
@@ -45,8 +45,16 @@ export default function CustomizedTooltips({ name }) {
     const handleTooltipOpen = () => {
         setOpen(true);
     };
+
+    const loadInvasivePlantList = async () => {
+          Router.push({
+            pathname: "/conservationRankDetails",
+            query: { keyword: 'Invasive' },
+          }).then(() => {
+          })
+      }
     return (
-        <div>
+        <>
             {name === 'inflorescence' ?
                 <HtmlTooltip
                     handleTooltipClose={handleTooltipClose}
@@ -77,33 +85,64 @@ export default function CustomizedTooltips({ name }) {
                     }
                 >
                     <i className="bi bi-info-circle-fill" onClick={() => handleTooltipOpen()} />
-                </HtmlTooltip> :
-                <HtmlTooltip
-                    handleTooltipClose={handleTooltipClose}
-                    open={open}
-                    title={
-                        <React.Fragment>
-                            <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
-                                <h5 style={{ fontSize: '17px' }}>
-                                    Petal symmetry
-                                </h5>
-                                <IconButton aria-label="close" onClick={handleTooltipClose}>
-                                    <Close />
-                                </IconButton>
-                            </Stack>
-                            <Divider sx={{ mb: '10px' }} />
-                            <FormGroup>
-                                <FormControlLabel control={<Checkbox color="success" defaultChecked size="small" />} sx={{ fontSize: '12px' }} label={`Bilateral petal symmetry: flower can only be divided evenly in one way e.g. Orchids`} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label="Radial petal symmetry: flower can be divided evenly multiple ways e.g. Asters" />
-                            </FormGroup>
-                            <div style={{ textAlign: 'right', padding: '8px' }}>
-                                <Button variant="contained" color='success' size='small'>Apply Selection</Button>
-                            </div>
-                        </React.Fragment>
-                    }
-                >
-                    <i className="bi bi-info-circle-fill" onClick={() => handleTooltipOpen()} />
-                </HtmlTooltip>}
+                </HtmlTooltip> : name === 'petal_symmetry' ?
+                    <HtmlTooltip
+                        handleTooltipClose={handleTooltipClose}
+                        open={open}
+                        title={
+                            <React.Fragment>
+                                <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
+                                    <h5 style={{ fontSize: '17px' }}>
+                                        Petal symmetry
+                                    </h5>
+                                    <IconButton aria-label="close" onClick={handleTooltipClose}>
+                                        <Close />
+                                    </IconButton>
+                                </Stack>
+                                <Divider sx={{ mb: '10px' }} />
+                                <FormGroup>
+                                    <FormControlLabel control={<Checkbox color="success" defaultChecked size="small" />} sx={{ fontSize: '12px' }} label={`Bilateral petal symmetry: flower can only be divided evenly in one way e.g. Orchids`} />
+                                    <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label="Radial petal symmetry: flower can be divided evenly multiple ways e.g. Asters" />
+                                </FormGroup>
+                                <div style={{ textAlign: 'right', padding: '8px' }}>
+                                    <Button variant="contained" color='success' size='small'>Apply Selection</Button>
+                                </div>
+                            </React.Fragment>
+                        }
+                    >
+                        <i className="bi bi-info-circle-fill" onClick={() => handleTooltipOpen()} />
+                    </HtmlTooltip> :
+                    <HtmlTooltip
+                        handleTooltipClose={handleTooltipClose}
+                        open={open}
+                        title={
+                            <React.Fragment>
+                                <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
+                                    <h5 style={{ fontSize: '19px' }}>
+                                        Invasive Species
+
+                                    </h5>
+                                    <IconButton aria-label="close" onClick={handleTooltipClose}>
+                                        <Close />
+                                    </IconButton>
+                                </Stack>
+                                <Divider sx={{ mb: '10px' }} />
+                                <div style={{ fontSize: '14px', padding: '10px' }}>
+                                    A plant that has been “accidentally or deliberately introduced into  <br></br>ecosystems beyond theirnative range and whose introduction or spread<br></br> negatively  impacts the environment, economy,and/or society including<br></br> human health.” –
+                                    <a href="https://www.nbinvasives.ca/" target="_blank" rel="noopener"> <img style={{ height: '30px', marginLeft: '10px' }} src="https://images.squarespace-cdn.com/content/v1/6144adb9289b694822c3db7b/d90bd94b-def7-4184-8aad-f84ffec19e9b/favicon.ico?format=100w" /><em><span style={{ color: 'rgb(51, 153, 102)' }}> New Brunswick Invasive Species Council</span></em></a>
+                                    <br></br>
+                                    <p style={{ marginTop: '10px' }}><strong>
+                                        <a onClick={loadInvasivePlantList} style={{ color: 'rgb(51, 153, 102)' , cursor:'pointer'}}>
+                                            List of Invasive Species in New Brunswick.</a></strong></p>
+                                </div>
+                            </React.Fragment>
+                        }
+                    >
+                        <h6
+                            style={{ margin: '10px 8px', cursor: 'pointer' }} onClick={() => handleTooltipOpen()}>
+                            <ErrorOutlineOutlined sx={{ color: 'white', borderRadius: '40px', backgroundColor: 'red' }} />
+                        </h6>
+                    </HtmlTooltip>}
             <style>
                 {`
                     .MuiTooltip-arrow::before{
@@ -131,7 +170,7 @@ export default function CustomizedTooltips({ name }) {
                    
                     `}
             </style>
-        </div>
+        </>
 
     );
 }

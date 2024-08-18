@@ -20,6 +20,7 @@ import {
 } from "../../redux/actions/getPlantsAction"
 import FamilyDetails from "../families/familyDetails"
 import { Stack } from "@mui/material"
+import CustomizedTooltips from "../side-nav/Tooltip"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
   const [slide, setSlide] = useState(false)
@@ -462,14 +463,15 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </i>
                       </strong>
                     </h4>
-                    {plant_details.acf.characteristics.invasive &&    <h6
+                    {/* {plant_details.acf.characteristics.invasive &&    <h6
                         style={{ margin: '0 8px', cursor: 'pointer' }}
                         data-bs-toggle="modal"
                         className={[styles.tooltipPopUp, "tooltipPopUp align-self-center"].join(" ")}
                         data-bs-target="#sideNavPopUp12"
                         onClick={() => triggerPopUp(false)}>
                         <ErrorOutlineRoundedIcon  sx={{color:'white',borderRadius:'40px', backgroundColor:'red'}} />
-                      </h6>}
+                      </h6>} */}
+                    {plant_details.acf.characteristics.invasive && <CustomizedTooltips name="invasive"/>}
                   </div>
                   {plant_details.acf.synonyms_english && (
                     <div className="d-flex">
