@@ -83,11 +83,11 @@ const SideNavContent = ({
       group: "flowers",
       value: "Flower Arrangement",
     },
-    {
-      key: "lip_shape",
-      group: (plant_type[1] === false) && "flowers",
-      value: "Lip Shape",
-    },
+    // {
+    //   key: "lip_shape",
+    //   group: (plant_type[1] === false) && "flowers",
+    //   value: "Lip Shape",
+    // },
     {
       key: "petal_symmetry",
       group: (plant_type[1] === false) && "flowers",
@@ -250,8 +250,8 @@ const SideNavContent = ({
                   ? type[index]
                   : key == "flower_colour"
                   ? flower_colour[index]
-                  : key == "lip_shape"
-                  ? lip_shape[index]
+                  // : key == "lip_shape"
+                  // ? lip_shape[index]
                   : key == "fruit_type"
                   ? fruit_type[index]
                   : key == "fruit_color"
@@ -380,14 +380,9 @@ const SideNavContent = ({
                               <strong>{item.value}</strong>
                             </h6>
                             {(item.key == "inflorescence" ||
-                              item.key == "petal_symmetry") && (
-                              // <SideNavPopover
-                              //   triggerPopUp={() =>
-                              //     triggerPopUp(item.key, true)
-                              //   }
-                              //   popoverData={popoverData}
-                              //   popoverStatus={popoverStatus}
-                              // />
+                              item.key == "petal_symmetry" ||
+                              item.key == "leaf_arrangement" ||
+                              item.key == "leaf_blade_edges") && (
                               <CustomizedTooltips
                                   name={item.key}
                               />
@@ -436,11 +431,20 @@ const SideNavContent = ({
                   <div key={item.key}>
                     {item.group == "leaves" && (
                       <div>
+                       <div className="d-flex">
                         <h6 className="selector-heading">
                           <i className="bi bi-check2-square" />
                           &nbsp;&nbsp;
                           <strong>{item.value}</strong>
                         </h6>
+                        {(item.key == "leaf_type" ||
+                            item.key == "leaf_arrangement" ||
+                            item.key == "leaf_blade_edges") && (
+                              <CustomizedTooltips
+                                name={item.key}
+                              />
+                            )}
+                        </div>
                         <div className="d-flex flex-wrap">
                           {getOption(item.key)}
                         </div>
@@ -478,11 +482,18 @@ const SideNavContent = ({
                     <div key={item.key}>
                       {item.group == "fruits" && (
                         <div>
+                         <div className="d-flex">
                           <h6 className="selector-heading">
                             <i className="bi bi-check2-square" />
                             &nbsp;&nbsp;
                             <strong>{item.value}</strong>
                           </h6>
+                          {(item.key == "fruit_type") && (
+                                <CustomizedTooltips
+                                  name={item.key}
+                                />
+                              )}
+                              </div>
                           <div className="d-flex flex-wrap">
                             {getOption(item.key)}
                           </div>

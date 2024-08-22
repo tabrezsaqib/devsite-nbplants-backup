@@ -11,8 +11,19 @@ import Checkbox from '@mui/material/Checkbox';
 import Router from "next/router"
 import { Divider, Stack } from '@mui/material';
 import { Close, ErrorOutlineOutlined } from '@mui/icons-material';
+import { activeFilterData } from '../../redux/actions/selectorFilterAction';
+import { useSelector, useDispatch } from 'react-redux';
+import { tooltipData } from '../../data/tooltipData';
+import {
+    toggleLeafBladeEdgesData,
+    toggleLeafTypeData,
+    toggleLeafArrangementData,
+    toggleInflorescence,
+    togglePetalSymmetry,
+    toggleFruits
+} from "../../redux/actions/toggleSelectorAction"
 
-
+const tooltipTyle = ['inflorescence', 'leaf_type', 'leaf_blade_edges', 'leaf_arrangement', 'petal_symmetry','fruit_type']
 
 const HtmlTooltip = styled(({ className, handleTooltipClose, open, ...props }) => (
     <ClickAwayListener onClickAway={handleTooltipClose}>
@@ -38,6 +49,9 @@ const HtmlTooltip = styled(({ className, handleTooltipClose, open, ...props }) =
 export default function CustomizedTooltips({ name }) {
     const [open, setOpen] = React.useState(false);
 
+    const selector_opt = useSelector(state => state.selector);
+    const { inflorescence, leaf_type, leaf_blade_edges, leaf_arrangement, activeFilterList, petal_symmetry ,fruit_type} = useSelector(state => state.selector);
+    const dispatch = useDispatch();
     const handleTooltipClose = () => {
         setOpen(false);
     };
@@ -47,23 +61,111 @@ export default function CustomizedTooltips({ name }) {
     };
 
     const loadInvasivePlantList = async () => {
-          Router.push({
+        Router.push({
             pathname: "/conservationRankDetails",
             query: { keyword: 'Invasive' },
-          }).then(() => {
-          })
-      }
+        }).then(() => {
+        })
+    }
+
+
+
+    const checkboxChange = (option, position, label) => {
+        const filterIndex = activeFilterList.indexOf(label)
+        const newFilter = [...activeFilterList]
+        if(filterIndex === -1)
+        newFilter.push(label)
+        else
+        newFilter.splice(filterIndex, 1)
+        dispatch(activeFilterData(newFilter))
+        switch (option) {
+
+            case "leaf_arrangement":
+                const updatedLeafArrangement = leaf_arrangement.map((item, index) =>
+                    index === position ? !item : item
+                )
+                dispatch(toggleLeafArrangementData(updatedLeafArrangement))
+                break
+            case "leaf_blade_edges":
+                const updatedLeafBladeEdges = leaf_blade_edges.map((item, index) =>
+                    index === position ? !item : item
+                )
+                dispatch(toggleLeafBladeEdgesData(updatedLeafBladeEdges))
+                break
+
+            case "leaf_type":
+                const updatedLeafType = leaf_type.map(
+                    (item, index) => (index === position ? !item : item) // if index === position then !item i.e. true, otherwise false, since initially item is false...
+                )
+                dispatch(toggleLeafTypeData(updatedLeafType))
+                break
+
+            case "inflorescence":
+                const updatedInflorescence = inflorescence.map((item, index) =>
+                    index === position ? !item : item
+                )
+                dispatch(toggleInflorescence(updatedInflorescence))
+                break
+
+            case "petal_symmetry":
+                const updatedPetal = petal_symmetry.map((item, index) =>
+                    index === position ? !item : item
+                )
+                dispatch(togglePetalSymmetry(updatedPetal))
+                break
+
+                case "fruit_type":
+                    const updatedFruits = fruit_type.map((item, index) =>
+                        index === position ? !item : item
+                    )
+                    dispatch(toggleFruits(updatedFruits))
+                    break
+            default:
+                break
+        }
+    }
     return (
         <>
-            {name === 'inflorescence' ?
+            {name === 'invasive' ?
                 <HtmlTooltip
                     handleTooltipClose={handleTooltipClose}
                     open={open}
                     title={
                         <React.Fragment>
-                            <Stack direction='row' justifyContent='space-between' alignItems='center'>
-                                <h5 className="modal-title" id="exampleModalLabel" style={{ fontSize: '17px' }}>
-                                    Flower Arrangement (Inflorescence)
+                            <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
+                                <h5 style={{ fontSize: '19px' }}>
+                                    Invasive Species
+
+                                </h5>
+                                <IconButton aria-label="close" onClick={handleTooltipClose}>
+                                    <Close />
+                                </IconButton>
+                            </Stack>
+                            <Divider sx={{ mb: '10px' }} />
+                            <div style={{ fontSize: '14px', padding: '10px' }}>
+                                A plant that has been “accidentally or deliberately introduced into  <br></br>ecosystems beyond theirnative range and whose introduction or spread<br></br> negatively  impacts the environment, economy,and/or society including<br></br> human health.” –
+                                <a href="https://www.nbinvasives.ca/" target="_blank" rel="noopener"> <em><span style={{ color: 'rgb(51, 153, 102)' }}> New Brunswick Invasive Species Council</span></em></a>
+                                <br></br>
+                                <p style={{ marginTop: '10px' }}><strong>
+                                    <a onClick={loadInvasivePlantList} style={{ color: 'rgb(51, 153, 102)', cursor: 'pointer' }}>
+                                        List of Invasive Species in New Brunswick.</a></strong></p>
+                            </div>
+                        </React.Fragment>
+                    }
+                >
+                    <h6
+                        style={{ margin: '10px 8px', cursor: 'pointer' }} onClick={() => handleTooltipOpen()}>
+                        <ErrorOutlineOutlined sx={{ color: 'white', borderRadius: '40px', backgroundColor: 'red' }} />
+                    </h6>
+                </HtmlTooltip> :
+                <HtmlTooltip
+                    handleTooltipClose={handleTooltipClose}
+                    open={open}
+                    title={
+                        <React.Fragment>
+                            <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
+                                <h5 style={{ fontSize: '17px' }}>
+                                    {tooltipData[tooltipTyle.indexOf(name)]?.heading}
                                 </h5>
                                 <IconButton aria-label="close" onClick={handleTooltipClose}>
                                     <Close />
@@ -71,78 +173,15 @@ export default function CustomizedTooltips({ name }) {
                             </Stack>
                             <Divider sx={{ mb: '10px' }} />
                             <FormGroup>
-                                <FormControlLabel sx={{ fontSize: '9px' }} control={<Checkbox color="success" defaultChecked size="small" sx={{ fontSize: '9px' }} />} label={ReactHtmlParser(`<span class='labelDesc'><b>Cyme: </b><span class='labelDesc'>flattish topped flower arrangement with stalked flower rising from one point of a common stalk; the inner flowers bloom first</span></span>  <img src='/images/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>`)} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Panicle:  </b><span class='labelDesc'>loose irregular arrangement of stalked flowers; each branch has multiple stalked flowers; a panicle is made up of multiple racemes </span></span>  <img src='/images/leaf.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Raceme: </b> <span class='labelDesc'>flower arrangement where each flower is on an individual stalk along a central stem; a panicle includes multiple racemes</span></span>   <img src='/images/leaf.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Solitary flower:  </b><span class='labelDesc'>a single flower that is not part of a grouped flower arrangement</span></span>   ")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Spike:  </b><span class='labelDesc'>flower arrangement with stalkless (sessile) flowers arranged on a stem</span></span> <img src='/images/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
-                                <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser("<span class='labelDesc'><b>Umbel:  </b><span class='labelDesc'>flattish topped flower arrangement with stalked flowers rising from one point of a common stalk; the outer flowers open first </span></span>  <img src='/images/leaf.png' style={{border:'1px solid grey'}} height='30' width='30'></img>")} />
+                                {tooltipData[tooltipTyle.indexOf(name)]?.options.map((checkbox) =>
+                                    <FormControlLabel control={<Checkbox color="success" checked={selector_opt[name][checkbox.value]} onChange={() => checkboxChange(name, checkbox.value, checkbox.label)} size="small" />} sx={{ fontSize: '12px' }} label={ReactHtmlParser(checkbox.content)} />)}
                             </FormGroup>
-                            <div style={{ textAlign: 'right', padding: '8px' }}>
-                                <Button variant="contained" color='success' size='small'>Apply Selection</Button>
-                            </div>
                         </React.Fragment>
                     }
                 >
                     <i className="bi bi-info-circle-fill" onClick={() => handleTooltipOpen()} />
-                </HtmlTooltip> : name === 'petal_symmetry' ?
-                    <HtmlTooltip
-                        handleTooltipClose={handleTooltipClose}
-                        open={open}
-                        title={
-                            <React.Fragment>
-                                <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
-                                    <h5 style={{ fontSize: '17px' }}>
-                                        Petal symmetry
-                                    </h5>
-                                    <IconButton aria-label="close" onClick={handleTooltipClose}>
-                                        <Close />
-                                    </IconButton>
-                                </Stack>
-                                <Divider sx={{ mb: '10px' }} />
-                                <FormGroup>
-                                    <FormControlLabel control={<Checkbox color="success" defaultChecked size="small" />} sx={{ fontSize: '12px' }} label={`Bilateral petal symmetry: flower can only be divided evenly in one way e.g. Orchids`} />
-                                    <FormControlLabel control={<Checkbox color="success" size="small" />} sx={{ fontSize: '12px' }} label="Radial petal symmetry: flower can be divided evenly multiple ways e.g. Asters" />
-                                </FormGroup>
-                                <div style={{ textAlign: 'right', padding: '8px' }}>
-                                    <Button variant="contained" color='success' size='small'>Apply Selection</Button>
-                                </div>
-                            </React.Fragment>
-                        }
-                    >
-                        <i className="bi bi-info-circle-fill" onClick={() => handleTooltipOpen()} />
-                    </HtmlTooltip> :
-                    <HtmlTooltip
-                        handleTooltipClose={handleTooltipClose}
-                        open={open}
-                        title={
-                            <React.Fragment>
-                                <Stack direction='row' alignItems='flex-end' justifyContent='space-between'>
-                                    <h5 style={{ fontSize: '19px' }}>
-                                        Invasive Species
-
-                                    </h5>
-                                    <IconButton aria-label="close" onClick={handleTooltipClose}>
-                                        <Close />
-                                    </IconButton>
-                                </Stack>
-                                <Divider sx={{ mb: '10px' }} />
-                                <div style={{ fontSize: '14px', padding: '10px' }}>
-                                    A plant that has been “accidentally or deliberately introduced into  <br></br>ecosystems beyond theirnative range and whose introduction or spread<br></br> negatively  impacts the environment, economy,and/or society including<br></br> human health.” –
-                                    <a href="https://www.nbinvasives.ca/" target="_blank" rel="noopener"> <img style={{ height: '30px', marginLeft: '10px' }} src="https://images.squarespace-cdn.com/content/v1/6144adb9289b694822c3db7b/d90bd94b-def7-4184-8aad-f84ffec19e9b/favicon.ico?format=100w" /><em><span style={{ color: 'rgb(51, 153, 102)' }}> New Brunswick Invasive Species Council</span></em></a>
-                                    <br></br>
-                                    <p style={{ marginTop: '10px' }}><strong>
-                                        <a onClick={loadInvasivePlantList} style={{ color: 'rgb(51, 153, 102)' , cursor:'pointer'}}>
-                                            List of Invasive Species in New Brunswick.</a></strong></p>
-                                </div>
-                            </React.Fragment>
-                        }
-                    >
-                        <h6
-                            style={{ margin: '10px 8px', cursor: 'pointer' }} onClick={() => handleTooltipOpen()}>
-                            <ErrorOutlineOutlined sx={{ color: 'white', borderRadius: '40px', backgroundColor: 'red' }} />
-                        </h6>
-                    </HtmlTooltip>}
+                </HtmlTooltip>
+            }
             <style>
                 {`
                     .MuiTooltip-arrow::before{
