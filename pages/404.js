@@ -19,7 +19,7 @@ const PageNotFound = () => {
         margin: '5% 0 0 10%'
       }} >
         <AlertTitle>Page Not Found </AlertTitle>
-        The requested URL was not found. Please check back again later.
+        404 | Sorry the page could not be found.
       </Alert>
       <Footer isFixed={true} />
     </>
