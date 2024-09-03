@@ -5,7 +5,7 @@ import Navbar from "../components/layouts/Navbar";
 import Head from "next/head";
 import Alert from '@mui/material/Alert';
 import { AlertTitle } from "@mui/material";
-
+import styles from "../styles/SearchResults.module.css"
 
 const PageNotFound = () => {
   return (
@@ -14,17 +14,20 @@ const PageNotFound = () => {
         <title>Page Not Found | New Brunswick</title>
       </Head>
       <Navbar />
-      <Alert severity="error" style={{
-        width: '80%',
-        margin: '5% 0 0 10%'
-      }} >
-        <AlertTitle>Page Not Found </AlertTitle>
-        404 | Sorry the page could not be found.
-      </Alert>
+      <div className="flex-column d-flex align-items-center justify-content-center">
+            <h2 style={{margin: '20px 0 0 0'}}>Page Not Found!</h2>
+            <div className="site-in-progress">
+                            404 | Sorry, the page could not be found.
+            </div>
+            <img
+              src="../../images/data_not_found.png"
+              width="30%"
+              alt="data not found"
+            />
+          </div>
       <Footer isFixed={true} />
     </>
   )
 }
 
 export default PageNotFound;
-
