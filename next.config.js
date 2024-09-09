@@ -1,5 +1,8 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    unoptimized: true
+  },
   env: {
     BASE_URL: process.env.BASE_URL,
     API_URL: process.env.API_URL,
