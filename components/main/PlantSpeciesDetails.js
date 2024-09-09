@@ -8,8 +8,16 @@ import Router from "next/router"
 import ReactHtmlParser from "react-html-parser"
 import styles from "../../styles/Global.module.scss"
 import BrokenPageAlert from "../../generics/brokenPageAlert";
-import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 import Grid from '@mui/material/Grid';
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
+import SilderImg from "./SliderImg"
 
 import Navbar from "../layouts/Navbar"
 import Footer from "../layouts/Footer"
@@ -21,24 +29,20 @@ import {
 import FamilyDetails from "../families/familyDetails"
 import { Stack } from "@mui/material"
 import CustomizedTooltips from "../side-nav/Tooltip"
+import "yet-another-react-lightbox/plugins/captions.css";
+
+
+import { RowsPhotoAlbum } from "react-photo-album";
+import "react-photo-album/rows.css";
 
 const PlantSpeciesDetails = ({ plant_details }) => {
-  const [slide, setSlide] = useState(false)
-  const [slideIndex, setSlideIndex] = useState(null)
-  const slideRef = useRef()
+  const [slideIndex, setSlideIndex] = useState(0)
+  const [open, setOpen] = useState(false);
   const router = useRouter()
   const dispatch = useDispatch()
-  const { popoverData, popoverStatus } = useSelector(state => state.post)
-  const API_URL = process.env.API_URL
+  const { popoverData } = useSelector(state => state.post)
 
   useEffect(() => {
-    router.beforePopState(({ as }) => {
-      if (as !== router.asPath) {
-        document.querySelector(".modal-backdrop")?.remove();
-      }
-      return true;
-    });
-
     return () => {
       router.beforePopState(() => true);
     };
@@ -49,24 +53,8 @@ const PlantSpeciesDetails = ({ plant_details }) => {
   }
 
   const slideShow = (index) => {
-    setSlide(true)
+    setOpen(true)
     setSlideIndex(index)
-  }
-
-  const back = () => {
-    slideRef.current.goBack()
-    setSlideIndex(0)
-  }
-
-  const next = () => {
-    slideRef.current.goNext()
-    setSlideIndex(0)
-  }
-
-  const properties = {
-    autoplay: false,
-    arrows: false,
-    indicators: true,
   }
 
   const loadPlantFamily = async (param) => {
@@ -91,26 +79,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     return inputString.replace(/(:\s*\w)/g, match => match.toUpperCase());
   }
 
-  const triggerPopUp = (status) => {
-    dispatch(triggerToolTip(status))
-    dispatch(getPopoverData('invasive-species', status))
-  }
-
-  const refresh = () => {
-    let route = localStorage.getItem("route")
-    Router.push({
-      pathname: "/plants",
-      query: {
-        type:
-          route == "all"
-            ? "all"
-            : route == "Non-woody"
-            ? "Non-woody"
-            : route == "Woody"
-            ? "Woody"
-            : route == "Fern" && "Fern",
-      },
-    }).then(() => {})
+  const slides = (imgArr) => {
+    return imgArr?.map((img) => {
+      return {
+        'src': img.full_image_url,
+        description: img.caption.replace('|', '\n\n')
+      }
+    })
   }
 
   return (
@@ -140,15 +115,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                 plant_details.acf.image_url.length > 0 ? (
                   plant_details.acf.image_url.slice(0, 6).map((item, index) => (
                     <div
-                      data-bs-toggle="modal"
                       key={index}
                       className={[
                         styles.img_container_media,
                         "img-container img-tabs",
                       ].join(" ")}
-                      data-bs-target="#exampleModal"
                       onClick={() => slideShow(index)}>
-                      <img src={item.thumbnail_image_url} alt="plant image" onContextMenu={(e)=>e.preventDefault()} />
+                      <img src={item.full_image_url} alt="plant image" onContextMenu={(e)=>e.preventDefault()} />
                     </div>
                   ))
                 ) : (
@@ -163,13 +136,22 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   plant_details.acf.image_url.length !== 0 &&
                   plant_details.acf.image_url.length > 6 && (
                     <a
-                      data-bs-toggle="modal"
                       className="view-more d-print-none"
-                      data-bs-target="#exampleModal"
-                      onClick={() => slideShow(slideIndex)}>
+                      onClick={() => slideShow(6)}>
                       View more
                     </a>
                   )}
+
+                  <Lightbox
+                      index={slideIndex}
+                      open={open}
+                      close={() => setOpen(false)}
+                      slides={slides(plant_details.acf.image_url)}
+                      render={{ slide: SilderImg }}
+                      plugins={[Captions, Fullscreen, Zoom, Thumbnails]}
+                      captions={{ descriptionTextAlign: 'end' }}
+
+                    />
               </div>
               <div
                 className={
@@ -294,58 +276,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     </div>
                   </div>
                 </div>
-              <div
-                style={{ zIndex: '10600' }}
-                className="modal fade"
-                id="exampleModal"
-                role="dialog"
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered modal-xl">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                      <div className="slider">
-                        <div className={!slide ? "hide" : ""}>
-                          <Slide ref={slideRef} easing="ease" {...properties}>
-                            {plant_details.acf.image_url !== undefined &&
-                              plant_details.acf.image_url.length > 0 &&
-                              plant_details.acf.image_url.map((item, index) => (
-                                <div className="each-slide" key={index}>
-                                  <div onContextMenu={(e)=>e.preventDefault()}
-                                    style={{
-                                      backgroundImage: `url(${
-                                        plant_details.acf.image_url[
-                                          slideIndex || index
-                                        ].full_image_url
-                                      })`,
-                                    }}></div>
-                                  <p className="img-caption" key={index}>{plant_details.acf.image_url[
-                                      slideIndex || index
-                                    ].caption}</p>
-                                </div>
-                              ))}
-                          </Slide>
-
-                          <h2 name="prev" onClick={() => back()}>
-                            <i className="bi bi-arrow-left-circle-fill" />
-                          </h2>
-                          <h2 name="next" onClick={() => next()}>
-                            <i className="bi bi-arrow-right-circle-fill" />
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               <div
                 className="modal fade"
@@ -366,29 +296,29 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                     <div className="modal-body" style={{ margin: "0 auto" }}>
                       <div className="modal-image-container">
                         {plant_details.featured_image.image_url == null ? (
-                          <div className="d-flex flex-column text-center stock-img-container">
-                            <img
-                              src="../../images/no_result_found.png"
-                              alt="" onContextMenu={(e)=>e.preventDefault()}
-                            />
-                            {/* <h3>Oops! No images found!</h3> */}
-                          </div>
-                        ) : (
-                          <div>
-                            <img
-                              src={plant_details.featured_image.image_url}
-                              alt="plant image" onContextMenu={(e)=>e.preventDefault()}
-                            />
-                            <p className="img-caption">
-                              {plant_details.featured_image.caption}
-                            </p>
-                          </div>
-                        )}
+                            <div className="d-flex flex-column text-center stock-img-container">
+                              <img
+                                src="../../images/no_result_found.png"
+                                alt="" onContextMenu={(e) => e.preventDefault()}
+                              />
+                              {/* <h3>Oops! No images found!</h3> */}
+                            </div>
+                          ) : (
+                            <div>
+                              <img
+                                src={plant_details.featured_image.image_url}
+                                alt="plant image" onContextMenu={(e) => e.preventDefault()}
+                              />
+                              <p className="img-caption">
+                                {plant_details.featured_image.caption}
+                              </p>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
               <div
                   className="modal fade"
@@ -463,14 +393,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                         </i>
                       </strong>
                     </h4>
-                    {/* {plant_details.acf.characteristics.invasive &&    <h6
-                        style={{ margin: '0 8px', cursor: 'pointer' }}
-                        data-bs-toggle="modal"
-                        className={[styles.tooltipPopUp, "tooltipPopUp align-self-center"].join(" ")}
-                        data-bs-target="#sideNavPopUp12"
-                        onClick={() => triggerPopUp(false)}>
-                        <ErrorOutlineRoundedIcon  sx={{color:'white',borderRadius:'40px', backgroundColor:'red'}} />
-                      </h6>} */}
                     {plant_details.acf.characteristics.invasive && <CustomizedTooltips name="invasive"/>}
                   </div>
                   {plant_details.acf.synonyms_english && (
@@ -1215,7 +1137,6 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       plant_details.acf.image_url.length > 0 ? (
                       plant_details.acf.image_url.slice(0, 6).map((item, index) => (
                         <div
-                          data-bs-toggle="modal"
                           key={index}
                           className={[
                             styles.img_container_media,
@@ -1223,7 +1144,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                           ].join(" ")}
                           data-bs-target="#exampleModal"
                           onClick={() => slideShow(index)}>
-                          <img src={item.thumbnail_image_url} alt="plant image" onContextMenu={(e) => e.preventDefault()} />
+                          <img src={item.full_image_url} alt="plant image" onContextMenu={(e) => e.preventDefault()} />
                         </div>
                       ))
                     ) : (
@@ -1238,9 +1159,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                       plant_details.acf.image_url.length !== 0 &&
                       plant_details.acf.image_url.length > 6 && (
                         <a
-                          data-bs-toggle="modal"
                           className="view-more d-print-none"
-                          data-bs-target="#exampleModal"
                           onClick={() => slideShow(slideIndex)}>
                           View more
                         </a>
@@ -1475,6 +1394,13 @@ const PlantSpeciesDetails = ({ plant_details }) => {
           background-color: #f6f7f9;
           padding: 15px 20px;
           border-radius: 10px;
+          font-size: 15px;
+        }
+        .desc-content {
+          background-color: #f6f7f9;
+          padding: 15px 20px;
+          border-radius: 10px;
+          margin-top: 8px;
           font-size: 15px;
         }
         .side-bar {
