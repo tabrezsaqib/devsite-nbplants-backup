@@ -143,6 +143,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
                   )}
 
                   <Lightbox
+                   styles={{ root: { "--yarl__slide_captions_container_background": "#0000" } }}
                       index={slideIndex}
                       open={open}
                       close={() => setOpen(false)}
