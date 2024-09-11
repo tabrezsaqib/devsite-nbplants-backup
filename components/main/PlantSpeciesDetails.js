@@ -83,6 +83,7 @@ const PlantSpeciesDetails = ({ plant_details }) => {
     return imgArr?.map((img) => {
       return {
         'src': img.full_image_url,
+        title: img.title,
         description: img.caption.replace('|', '\n\n')
       }
     })
