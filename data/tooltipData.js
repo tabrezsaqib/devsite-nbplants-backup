@@ -2,7 +2,7 @@ export const tooltipData = [{
   heading: 'Flower Arrangement (Inflorescence)',
   options: [{
     value: 0,
-    content: "<span class='labelDesc'><b>Catkin: </b><span class='labelDesc'>dense spike or raceme of unisexual flowers; often pendulous and cylindrical, falling as a whole after fruiting</span></span>",
+    content: "<span class='labelDesc'><b>Catkin: </b><span class='labelDesc'>dense spike or raceme of unisexual flowers; often without petals; hanging, falling as a whole after fruiting</span></span>",
     label: 'catkin'
   },
   {
@@ -55,7 +55,7 @@ export const tooltipData = [{
   },
   {
     value: 3,
-    content: "<span class='labelDesc'><b>No Leaves: </b></span> ",
+    content: "<span class='labelDesc'><b>No Leaves </b></span> ",
     label: 'no leaves'
   }]
 },
@@ -101,12 +101,12 @@ export const tooltipData = [{
   heading: 'Petal Symmetry',
   options: [{
     value: 0,
-    content: "<span class='labelDesc'><b>Bilateral petal symmetry: </b><span class='labelDesc'>flower can only be divided evenly in one way e.g. Lady's Slipper Orchids</span></span>",
+    content: "<span class='labelDesc'><b>Bilateral: </b><span class='labelDesc'>irregular; flower can only be divided evenly in one way e.g. Lady's Slipper Orchids</span></span>",
     label: 'bilateral'
   },
   {
     value: 1,
-    content: "<span class='labelDesc'><b>Radial petal symmetry: </b><span class='labelDesc'>flower can be divided evenly multiple ways e.g. Daisies</span></span>",
+    content: "<span class='labelDesc'><b>Radial: </b><span class='labelDesc'>regular; flower can be divided evenly multiple ways e.g. Daisies</span></span>",
     label: 'radial'
   }]
 },
@@ -114,7 +114,7 @@ export const tooltipData = [{
   heading: 'Fruit Type',
   options: [{
     value: 0,
-    content: "<span class='labelDesc'><b>Achene fruit: </b><span class='labelDesc'>a small, dry, one-seeded fruit that doesn’t open when mature</span></span>",
+    content: "<span class='labelDesc'><b>Achene: </b><span class='labelDesc'>a small, dry, one-seeded fruit that doesn’t open when mature. Selection includes cypselae, schizocarp and utricle.</span></span>",
     label: 'achene'
   },
   {
@@ -124,22 +124,53 @@ export const tooltipData = [{
   },
   {
     value: 2,
-    content: "<span class='labelDesc'><b>Capsule: </b><span class='labelDesc'>dry fruit that usually opens when mature. Seeds are within 2 or more chambers that open by valves or teeth</span></span>",
+    content: "<span class='labelDesc'><b>Capsule: </b><span class='labelDesc'>dry fruit that usually opens when mature. Seeds are within 2 or more chambers that open by valves or teeth. Selection includes pyxis, silique, and silicle.</span></span>",
     label: 'capsule'
-  },{
+  },
+  {
+    value: 3,
+    content: "<span class='labelDesc'><b>Catkin: </b><span class='labelDesc'>ament - a slender, often hanging, cylindrical inflorescence with crowded flowers, falling as a whole after fruiting; HH: usually unisexual; dry scale spike or spike-like raceme e.g. inflorescence of birch or willow</span></span>",
+    label: 'catkin'
+  },
+  {
+    value: 4,
+    content: "<span class='labelDesc'><b>Cone: </b><span class='labelDesc'>any fruit with overlapping scales (gymnosperms (Conifers) and some fern allies (e.g. Equisetum))</span></span>",
+    label: 'cone'
+  },
+  {
+    value: 5,
+    content: "<span class='labelDesc'><b>Fruit with wings: </b><span class='labelDesc'>includes Samaras (winged achenes) e.g. Maple family</span></span>",
+    label: 'fruit with wings'
+  },
+  {
+    value: 6,
+    content: "<span class='labelDesc'><b>Grain: </b><span class='labelDesc'>general term for the fruit of cereal (grasses cultivated for food); a small, rounded body (e.g. about the shape and size of a grain of rice)</span></span>",
+    label: 'grain'
+  },
+  {
     value: 7,
-    content: "<span class='labelDesc'><b>Nut: </b><span class='labelDesc'>fruit with a single locule (ovary chamber) and a single seed surrounded by a thick, hard pericarp, often supported by a whorl of bracts</span></span>",
+    content: "<span class='labelDesc'><b>Nut: </b><span class='labelDesc'>fruit with a single chamber (locule) and a single seed surrounded by a thick, hard pericarp, often supported by a whorl of bracts</span></span>",
     label: 'nut'
   },
   {
     value: 8,
-    content: "<span class='labelDesc'><b>Pod: </b><span class='labelDesc'>any dry fruit that opens when mature e.g. Pea family</span></span>",
+    content: "<span class='labelDesc'><b>Pod: </b><span class='labelDesc'>any dry fruit that opens when mature e.g. Pea family. Selection includes Follicles and Legumes</span></span>",
     label: 'pod'
   },
   {
+    value: 9,
+    content: "<span class='labelDesc'><b>Spore: </b><span class='labelDesc'>one-celled reproducive structure in ferns and fern allies</span></span>",
+    label: 'spore'
+  },
+  {
     value: 10,
-    content: "<span class='labelDesc'><b>Stone (Drupe): </b><span class='labelDesc'> fleshy fruit with think skin and a central stone containing the seed e.g. Plum family</span></span> ",
+    content: "<span class='labelDesc'><b>Stone: </b><span class='labelDesc'> fleshy fruit with think skin and a central stone containing the seed e.g. Plum family. Selection includes Drupes.</span></span> ",
     label: 'stone'
+  },
+  {
+    value: 11,
+    content: "<span class='labelDesc'><b>Other</b></span> ",
+    label: 'other'
   }]
 },
 ]
