@@ -39,6 +39,16 @@ const grass = () => {
       }).then(() => {
       })
     }
+    if (type == "Juncaginaceae") {
+      localStorage.setItem("route", "Juncaginaceae")
+      Router.push({
+        pathname: "/plantFamilyDetails",
+        query: {
+          keyword: "Juncaginaceae",
+        },
+      }).then(() => {
+      })
+    }
   }
 
   return (
@@ -62,7 +72,7 @@ const grass = () => {
                 <tr>
                   <th></th>
                   <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Poaceae")}>Grasses (<em>Poaceae</em>)</a></th>
-                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Juncaceae")}>Rushes (<em>Juncaceae</em> and <em>Juncaginaceae</em>)</a></th>
+                  <th><a className={styles['grass-types-link']} >Rushes (<em onClick={() => optionSelector("Juncaceae")}>Juncaceae</em> and <em onClick={() => optionSelector("Juncaginaceae")}>Juncaginaceae</em>)</a></th>
                   <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Cyperaceae")}>Sedges (<em>Cyperaceae</em>)</a></th>
                 </tr>
               </thead>
