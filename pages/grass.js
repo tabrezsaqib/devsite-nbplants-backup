@@ -9,37 +9,38 @@ import Head from "next/head";
 
 const grass = () => {
   const optionSelector = (type) => {
-    if (type == "Woody") {
-      localStorage.setItem("route", "Woody")
+    if (type == "Cyperaceae") {
+      localStorage.setItem("route", "Cyperaceae")
       Router.push({
-        pathname: "/plants",
+        pathname: "/plantFamilyDetails",
         query: {
-          type: "Woody",
+          keyword: "Cyperaceae",
         },
       }).then(() => {
       })
     }
-    if (type == "Non-woody") {
-      localStorage.setItem("route", "Non-woody")
+    if (type == "Poaceae") {
+      localStorage.setItem("route", "Poaceae")
       Router.push({
-        pathname: "/plants",
+        pathname: "/plantFamilyDetails",
         query: {
-          type: "Non-woody",
+          keyword: "Poaceae",
         },
       }).then(() => {
       })
     }
-    if (type == "Fern") {
-      localStorage.setItem("route", "Fern")
+    if (type == "Juncaceae") {
+      localStorage.setItem("route", "Juncaceae")
       Router.push({
-        pathname: "/plants",
+        pathname: "/plantFamilyDetails",
         query: {
-          type: "Fern",
+          keyword: "Juncaceae",
         },
       }).then(() => {
       })
     }
   }
+
   return (
     <>
       <Head>
@@ -60,9 +61,9 @@ const grass = () => {
               <thead>
                 <tr>
                   <th></th>
-                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Woody")}>Grasses (<em>Poaceae</em>)</a></th>
-                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Non-woody")}>Rushes (<em>Juncaceae</em> and <em>Juncaginaceae</em>)</a></th>
-                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Fern")}>Sedges (<em>Cyperaceae</em>)</a></th>
+                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Poaceae")}>Grasses (<em>Poaceae</em>)</a></th>
+                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Juncaceae")}>Rushes (<em>Juncaceae</em> and <em>Juncaginaceae</em>)</a></th>
+                  <th><a className={styles['grass-types-link']} onClick={() => optionSelector("Cyperaceae")}>Sedges (<em>Cyperaceae</em>)</a></th>
                 </tr>
               </thead>
               <tbody>

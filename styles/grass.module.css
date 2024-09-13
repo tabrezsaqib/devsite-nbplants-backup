@@ -39,4 +39,6 @@
 }
 .grass-types-link{
   cursor: pointer;
+  color: #0e9d47;
+  font-weight: bold;
 }

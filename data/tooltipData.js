@@ -22,12 +22,12 @@ export const tooltipData = [{
   },
   {
     value: 7,
-    content: "<span class='labelDesc'><b>Solitary flower: </b><span class='labelDesc'>a single flower that is not part of a grouped flower arrangement</span></span>  <img src='/images/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>",
+    content: "<span class='labelDesc'><b>Solitary flower: </b><span class='labelDesc'>a single flower that is not part of a grouped flower arrangement</span></span>  <img src='/images/glossary/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>",
     label: 'solitary flower'
   },
   {
     value: 6,
-    content: "<span class='labelDesc'><b>Spike: </b><span class='labelDesc'>stalkless (or nearly so) flowers arranged on an elongated stem</span></span>  <img src='/images/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>",
+    content: "<span class='labelDesc'><b>Spike: </b><span class='labelDesc'>stalkless (or nearly so) flowers arranged on an elongated stem</span></span>  <img src='/images/glossary/flower.png' style={{border:'1px solid grey'}} height='30' width='30'></img>",
     label: 'spike'
   },
   {
